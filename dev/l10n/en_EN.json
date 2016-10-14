@@ -5,5 +5,9 @@
   "STATS": "Statistics",
   "HOME": "Home",
   "LOGOUT": "Logout",
-  "RATIO": "Helping/Helped ratio"
+  "USERS_RATIO": "Helping/Helped ratio",
+  "USERS_BY_TYPE": "Users by type",
+  "REQUESTS_RATIO": "Requests by status",
+  "OFFERS": "Offers",
+  "POINTS_STATS": "Points stats"
 }

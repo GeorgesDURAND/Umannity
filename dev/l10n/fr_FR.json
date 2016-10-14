@@ -5,5 +5,10 @@
   "STATS": "Statistiques",
   "HOME": "Accueil",
   "LOGOUT": "Se déconnecter",
-  "RATIO": "Ratio benevoles/demandeurs"
+  "USERS_RATIO": "Ratio benevoles/demandeurs"
+  "USERS_BY_TYPE": "Utilisateurs par type",
+  "REQUESTS_RATIO": "Demandes par statut",
+  "OFFERS": "Offres",
+  "POINTS_STATS": "Statistiques des points"
+}
 }
