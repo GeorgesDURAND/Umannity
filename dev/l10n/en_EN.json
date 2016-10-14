@@ -4,5 +4,6 @@
   "PASSWORD": "Password",
   "STATS": "Statistics",
   "HOME": "Home",
-  "LOGOUT": "Logout"
+  "LOGOUT": "Logout",
+  "RATIO": "Helping/Helped ratio"
 }

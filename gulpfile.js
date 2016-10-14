@@ -32,10 +32,13 @@ gulp.task('sass', function (){
 });
 
 gulp.task('lint', function(){
-    gulp.src(['./dev/js/*.js', './dev/js/*/*.js'])
+    gulp.src(['./dev/js/*.js', './dev/js/*/*.js', './dev/js/*/*/*.js', './dev/js/*/*/*/*.js'])
         .pipe(jshint('.jshintrc'))
 	.pipe(jscs('.jscsrc'))
         .pipe(jshint.reporter('jshint-stylish'))
+});
+
+gulp.task('jscs', function(){
 });
 
 gulp.task('uglify-js', function(){

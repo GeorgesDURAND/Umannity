@@ -1,0 +1,9 @@
+<div class="u-chart" ng-switch="chart.type">
+    <canvas ng-switch-when="chart-pie" id="chart.name" class="chart chart-pie"
+            chart-data="chart.data" chart-labels="chart.labels" >
+    </canvas>
+    <canvas ng-switch-when="chart-doughnut" id="chart.name" class="chart chart-doughnut"
+            chart-data="chart.data" chart-labels="chart.labels" >
+    </canvas>
+    {{ chart.name | translate }}
+</div>
