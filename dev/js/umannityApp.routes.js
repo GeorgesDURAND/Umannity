@@ -11,7 +11,10 @@
         $locationProvider.hashPrefix('!');
 
         $routeProvider
-            .when('/', {
+            .when('/',{
+                redirectTo: '/home'
+            })
+            .when('/home', {
                 templateUrl: 'partials/home.html',
                 controller: 'umannityAppController',
                 controllerAs: 'vm'

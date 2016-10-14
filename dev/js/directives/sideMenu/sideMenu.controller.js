@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('sideMenuController', sideMenuController);
 
-    sideMenuController.$inject = ['$scope', '$location', 'UserService'];
+    sideMenuController.$inject = ['$scope', '$location', 'UserService', 'RestService'];
 
-    function sideMenuController($scope, $location, UserService) {
+    function sideMenuController($scope, $location, UserService, RestService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -22,7 +22,7 @@
 
         function logout(){
             UserService.logout();
-            $location.path("/login")
+            $location.path("/login");
         }
 
         function changeView(viewName){

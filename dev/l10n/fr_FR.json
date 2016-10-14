@@ -4,5 +4,6 @@
   "PASSWORD": "Mot de passe",
   "STATS": "Statistiques",
   "HOME": "Accueil",
-  "LOGOUT": "Se déconnecter"
+  "LOGOUT": "Se déconnecter",
+  "RATIO": "Ratio benevoles/demandeurs"
 }
