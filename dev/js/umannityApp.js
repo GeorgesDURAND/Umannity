@@ -3,7 +3,10 @@ var umannityApp = angular.module('umannityApp', [
     'umannityApp.controllers',
     'umannityApp.services',
     'umannityApp.directives',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap',
+    'pascalprecht.translate',
+    'ngSanitize'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);

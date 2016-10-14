@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-<!--External imports-->
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
-<script src="lib/angular-route/angular-route.js"></script>
-<!--App Imports-->
-<script src="js/umannityApp.js"></script>
-<script src="js/umannityApp.routes.js"></script>
-<script src="js/umannityApp.run.js"></script>
-<!--Controllers-->
-<script src="js/controllers/umannityApp.controller.js"></script>
-<script src="js/controllers/login.controller.js"></script>
-<!--Services-->
-<script src="js/services/rest.service.js"></script>
-<script src="js/services/constant.service.js"></script>
-<script src="js/services/user.service.js"></script>
-<!--Directives-->
-<script src="js/directives/header.directive.js"></script>
+<head>
+    <title>Umannity</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/umannity.css">
+    <!--External imports-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <!--App Imports-->
+    <script src="js/umannityApp.js"></script>
+    <script src="js/umannityApp.config.js"></script>
+    <script src="js/umannityApp.routes.js"></script>
+    <script src="js/umannityApp.run.js"></script>
+    <!--Controllers-->
+    <script src="js/controllers/umannityApp.controller.js"></script>
+    <script src="js/controllers/login.controller.js"></script>
+    <!--Services-->
+    <script src="js/services/rest.service.js"></script>
+    <script src="js/services/constant.service.js"></script>
+    <script src="js/services/user.service.js"></script>
+    <!--Directives-->
+    <script src="js/directives/header/header.directive.js"></script>
+    <script src="js/directives/sideMenu/sideMenu.directive.js"></script>
+</head>
 <!--Body-->
 <body ng-app="umannityApp">
-<div ng-view>
+<div class="u-view" ng-view>
 </div>
 </body>
 </html>

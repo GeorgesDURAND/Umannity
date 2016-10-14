@@ -1,3 +1,28 @@
-.body{
-background: #323231;
+@import "variables";
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+
+.u-view{
+  height: 100%;
+  background: $app-gray;
+}
+
+.u-login{
+  height:100%;
+  background: url("../img/login-partner-bg.png");
+  text-align: center;
+}
+
+.u-box-center{
+  border-radius: 1vh;
+  min-height:50vh;
+  display:inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background: $app-gray;
 }

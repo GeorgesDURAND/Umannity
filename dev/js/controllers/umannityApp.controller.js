@@ -14,11 +14,14 @@
         ////
 
         function checkUser() {
-            if (null == UserService.get_api_key()) {
+            var user = UserService.get_user();
+            var api_key = UserService.get_api_key();
+
+            if (null === api_key) {
                 console.log("umannityAppController :: User is not logged");
                 $location.path("/login");
             }
-            else if (null === UserService.get_user()) {
+            else if (null === user) {
                 console.log("umannityAppController :: User is logged and its data isn't loaded");
                 UserService.load_user()
                     .then(function (user) {
@@ -31,7 +34,8 @@
                     });
             }
             else {
-                console.log("umannityAppController :: User is logged and has data", UserService.get_user());
+                vm.user = user;
+                console.log("umannityAppController :: User is logged and has data", user);
             }
         }
 

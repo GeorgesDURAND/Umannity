@@ -1,9 +1,17 @@
-<div>
-    <form name="loginForm" class="css-form" novalidate>
-        <input type="text" ng-model="vm.email" name="email"/>
-        <br/>
-        <input type="password" ng-model="vm.password" name="password"/>
-        <br/>
-        <input type="submit" ng-click="vm.login()" value="Login" />
-    </form>
+<div class="u-login">
+    <div class="u-box-center">
+        <form name="loginForm" class="css-form" novalidate>
+            {{ 'EMAIL' | translate }}
+            <br/>
+            <input type="text" ng-model="vm.email" name="email"/>
+            <br/>
+            {{ 'PASSWORD' | translate }}
+            <br/>
+            <input type="password" ng-model="vm.password" name="password"/>
+            <br/>
+            <label class="btn btn-primary" ng-click="vm.login()" btn-checkbox>
+                {{ 'CONNECT' | translate }}
+            </label>
+        </form>
+    </div>
 </div>
