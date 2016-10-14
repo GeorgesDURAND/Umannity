@@ -12,6 +12,7 @@
     <script src="lib/angular-translate/angular-translate.js"></script>
     <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
     <!--App Imports-->
     <script src="js/umannityApp.js"></script>
     <script src="js/umannityApp.config.js"></script>
@@ -20,6 +21,8 @@
     <!--Controllers-->
     <script src="js/controllers/umannityApp.controller.js"></script>
     <script src="js/controllers/login.controller.js"></script>
+    <script src="js/controllers/stats.controller.js"></script>
+    <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
     <!--Services-->
     <script src="js/services/rest.service.js"></script>
     <script src="js/services/constant.service.js"></script>
@@ -27,9 +30,10 @@
     <!--Directives-->
     <script src="js/directives/header/header.directive.js"></script>
     <script src="js/directives/sideMenu/sideMenu.directive.js"></script>
+    <script src="js/directives/mainView/mainView.directive.js"></script>
 </head>
 <!--Body-->
-<body ng-app="umannityApp">
+<body ng-app="umannityApp" ng-controller="umannityAppController">
 <div class="u-view" ng-view>
 </div>
 </body>

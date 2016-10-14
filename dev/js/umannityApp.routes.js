@@ -1,4 +1,3 @@
-/*global angular */
 (function () {
     'use strict';
 
@@ -20,6 +19,11 @@
             .when('/login', {
                 templateUrl : "partials/login.html",
                 controller: 'loginController',
+                controllerAs: 'vm'
+            })
+            .when('/admin/stats',{
+                templateUrl: "partials/stats.html",
+                controller: 'statsController',
                 controllerAs: 'vm'
             })
             .when('/error', {

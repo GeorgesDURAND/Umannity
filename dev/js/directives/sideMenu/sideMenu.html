@@ -1,1 +1,7 @@
-<div ng-if="vm.user">Login</div>
+<div class="u-sidemenu">
+    <div ng-click="vm.changeView('/')">{{ 'HOME' | translate }}</div>
+    <div ng-if="vm.user.group > 0">
+        <div ng-click="vm.changeView('/admin/stats')">{{ 'STATS' | translate }}</div>
+    </div>
+    <div ng-click="vm.logout()">{{ 'LOGOUT' | translate }}</div>
+</div>

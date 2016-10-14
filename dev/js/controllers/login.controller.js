@@ -12,6 +12,7 @@
         var vm = this;
 
         vm.login = login;
+        vm.name = "loginController";
 
         ////
 

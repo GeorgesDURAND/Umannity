@@ -1,4 +1,11 @@
+@import "variables";
+
 .u-header{
-  margin:auto;
-  background: #323231;
+  width: 100%;
+  height: 5vw;
+  background: $umannity-orange;
+
+  &.u-header-admin{
+    background: $app-gray;
+  }
 }

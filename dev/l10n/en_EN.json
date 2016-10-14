@@ -1,5 +1,8 @@
 {
   "CONNECT": "Connect",
   "EMAIL": "E-mail",
-  "PASSWORD": "Password"
+  "PASSWORD": "Password",
+  "STATS": "Statistics",
+  "HOME": "Home",
+  "LOGOUT": "Logout"
 }

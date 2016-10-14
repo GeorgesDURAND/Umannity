@@ -6,7 +6,8 @@ var umannityApp = angular.module('umannityApp', [
     'ngRoute',
     'ui.bootstrap',
     'pascalprecht.translate',
-    'ngSanitize'
+    'ngSanitize',
+    'ngCookies'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);

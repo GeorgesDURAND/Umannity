@@ -8,20 +8,25 @@
     userService.$inject = ['$q', 'RestService'];
 
     function userService($q, RestService) {
-        var _user = null;
+        var _user;
 
         var service = {
-            get_user: get_user,
-            get_api_key: get_api_key,
-            load_user: load_user,
-            login: login
+            getUser: getUser,
+            getApiKey: getApiKey,
+            loadUser: loadUser,
+            login: login,
+            logout: logout
         };
 
         return service;
 
         ////
 
-        function load_user() {
+        function logout(){
+            RestService.removeApiKey();
+        }
+
+        function loadUser() {
             var deferred = $q.defer();
 
             RestService.get("/user")
@@ -36,12 +41,13 @@
             return deferred.promise;
         }
 
-        function get_user() {
+        function getUser() {
+            console.log("userService :: getUser called");
             return _user;
         }
 
-        function get_api_key() {
-            return RestService.get_api_key();
+        function getApiKey() {
+            return RestService.getApiKey();
         }
 
         function login(email, password) {
@@ -51,7 +57,7 @@
                 .then(function (request) {
                     if (request.data !== undefined) {
                         if (request.data.api_key !== undefined) {
-                            RestService.set_api_key(request.data.api_key);
+                            RestService.setApiKey(request.data.api_key);
                             deferred.resolve(request.data.api_key);
                         }
                     }

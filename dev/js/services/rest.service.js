@@ -5,28 +5,34 @@
         .module('umannityApp.services')
         .factory('RestService', restService);
 
-    restService.$inject = ['$http', 'ConstantService'];
+    restService.$inject = ['$http', 'ConstantService', '$cookies'];
 
-    function restService($http, ConstantService) {
+    function restService($http, ConstantService, $cookies) {
         var _api_url = ConstantService.api_url;
-        var _api_key = null;
+        var _api_key = $cookies.get('api_key');
 
         var service = {
             login: login,
             get: get,
-            set_api_key: set_api_key,
-            get_api_key: get_api_key
+            setApiKey: setApiKey,
+            getApiKey: getApiKey,
+            removeApiKey: removeApiKey
         };
 
         return service;
 
         ////
 
-        function get_api_key(api_key) {
+        function getApiKey() {
             return _api_key;
         }
 
-        function set_api_key(api_key) {
+        function removeApiKey() {
+            $cookies.remove('api_key');
+        }
+
+        function setApiKey(api_key) {
+            $cookies.put('api_key', api_key);
             _api_key = api_key;
         }
 

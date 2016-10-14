@@ -1,3 +1,8 @@
 {
-  "CONNECT": "Se Connecter"
+  "CONNECT": "Se Connecter",
+  "EMAIL": "E-mail",
+  "PASSWORD": "Mot de passe",
+  "STATS": "Statistiques",
+  "HOME": "Accueil",
+  "LOGOUT": "Se déconnecter"
 }

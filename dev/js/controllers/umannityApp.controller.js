@@ -5,25 +5,30 @@
         .module('umannityApp.controllers')
         .controller('umannityAppController', umannityAppController);
 
-    umannityAppController.$inject = ['$location', 'UserService'];
+    umannityAppController.$inject = ['$scope', '$location', 'UserService'];
 
-    function umannityAppController($location, UserService) {
+    function umannityAppController($scope, $location, UserService) {
         /* jshint validthis: true */
         var vm = this;
+
+        vm.name = "umannityAppController";
+
+        $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
 
         function checkUser() {
-            var user = UserService.get_user();
-            var api_key = UserService.get_api_key();
+            var api_key = UserService.getApiKey();
+            console.log("umannityAppController :: Api Key", api_key);
+            var user = UserService.getUser();
 
-            if (null === api_key) {
+            if (undefined === api_key) {
                 console.log("umannityAppController :: User is not logged");
                 $location.path("/login");
             }
-            else if (null === user) {
+            else if (undefined === user) {
                 console.log("umannityAppController :: User is logged and its data isn't loaded");
-                UserService.load_user()
+                UserService.loadUser()
                     .then(function (user) {
                         console.log("umannityAppController :: User loaded");
                         vm.user = user;
@@ -39,7 +44,12 @@
             }
         }
 
-        checkUser();
+        function onViewContentLoaded() {
+            if (vm.user === undefined) {
+                console.log("umannityAppController :: content loaded");
+                checkUser();
+            }
+        }
     }
 
 })();

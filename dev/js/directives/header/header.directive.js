@@ -3,11 +3,11 @@
 
     angular
         .module('umannityApp.directives')
-        .directive('umannityHeader', umannityHeader);
+        .directive('uHeader', umannityHeader);
 
     function umannityHeader() {
         var directive = {
-            templateUrl:  'js/directives/header/header.html'
+            templateUrl:  'js/directives/header/header.html',
         };
         return directive;
     }

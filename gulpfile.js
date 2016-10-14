@@ -11,6 +11,8 @@ var exec = require('gulp-exec');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var bower = require('gulp-bower');
+var concatCss = require('gulp-concat-css');
+var concat = require('gulp-concat');
 
 ////
 
@@ -23,35 +25,24 @@ gulp.task('sass', function (){
 	.pipe(prefix(
 	    "last 1 version", "> 1%", "ie 8", "ie 7"
 	))
-	.pipe(gulp.dest('./dev/css'))
 	.pipe(minifycss())
+	.pipe(concatCss("umannity.css"))
+    	.pipe(gulp.dest('./dev/css'))
 	.pipe(gulp.dest('./prod/css'));
 });
 
-gulp.task('jslint', function(){
+gulp.task('lint', function(){
     gulp.src(['./dev/js/*.js', './dev/js/*/*.js'])
         .pipe(jshint('.jshintrc'))
+	.pipe(jscs('.jscsrc'))
         .pipe(jshint.reporter('jshint-stylish'))
 });
 
-gulp.task('jscs', function(){
-    gulp.src(['./dev/js/*.js', './dev/js/*/*.js'])
-        .pipe(jscs('.jscsrc'))
-	.pipe(jscs.reporter())
-});
-
-gulp.task('lint', ['jslint', 'jscs']);
-
 gulp.task('uglify-js', function(){
-    gulp.src('./dev/js/*.js')
+    gulp.src(['./dev/js/*.js', './dev/lib/*/*.js'])
 	.pipe(uglify())
+	.pipe(concat('umannity.js'))
 	.pipe(gulp.dest('./prod/js'));
-});
-
-gulp.task('uglify-libs', function(){
-    gulp.src('./dev/lib/*.js')
-	.pipe(uglify())
-	.pipe(gulp.dest('./prod/lib'));
 });
 
 gulp.task('svgmin', function() {
@@ -66,12 +57,6 @@ gulp.task('imagemin', function () {
 	.pipe(imagemin())
 	.pipe(gulp.dest('./dev/img'))
 	.pipe(gulp.dest('./prod/img'));
-});
-
-gulp.task('stats', function () {
-    gulp.src('./prod/**/*')
-	.pipe(size())
-	.pipe(gulp.dest('./prod'));
 });
 
 gulp.task('htmlmin', function () {
@@ -89,7 +74,7 @@ gulp.task('bower', function(){
     return bower();
 });
 
-gulp.task('build', ['bower', 'jslint', 'htmlmin', 'sass', 'uglify-js', 'uglify-libs', 'imagemin', 'svgmin']);
+gulp.task('build', ['bower', 'lint', 'htmlmin', 'sass', 'uglify-js', 'imagemin', 'svgmin']);
 
 gulp.task('watch', function(){
     
@@ -98,11 +83,11 @@ gulp.task('watch', function(){
     });
 
     gulp.watch("./dev/js/**/*.js", function(event){
-	gulp.run('uglify');
+	gulp.run('uglify-js');
     });
 
     gulp.watch("./dev/img/**/*", function(event){
 	gulp.run('imagemin');
-			gulp.run('svgmin');
+	gulp.run('svgmin');
     });
 });
