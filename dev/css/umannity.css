@@ -17,18 +17,13 @@ html {
   height: 100%;
 }
 
-.u-box-center,
-.u-chart,
-.u-login {
-  text-align: center;
-}
-
 .u-view {
   background: rgba(60,63,65,.26);
 }
 
 .u-login {
   background: url("../img/login-partner-bg.png");
+  text-align: center;
 }
 
 .u-box-center {
@@ -36,10 +31,6 @@ html {
   min-height: 50vh;
   display: inline-block;
   vertical-align: middle;
+  text-align: center;
   background: rgba(60,63,65,.26);
-}
-
-.u-chart {
-  border-radius: 1vw;
-  background: #42a5f5;
 }
