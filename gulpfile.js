@@ -13,8 +13,25 @@ var jscs = require('gulp-jscs');
 var bower = require('gulp-bower');
 var concatCss = require('gulp-concat-css');
 var concat = require('gulp-concat');
+var webserver = require('gulp-webserver');
+
+gulp.task('run', ['watch', 'webserver']);
 
 ////
+
+gulp.task('webserver', function(){
+    gulp.src('./dev/')
+	.pipe(webserver({
+	    livereload: true,
+	    directoryListing:{
+		enable: false,
+		path: './dev/',
+		fallback: 'index.html'
+	    },
+	    open: true,
+	    port: 8080
+	}));
+});
 
 gulp.task('sass', function (){
     gulp.src('./dev/sass/*.scss')
