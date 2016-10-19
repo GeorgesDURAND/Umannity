@@ -14,6 +14,8 @@ To install the required npm packages locally : ``` npm install ```
 
 To install them globally on your system : ``` npm install -g ```
 
+You can now make a first build of the project with the ```gulp build``` command
+
 * Tasks
 
 Gulp is used to manage the tasks within the WebApp.
