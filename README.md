@@ -23,3 +23,5 @@ The tasks you can use are :
 * gulp watch : To run a watcher to rebuild your css files
 * gulp OR gulp build : To build the dev files inside prod
 * gulp sass : To build your css/umannity.css file from your sass files
+* gulp webserver : To server the files in the dev directory
+* gulp run : To run the watcher with the webserver together
