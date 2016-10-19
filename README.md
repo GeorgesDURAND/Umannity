@@ -8,7 +8,9 @@ and Git <https://git-scm.com/downloads>
 
 * Install
 
-To install the npm packages locally : ``` npm install ```
+You can now clone this repository and open a terminal emulator inside it.
+
+To install the required npm packages locally : ``` npm install ```
 
 To install them globally on your system : ``` npm install -g ```
 
