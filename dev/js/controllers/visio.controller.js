@@ -33,9 +33,9 @@
     }
 
     function makeCall () {
-      var id = 1;
-      console.log(vm.name + " :: calling " + 1);
-      WebRTCService.createOffer(id);
+
+      console.log(vm.name + " :: calling " + vm.recipient_id);
+      WebRTCService.createOffer(vm.recipient_id);
     }
 
     function acceptVisioConference (offer) {
