@@ -3,10 +3,10 @@ $u-orange : #FF9800;
 $u-blue: #42a5f5;
 $u-grey: #515151;
 $umannity-black: rgba(50, 50, 58, 1.0);
-$app-grey: #F1F2F7;
+$u-black: $umannity-black;
+$app-gray: #F1F2F7;
 $umannity-grey-text: #484848;
 $u-font: Varela Round;
-
 
 html {
     height: 100%;
@@ -20,4 +20,3 @@ body {
     height: 100%;
     background: $app-gray;
 }
-
