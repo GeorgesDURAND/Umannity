@@ -55,7 +55,8 @@
         }
 
         function connectRTC() {
-            _connection = new RTCPeerConnection(_iceConfig);
+          var _RTCPeerConnection = webkitRTCPeerConnection || RTCPeerConnection;
+            _connection =  new _RTCPeerConnection(_iceConfig);
         }
 
         function getOffers() {
