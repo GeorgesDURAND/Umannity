@@ -14,6 +14,7 @@
         var service = {
             login: login,
             get: get,
+            put: put,
             setApiKey: setApiKey,
             getApiKey: getApiKey,
             removeApiKey: removeApiKey
@@ -43,11 +44,25 @@
                 headers: {
                     'Authorization': _api_key
                 },
+                params: data
+            };
+            angular.extend(req.headers, headers);
+            return $http(req);
+        }
+
+        function put(route, data, headers) {
+            var req = {
+                method: 'PUT',
+                url: _api_url + route,
+                headers: {
+                    'Authorization': _api_key
+                },
                 data: data
             };
             angular.extend(req.headers, headers);
             return $http(req);
         }
+
 
         function login(email, password) {
             var data = {

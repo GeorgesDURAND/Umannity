@@ -1,4 +1,23 @@
 //Colors
-$umannity-orange : #FF9800;
-$umannity-blue: #42a5f5;
-$app-gray: rgba(60, 63, 65, 0.26);
+$u-orange : #FF9800;
+$u-blue: #42a5f5;
+$u-grey: #515151;
+$umannity-black: rgba(50, 50, 58, 1.0);
+$app-grey: #F1F2F7;
+$umannity-grey-text: #484848;
+$u-font: Varela Round;
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.u-view {
+    height: 100%;
+    background: $app-gray;
+}
+

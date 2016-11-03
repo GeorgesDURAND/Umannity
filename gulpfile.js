@@ -1,3 +1,4 @@
+//GLOBALS
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
@@ -15,6 +16,11 @@ var concatCss = require('gulp-concat-css');
 var concat = require('gulp-concat');
 var webserver = require('gulp-webserver');
 
+//VARIABLES
+var js_dirs = ['./dev/js/*.js', './dev/js/*/*.js', './dev/js/*/*/*.js', './dev/js/*/*/*/*.js'];
+
+//TASKS
+
 gulp.task('run', ['watch', 'webserver']);
 
 ////
@@ -29,9 +35,13 @@ gulp.task('webserver', function(){
 		fallback: 'index.html'
 	    },
 	    open: true,
-	    port: 8080
+	    port: 7979
 	}));
 });
+
+function sassError(error){
+    console.log(error.stack);
+}
 
 gulp.task('sass', function (){
     gulp.src('./dev/sass/*.scss')
@@ -39,23 +49,28 @@ gulp.task('sass', function (){
 	    includePaths: ['./dev/sass'],
 	    outputStyle: 'expanded'
 	}))
+	.on('error', sassError)
 	.pipe(prefix(
 	    "last 1 version", "> 1%", "ie 8", "ie 7"
 	))
-	.pipe(minifycss())
 	.pipe(concatCss("umannity.css"))
+    	.pipe(minifycss())
     	.pipe(gulp.dest('./dev/css'))
 	.pipe(gulp.dest('./prod/css'));
 });
 
-gulp.task('lint', function(){
-    gulp.src(['./dev/js/*.js', './dev/js/*/*.js', './dev/js/*/*/*.js', './dev/js/*/*/*/*.js'])
+gulp.task('lint', ['jshint', 'jscs']);
+
+gulp.task('jshint', function(){
+    gulp.src(js_dirs)
         .pipe(jshint('.jshintrc'))
-	.pipe(jscs('.jscsrc'))
         .pipe(jshint.reporter('jshint-stylish'))
 });
 
 gulp.task('jscs', function(){
+    gulp.src(js_dirs)
+	.pipe(jscs('.jscsrc'))
+	.pipe(jscs.reporter())
 });
 
 gulp.task('uglify-js', function(){
@@ -98,9 +113,7 @@ gulp.task('build', ['bower', 'lint', 'htmlmin', 'sass', 'uglify-js', 'imagemin',
 
 gulp.task('watch', function(){
     
-    gulp.watch("./dev/sass/**/*.scss", function(event){
-	gulp.run('sass');
-    });
+    gulp.watch(["./dev/sass/**/*.scss"], ['sass']);
 
     gulp.watch("./dev/js/**/*.js", function(event){
 	gulp.run('uglify-js');

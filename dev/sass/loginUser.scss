@@ -1,0 +1,89 @@
+@import "variables";
+
+.u-login {
+    height: 100%;
+    background: url("../img/login-user-bg.png");
+    -webkit-background-size: cover;
+    text-align: center;
+    font-family: $u-font;
+}
+
+.u-to-loginPartner {
+    font-size: 17px;
+    line-height: 25px;
+    padding: 11px 23px;
+    color: $u-orange;
+    border-color: $u-grey; 
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+
+}
+
+.u-to-loginPartner:hover, 
+.u-to-loginPartner:active, 
+.u-to-loginPartner:focus {
+    border-color: $u-blue;
+}
+
+
+
+.u-center-block {
+    color: white;
+
+    .u-logo-login {
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    .u-login-block {
+
+        .u-label-login {
+            padding-top: 10px;
+            line-height: 23px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .u-input-login {
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.6);
+            color: $u-orange;
+            font-size: 19px;
+            border: 1px solid transparent;
+            width: 100%;
+            padding: 9px;
+        }
+
+        .u-input-login:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .u-input-login:focus {
+            border: 1px solid $u-blue;
+        }
+
+        .u-btn-login {
+            margin-top: 10px;
+            padding: 9px;
+            background-color: $u-orange;
+            opacity: 0.8;
+            border-radius: 4px;
+        }
+        
+        .u-btn-login:hover {
+            color: white;
+            background-color: $u-orange;
+            opacity: 1;
+        }
+        
+        .u-subs-link-login, .u-pwd-link-login {
+            color: white;
+            display: block;
+            padding-top: 10px;
+        }        
+    }
+}
+
+
+
+

@@ -1,13 +1,17 @@
 {
-  "CONNECT": "Connect",
-  "EMAIL": "E-mail",
-  "PASSWORD": "Password",
-  "STATS": "Statistics",
-  "HOME": "Home",
-  "LOGOUT": "Logout",
-  "USERS_RATIO": "Helping/Helped ratio",
-  "USERS_BY_TYPE": "Users by type",
-  "REQUESTS_RATIO": "Requests by status",
-  "OFFERS": "Offers",
-  "POINTS_STATS": "Points stats"
+    "CONNECT": "Connect",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Password",
+    "TOLOGINPARTNER": "You are a commercial partner ? Click here",
+    "TOLOGINUSER":"You are a user ? Click here",
+    "STATS": "Statistics",
+    "SUBSCRIBE":"To subscribe, it's here !",
+    "LOST_PWD":"Lost password ?",
+    "HOME": "Home",
+    "LOGOUT": "Logout",
+    "USERS_RATIO": "Helping/Helped ratio",
+    "USERS_BY_TYPE": "Users by type",
+    "REQUESTS_RATIO": "Requests by status",
+    "OFFERS": "Offers",
+    "POINTS_STATS": "Points stats"
 }

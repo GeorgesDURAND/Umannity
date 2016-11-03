@@ -1,0 +1,33 @@
+<u-main-view>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <span ng-repeat="dialogue in vm.dialogues" class="animated fadeIn">
+
+							<li class="">
+								<span> {{dialogue.message}} </span>
+							</li>
+
+						</span>
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+                    <span ng-repeat="chat in vm.chatsUsers"
+                          ng-click="vm.changeConversation(chat.user.id, chat.conversation_id)"
+                          class="animated fadeIn">
+                            <img ng-src="{{chat.user.picture}}">
+                            <p>
+                                <strong>{{chat.user.last_name }}</strong>
+                                <span>{{chat.user.first_name }}</span>
+                            </p>
+                    </span>
+            </div>
+            <form ng-submit="vm.sendMessage()">
+                <input type="text" size="136" ng-model="vm.buffer" value="" />
+                <button type="submit" class="btn btn-help-1">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+    </div>
+</u-main-view>

@@ -23,6 +23,7 @@
     "angular-sanitize": "^1.5.8",
     "angular-translate-loader-static-files": "^2.12.1",
     "angular-cookies": "^1.5.8",
-    "angular-chart.js": "^1.0.3"
+    "angular-chart.js": "^1.0.3",
+    "socket.io-client": "^1.5.0"
   }
 }

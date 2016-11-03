@@ -1,0 +1,10 @@
+<u-main-view>
+    <div ng-repeat="offer in vm.offers">
+        <div> {{ offer.emitter }}</div>
+        <button ng-click="vm.acceptVisioConference(offer.id)">OK</button>
+        <button ng-click="vm.refuseVisioConference(offer.id)">Cancel</button>
+    </div>
+    <h1>Realtime communication with WebRTC</h1>
+    <video ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}" autoplay></video>
+    <button ng-click="vm.makeCall()">Call</button>
+</u-main-view>

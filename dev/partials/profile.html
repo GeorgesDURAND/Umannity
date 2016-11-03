@@ -1,0 +1,43 @@
+<u-main-view>
+    <div>
+        Bonjour {{ vm.user.first_name }}
+
+    </div><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 lead">User profile<hr></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img class="img-circle avatar avatar-original" ng-src="{{vm.picture.picture}}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="only-bottom-margin">{{ vm.user.first_name }} {{ vm.user.last_name }}</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="text-muted">Email:</span> {{ vm.user.email }}<br>
+                                        <span class="text-muted">Birth date:</span> {{ vm.user.birthdate }}<br>
+                                        <span class="text-muted">Adress:</span> {{ vm.user.address }}, {{ vm.user.zipcode }}<br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</u-main-view>

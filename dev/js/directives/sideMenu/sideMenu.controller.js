@@ -14,31 +14,39 @@
         vm.name = "sideMenuController";
         vm.logout = logout;
         vm.changeView = changeView;
+        vm.changeMenu = changeMenu;
+        vm.isCollapsed = false;
         vm.user = UserService.getUser();
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
 
-        function logout(){
+
+
+        function changeMenu() {
+            vm.isCollapsed = !vm.isCollapsed; 
+        }
+
+        function logout() {
             UserService.logout();
             $location.path("/login");
         }
 
-        function changeView(viewName){
+        function changeView(viewName) {
             $location.path(viewName);
         }
 
-        function onViewContentLoaded(){
+        function onViewContentLoaded() {
             console.log("USER",vm.user);
             if (undefined === vm.user){
                 RestService.loadUser()
                     .then(function (user){
-                        vm.user = user;
-                    })
+                    vm.user = user;
+                })
                     .catch(function (error){
-                        console.log(error);
-                    });
+                    console.log(error);
+                });
             }
         }
 

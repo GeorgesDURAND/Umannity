@@ -1,13 +1,17 @@
 {
-  "CONNECT": "Se Connecter",
-  "EMAIL": "E-mail",
-  "PASSWORD": "Mot de passe",
-  "STATS": "Statistiques",
-  "HOME": "Accueil",
-  "LOGOUT": "Se déconnecter",
-  "USERS_RATIO": "Ratio benevoles/demandeurs"
-  "USERS_BY_TYPE": "Utilisateurs par type",
-  "REQUESTS_RATIO": "Demandes par statut",
-  "OFFERS": "Offres",
-  "POINTS_STATS": "Statistiques des points"
+    "CONNECT": "Se Connecter",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Mot de passe",
+    "TOLOGINPARTNER": "Vous êtes un partenaire commercial ? Cliquez ici",
+    "TOLOGINUSER":"Vous êtes un utilisateur ? Cliquez ici",
+    "SUBSCRIBE":"Pour s'inscrire, c'est par ici !",
+    "LOST_PWD":"Mot de passe perdu ?",
+    "STATS": "Statistiques",
+    "HOME": "Accueil",
+    "LOGOUT": "Se déconnecter",
+    "USERS_RATIO": "Ratio benevoles/demandeurs",
+    "USERS_BY_TYPE": "Utilisateurs par type",
+    "REQUESTS_RATIO": "Demandes par statut",
+    "OFFERS": "Offres",
+    "POINTS_STATS": "Statistiques des points"
 }
