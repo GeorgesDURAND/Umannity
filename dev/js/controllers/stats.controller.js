@@ -18,7 +18,7 @@
 
         ////
 
-        function onViewContentLoaded(){
+        function onViewContentLoaded() {
             vm.user = UserService.getUser();
             console.log(vm.name + " :: content loaded");
             if (undefined === vm.charts) {
@@ -33,7 +33,7 @@
                 if (undefined === vm.charts) {
                     vm.charts = [];
                 }
-                angular.forEach(data.data.charts, function(chart){
+                angular.forEach(data.data.charts, function(chart) {
                     vm.charts.push(chart);
                 });
             }

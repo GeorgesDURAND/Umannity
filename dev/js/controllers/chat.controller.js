@@ -21,33 +21,30 @@
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
 
-        function onViewContentLoaded(){
+        function onViewContentLoaded() {
             loadChatsUsers();
-
         }
-
 
         function loadChat() {
             ChatService.loadChat(vm.conversation_id).then(function (data) {
-                console.log(data)
+                console.log(data);
                 vm.dialogues = data.messages;
                 //vm.recipient_id = data.data.messages.recipient_id;
             });
         }
 
-
         function loadFirstConversation () {
             var firstConv = vm.chatsUsers[0];
             ChatService.loadChat(firstConv.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
-                vm.recipient_id = firstConv.user.id
+                vm.recipient_id = firstConv.user.id;
             });
         }
 
         function loadChatsUsers() {
             ChatService.loadChatsUsers().then(function (chatsUsers) {
                 vm.chatsUsers = chatsUsers;
-                if (undefined !== vm.chatsUsers){
+                if (undefined !== vm.chatsUsers) {
                     loadFirstConversation();
                 }
             });
@@ -66,7 +63,7 @@
                     recipient_id: vm.recipient_id
                 };
 
-                ChatService.sendMessage(message).then(function (data) {
+                ChatService.sendMessage(_message).then(function (data) {
                     vm.buffer = "";
                 });
             }

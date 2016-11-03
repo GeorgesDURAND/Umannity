@@ -5,9 +5,10 @@
     .module('umannityApp.controllers')
     .controller('profileController', profileController);
 
-  profileController.$inject = [ '$scope', 'UserService' ];
+  profileController.$inject = ['$scope', 'UserService'];
 
   function profileController ($scope, UserService) {
+    /* jshint validthis: true */
     var vm = this;
     $scope.$on('$viewContentLoaded', onViewContentLoaded);
 

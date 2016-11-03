@@ -5,7 +5,7 @@
     .module('umannityApp')
     .config(routesBlock);
 
-  routesBlock.$inject = [ '$locationProvider', '$routeProvider' ];
+  routesBlock.$inject = ['$locationProvider', '$routeProvider'];
 
   function routesBlock ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');

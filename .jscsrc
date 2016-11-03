@@ -18,7 +18,6 @@
       "allowComments": true,
       "allowRegex": true
     },
-    "validateIndentation": 2,
     "validateQuoteMarks": "'",
 
     "disallowMultipleLineStrings": true,
@@ -78,6 +77,5 @@
     "requireMultipleVarDecl": null,
     "requireOperatorBeforeLineBreak": null,
     "requireParenthesesAroundIIFE": true,
-    "validateIndentation": 4,
     "validateQuoteMarks": null
 }

@@ -26,7 +26,7 @@
 
         ////
 
-        function logout(){
+        function logout() {
             RestService.removeApiKey();
         }
 
@@ -108,14 +108,12 @@
             return deferred.promise;
         }
 
-        function formatBirthdate(birthdate)
-        {
-            var tmp = new Date(birthdate*1000);
-            var date = (tmp.getDate() > 9 ? tmp.getDate() : "0"+tmp.getDate());
-            var month = (tmp.getMonth() > 9 ? (tmp.getMonth()+1) : "0"+(tmp.getMonth()+1));
+        function formatBirthdate(birthdate) {
+            var tmp = new Date(birthdate * 1000);
+            var date = (tmp.getDate() > 9 ? tmp.getDate() : "0" + tmp.getDate());
+            var month = (tmp.getMonth() > 9 ? (tmp.getMonth() + 1) : "0" + (tmp.getMonth() + 1));
             var year = tmp.getYear() + 1900;
-            var birthdate = date+"/"+month+"/"+year;
-            return birthdate
+            return date + "/" + month + "/" + year;
         }
     }
 })();

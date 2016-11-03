@@ -33,7 +33,7 @@
             _interval = $interval(getOffers, _pollingTime);
         }
 
-        function makeCall(){
+        function makeCall() {
             var id = 1;
             console.log(vm.name + " :: calling " + 1);
             WebRTCService.createOffer(id);
@@ -52,7 +52,7 @@
         function getOffers() {
             WebRTCService.getOffers()
                 .then(function (offers) {
-                    if (vm.offers != offers) {
+                    if (vm.offers !== offers) {
                         console.log(vm.name + " :: loaded offers", offers);
                         vm.offers = offers;
                     }

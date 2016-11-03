@@ -63,7 +63,6 @@
             return $http(req);
         }
 
-
         function login(email, password) {
             var data = {
                 email: email,

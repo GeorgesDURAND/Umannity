@@ -1,3 +1,4 @@
+/* global RTCPeerConnection */
 (function () {
     'use strict';
 
@@ -62,7 +63,7 @@
             RestService.get("/webrtc/offers")
                 .then(function (request) {
                     var parsedOffers = [];
-                    angular.forEach(request.data.offers, function(offer){
+                    angular.forEach(request.data.offers, function(offer) {
                         var parsedOffer = offer.SDPOffer.replace(_separator, "\n").replace(_separator, "\r");
                         offer.SDPOffer = parsedOffer;
                         parsedOffers.push(offer);
