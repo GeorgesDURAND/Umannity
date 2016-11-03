@@ -1,8 +1,11 @@
 <u-main-view>
     <div ng-repeat="offer in vm.offers">
-        <div> {{ offer.emitter }}</div>
-        <button ng-click="vm.acceptVisioConference(offer.id)">OK</button>
-        <button ng-click="vm.refuseVisioConference(offer.id)">Cancel</button>
+        <div>
+            <div> {{ offer.emitter }}</div>
+            <div> {{ offer.type }}</div>
+            <button ng-click="vm.acceptVisioConference(offer)">OK</button>
+            <button ng-click="vm.refuseVisioConference(offer)">Cancel</button>
+        </div>
     </div>
     <h1>Realtime communication with WebRTC</h1>
     <video ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}" autoplay></video>
