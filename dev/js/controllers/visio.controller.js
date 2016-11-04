@@ -8,6 +8,7 @@
   visioController.$inject = ['$scope', '$sce', '$interval', 'WebRTCService'];
 
   function visioController ($scope, $sce, $interval, WebRTCService) {
+    window.URL = window.URL || window.mozURL || window.webkitURL;
     /* jshint validthis: true */
     var vm = this;
     var _interval;
@@ -34,7 +35,6 @@
     }
 
     function makeCall () {
-
       console.log(vm.name + " :: calling " + vm.recipient_id);
       WebRTCService.createOffer(vm.recipient_id);
     }
@@ -75,12 +75,12 @@
     }
 
     function getExternalVideo() {
-      if (undefined === vm.externalStreamURL && undefined !== WebRTCService.getExternalMediaStream()) {
-        vm.externalStreamURL = WebRTCService.getExternalMediaStream();
-        console.log(vm.name + " :: vm.externalStreamURL is now defined", vm.externalStreamURL);
-        var streamURL = URL.createObjectURL(vm.externalStreamURL);
-        console.log(vm.name + " :: External Stream URL", streamURL);
-        return $sce.trustAsResourceUrl(streamURL);
+      if (undefined === vm.externalStream && undefined !== WebRTCService.getExternalMediaStream()) {
+        vm.externalStream = WebRTCService.getExternalMediaStream();
+        console.log(vm.name + " :: vm.externalStream is now defined", vm.externalStream);
+        vm.externalStreamURL = window.URL.createObjectURL(vm.externalStream);
+        console.log(vm.name + " :: External Stream URL", vm.externalStreamURL);
+        return $sce.trustAsResourceUrl(vm.externalStreamURL);
       }
     }
 
@@ -94,10 +94,9 @@
     }
 
     function onUserMediaSuccess (stream) {
-      WebRTCService.connectRTC();
       WebRTCService.init(stream);
       vm.stream = stream;
-      vm.streamURL = URL.createObjectURL(vm.stream);
+      vm.streamURL = window.URL.createObjectURL(vm.stream);
     }
 
     function onUserMediaError (error) {

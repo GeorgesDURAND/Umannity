@@ -13,7 +13,6 @@
     window.RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
     window.RTCIceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
     window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription || window.webkitRTCSessionDescription;
-    window.URL = window.URL || window.mozURL || window.webkitURL;
 
     //Local variables
     var _iceConfig = {'iceServers': [{'urls': 'stun:umannity.com:3478'}]};
@@ -34,7 +33,6 @@
       getOffers: getOffers,
       acceptOffer: acceptOffer,
       refuseOffer: refuseOffer,
-      connectRTC: connectRTC,
       createOffer: createOffer,
       getExternalMediaStream: getExternalMediaStream,
       init: init
@@ -43,6 +41,14 @@
     return service;
 
     ////
+
+    function init (stream) {
+      _stream = stream;
+      _connection = new window.RTCPeerConnection(_iceConfig);
+      _connection.addStream(stream);
+      _connection.onicecandidate = onIceCandidate;
+      _connection.onaddstream = onAddStream;
+    }
 
     function getExternalMediaStream() {
       return _externalStream;
@@ -62,12 +68,6 @@
       }
     }
 
-    function init (stream) {
-      _stream = stream;
-      _connection.addStream(stream);
-      _connection.onicecandidate = onIceCandidate;
-      _connection.onaddstream = onAddStream;
-    }
 
     function onDescriptionReceived (description, emitter) {
       _connection.setLocalDescription(description);
@@ -143,10 +143,6 @@
             console.log(error);
           },
           _sdpConstraints);
-    }
-
-    function connectRTC () {
-      _connection = new window.RTCPeerConnection(_iceConfig);
     }
 
     function refuseOffer (offer) {
