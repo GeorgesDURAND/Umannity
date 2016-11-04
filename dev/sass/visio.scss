@@ -1,7 +1,7 @@
 @import "variables";
 
 $externalVideoStreamHeight: 600px;
-$localVideoStreamHeight: 180px;
+$localVideoStreamHeight: 240px;
 $localVideoStreamWidth: 320px;
 
 #externalVideoStream{
@@ -11,7 +11,7 @@ $localVideoStreamWidth: 320px;
 }
 
 #localVideoStream{
-  margin-top: -150px;
+  margin-top: -200px;
   background: $u-light-gray;
   height: $localVideoStreamHeight;
   width: $localVideoStreamWidth;

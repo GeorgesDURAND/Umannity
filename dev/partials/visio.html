@@ -16,7 +16,7 @@
                     <span class="glyphicon glyphicon glyphicon-camera u-visio-camera-icon"></span>
                     You are not in a visio conference for the moment
                 </div>
-                <video ng-if="vm.externalStreamURL" ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
+                <video ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
             </div>
             <div id="localVideoStream">
                 <div ng-if="!vm.streamURL" class="u-visio-stream-placeholder">

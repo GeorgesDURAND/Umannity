@@ -33,8 +33,19 @@
             vm.user = UserService.getUser();
             setUserMedia();
             getUserMedia();
-            getOffers();
+            initOffersData();
             _interval = $interval(getOffers, _pollingTime);
+        }
+
+        function initOffersData() {
+            WebRTCService.deleteOffers()
+                .then(function () {
+                    getOffers();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+
         }
 
         function deleteOffers() {
