@@ -13,5 +13,7 @@
     "USERS_BY_TYPE": "Users by type",
     "REQUESTS_RATIO": "Requests by status",
     "OFFERS": "Offers",
-    "POINTS_STATS": "Points stats"
+    "POINTS_STATS": "Points stats",
+    "VISIO": "Visio Call",
+    "VISIO_NOTIF": "This user want to have a video chat with you"
 }

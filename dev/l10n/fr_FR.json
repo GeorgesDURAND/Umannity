@@ -13,5 +13,7 @@
     "USERS_BY_TYPE": "Utilisateurs par type",
     "REQUESTS_RATIO": "Demandes par statut",
     "OFFERS": "Offres",
-    "POINTS_STATS": "Statistiques des points"
+    "POINTS_STATS": "Statistiques des points",
+    "VISIO": "Visioconférence",
+    "VISIO_NOTIF": "Cet utilisateur souhaite avoir une visioconférence avec vous"
 }

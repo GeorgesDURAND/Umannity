@@ -1,5 +1,38 @@
 @import "variables";
 
+$externalVideoStreamHeight: 600px;
+$localVideoStreamHeight: 180px;
+$localVideoStreamWidth: 320px;
+
+#externalVideoStream{
+  height:$externalVideoStreamHeight;
+  background: $u-orange;
+  text-align: center;
+}
+
+#localVideoStream{
+  margin-top: -150px;
+  background: $u-light-gray;
+  height: $localVideoStreamHeight;
+  width: $localVideoStreamWidth;
+  text-align: center;
+}
+
+.u-visio-container{
+  margin:10px;
+}
+
+.u-visio-local-video{
+  width: 100%;
+}
+
+.u-visio-camera-icon{
+  width:100%;
+  font-size: 100px;
+}
+
 .u-visio-notification-bar{
-  background: red;
+  .panel-body{
+    height: 60px;
+  }
 }

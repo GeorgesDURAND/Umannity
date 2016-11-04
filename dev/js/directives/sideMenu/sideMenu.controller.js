@@ -22,8 +22,6 @@
 
         ////
 
-
-
         function changeMenu() {
             vm.isCollapsed = !vm.isCollapsed; 
         }
@@ -38,7 +36,6 @@
         }
 
         function onViewContentLoaded() {
-            console.log("USER",vm.user);
             if (undefined === vm.user){
                 RestService.loadUser()
                     .then(function (user){

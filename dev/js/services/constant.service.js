@@ -9,7 +9,8 @@
         var service = {
             api_protocol : 'https',
             api_host : 'umannity.com/api',
-            api_port : ''
+            api_port : '',
+            cache_id : 'u-cache'
         };
 
 	if (service.api_port.length > 0) {
