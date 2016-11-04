@@ -9,6 +9,13 @@
   webRTCService.$inject = [ '$q', '$base64', 'RestService' ];
 
   function webRTCService ($q, $base64, RestService) {
+    //Multi-browser globals config hacks
+    window.RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+    window.RTCIceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
+    window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription || window.webkitRTCSessionDescription;
+    window.URL = window.URL || window.mozURL || window.webkitURL;
+
+    //Local variables
     var _iceConfig = { 'iceServers': [ { 'urls': 'stun:umannity.com:3478' } ] };
     var _connection;
     var _sdpConstraints = {
@@ -16,12 +23,12 @@
       offerToReceiveVideo: true
     };
     var _RTCDescription;
-    var _RTCPeerConnection = webkitRTCPeerConnection || RTCPeerConnection;
-    var _peerConnections = {};
     var _stream;
     var _offers = [];
     var _answers = [];
     var _ice = [];
+    var _recipient;
+    var _externalStream;
 
     var service = {
       getOffers: getOffers,
@@ -29,6 +36,7 @@
       refuseOffer: refuseOffer,
       connectRTC: connectRTC,
       createOffer: createOffer,
+      getExternalMediaStream: getExternalMediaStream,
       init: init
     };
 
@@ -36,12 +44,18 @@
 
     ////
 
-    function onAddStream (evnt) {
-      console.log("GOT STREAM", evnt);
+    function getExternalMediaStream(){
+      return _externalStream;
     }
 
-    function onIceCandidate (evnt) {
-      console.log("GOT ICE CANDIDATE", evnt);
+    function onAddStream (event) {
+      _externalStream = event.stream;
+    }
+
+    function onIceCandidate (event) {
+      if (null !== event.candidate) {
+        _postIceCandidate(event.candidate, _recipient);
+      }
     }
 
     function init (stream) {
@@ -56,8 +70,19 @@
       _postOffer(description, emitter, "sdp-answer");
     }
 
+    function acceptAnswer(answer) {
+      answer = {sdp : answer.RTCDescription, type: "answer", emitter: answer.emitter };
+      console.log("Accepting answer : ", answer);
+      _connection.setRemoteDescription(
+        new RTCSessionDescription(answer), function() {
+          console.log("Added answer as local description : ", answer);
+        }
+      )
+    }
+
     function acceptOffer (offer) {
       offer = { sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter };
+      _recipient = offer.emitter;
       _connection.setRemoteDescription(
         new RTCSessionDescription(offer), function () {
           _connection.createAnswer(
@@ -73,11 +98,21 @@
         });
     }
 
+    function _postIceCandidate(candidate, recipient_id){
+      var data = {ice: candidate, recipient: recipient_id};
+        RestService.post('/webrtc/ice', data)
+          .then(function (request) {
+              console.log(request.data);
+          })
+          .catch(function (error){
+            console.log(error);
+          });
+    }
+
     function _postOffer (RTCDescription, recipient_id, type) {
       if (undefined === type) {
         type = "sdp-offer";
       }
-      console.log("Posting offer", recipient_id);
       var data = { RTCDescription: $base64.encode(RTCDescription.sdp), recipient: recipient_id, type: type };
       RestService.post("/webrtc/offer", data)
         .then(function (request) {
@@ -89,6 +124,7 @@
     }
 
     function createOffer (recipient_id) {
+      _recipient = recipient_id;
       _connection
         .createOffer(
           function (RTCDescription) {
@@ -103,7 +139,8 @@
     }
 
     function connectRTC () {
-      _connection = new _RTCPeerConnection(_iceConfig);
+      console.log(window.RTCPeerConnection);
+      _connection = new window.RTCPeerConnection(_iceConfig);
     }
 
     function refuseOffer () {
@@ -114,16 +151,21 @@
       _answers = [];
       _ice = [];
       angular.forEach(offers, function (offer) {
-        offer.RTCDescription = $base64.decode(offer.RTCDescription);
         switch (offer.type) {
           case 'sdp-offer':
+            offer.RTCDescription = $base64.decode(offer.RTCDescription);
             _offers.push(offer);
             break;
           case 'sdp-answer':
+            offer.RTCDescription = $base64.decode(offer.RTCDescription);
+            acceptAnswer(offer);
             _answers.push(offer);
             break;
           case 'ice':
-            _ice.push(offer);
+            if (undefined !==_recipient) {
+              _ice.push(offer);
+              _connection.addIceCandidate(new RTCIceCandidate(offer.ice));
+            }
             break;
         }
       });

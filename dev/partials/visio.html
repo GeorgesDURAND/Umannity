@@ -8,7 +8,12 @@
         </div>
     </div>
     <h1>Realtime communication with WebRTC</h1>
-    <video ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}" autoplay></video>
+    <div> Your stream
+        <video ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}" autoplay></video>
+    </div>
+    <div> External Stream
+        <video ng-if="vm.stream" ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
+    </div>
     <button ng-if="vm.recipient_id" ng-click="vm.makeCall()">Call</button>
     <input type="text" ng-model="vm.recipient_id"/>
 </u-main-view>

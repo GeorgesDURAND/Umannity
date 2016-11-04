@@ -19,6 +19,7 @@
 
     vm.name = "visioController";
     vm.getLocalVideo = getLocalVideo;
+    vm.getExternalVideo = getExternalVideo;
     vm.acceptVisioConference = acceptVisioConference;
     vm.refuseVisioConference = refuseVisioConference;
     vm.makeCall = makeCall;
@@ -71,6 +72,18 @@
 
     function getUserMedia () {
       navigator.getUserMedia(_constraints, onUserMediaSuccess, onUserMediaError);
+    }
+
+    function getExternalVideo() {
+      if (undefined === vm.externalStreamURL && undefined !== WebRTCService.getExternalMediaStream()) {
+        vm.externalStreamURL = WebRTCService.getExternalMediaStream();
+        console.log(vm.name + " :: vm.externalStreamURL is now defined", vm.externalStreamURL);
+        var streamURL = URL.createObjectURL(vm.externalStreamURL);
+        console.log("STREAMURL", streamURL);
+        return $sce.trustAsResourceUrl(streamURL);
+      }
+      else {
+      }
     }
 
     function getLocalVideo () {
