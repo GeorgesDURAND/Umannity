@@ -15,5 +15,7 @@
     "OFFERS": "Offres",
     "POINTS_STATS": "Statistiques des points",
     "VISIO": "Visioconférence",
-    "VISIO_NOTIF": "Cet utilisateur souhaite avoir une visioconférence avec vous"
+    "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
+    "VISIO_HANGUP": "Raccrocher",
+    "VISIO_ISCALLING": "vous appelle."
 }

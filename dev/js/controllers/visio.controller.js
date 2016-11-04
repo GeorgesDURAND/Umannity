@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('visioController', visioController);
 
-    visioController.$inject = ['$scope', '$sce', '$interval', 'WebRTCService', 'UserService'];
+    visioController.$inject = ['$scope', '$window', '$sce', '$interval', 'WebRTCService', 'UserService'];
 
-    function visioController($scope, $sce, $interval, WebRTCService, UserService) {
+    function visioController($scope, $window, $sce, $interval, WebRTCService, UserService) {
         window.URL = window.URL || window.mozURL || window.webkitURL;
         /* jshint validthis: true */
         var vm = this;
@@ -25,6 +25,8 @@
         vm.refuseVisioConference = refuseVisioConference;
         vm.makeCall = makeCall;
         vm.deleteOffers = deleteOffers;
+        vm.hangup = hangup;
+        vm.state = 'disconnected';
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
@@ -44,8 +46,7 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                })
-
+                });
         }
 
         function deleteOffers() {
@@ -66,6 +67,9 @@
         function acceptVisioConference(offer) {
             console.log(vm.name + " :: accepting visioConference", offer);
             WebRTCService.acceptOffer(offer);
+            $interval.cancel(_interval);
+            vm.offers = [];
+            vm.state = 'pending';
         }
 
         function refuseVisioConference(id) {
@@ -101,7 +105,6 @@
         function getExternalVideo() {
             if (undefined === vm.externalStream && undefined !== WebRTCService.getExternalMediaStream()) {
                 vm.externalStream = WebRTCService.getExternalMediaStream();
-                console.log(vm.name + " :: vm.externalStream is now defined", vm.externalStream);
                 vm.externalStreamURL = window.URL.createObjectURL(vm.externalStream);
                 console.log(vm.name + " :: External Stream URL", vm.externalStreamURL);
                 return $sce.trustAsResourceUrl(vm.externalStreamURL);
@@ -117,8 +120,33 @@
             }
         }
 
+        function hangup() {
+            $window.location.reload();
+        }
+
+        function setState(state) {
+            $scope.$apply(function () {
+                vm.state = state;
+            });
+        }
+
+        function onConnect(state) {
+            console.log(vm.name + ':: stream ' + state);
+            setState(state);
+        }
+
+        function onPending(state) {
+            console.log(vm.name + ':: stream ' + state);
+            setState(state);
+        }
+
+        function onDisconnect(state) {
+            console.log(vm.name + ':: stream ' + state);
+            hangup();
+        }
+
         function onUserMediaSuccess(stream) {
-            WebRTCService.init(stream);
+            WebRTCService.init(stream, onConnect, onDisconnect, onPending);
             vm.stream = stream;
             vm.streamURL = window.URL.createObjectURL(vm.stream);
         }

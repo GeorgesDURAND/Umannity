@@ -15,5 +15,7 @@
     "OFFERS": "Offers",
     "POINTS_STATS": "Points stats",
     "VISIO": "Visio Call",
-    "VISIO_NOTIF": "This user want to have a video chat with you"
+    "VISIO_NOTIF": "Someone is calling you !",
+    "VISIO_HANGUP": "Hang up",
+    "VISIO_ISCALLING": "is calling you."
 }

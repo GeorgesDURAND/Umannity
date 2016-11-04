@@ -32,7 +32,7 @@
             RestService.removeApiKey();
         }
 
-        function storeUser(user){
+        function storeUser(user) {
             console.log("storeUser :: user", user);
             user = {email: user.email, id:user.id, group: user.group, first_name: user.first_name, last_name: user.last_name};
             $cookies.put(_cache_key, JSON.stringify(user));
