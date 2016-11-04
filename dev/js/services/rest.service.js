@@ -5,7 +5,7 @@
     .module('umannityApp.services')
     .factory('RestService', restService);
 
-  restService.$inject = [ '$http', 'ConstantService', '$cookies' ];
+  restService.$inject = ['$http', 'ConstantService', '$cookies'];
 
   function restService ($http, ConstantService, $cookies) {
     var _api_url = ConstantService.api_url;

@@ -46,7 +46,7 @@
 
     function refuseVisioConference (id) {
       console.log(vm.name + " :: refusing visioConference", id);
-      vm.notification = undefined;
+      WebRTCService.refuseOffer(id);
     }
 
     function getOffers () {
@@ -79,10 +79,8 @@
         vm.externalStreamURL = WebRTCService.getExternalMediaStream();
         console.log(vm.name + " :: vm.externalStreamURL is now defined", vm.externalStreamURL);
         var streamURL = URL.createObjectURL(vm.externalStreamURL);
-        console.log("STREAMURL", streamURL);
+        console.log(vm.name + " :: External Stream URL", streamURL);
         return $sce.trustAsResourceUrl(streamURL);
-      }
-      else {
       }
     }
 

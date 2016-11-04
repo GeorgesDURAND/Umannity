@@ -6,7 +6,7 @@
     .module('umannityApp.services')
     .factory('WebRTCService', webRTCService);
 
-  webRTCService.$inject = [ '$q', '$base64', 'RestService' ];
+  webRTCService.$inject = ['$q', '$base64', 'RestService'];
 
   function webRTCService ($q, $base64, RestService) {
     //Multi-browser globals config hacks
@@ -16,7 +16,7 @@
     window.URL = window.URL || window.mozURL || window.webkitURL;
 
     //Local variables
-    var _iceConfig = { 'iceServers': [ { 'urls': 'stun:umannity.com:3478' } ] };
+    var _iceConfig = {'iceServers': [{'urls': 'stun:umannity.com:3478'}]};
     var _connection;
     var _sdpConstraints = {
       offerToReceiveAudio: true,
@@ -44,17 +44,21 @@
 
     ////
 
-    function getExternalMediaStream(){
+    function getExternalMediaStream() {
       return _externalStream;
     }
 
     function onAddStream (event) {
+      console.log("Got new stream :: ", event);
       _externalStream = event.stream;
     }
 
     function onIceCandidate (event) {
       if (null !== event.candidate) {
-        _postIceCandidate(event.candidate, _recipient);
+        console.log("Got ice candidate :: ", event);
+        if (undefined !== _recipient) {
+          _postIceCandidate(event.candidate, _recipient);
+        }
       }
     }
 
@@ -71,23 +75,26 @@
     }
 
     function acceptAnswer(answer) {
-      answer = {sdp : answer.RTCDescription, type: "answer", emitter: answer.emitter };
+      answer = {sdp : answer.RTCDescription, type: "answer", emitter: answer.emitter};
       console.log("Accepting answer : ", answer);
       _connection.setRemoteDescription(
-        new RTCSessionDescription(answer), function() {
+        new window.RTCSessionDescription(answer), function() {
           console.log("Added answer as local description : ", answer);
+        },
+        function (error) {
+          console.log(error);
         }
-      )
+      );
     }
 
     function acceptOffer (offer) {
-      offer = { sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter };
-      _recipient = offer.emitter;
+      offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
       _connection.setRemoteDescription(
-        new RTCSessionDescription(offer), function () {
+        new window.RTCSessionDescription(offer), function () {
           _connection.createAnswer(
             function (description) {
               onDescriptionReceived(description, offer.emitter, offer.type);
+              _recipient = offer.emitter;
             },
             function (error) {
               console.log(error);
@@ -98,13 +105,13 @@
         });
     }
 
-    function _postIceCandidate(candidate, recipient_id){
+    function _postIceCandidate(candidate, recipient_id) {
       var data = {ice: candidate, recipient: recipient_id};
         RestService.post('/webrtc/ice', data)
           .then(function (request) {
               console.log(request.data);
           })
-          .catch(function (error){
+          .catch(function (error) {
             console.log(error);
           });
     }
@@ -113,7 +120,7 @@
       if (undefined === type) {
         type = "sdp-offer";
       }
-      var data = { RTCDescription: $base64.encode(RTCDescription.sdp), recipient: recipient_id, type: type };
+      var data = {RTCDescription: $base64.encode(RTCDescription.sdp), recipient: recipient_id, type: type};
       RestService.post("/webrtc/offer", data)
         .then(function (request) {
           console.log(request.data);
@@ -139,11 +146,10 @@
     }
 
     function connectRTC () {
-      console.log(window.RTCPeerConnection);
       _connection = new window.RTCPeerConnection(_iceConfig);
     }
 
-    function refuseOffer () {
+    function refuseOffer (offer) {
     }
 
     function parseData (offers) {
@@ -162,9 +168,9 @@
             _answers.push(offer);
             break;
           case 'ice':
-            if (undefined !==_recipient) {
+            if (undefined !== _recipient) {
               _ice.push(offer);
-              _connection.addIceCandidate(new RTCIceCandidate(offer.ice));
+              _connection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
             }
             break;
         }
