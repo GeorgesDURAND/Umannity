@@ -34,6 +34,7 @@
       acceptOffer: acceptOffer,
       refuseOffer: refuseOffer,
       createOffer: createOffer,
+      deleteOffers: deleteOffers,
       getExternalMediaStream: getExternalMediaStream,
       init: init
     };
@@ -172,6 +173,18 @@
         }
       });
       return _offers;
+    }
+
+    function deleteOffers() {
+      var deferred = $q.defer();
+      RestService.delete("/webrtc/offers")
+        .then(function (request){
+          deferred.resolve(request.data);
+        })
+        .catch(function (error) {
+          deferred.reject(error);
+        });
+      return deferred.promise;
     }
 
     function getOffers () {

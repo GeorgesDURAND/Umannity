@@ -16,6 +16,7 @@
       get: get,
       post: post,
       put: put,
+      delete: _delete,
       setApiKey: setApiKey,
       getApiKey: getApiKey,
       removeApiKey: removeApiKey
@@ -41,6 +42,19 @@
     function get (route, data, headers) {
       var req = {
         method: 'GET',
+        url: _api_url + route,
+        headers: {
+          'Authorization': _api_key
+        },
+        params: data
+      };
+      angular.extend(req.headers, headers);
+      return $http(req);
+    }
+
+    function _delete (route, data, headers) {
+      var req = {
+        method: 'DELETE',
         url: _api_url + route,
         headers: {
           'Authorization': _api_key

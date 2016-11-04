@@ -24,9 +24,20 @@
     vm.acceptVisioConference = acceptVisioConference;
     vm.refuseVisioConference = refuseVisioConference;
     vm.makeCall = makeCall;
+    vm.deleteOffers = deleteOffers;
     $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
     ////
+
+    function deleteOffers() {
+      WebRTCService.deleteOffers()
+        .then(function(data) {
+          console.log(data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
     function onViewContentLoaded () {
       setUserMedia();
