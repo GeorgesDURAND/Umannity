@@ -1,10 +1,13 @@
 <u-main-view>
-    <div ng-repeat="offer in vm.offers">
-        <div>
-            <div> {{ offer.emitter }}</div>
-            <div> {{ offer.type }}</div>
-            <button ng-click="vm.acceptVisioConference(offer)">OK</button>
-            <button ng-click="vm.refuseVisioConference(offer)">Cancel</button>
+    <button ng-if="vm.offers" ng-click="vm.deleteOffers()">Delete Offers</button>
+    <div class="u-visio-notification-bar">
+        <div ng-repeat="offer in vm.offers">
+            <div>
+                <div> {{ offer.emitter }}</div>
+                <div> {{ offer.type }}</div>
+                <button ng-click="vm.acceptVisioConference(offer)">OK</button>
+                <button ng-click="vm.refuseVisioConference(offer)">Cancel</button>
+            </div>
         </div>
     </div>
     <h1>Realtime communication with WebRTC</h1>
