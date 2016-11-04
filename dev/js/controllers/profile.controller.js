@@ -10,6 +10,8 @@
   function profileController ($scope, UserService) {
     /* jshint validthis: true */
     var vm = this;
+    vm.edited_user = {};
+    vm.editProfile = editProfile;
     vm.name = "profileController";
     $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -29,6 +31,14 @@
           .then(function (picture) {
             vm.picture = picture;
           });
+      }
+    }
+
+    function editProfile () {
+      console.log("editdProfileController");
+      if (undefined != vm.edited_user) {
+        console.log("not undefinned");
+        UserService.editProfile(vm.edited_user)
       }
     }
   }

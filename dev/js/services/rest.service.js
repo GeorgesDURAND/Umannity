@@ -21,7 +21,7 @@
       setApiKey: setApiKey,
       getApiKey: getApiKey,
       removeApiKey: removeApiKey,
-      getIsLoading: getIsLoading,
+      getIsLoading: getIsLoading
     };
 
     return service;
@@ -118,8 +118,5 @@
       return doRequest(req, showLoader);
     }
 
-    function login (email, password) {
-
-    }
   }
 })();

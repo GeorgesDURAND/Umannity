@@ -20,7 +20,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <span class="text-muted">Email:</span> {{ vm.user.email }}<br>
-                                        <span class="text-muted">Birth date:</span> {{ vm.user.birthdate }}<br>
+                                        <span class="text-muted">Birth date:</span> {{ vm.user.formattedBirthdate }}<br>
                                         <span class="text-muted">Adress:</span> {{ vm.user.address }}, {{ vm.user.zipcode }}<br><br>
                                     </div>
                                 </div>
@@ -31,6 +31,48 @@
                                 <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
                             </div>
                         </div>
+
+                        <form class="form-horizontal" role="form" ng-submit="vm.editProfile()">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">First name:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.first_name }}" ng-model="vm.edited_user.first_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Last name:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.last_name }}" ng-model="vm.edited_user.last_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">mail:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Birthdate:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.formattedBirthdate }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Address:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.address }}" ng-model="vm.edited_user.address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
