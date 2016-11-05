@@ -22,7 +22,7 @@
                 <div ng-show="vm.state === 'pending'">
                     <i class="u-visio-icon rotating glyphicon glyphicon-earphone"></i>
                 </div>
-                <video ng-show="vm.state === 'connected'" class="u-vision-external-video" ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
+                <video ng-show="vm.state === 'connected' || vm.state === 'completed'" class="u-vision-external-video" ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
             </div>
             <div id="localVideoStream">
                 <div ng-if="!vm.streamURL" class="u-visio-stream-placeholder">

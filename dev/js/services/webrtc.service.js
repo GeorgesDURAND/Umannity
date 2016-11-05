@@ -76,6 +76,9 @@
                 case 'connected':
                     _connectCallback(state);
                     break;
+                case 'completed':
+                    _connectCallback(state);
+                    break;
                 case 'checking':
                     _pendingCallback(state);
                     break;
@@ -96,7 +99,6 @@
 
         function onIceCandidate(event, recipient) {
             console.log("Got ice candidate", event.candidate);
-            console.log("For ", recipient);
             if (null !== event.candidate) {
                 _postIceCandidate(event.candidate, recipient);
             }
@@ -120,6 +122,9 @@
             var peerConnection = getPeerConnection(offer.emitter);
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
             peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
+            angular.forEach(_ice, function (iceCandidate){
+                peerConnection.addIceCandidate(new window.RTCIceCandidate(iceCandidate));
+            });
             peerConnection.createAnswer(
                 function (description) {
                     // onDescriptionReceived(description, offer.emitter, description.type);
@@ -176,8 +181,6 @@
 
         function parseData(offers) {
             _offers = [];
-            _answers = [];
-            _ice = [];
             angular.forEach(offers, function (offer) {
                 switch (offer.type) {
                     case 'sdp-offer':
@@ -191,7 +194,7 @@
                     case 'ice':
                         console.log("got ice from server : ", offer);
                         var peerConnection = getPeerConnection(offer.emitter);
-                        peerConnection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
+                        _ice.push(offer.ice);
                         break;
                 }
             });
