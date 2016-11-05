@@ -195,7 +195,7 @@
                         console.log("recipient : ", _recipient);
                         if (undefined !== _recipient) {
                             _ice.push(offer);
-                            _connection.addIceCandidate(new window.RTCIceCandidate(offer));
+                            _connection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
                         }
                         break;
                 }
