@@ -102,7 +102,6 @@
 
         function acceptAnswer(answer) {
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
-            _hasAcceptedAnswer = true;
             console.log("Accepting answer : ", answer);
             _connection.setRemoteDescription(
                 new window.RTCSessionDescription(answer), function () {
@@ -115,6 +114,7 @@
         }
 
         function acceptOffer(offer) {
+            _recipient = offer.emitter;
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
             _connection.setRemoteDescription(new window.RTCSessionDescription(offer));
             _connection.createAnswer(
@@ -122,7 +122,7 @@
                     // onDescriptionReceived(description, offer.emitter, description.type);
                     _connection.setLocalDescription(description);
                     _postOffer(description, offer.emitter, description.type);
-                    _recipient = offer.emitter;
+                    console.log("recipient : ", _recipient);
                 },
                 function (error) {
                     console.log(error);
@@ -184,9 +184,7 @@
                         break;
                     case 'sdp-answer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
-                        if (!_hasAcceptedAnswer) {
-                            acceptAnswer(offer);
-                        }
+                        acceptAnswer(offer);
                         _answers.push(offer);
                         break;
                     case 'ice':
