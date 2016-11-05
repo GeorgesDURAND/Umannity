@@ -48,7 +48,11 @@
         function init(stream, connectCallback, disconnectCallback, pendingCallback) {
             _stream = stream;
             _connection = new window.RTCPeerConnection(_iceConfig);
-            _connection.onicecandidate = function(event){console.log("received icecandidate : ", event)};
+            _connection.onicecandidate = function (event) {
+                if (undefined !== _recipient) {
+                    _postIceCandidate(event.candidate, _recipient);
+                }
+            };
             _connection.onaddstream = onAddStream;
             _connection.oniceconnectionstatechange = onIceConnectionStateChange;
             _connectCallback = connectCallback;
@@ -88,9 +92,7 @@
         function onIceCandidate(event) {
             if (null !== event.candidate) {
                 console.log("Got ice candidate :: ", event);
-                if (undefined !== _recipient) {
-                    _postIceCandidate(event.candidate, _recipient);
-                }
+
             }
         }
 
@@ -106,7 +108,7 @@
                     console.log(error);
                 }
             );
-            deleteOffers().then(function() {
+            deleteOffers().then(function () {
 
             });
         }
@@ -121,7 +123,7 @@
                     _connection.setLocalDescription(description);
                     _postOffer(description, offer.emitter, description.type);
                     console.log("recipient : ", _recipient);
-                    deleteOffers().then(function() {
+                    deleteOffers().then(function () {
 
                     });
                 },
