@@ -108,6 +108,9 @@
             var peerConnection = getPeerConnection(answer.emitter);
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
             console.log("Accepting answer : ", answer);
+            angular.forEach(_ice, function (iceCandidate){
+                peerConnection.addIceCandidate(new window.RTCIceCandidate(iceCandidate));
+            });
             peerConnection.setRemoteDescription(
                 new window.RTCSessionDescription(answer), function () {
                     console.log("Added answer as local description : ", answer);

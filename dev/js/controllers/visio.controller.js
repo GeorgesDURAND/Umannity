@@ -45,6 +45,7 @@
 
         function makeCall() {
             console.log(vm.name + " :: calling " + vm.recipient_id);
+            vm.state = 'pending';
             WebRTCService.createOffer(vm.recipient_id);
         }
 

@@ -20,6 +20,7 @@
                     You are not in a visio conference for the moment
                 </div>
                 <div ng-show="vm.state === 'pending'">
+                    {{ vm.state }} ...
                     <i class="u-visio-icon rotating glyphicon glyphicon-earphone"></i>
                 </div>
                 <video ng-show="vm.state === 'connected' || vm.state === 'completed'" class="u-vision-external-video" ng-src="{{ vm.getExternalVideo() }}" autoplay></video>
@@ -34,10 +35,10 @@
                            autoplay></video>
                 </div>
             </div>
-            <button ng-if="vm.state === 'connected' || vm.state === 'completed'" type="button" class="btn btn-danger" id="u-visio-hangup-button" ng-click="vm.hangup()"><i class="glyphicon glyphicon-earphone
+            <button ng-if="vm.state !== 'disconnected'" type="button" class="btn btn-danger" id="u-visio-hangup-button" ng-click="vm.hangup()"><i class="glyphicon glyphicon-earphone
 "></i></button>
         </div>
-        <uib-accordion close-others="oneAtATime">
+        <uib-accordion ng-if="vm.state === 'disconnected'" close-others="oneAtATime">
             <div uib-accordion-group class="panel-default"
                  is-open="vm.isAccordionOpen" heading="[DEBUG] Call someone">
                 Enter an user_id to call
