@@ -120,8 +120,7 @@
             });
         }
 
-        function acceptOffer(offer) {
-            var peerConnection = getPeerConnection(offer.emitter);
+        function acceptOffer(peerConnection, offer) {
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
             peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
             peerConnection.createAnswer(
@@ -186,19 +185,18 @@
             _answers = [];
             _ice = [];
             angular.forEach(offers, function (offer) {
-                var peerConnection = getPeerConnection(offer.emitter);
                 switch (offer.type) {
                     case 'sdp-offer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
-                        _offers.push(offer);
                         break;
                     case 'sdp-answer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
-                        acceptAnswer(offer);
-                        _answers.push(offer);
+                        var peerConnection = getPeerConnection(offer.emitter);
+                        acceptAnswer(peerConnection, offer);
                         break;
                     case 'ice':
                         console.log("got ice from server : ", offer);
+                        var peerConnection = getPeerConnection(offer.emitter);
                         peerConnection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
                         break;
                 }
