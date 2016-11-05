@@ -62,12 +62,11 @@
             pc.addStream(_stream);
             pc.onicecandidate = function(event){onIceCandidate(event, id)};
             pc.onaddstream = onAddStream;
-            pc.oniceconnectionstatechange = onIceConnectionStateChange;
+            pc.oniceconnectionstatechange = function (){onIceConnectionStateChange(pc.iceConnectionState)};
             return pc;
         }
 
-        function onIceConnectionStateChange(peerConnection) {
-            var state = peerConnection.iceConnectionState;
+        function onIceConnectionStateChange(state) {
             console.log("Connection state changed", state);
 
             switch (state) {
@@ -117,7 +116,8 @@
             );
         }
 
-        function acceptOffer(peerConnection, offer) {
+        function acceptOffer(offer) {
+            var peerConnection = getPeerConnection(offer.emitter);
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
             peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
             peerConnection.createAnswer(
@@ -182,11 +182,11 @@
                 switch (offer.type) {
                     case 'sdp-offer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
+                        _offers.push(offer);
                         break;
                     case 'sdp-answer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
-                        var peerConnection = getPeerConnection(offer.emitter);
-                        acceptAnswer(peerConnection, offer);
+                        acceptAnswer(offer);
                         break;
                     case 'ice':
                         console.log("got ice from server : ", offer);
