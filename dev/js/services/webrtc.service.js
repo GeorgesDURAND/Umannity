@@ -48,7 +48,7 @@
         function init(stream, connectCallback, disconnectCallback, pendingCallback) {
             _stream = stream;
             _connection = new window.RTCPeerConnection(_iceConfig);
-            _connection.onicecandidate = onIceCandidate;
+            _connection.onicecandidate = function(event){console.log("received icecandidate : ", event)};
             _connection.onaddstream = onAddStream;
             _connection.oniceconnectionstatechange = onIceConnectionStateChange;
             _connectCallback = connectCallback;
@@ -160,6 +160,7 @@
             _recipient = recipient_id;
             _peerConnection = new RTCPeerConnection(_iceConfig);
             _peerConnection.addStream(_stream);
+            _peerConnection.onicecandidate = onIceCandidate;
             _connection
                 .createOffer(
                     function (RTCDescription) {
