@@ -67,7 +67,7 @@
         function acceptVisioConference(offer) {
             console.log(vm.name + " :: accepting visioConference", offer);
             WebRTCService.acceptOffer(offer);
-            $interval.cancel(_interval);
+            // $interval.cancel(_interval);
             vm.offers = [];
             vm.state = 'pending';
         }

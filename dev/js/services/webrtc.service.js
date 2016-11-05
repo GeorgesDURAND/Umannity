@@ -29,7 +29,7 @@
         var _recipient;
         var _externalStream;
         var _disconnectCallback, _connectCallback, _pendingCallback;
-        var _hasAcceptedAnswer = false;
+        var _peerConnection;
 
         var service = {
             getOffers: getOffers,
@@ -48,7 +48,6 @@
         function init(stream, connectCallback, disconnectCallback, pendingCallback) {
             _stream = stream;
             _connection = new window.RTCPeerConnection(_iceConfig);
-            _connection.addStream(stream);
             _connection.onicecandidate = onIceCandidate;
             _connection.onaddstream = onAddStream;
             _connection.oniceconnectionstatechange = onIceConnectionStateChange;
@@ -159,6 +158,8 @@
 
         function createOffer(recipient_id) {
             _recipient = recipient_id;
+            _peerConnection = new RTCPeerConnection(_iceConfig);
+            _peerConnection.addStream(_stream);
             _connection
                 .createOffer(
                     function (RTCDescription) {
