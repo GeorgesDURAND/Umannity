@@ -193,7 +193,6 @@
                         break;
                     case 'ice':
                         console.log("got ice from server : ", offer);
-                        var peerConnection = getPeerConnection(offer.emitter);
                         _ice.push(offer.ice);
                         break;
                 }

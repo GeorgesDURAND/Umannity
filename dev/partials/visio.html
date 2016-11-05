@@ -34,7 +34,7 @@
                            autoplay></video>
                 </div>
             </div>
-            <button ng-if="vm.state === 'connected'" type="button" class="btn btn-danger" id="u-visio-hangup-button" ng-click="vm.hangup()"><i class="glyphicon glyphicon-earphone
+            <button ng-if="vm.state === 'connected' || vm.state === 'completed'" type="button" class="btn btn-danger" id="u-visio-hangup-button" ng-click="vm.hangup()"><i class="glyphicon glyphicon-earphone
 "></i></button>
         </div>
         <uib-accordion close-others="oneAtATime">
