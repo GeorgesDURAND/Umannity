@@ -80,9 +80,7 @@
         function getOffers() {
             WebRTCService.getOffers()
                 .then(function (offers) {
-                    if (vm.offers !== offers) {
-                        vm.offers = offers;
-                    }
+                    angular.extend(vm.offers, offers);
                 })
                 .catch(function (error) {
                     console.log(error);
