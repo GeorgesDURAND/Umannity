@@ -101,6 +101,7 @@
         }
 
         function acceptAnswer(answer) {
+            _recipient = answer.emitter;
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
             console.log("Accepting answer : ", answer);
             _connection.setRemoteDescription(
@@ -141,6 +142,7 @@
         }
 
         function _postOffer(RTCDescription, recipient_id, type) {
+            _recipient = recipient_id;
             if (undefined === type) {
                 type = "sdp-offer";
             }
@@ -155,7 +157,6 @@
         }
 
         function createOffer(recipient_id) {
-            _recipient = recipient_id;
             _connection
                 .createOffer(
                     function (RTCDescription) {
