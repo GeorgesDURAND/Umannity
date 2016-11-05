@@ -81,7 +81,6 @@
             WebRTCService.getOffers()
                 .then(function (offers) {
                     if (vm.offers !== offers) {
-                        console.log(vm.name + " :: loaded offers", offers);
                         vm.offers = offers;
                     }
                 })

@@ -97,7 +97,7 @@
 
         function onDescriptionReceived(description, emitter) {
             _connection.setLocalDescription(description);
-            _postOffer(description, emitter, "sdp-answer");
+            _postOffer(description, emitter, description.type);
         }
 
         function acceptAnswer(answer) {
@@ -116,16 +116,13 @@
 
         function acceptOffer(offer) {
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
-            _connection.setRemoteDescription(
-                new window.RTCSessionDescription(offer), function () {
-                    _connection.createAnswer(
-                        function (description) {
-                            onDescriptionReceived(description, offer.emitter, offer.type);
-                            _recipient = offer.emitter;
-                        },
-                        function (error) {
-                            console.log(error);
-                        });
+            _connection.setRemoteDescription(new window.RTCSessionDescription(offer));
+            _connection.createAnswer(
+                function (description) {
+                    // onDescriptionReceived(description, offer.emitter, description.type);
+                    _connection.setLocalDescription(description);
+                    _postOffer(description, offer.emitter, description.type);
+                    _recipient = offer.emitter;
                 },
                 function (error) {
                     console.log(error);
