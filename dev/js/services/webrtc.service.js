@@ -115,9 +115,6 @@
                     console.log(error);
                 }
             );
-            deleteOffers().then(function () {
-
-            });
         }
 
         function acceptOffer(peerConnection, offer) {
@@ -128,9 +125,6 @@
                     // onDescriptionReceived(description, offer.emitter, description.type);
                     peerConnection.setLocalDescription(description);
                     _postOffer(description, offer.emitter, "sdp-answer");
-                    deleteOffers().then(function () {
-
-                    });
                 },
                 function (error) {
                     console.log(error);
