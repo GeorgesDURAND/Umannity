@@ -50,7 +50,9 @@
             _connection = new window.RTCPeerConnection(_iceConfig);
             _connection.onicecandidate = function (event) {
                 if (undefined !== _recipient) {
-                    _postIceCandidate(event.candidate, _recipient);
+                    if (null !== event.candidate) {
+                        _postIceCandidate(event.candidate, _recipient);
+                    }
                 }
             };
             _connection.onaddstream = onAddStream;
@@ -92,7 +94,6 @@
         function onIceCandidate(event) {
             if (null !== event.candidate) {
                 console.log("Got ice candidate :: ", event);
-
             }
         }
 
