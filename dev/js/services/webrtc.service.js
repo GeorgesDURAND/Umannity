@@ -16,7 +16,6 @@
 
         //Local variables
         var _iceConfig = {'iceServers': [{'urls': 'stun:umannity.com:3478'}]};
-        var _connection;
         var _sdpConstraints = {
             offerToReceiveAudio: true,
             offerToReceiveVideo: true
@@ -29,7 +28,7 @@
         var _recipient;
         var _externalStream;
         var _disconnectCallback, _connectCallback, _pendingCallback;
-        var _peerConnection;
+        var peerConnections = {};
 
         var service = {
             getOffers: getOffers,
@@ -47,23 +46,29 @@
 
         function init(stream, connectCallback, disconnectCallback, pendingCallback) {
             _stream = stream;
-            _connection = new window.RTCPeerConnection(_iceConfig);
-            _connection.onicecandidate = function (event) {
-                if (undefined !== _recipient) {
-                    if (null !== event.candidate) {
-                        _postIceCandidate(event.candidate, _recipient);
-                    }
-                }
-            };
-            _connection.onaddstream = onAddStream;
-            _connection.oniceconnectionstatechange = onIceConnectionStateChange;
+            // _connection = new window.RTCPeerConnection(_iceConfig);
+            // _connection.onaddstream = onAddStream;
+            // _connection.oniceconnectionstatechange = onIceConnectionStateChange;
             _connectCallback = connectCallback;
             _disconnectCallback = disconnectCallback;
             _pendingCallback = pendingCallback;
         }
 
-        function onIceConnectionStateChange() {
-            var state = _connection.iceConnectionState;
+        function getPeerConnection(id) {
+            if (peerConnections[id]) {
+                return peerConnections[id];
+            }
+            var pc = new RTCPeerConnection(_iceConfig);
+            peerConnections[id] = pc;
+            pc.addStream(_stream);
+            pc.onicecandidate = onIceCandidate;
+            pc.onaddstream = onAddStream;
+            pc.oniceconnectionstatechange = onIceConnectionStateChange;
+            return pc;
+        }
+
+        function onIceConnectionStateChange(peerConnection) {
+            var state = peerConnection.iceConnectionState;
             console.log("Connection state changed", state);
 
             switch (state) {
@@ -92,16 +97,19 @@
         }
 
         function onIceCandidate(event) {
-            if (null !== event.candidate) {
-                console.log("Got ice candidate :: ", event);
+            console.log("Got ice candidate", event.candidate);
+            if (undefined !== _recipient) {
+                if (null !== event.candidate) {
+                    _postIceCandidate(event.candidate, _recipient);
+                }
             }
         }
 
         function acceptAnswer(answer) {
-            _recipient = answer.emitter;
+            var peerConnection = getPeerConnection(answer.emitter);
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
             console.log("Accepting answer : ", answer);
-            _peerConnection.setRemoteDescription(
+            peerConnection.setRemoteDescription(
                 new window.RTCSessionDescription(answer), function () {
                     console.log("Added answer as local description : ", answer);
                 },
@@ -115,14 +123,15 @@
         }
 
         function acceptOffer(offer) {
+            var peerConnection = getPeerConnection(offer.emitter);
             _recipient = offer.emitter;
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
-            _peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
-            _connection.createAnswer(
+            peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
+            peerConnection.createAnswer(
                 function (description) {
                     // onDescriptionReceived(description, offer.emitter, description.type);
-                    _connection.setLocalDescription(description);
-                    _postOffer(description, offer.emitter, description.type);
+                    peerConnection.setLocalDescription(description);
+                    _postOffer(description, offer.emitter, "sdp-answer");
                     console.log("recipient : ", _recipient);
                     deleteOffers().then(function () {
 
@@ -145,7 +154,6 @@
         }
 
         function _postOffer(RTCDescription, recipient_id, type) {
-            _recipient = recipient_id;
             if (undefined === type) {
                 type = "sdp-offer";
             }
@@ -160,14 +168,11 @@
         }
 
         function createOffer(recipient_id) {
-            _recipient = recipient_id;
-            _peerConnection = new RTCPeerConnection(_iceConfig);
-            _peerConnection.addStream(_stream);
-            _peerConnection.onicecandidate = onIceCandidate;
-            _connection
+            var peerConnection = getPeerConnection(recipient_id);
+            peerConnection
                 .createOffer(
                     function (RTCDescription) {
-                        _connection.setLocalDescription(RTCDescription);
+                        peerConnection.setLocalDescription(RTCDescription);
                         _RTCDescription = RTCDescription;
                         _postOffer(RTCDescription, recipient_id);
                     },
@@ -185,6 +190,7 @@
             _answers = [];
             _ice = [];
             angular.forEach(offers, function (offer) {
+                var peerConnection = getPeerConnection(offer.emitter);
                 switch (offer.type) {
                     case 'sdp-offer':
                         offer.RTCDescription = $base64.decode(offer.RTCDescription);
@@ -199,8 +205,7 @@
                         console.log("got ice from server : ", offer);
                         console.log("recipient : ", _recipient);
                         if (undefined !== _recipient) {
-                            _ice.push(offer);
-                            _connection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
+                            peerConnection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
                         }
                         break;
                 }
