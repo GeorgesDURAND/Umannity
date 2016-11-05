@@ -27,6 +27,7 @@
         vm.deleteOffers = deleteOffers;
         vm.hangup = hangup;
         vm.state = 'disconnected';
+        vm.offers = [];
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
