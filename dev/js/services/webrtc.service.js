@@ -101,7 +101,7 @@
             _recipient = answer.emitter;
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
             console.log("Accepting answer : ", answer);
-            _connection.setRemoteDescription(
+            _peerConnection.setRemoteDescription(
                 new window.RTCSessionDescription(answer), function () {
                     console.log("Added answer as local description : ", answer);
                 },
@@ -117,7 +117,7 @@
         function acceptOffer(offer) {
             _recipient = offer.emitter;
             offer = {sdp: offer.RTCDescription, type: "offer", emitter: offer.emitter};
-            _connection.setRemoteDescription(new window.RTCSessionDescription(offer));
+            _peerConnection.setRemoteDescription(new window.RTCSessionDescription(offer));
             _connection.createAnswer(
                 function (description) {
                     // onDescriptionReceived(description, offer.emitter, description.type);
