@@ -95,11 +95,6 @@
             }
         }
 
-        function onDescriptionReceived(description, emitter) {
-            _connection.setLocalDescription(description);
-            _postOffer(description, emitter, description.type);
-        }
-
         function acceptAnswer(answer) {
             _recipient = answer.emitter;
             answer = {sdp: answer.RTCDescription, type: "answer", emitter: answer.emitter};
@@ -112,6 +107,9 @@
                     console.log(error);
                 }
             );
+            deleteOffers().then(function() {
+
+            });
         }
 
         function acceptOffer(offer) {
@@ -124,6 +122,9 @@
                     _connection.setLocalDescription(description);
                     _postOffer(description, offer.emitter, description.type);
                     console.log("recipient : ", _recipient);
+                    deleteOffers().then(function() {
+
+                    });
                 },
                 function (error) {
                     console.log(error);
@@ -157,6 +158,7 @@
         }
 
         function createOffer(recipient_id) {
+            _recipient = recipient_id;
             _connection
                 .createOffer(
                     function (RTCDescription) {
@@ -189,9 +191,11 @@
                         _answers.push(offer);
                         break;
                     case 'ice':
+                        console.log("got ice from server : ", offer);
+                        console.log("recipient : ", _recipient);
                         if (undefined !== _recipient) {
                             _ice.push(offer);
-                            _connection.addIceCandidate(new window.RTCIceCandidate(offer.ice));
+                            _connection.addIceCandidate(new window.RTCIceCandidate(offer));
                         }
                         break;
                 }
