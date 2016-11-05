@@ -24,7 +24,6 @@
         vm.acceptVisioConference = acceptVisioConference;
         vm.refuseVisioConference = refuseVisioConference;
         vm.makeCall = makeCall;
-        vm.deleteOffers = deleteOffers;
         vm.hangup = hangup;
         vm.state = 'disconnected';
         vm.offers = [];
@@ -41,23 +40,7 @@
         }
 
         function initOffersData() {
-            WebRTCService.deleteOffers()
-                .then(function () {
-                    getOffers();
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
-
-        function deleteOffers() {
-            WebRTCService.deleteOffers()
-                .then(function (data) {
-                    console.log(data);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            getOffers();
         }
 
         function makeCall() {
@@ -75,6 +58,7 @@
 
         function refuseVisioConference(id) {
             console.log(vm.name + " :: refusing visioConference", id);
+            vm.offers = [];
             WebRTCService.refuseOffer(id);
         }
 
