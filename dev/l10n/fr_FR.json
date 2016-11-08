@@ -14,9 +14,12 @@
     "USERS_BY_TYPE": "Utilisateurs par type",
     "REQUESTS_RATIO": "Demandes par statut",
     "OFFERS": "Offres",
-    "POINTS_STATS": "Statistiques des points",
     "VISIO": "Visioconférence",
     "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
     "VISIO_HANGUP": "Raccrocher",
     "VISIO_ISCALLING": "vous appelle."
+    "POINTS_STATS": "Statistiques des points",
+    "PROFILE": "Profile",
+    "CREATE_HELP": "Créer une demande",
+    "CHAT": "messagerie instantanée"
 }

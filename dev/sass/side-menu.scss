@@ -1,53 +1,98 @@
 @import "variables";
 
 .u-sidemenu {
-  width: 200px;
-  height: 100%;
-  float: left;
-  background-color: $u-black;
-  color: $app-gray;
-  -webkit-transition: 0.4s linear;
-  /*to only change opacity*/
-  /*-webkit-transition: opacity 1s linear*/
-  -moz-transition: 0.4s linear;
-  -o-transition: 0.4s linear;
-  transition: 0.4s linear;
+    width: 200px;
+    height: 100%;
+    float: left;
+    background-color: $u-black;
+    color: $app-gray;
 }
 
 .u-sidemenu-collapsed {
-    width: 40px;
+    width: 75px;
     height: 100%;
     float: left;
     background-color: $umannity-black;
     color: $app-gray;
-    -webkit-transition: 0.4s linear;
-    /*to only change opacity*/
-    /*-webkit-transition: opacity 1s linear*/
-   -moz-transition: 0.4s linear;
-   -o-transition: 0.4s linear;
-   transition: 0.4s linear;
+}
+
+.btn-block {
+    font-size: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.menu-list-block {
+    margin-top: 25px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.menu-item:hover {
+    background-color: $umannity-black-menu;
+}
+
+.menu-icon {
+    float: left;
+    margin-left: 25px;
+    font-size: 25px;
+}
+
+.menu-icon-chat {
+    float: left;
+    margin-left: 25px;
+    margin-top: 12px;
+    font-size: 25px;
+}
+
+.menu-img-short {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.menu-img-name {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.img-logo-name {
+    width: 180px;
+}
+
+.img-logo-short {
+    width: 60px;
+}
+
+.menu-icon-chat-collapsed {
+    float: left;
+    margin-left: 25px;
+    font-size: 25px;
+}
+
+.menu-text {
+    position: relative;
+    font-size: 18px;
+    margin-left: 60px;
+}
+
+.menu-text-collapsed {
+    padding-top: 5px;
+    text-align: center;
 }
 
 .collapse-btn {
-    margin-left: 230px;
-    color: black;
-    margin-top: 20px;
-    -webkit-transition: 0.4s linear;
-    /*to only change opacity*/
-    /*-webkit-transition: opacity 1s linear*/
-   -moz-transition: 0.4s linear;
-   -o-transition: 0.4s linear;
-   transition: 0.4s linear;
+    margin-left: 210px;
+    margin-top: -37px;
+    color: $umannity-black;
 }
 
 .collapse-btn-reduce {
-    margin-left: 70px;
-    color: black;
-    margin-top: 20px;
-    -webkit-transition: 0.4s linear;
-    /*to only change opacity*/
-    /*-webkit-transition: opacity 1s linear*/
-   -moz-transition: 0.4s linear;
-   -o-transition: 0.4s linear;
-   transition: 0.4s linear;
+    margin-left: 85px;
+    margin-top: -50px;
+    color: $umannity-black;
+    border: none;
 }
