@@ -8,14 +8,24 @@
     "BEPARTNER": "Pour devenir partenaire, c'est par ici !",
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
-    
+
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
+    "USERS_RATIO": "Ratio benevoles/demandeurs",
+    "USERS_BY_TYPE": "Utilisateurs par type",
+    "REQUESTS_RATIO": "Demandes par statut",
+    "OFFERS": "Offres",
+    "POINTS_STATS": "Statistiques des points",
+    "USERPROFILE": "Profile de l'utilisateur",
+    "BIRTHDATE": "Date de naissance",
+    "FIRSTNAME": "Prénom",
+    "LASTNAME": "Nom",
+    "ADDRESS": "Adresse"
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
-    
+
     "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
@@ -35,12 +45,12 @@
     "REQUEST_PENDING": "Demandes en cours",
     "REQUEST_REPORTED": "Demandes signalées",
     "TOTAL": "Nombre total",
-    
+
     "TITLE_VISIO": "VISIO-CONFÉRENCE",
     "VISIO": "Visioconférence",
     "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
     "VISIO_HANGUP": "Raccrocher",
     "VISIO_ISCALLING": "vous appelle.",
-    
+
     "5": "Mauvaises informations de connexion"
 }

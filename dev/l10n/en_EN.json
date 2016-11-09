@@ -12,10 +12,20 @@
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
+    "USERS_RATIO": "Helping/Helped ratio",
+    "USERS_BY_TYPE": "Users by type",
+    "REQUESTS_RATIO": "Requests by status",
+    "OFFERS": "Offers",
+    "POINTS_STATS": "Points stats",
+    "USERPROFILE": "User profile",
+    "BIRTHDATE": "Birthdate",
+    "FIRSTNAME": "First name",
+    "LASTNAME": "Name",
+    "ADDRESS": "Address"
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
     "CHAT": "Instant messaging",
-    
+
     "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Helpers/Volunteers",
     "helpers" : "Volunteers",
@@ -41,7 +51,7 @@
     "VISIO_NOTIF": "Someone is calling you !",
     "VISIO_HANGUP": "Hang up",
     "VISIO_ISCALLING": "is calling you.",
-    
+
     "5": "Wrong login informations"
-    
+
 }
