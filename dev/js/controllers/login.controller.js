@@ -32,7 +32,7 @@
             UserService.login(vm.email, vm.password)
                 .then(function (user) {
                 console.log($location.path() + " && " + user);
-                if($location.path() === "/loginPartner" && user === "partner") {
+                if ($location.path() === "/loginPartner" && user === "partner") {
                     console.log(vm.name + ":: Partner connected");
                     $location.path("/");
                 }else if ($location.path() === "/login" && user === "user")  {
@@ -40,11 +40,17 @@
                     $location.path("/");
                 }else {
                     console.log(vm.name + ":: Wrong connexion");
+                    if (vm.errors.length === 2) {
+                        vm.errors.splice(0, 1);
+                    }
                     vm.errors.push('WRONG_CONNEXION');
                 }
             })
                 .catch(function (error) {
                 console.log(error);
+                if (vm.errors.length === 2) {
+                    vm.errors.splice(0, 1);
+                }
                 vm.errors.push(error.data.code);
             });
         }

@@ -12,7 +12,7 @@
     font-size: 17px;
     line-height: 25px;
     padding: 11px 23px;
-    color: $u-orange;
+    color: $u-blue;
     border-color: white; 
     border-width: 0px 0px 1px 0px;
     border-style: solid;
@@ -34,6 +34,12 @@
         margin-top: 20px;
         display: inline-block;
     }
+    
+    .u-alert-login-orange {
+        background-color: rgba(255, 152, 0, 0.55);
+        color: rgba(255, 255, 255, 0.71);
+        border-color: $u-orange;
+    }
 
     .u-plogin-block {
         
@@ -47,7 +53,7 @@
         .u-input-plogin {
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.6);
-            color: $u-orange;
+            color: $u-blue;
             font-size: 19px;
             border: 1px solid transparent;
             width: 100%;
@@ -65,14 +71,14 @@
         .u-btn-plogin {
             margin-top: 10px;
             padding: 9px;
-            background-color: $u-orange;
+            background-color: $u-blue;
             opacity: 0.8;
             border-radius: 4px;
         }
         
         .u-btn-plogin:hover {
             color: white;
-            background-color: $u-orange;
+            background-color: $u-blue;
             opacity: 1;
         }
         

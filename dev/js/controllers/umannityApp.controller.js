@@ -40,6 +40,8 @@
                     .catch(function (error) {
                     //TODO: Proper error management
                     console.log(vm.name + ":: Unauthorized user");
+                    UserService.logout();
+                    $location.path('/login');
                     /*window.alert(error.data.error);*/
                 });
             }
