@@ -22,10 +22,8 @@
 .u-to-loginPartner:hover, 
 .u-to-loginPartner:active, 
 .u-to-loginPartner:focus {
-    border-color: $u-blue;
+    border-color: $u-orange;
 }
-
-
 
 .u-center-block {
     color: white;
@@ -35,6 +33,12 @@
         display: inline-block;
     }
 
+    .u-alert-login-blue {
+        background-color: rgba(66, 165, 245, 0.49);
+        color: rgba(255, 255, 255, 0.71);
+        border-color: #42a5f5;
+    }
+    
     .u-ulogin-block {
 
         .u-label-ulogin {

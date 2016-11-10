@@ -14,30 +14,45 @@
         vm.login = login;
         vm.changeView = changeView;
         vm.name = "loginController";
+        vm.closeAlert = closeAlert;
+        vm.errors = [];
 
         ////
-        
+
         function changeView(viewName) {
             $location.path(viewName);
+        }
+        
+        function closeAlert(index) {
+            vm.errors.splice(index, 1);
         }
 
         function login() {
             //TODO: Verifications on the mail and password
             UserService.login(vm.email, vm.password)
                 .then(function (user) {
+                console.log($location.path() + " && " + user);
+                if ($location.path() === "/loginPartner" && user === "partner") {
+                    console.log(vm.name + ":: Partner connected");
                     $location.path("/");
-                })
-                .catch(function (error) {
-                    //TODO: Proper error management
-                    if (error.data) {
-                        if (error.data.error) {
-                            window.alert(error.data.error);
-                        }
-                        else {
-                            console.log(error.data);
-                        }
+                }else if ($location.path() === "/login" && user === "user")  {
+                    console.log(vm.name + ":: User connected");
+                    $location.path("/");
+                }else {
+                    console.log(vm.name + ":: Wrong connexion");
+                    if (vm.errors.length === 2) {
+                        vm.errors.splice(0, 1);
                     }
-                });
+                    vm.errors.push('WRONG_CONNEXION');
+                }
+            })
+                .catch(function (error) {
+                console.log(error);
+                if (vm.errors.length === 2) {
+                    vm.errors.splice(0, 1);
+                }
+                vm.errors.push(error.data.code);
+            });
         }
     }
 })();
