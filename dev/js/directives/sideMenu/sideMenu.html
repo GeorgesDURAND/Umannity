@@ -1,8 +1,9 @@
 <div ng-class="vm.isCollapsed ? 'u-sidemenu-collapsed' : 'u-sidemenu'">
     <button ng-class="vm.isCollapsed ? 'collapse-btn-reduce' : 'collapse-btn'" ng-click="vm.changeMenu()">test</button>
-    <div ng-click="vm.changeView('/home')">{{ 'HOME' | translate }}</div>
+    <div ng-click="vm.changeView('/profile')">{{ 'PROFILE' | translate }}</div>
     <div ng-click="vm.changeView('/chat')">{{ 'CHAT' | translate }}</div>
-    <div ng-click="vm.logout()">{{ 'LOGOUT' | translate }}</div>
+    <div ng-click="vm.changeView('/visio')">{{ 'VISIO' | translate }}</div>
+    <!--Admin Panel-->
     <div ng-if="vm.user.group > 0">
         <div ng-click="vm.changeView('/admin/stats')">{{ 'STATS' | translate }}</div>
     </div>

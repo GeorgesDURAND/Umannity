@@ -5,11 +5,12 @@
         .module('umannityApp.services')
         .factory('UserService', userService);
 
-    userService.$inject = ['$q', 'RestService'];
+    userService.$inject = ['$q', '$cookies', 'RestService'];
 
-    function userService($q, RestService) {
+    function userService($q, $cookies, RestService) {
         var _user;
         var _picture;
+        var _cache_key = 'user';
 
         var service = {
             getUser: getUser,
@@ -27,31 +28,27 @@
         ////
 
         function logout() {
+            $cookies.remove(_cache_key);
             RestService.removeApiKey();
         }
 
-        /*function putPicture() {
-            var deferred = $q.defer();
-            var isUpload = false;
+        function storeUser(user) {
+            console.log("storeUser :: user", user);
+            user = {email: user.email, id:user.id, group: user.group, first_name: user.first_name, last_name: user.last_name};
+            $cookies.put(_cache_key, JSON.stringify(user));
+        }
 
-            RestService.put("/user/picture")
-                .then(function (request){
-                    isUpload = true;
-                })
-                .catch(function (request) {
-                    deffered.resolve(error);
-                })
-        }*/
-
-        function loadUser() {
+        function loadUser(id) {
             var deferred = $q.defer();
 
-            RestService.get("/user")
+            var params = {id:id};
+
+            RestService.get("/user", params)
                 .then(function (request) {
                     var user = request.data;
                     user.formattedBirthdate = formatBirthdate(user.birthdate);
-
                     _user = user;
+                    storeUser(user);
                     deferred.resolve(user);
                 })
                 .catch(function (error) {
@@ -62,6 +59,12 @@
 
         function getUser() {
             console.log("userService :: getUser called");
+            if (undefined === _user) {
+                var storedUser = $cookies.get(_cache_key);
+                if (undefined !== storedUser) {
+                    _user = JSON.parse(storedUser);
+                }
+            }
             return _user;
         }
 

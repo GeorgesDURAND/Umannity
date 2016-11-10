@@ -5,15 +5,13 @@
         .module('umannityApp.controllers')
         .controller('umannityAppController', umannityAppController);
 
-    umannityAppController.$inject = ['$scope', '$location', 'UserService'];
+    umannityAppController.$inject = ['$location', 'UserService'];
 
-    function umannityAppController($scope, $location, UserService) {
+    function umannityAppController($location, UserService) {
         /* jshint validthis: true */
         var vm = this;
 
         vm.name = "umannityAppController";
-
-        $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
 
@@ -61,11 +59,9 @@
             });
         }
 
-        function onViewContentLoaded() {
-            if (vm.user === undefined) {
-                console.log("umannityAppController :: content loaded");
-                checkUser();
-            }
+        if (vm.user === undefined) {
+            console.log("umannityAppController :: content loaded");
+            checkUser();
         }
     }
 

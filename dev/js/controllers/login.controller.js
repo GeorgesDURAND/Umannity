@@ -29,7 +29,14 @@
                 })
                 .catch(function (error) {
                     //TODO: Proper error management
-                    window.alert(error.data.error);
+                    if (error.data) {
+                        if (error.data.error) {
+                            window.alert(error.data.error);
+                        }
+                        else {
+                            console.log(error.data);
+                        }
+                    }
                 });
         }
     }

@@ -1,14 +1,14 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('umannityApp')
-    .config(routesBlock);
+    angular
+        .module('umannityApp')
+        .config(routesBlock);
 
-  routesBlock.$inject = ['$locationProvider', '$routeProvider'];
+    routesBlock.$inject = ['$locationProvider', '$routeProvider'];
 
-  function routesBlock ($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
+    function routesBlock($locationProvider, $routeProvider) {
+        $locationProvider.hashPrefix('!');
 
     $routeProvider
       .when('/', {
