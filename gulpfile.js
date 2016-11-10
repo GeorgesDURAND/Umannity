@@ -35,7 +35,7 @@ gulp.task('webserver', function(){
 		fallback: 'index.html'
 	    },
 	    open: true,
-	    port: 7979
+	    port: 8080
 	}));
 });
 

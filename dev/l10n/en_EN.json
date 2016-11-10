@@ -11,7 +11,10 @@
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
-
+    "PROFILE": "Profil",
+    "CREATE_HELP": "Create request",
+    "CHAT": "Instant messaging",
+    
     "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Helpers/Volunteers",
     "helpers" : "Volunteers",
@@ -36,6 +39,5 @@
     "VISIO": "Visio Call",
     "VISIO_NOTIF": "Someone is calling you !",
     "VISIO_HANGUP": "Hang up",
-    "VISIO_ISCALLING": "is calling you."
-    
+    "VISIO_ISCALLING": "is calling you."   
 }
