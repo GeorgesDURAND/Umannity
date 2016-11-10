@@ -5,7 +5,7 @@
         .module('umannityApp.controllers')
         .controller('profileController', profileController);
 
-    profileController.$inject = ['$scope', 'UserService'];
+    profileController.$inject = ['$scope', 'UserService', '$base64'];
 
     function profileController($scope, UserService) {
         /* jshint validthis: true */
@@ -161,12 +161,22 @@
       }
     }
 
-    function editProfile () {
-      console.log("editdProfileController");
-      if (undefined != vm.edited_user) {
-        console.log("not undefinned");
-        UserService.editProfile(vm.edited_user)
-      }
+        function editProfile() {
+            if (undefined !== vm.edited_user) {
+                UserService.editProfile(vm.edited_user)
+                    .then(function (user) {
+                        loadUser();
+                    });
+            }
+        }
+
+        function editProfilePicture(picture) {
+            if (undefined !== picture) {
+                vm.edited_user.picture = picture;
+            }
+            else {
+                console.log("editProfilePicture in profile controller: picture undefined");
+            }
+        }
     }
-  }
 })();
