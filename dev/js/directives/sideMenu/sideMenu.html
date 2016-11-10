@@ -1,11 +1,37 @@
 <div ng-class="vm.isCollapsed ? 'u-sidemenu-collapsed' : 'u-sidemenu'">
-    <button ng-class="vm.isCollapsed ? 'collapse-btn-reduce' : 'collapse-btn'" ng-click="vm.changeMenu()">test</button>
-    <div ng-click="vm.changeView('/profile')">{{ 'PROFILE' | translate }}</div>
-    <div ng-click="vm.changeView('/chat')">{{ 'CHAT' | translate }}</div>
-    <div ng-click="vm.changeView('/visio')">{{ 'VISIO' | translate }}</div>
-    <!--Admin Panel-->
-    <div ng-if="vm.user.group > 0">
-        <div ng-click="vm.changeView('/admin/stats')">{{ 'STATS' | translate }}</div>
+    <div class="menu-img-name" ng-if="!vm.isCollapsed">
+        <img class="img-logo-name" src="../../../img/logoName.png"/>
     </div>
-    <div ng-click="vm.logout()">{{ 'LOGOUT' | translate }}</div>
+    <div class="menu-img-short" ng-if="vm.isCollapsed">
+        <img class="img-logo-short" src="../../../img/logoShort.png"/>
+    </div>
+    <div class="btn-block" ng-class="vm.isCollapsed ? 'collapse-btn-reduce' : 'collapse-btn'" ng-click="vm.changeMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+    <div class="menu-list-block">
+        <div class="menu-item" ng-click="vm.changeView('/profile')">
+            <div class="menu-icon glyphicon glyphicon-user"></div>
+            <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'PROFILE' | translate }}</div>
+        </div>
+        <div class="menu-item" ng-click="vm.changeView('/profile')">
+            <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
+            <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_HELP' | translate }}</div>
+        </div>
+        <div class="menu-item" ng-click="vm.changeView('/chat')">
+            <div class="glyphicon glyphicon-envelope" ng-class="vm.isCollapsed ? 'menu-icon-chat-collapsed' : 'menu-icon-chat'"></div>
+            <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CHAT' | translate }}</div>
+        </div>
+        <div class="menu-item" ng-click="vm.changeView('/visio')">
+            <div class="glyphicon glyphicon-camera" ng-class="vm.isCollapsed ? 'menu-icon-chat-collapsed' : 'menu-icon-chat'"></div>
+            <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'VISIO' | translate }}</div>
+        </div>
+        <div class="menu-item" ng-click="vm.logout()">
+            <div class="menu-icon glyphicon glyphicon-off"></div>
+            <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'LOGOUT' | translate }}</div>
+        </div>
+        <div ng-if="vm.user.group > 0">
+            <div class="menu-item" ng-click="vm.changeView('/admin/stats')">
+                <div class="menu-icon glyphicon glyphicon-stats"></div>
+                <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'STATS' | translate }}</div>
+            </div>
+        </div>
+    </div>
 </div>

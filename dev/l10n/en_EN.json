@@ -14,9 +14,12 @@
     "USERS_BY_TYPE": "Users by type",
     "REQUESTS_RATIO": "Requests by status",
     "OFFERS": "Offers",
-    "POINTS_STATS": "Points stats",
     "VISIO": "Visio Call",
     "VISIO_NOTIF": "Someone is calling you !",
     "VISIO_HANGUP": "Hang up",
     "VISIO_ISCALLING": "is calling you."
+    "POINTS_STATS": "Points stats",
+    "PROFILE": "Profil",
+    "CREATE_HELP": "Create request",
+    "CHAT": "instant messaging"
 }
