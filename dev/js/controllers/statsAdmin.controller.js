@@ -3,16 +3,16 @@
 
     angular
         .module('umannityApp.controllers')
-        .controller('statsController', statsController);
+        .controller('statsAdminController', statsAdminController);
 
-    statsController.$inject = ['$scope', 'UserService', 'RestService'];
+    statsAdminController.$inject = ['$scope', 'UserService', 'RestService', '$translate'];
 
-    function statsController($scope, UserService, RestService) {
+    function statsAdminController($scope, UserService, RestService, $translate) {
         /* jshint validthis: true */
         var vm = this;
         var _stats_routes = ["/users", "/requests", "/offers"];
 
-        vm.name = "statsController";
+        vm.name = "statsAdminController";
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -34,6 +34,10 @@
                     vm.charts = [];
                 }
                 angular.forEach(data.data.charts, function(chart) {
+
+                    angular.forEach(chart.labels, function(label, index) {
+                        chart.labels[index] = $translate.instant(label);
+                    });
                     vm.charts.push(chart);
                 });
             }
@@ -44,11 +48,11 @@
                 console.log(vm.name + " :: calling route", route);
                 RestService.get("/stats" + route)
                     .then(function (data) {
-                        parseData(data);
-                    })
+                    parseData(data);
+                })
                     .catch(function (error) {
-                        window.alert(error.data);
-                    });
+                    window.alert(error.data);
+                });
             });
         }
     }
