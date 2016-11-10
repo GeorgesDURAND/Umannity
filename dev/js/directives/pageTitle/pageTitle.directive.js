@@ -18,10 +18,7 @@
         };
 
         function link (scope, element, attrs) {
-            console.log("scope = ", scope);
-            console.log("attres = ", attrs.title);
             scope.title_page = $translate.instant(attrs.title);
-            console.log(scope.title_page.length)
             if (scope.title_page.length > 3){
                 scope.o_letter = scope.title_page[0];
                 scope.inner_letters = scope.title_page.substring(1, scope.title_page.length - 3);
