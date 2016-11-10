@@ -39,8 +39,8 @@
         controllerAs: 'vm'
       })
       .when('/admin/stats', {
-        templateUrl: "partials/stats.html",
-        controller: 'statsController',
+        templateUrl: "partials/statsAdmin.html",
+        controller: 'statsAdminController',
         controllerAs: 'vm'
       })
       .when('/error', {
