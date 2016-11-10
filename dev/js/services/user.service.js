@@ -88,7 +88,7 @@
 
             RestService.get("/user/picture")
                 .then(function (request) {
-                    var picture = request.data;
+                    var picture = request.data.picture;
 
                     _picture = picture;
                     deferred.resolve(picture);

@@ -5,11 +5,11 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12 lead">{{ 'USERPROFILE' | translate }}<hr></div>
+                            <div class="col-md-12 lead">{{ 'USER_PROFILE' | translate }}<hr></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img class="img-circle avatar avatar-original" ng-src="{{vm.picture.picture}}">
+                                <img class="img-circle avatar avatar-original" ng-src="{{vm.user.picture}}">
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
@@ -55,6 +55,16 @@
                                 <label class="col-md-3 control-label">{{ 'ADDRESS' | translate }}</label>
                                 <div class="col-md-8">
                                     <input class="form-control" type="text" placeholder="{{ vm.user.address }}" ng-model="vm.edited_user.address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <label class="btn btn-default btn-file">
+                                        {{ 'CHANGE_PHOTO' | translate }}
+                                        <input type="file" style="display: none;" u-upload-picture="vm.edited_user.picture">
+                                    </label>
+                                    <span></span>
                                 </div>
                             </div>
                             <div class="form-group">

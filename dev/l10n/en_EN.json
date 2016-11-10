@@ -17,10 +17,13 @@
     "REQUESTS_RATIO": "Requests by status",
     "OFFERS": "Offers",
     "POINTS_STATS": "Points stats",
-    "USERPROFILE": "User profile",
+    "USER_PROFILE": "User profile",
     "BIRTHDATE": "Birthdate",
     "FIRSTNAME": "First name",
     "LASTNAME": "Name",
+    "ADDRESS": "Address",
+    "CHANGE_PHOTO": "Change your profile picture"
+
     "ADDRESS": "Address"
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
