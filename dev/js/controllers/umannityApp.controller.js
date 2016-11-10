@@ -10,13 +10,13 @@
     function umannityAppController($scope, $location, UserService) {
         /* jshint validthis: true */
         var vm = this;
-        
+
         vm.name = "umannityAppController";
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
-        
+
         function checkUser() {
             var api_key = UserService.getApiKey();
             console.log("umannityAppController :: Api Key", api_key);
@@ -24,20 +24,25 @@
 
             if (undefined === api_key) {
                 console.log("umannityAppController :: User is not logged");
-                $location.path("/login");
+                if ($location.path() === "/loginPartner") {
+                    $location.path("/loginPartner");
+                }
+                else {
+                    $location.path("/login");
+                }
             }
             else if (undefined === user) {
                 console.log("umannityAppController :: User is logged and its data isn't loaded");
                 UserService.loadUser()
                     .then(function (user) {
-                        console.log("umannityAppController :: User loaded");
-                        vm.user = user;
-                        loadPicture();
-                    })
+                    console.log("umannityAppController :: User loaded");
+                    vm.user = user;
+                    loadPicture();
+                })
                     .catch(function (error) {
-                        //TODO: Proper error management
-                        window.alert(error);
-                    });
+                    //TODO: Proper error management
+                    window.alert(error);
+                });
             }
             else {
                 vm.user = user;
@@ -48,12 +53,12 @@
         function loadPicture() {
             UserService.loadPicture()
                 .then(function (picture) {
-                    console.log("umannityAppController :: Picture loaded");
-                    vm.picture = picture;
-                })
+                console.log("umannityAppController :: Picture loaded");
+                vm.picture = picture;
+            })
                 .catch(function (error) {
-                    window.alert(error);
-                });
+                window.alert(error);
+            });
         }
 
         function onViewContentLoaded() {

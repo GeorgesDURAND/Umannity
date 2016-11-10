@@ -1,27 +1,27 @@
 @import "variables";
 
-.u-ulogin {
+.u-plogin {
     height: 100%;
-    background: url("../img/login-user-bg.png");
+    background: url("../img/login-partner-bg.png");
     -webkit-background-size: cover;
     text-align: center;
     font-family: $u-font;
 }
 
-.u-to-loginPartner {
+.u-to-loginUser {
     font-size: 17px;
     line-height: 25px;
     padding: 11px 23px;
     color: $u-orange;
-    border-color: $u-grey; 
+    border-color: white; 
     border-width: 0px 0px 1px 0px;
     border-style: solid;
 
 }
 
-.u-to-loginPartner:hover, 
-.u-to-loginPartner:active, 
-.u-to-loginPartner:focus {
+.u-to-loginUser:hover, 
+.u-to-loginUser:active, 
+.u-to-loginUser:focus {
     border-color: $u-blue;
 }
 
@@ -30,21 +30,21 @@
 .u-center-block {
     color: white;
 
-    .u-logo-ulogin {
+    .u-logo-plogin {
         margin-top: 20px;
         display: inline-block;
     }
 
-    .u-ulogin-block {
-
-        .u-label-ulogin {
+    .u-plogin-block {
+        
+        .u-label-plogin {
             padding-top: 10px;
             line-height: 23px;
             text-transform: uppercase;
             font-weight: 500;
         }
 
-        .u-input-ulogin {
+        .u-input-plogin {
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.6);
             color: $u-orange;
@@ -54,15 +54,15 @@
             padding: 9px;
         }
 
-        .u-input-ulogin:hover {
+        .u-input-plogin:hover {
             background-color: rgba(255, 255, 255, 0.8);
         }
 
-        .u-input-ulogin:focus {
+        .u-input-plogin:focus {
             border: 1px solid $u-blue;
         }
 
-        .u-btn-ulogin {
+        .u-btn-plogin {
             margin-top: 10px;
             padding: 9px;
             background-color: $u-orange;
@@ -70,13 +70,13 @@
             border-radius: 4px;
         }
         
-        .u-btn-ulogin:hover {
+        .u-btn-plogin:hover {
             color: white;
             background-color: $u-orange;
             opacity: 1;
         }
         
-        .u-subs-link-ulogin, .u-pwd-link-ulogin {
+        .u-subs-link-plogin, .u-pwd-link-plogin {
             color: white;
             display: block;
             padding-top: 10px;
