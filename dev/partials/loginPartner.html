@@ -8,7 +8,8 @@
                 <img class="img-responsive u-logo-plogin" src="../img/logoUmannityLogin.png" />
             </div>
             <div class="u-plogin-block col-md-offset-1 col-md-10">
-                <form name="loginForm" class="css-form" novalidate>
+                <label uib-alert class="col-md-12 col-sm-12 alert-danger u-alert-login" ng-repeat="error in vm.errors" close="closeAlert($index)">{{error | translate}}</label>
+                <form class="css-form" novalidate>
                     <label class="u-label-plogin col-md-12 ">
                         {{ 'EMAIL' | translate }}
                     </label>

@@ -39,7 +39,8 @@
                 })
                     .catch(function (error) {
                     //TODO: Proper error management
-                    window.alert(error);
+                    console.log(vm.name + ":: Unauthorized user");
+                    /*window.alert(error.data.error);*/
                 });
             }
             else {

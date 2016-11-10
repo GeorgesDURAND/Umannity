@@ -26,7 +26,7 @@
       })
         .when('/loginPartner', {
         templateUrl: "partials/loginPartner.html",
-        controller: 'loginPartnerController',
+        controller: 'loginController',
         controllerAs: 'vm'
     })
       .when('/subscribe', {

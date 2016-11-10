@@ -7,6 +7,7 @@
     "SUBSCRIBE":"Pour s'inscrire, c'est par ici !",
     "BEPARTNER": "Pour devenir partenaire, c'est par ici !",
     "LOST_PWD":"Mot de passe perdu ?",
+    "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
     
     "STATS": "Statistiques",
     "HOME": "Accueil",
@@ -39,5 +40,7 @@
     "VISIO": "Visioconférence",
     "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
     "VISIO_HANGUP": "Raccrocher",
-    "VISIO_ISCALLING": "vous appelle."
+    "VISIO_ISCALLING": "vous appelle.",
+    
+    "5": "Mauvaises informations de connexion"
 }
