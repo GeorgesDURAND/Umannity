@@ -3,17 +3,17 @@
 
     angular
         .module('umannityApp.controllers')
-        .controller('loginController', loginController);
+        .controller('loginPartnerController', loginPartnerController);
 
-    loginController.$inject = ['$location', 'UserService'];
+    loginPartnerController.$inject = ['$location', 'UserService'];
 
-    function loginController($location, UserService) {
+    function loginPartnerController($location, UserService) {
         /* jshint validthis: true */
         var vm = this;
 
         vm.login = login;
         vm.changeView = changeView;
-        vm.name = "loginController";
+        vm.name = "loginPartnerController";
 
         ////
         
@@ -29,14 +29,7 @@
                 })
                 .catch(function (error) {
                     //TODO: Proper error management
-                    if (error.data) {
-                        if (error.data.error) {
-                            window.alert(error.data.error);
-                        }
-                        else {
-                            console.log(error.data);
-                        }
-                    }
+                    window.alert(error.data.error);
                 });
         }
     }
