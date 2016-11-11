@@ -15,7 +15,7 @@
         vm.logout = logout;
         vm.changeView = changeView;
         vm.changeMenu = changeMenu;
-        vm.isCollapsed = false;
+        vm.isCollapsed = true;
         vm.user = UserService.getUser();
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);

@@ -1,4 +1,7 @@
-<!--{{ vm.name }}-->
-<u-side-menu ng-if="vm.user"></u-side-menu>
-<u-header ng-if="vm.user"></u-header>
-<ng-transclude></ng-transclude>
+<div class="main-view-container">
+    <u-side-menu ng-if="vm.user"></u-side-menu>
+    <u-header ng-if="vm.user"></u-header>
+    <div class="main-view-content">
+        <ng-transclude></ng-transclude>
+    </div>
+</div>

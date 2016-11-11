@@ -1,11 +1,11 @@
 <div ng-class="vm.isCollapsed ? 'u-sidemenu-collapsed' : 'u-sidemenu'">
     <div class="menu-img-name" ng-if="!vm.isCollapsed">
-        <img class="img-logo-name" src="./img/logoName.png"/>
+        <img class="img-logo-name" src="img/logoName.png"/>
     </div>
     <div class="menu-img-short" ng-if="vm.isCollapsed">
-        <img class="img-logo-short" src="./img/logoShort.png"/>
+        <img class="img-logo-short" src="img/logoShort.png"/>
     </div>
-    <div class="btn-block" ng-class="vm.isCollapsed ? 'collapse-btn-reduce' : 'collapse-btn'" ng-click="vm.changeMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+    <div class="btn-block" ng-class="vm.isCollapsed ? 'collapse-btn-reduce' : 'collapse-btn'" ng-click="vm.changeMenu()"><span class="glyphicon hamburger glyphicon-menu-hamburger"></span></div>
     <div class="menu-list-block">
         <div class="menu-item" ng-click="vm.changeView('/profile')">
             <div class="menu-icon glyphicon glyphicon-user"></div>
@@ -16,11 +16,11 @@
             <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_HELP' | translate }}</div>
         </div>
         <div class="menu-item" ng-click="vm.changeView('/chat')">
-            <div class="glyphicon glyphicon-envelope" ng-class="vm.isCollapsed ? 'menu-icon-chat-collapsed' : 'menu-icon-chat'"></div>
+            <div class="menu-icon glyphicon glyphicon-envelope"></div>
             <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CHAT' | translate }}</div>
         </div>
         <div class="menu-item" ng-click="vm.changeView('/visio')">
-            <div class="glyphicon glyphicon-camera" ng-class="vm.isCollapsed ? 'menu-icon-chat-collapsed' : 'menu-icon-chat'"></div>
+            <div class="menu-icon glyphicon glyphicon-camera"></div>
             <div ng-class="vm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'VISIO' | translate }}</div>
         </div>
         <div class="menu-item" ng-click="vm.logout()">
