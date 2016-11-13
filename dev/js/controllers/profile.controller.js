@@ -5,7 +5,7 @@
         .module('umannityApp.controllers')
         .controller('profileController', profileController);
 
-    profileController.$inject = ['$scope', 'UserService', '$base64'];
+    profileController.$inject = ['$scope', 'UserService'];
 
     function profileController($scope, UserService) {
         /* jshint validthis: true */
@@ -163,10 +163,52 @@
 
         function editProfile() {
             if (undefined !== vm.edited_user) {
-                UserService.editProfile(vm.edited_user)
-                    .then(function (user) {
-                        loadUser();
-                    });
+                //Check user enter a birthdate, if not set to undefined
+                if (0 === vm.edited_user.birthdateDateFormat) {
+                    vm.edited_user.birthdateDateFormat = undefined;
+                }
+                //Check user enter a birthdate
+                if (undefined !== vm.edited_user.birthdateDateFormat) {
+                    vm.edited_user.birthdate = new Date(vm.edited_user.birthdateDateFormat).getTime() / 1000;
+                }
+                //Check user want change password
+                if (undefined !== vm.edited_user.old_password && undefined !== vm.edited_user.new_password &&
+                    undefined !== vm.edited_user.confirm_new_password) {
+                    if (vm.edited_user.old_password.length > 0 && vm.edited_user.new_password.length > 0 &&
+                        vm.edited_user.confirm_new_password.length > 0) {
+                        if (vm.edited_user.confirm_new_password !== vm.edited_user.new_password) {
+                            addAlert('ERROR_NO_SAME_PASSWORD');
+                        }
+                        else {
+                            UserService.login(vm.user.email, vm.edited_user.old_password)
+                                .then(function (user) {
+                                    vm.edited_user.password = vm.edited_user.new_password;
+                                    UserService.editProfile(vm.edited_user)
+                                        .then(function (user) {
+                                            loadUser();
+                                        })
+                                        .catch(function (error) {
+                                            //TODO: Proper error management
+                                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
+                                        });
+                                })
+                                .catch(function (error) {
+                                    //TODO: Proper error management
+                                    addAlert('ERROR_WRONG_PASSWORD');
+                                });
+                        }
+                    }
+                }
+                else {
+                    UserService.editProfile(vm.edited_user)
+                        .then(function (user) {
+                            loadUser();
+                        })
+                        .catch(function (error) {
+                            //TODO: Proper error management
+                            addAlert('EDIT_PROFILE_ERROR');
+                        });
+                }
             }
         }
 
