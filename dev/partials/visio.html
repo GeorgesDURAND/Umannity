@@ -31,7 +31,7 @@
                     No Local video stream
                 </div>
                 <div ng-if="vm.streamURL">
-                    <video class="u-visio-local-video" ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}"
+                    <video class="u-visio-local-video" muted="muted" ng-if="vm.stream" ng-src="{{ vm.getLocalVideo() }}"
                            autoplay></video>
                 </div>
             </div>
