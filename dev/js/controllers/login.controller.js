@@ -51,7 +51,14 @@
                 if (vm.errors.length === 2) {
                     vm.errors.splice(0, 1);
                 }
-                vm.errors.push(error.data.code);
+                if (undefined !== error.data && null !== error.data) {
+                    if (undefined !== error.data.code) {
+                        vm.errors.push(error.data.code);
+                    }
+                    else {
+                        vm.errors.push(error.data);
+                    }
+                }
             });
         }
     }
