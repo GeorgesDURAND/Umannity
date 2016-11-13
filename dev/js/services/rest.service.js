@@ -13,7 +13,6 @@
     var _isLoading = false;
 
     var service = {
-      login: login,
       get: get,
       post: post,
       put: put,
@@ -21,7 +20,7 @@
       setApiKey: setApiKey,
       getApiKey: getApiKey,
       removeApiKey: removeApiKey,
-      getIsLoading: getIsLoading,
+      getIsLoading: getIsLoading
     };
 
     return service;
@@ -118,8 +117,5 @@
       return doRequest(req, showLoader);
     }
 
-    function login (email, password) {
-
-    }
   }
 })();

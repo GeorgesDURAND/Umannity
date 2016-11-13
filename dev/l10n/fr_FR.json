@@ -8,14 +8,18 @@
     "BEPARTNER": "Pour devenir partenaire, c'est par ici !",
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
-    
+
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
+    "USER_PROFILE": "Profile de l'utilisateur",
+    "BIRTHDATE": "Date de naissance",
+    "FIRSTNAME": "Prénom",
+    "LASTNAME": "Nom",
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
-    
+
     "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
@@ -35,12 +39,20 @@
     "REQUEST_PENDING": "Demandes en cours",
     "REQUEST_REPORTED": "Demandes signalées",
     "TOTAL": "Nombre total",
-    
+
     "TITLE_VISIO": "VISIO-CONFÉRENCE",
     "VISIO": "Visioconférence",
     "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
     "VISIO_HANGUP": "Raccrocher",
     "VISIO_ISCALLING": "vous appelle.",
-    
-    "5": "Mauvaises informations de connexion"
+
+    "5": "Mauvaises informations de connexion",
+    "CHANGE_PHOTO": "Modifier votre photo de profile",
+    "TYPE_YOUR_PASSWORD": "Tapez votre mot de passe",
+    "NEW_PASSWORD": "Nouveau mot de passe",
+    "CONFIRM_PASSWORD": "Confirmez votre nouveau mot de passe",
+    "ERROR_WRONG_PASSWORD": "Vérifiez votre mot de passe et réessayez",
+    "ERROR_WRONG_FORMAT_PASSWORD": "Votre mot de passe doit faire entre 5 et 14 caractères",
+    "ERROR_NO_SAME_PASSWORD": "Vous n'avez pas renseignez 2 fois le même mot de passe",
+    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile"
 }

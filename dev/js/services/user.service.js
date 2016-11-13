@@ -20,7 +20,9 @@
             logout: logout,
             formatBirthdate: formatBirthdate,
             loadPicture: loadPicture,
-            getPicture: getPicture
+            getPicture: getPicture,
+            editProfile: editProfile,
+            putPicture: putPicture
         };
 
         return service;
@@ -40,9 +42,33 @@
             $cookies.put(_cache_key, JSON.stringify(user));
         }
 
+
+        function putPicture(picture) {
+            var deferred = $q.defer();
+            RestService.put("/user/picture", picture)
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function editProfile(userData) {
+            var deferred = $q.defer();
+            RestService.post("/user", userData)
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
         function loadUser(id) {
             var deferred = $q.defer();
-
             var params = {id:id};
 
             RestService.get("/user", params)
@@ -73,10 +99,9 @@
         function loadPicture() {
             var deferred = $q.defer();
 
-            console.log(RestService.get("/user/picture"));
             RestService.get("/user/picture")
                 .then(function (request) {
-                    var picture = request.data;
+                    var picture = request.data.picture;
 
                     _picture = picture;
                     deferred.resolve(picture);

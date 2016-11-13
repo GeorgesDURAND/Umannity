@@ -5,11 +5,11 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12 lead">User profile<hr></div>
+                            <div class="col-md-12 lead">{{ 'USER_PROFILE' | translate }}<hr></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img class="img-circle avatar avatar-original" ng-src="{{vm.picture.picture}}">
+                                <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.user.picture}}">
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
@@ -19,18 +19,82 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <span class="text-muted">Email:</span> {{ vm.user.email }}<br>
-                                        <span class="text-muted">Birth date:</span> {{ vm.user.birthdate }}<br>
-                                        <span class="text-muted">Adress:</span> {{ vm.user.address }}, {{ vm.user.zipcode }}<br><br>
+                                        <span class="text-muted">{{ 'EMAIL' | translate }}</span> {{ vm.user.email }}<br>
+                                        <span class="text-muted">{{ 'BIRTHDATE' | translate }}</span> {{ vm.user.formattedBirthdate }}<br>
+                                        <span class="text-muted">Address:</span> {{ vm.user.address }}<br><br>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+                        <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')" close="vm.closeAlert($index)">{{error | translate}}</div>
+                        <form class="form-horizontal" role="form" ng-submit="vm.editProfile()">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'FIRSTNAME' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.first_name }}" ng-model="vm.edited_user.first_name">
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'LASTNAME' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.last_name }}" ng-model="vm.edited_user.last_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'EMAIL' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'TYPE_YOUR_PASSWORD' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="password" ng-model="vm.edited_user.old_password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'NEW_PASSWORD' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="password" ng-model="vm.edited_user.new_password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'CONFIRM_PASSWORD' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="password" ng-model="vm.edited_user.confirm_new_password">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ 'BIRTHDATE' | translate }}</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="date" placeholder="{{ vm.user.formattedBirthdate }}" ng-model="vm.edited_user.birthdateDateFormat">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">{{ 'ADDRESS' | translate }}</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.address }}" ng-model="vm.edited_user.address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <label class="btn btn-default btn-file">
+                                        {{ 'CHANGE_PHOTO' | translate }}
+                                        <input type="file" style="display: none;" u-upload-picture="vm.edited_user.picture">
+                                    </label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
