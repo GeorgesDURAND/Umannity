@@ -21,7 +21,8 @@
             formatBirthdate: formatBirthdate,
             loadPicture: loadPicture,
             getPicture: getPicture,
-            editProfile: editProfile
+            editProfile: editProfile,
+            putPicture: putPicture
         };
 
         return service;
@@ -41,6 +42,18 @@
             $cookies.put(_cache_key, JSON.stringify(user));
         }
 
+
+        function putPicture(picture) {
+            var deferred = $q.defer();
+            RestService.put("/user/picture", picture)
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
 
         function editProfile(userData) {
             var deferred = $q.defer();
