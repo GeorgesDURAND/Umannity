@@ -1,7 +1,33 @@
 @import "variables";
+@import "sideMenu";
+
+$main-view-loader-color: rgba(64, 64, 64, 0.91);
+$main-view-loader-font-size: 2em;
+$main-view-font-color: #fff;
 
 .main-view-container{
   position:relative;
   flex:content;
   height: 100%;
+}
+
+.main-view-loader{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background: $main-view-loader-color;
+  font-size: $main-view-loader-font-size;
+  color: $main-view-font-color;
+  position: absolute;
+  z-index: 100;
+}
+
+.main-view-loader-text{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main-view-content{
+  padding-left: $sidemenu-collapsed-width;
 }

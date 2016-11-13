@@ -34,6 +34,7 @@
       createOffer: createOffer,
       deleteOffers: deleteOffers,
       getExternalMediaStream: getExternalMediaStream,
+      getLocalMediaStream: getLocalMediaStream,
       init: init
     };
 
@@ -81,6 +82,10 @@
           _pendingCallback(state);
           break;
       }
+    }
+
+    function getLocalMediaStream() {
+      return _stream;
     }
 
     function getExternalMediaStream () {
@@ -210,7 +215,7 @@
 
     function getOffers () {
       var deferred = $q.defer();
-      RestService.get("/webrtc/offers")
+      RestService.get("/webrtc/offers", undefined, undefined, false)
         .then(function (request) {
           deferred.resolve(parseData(request.data.offers));
         })

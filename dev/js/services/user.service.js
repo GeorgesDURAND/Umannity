@@ -30,6 +30,8 @@
         function logout() {
             $cookies.remove(_cache_key);
             RestService.removeApiKey();
+            _user = undefined;
+            _picture = undefined;
         }
 
         function storeUser(user) {
@@ -71,6 +73,7 @@
         function loadPicture() {
             var deferred = $q.defer();
 
+            console.log(RestService.get("/user/picture"));
             RestService.get("/user/picture")
                 .then(function (request) {
                     var picture = request.data;
@@ -96,7 +99,11 @@
         function login(email, password) {
             var deferred = $q.defer();
 
-            RestService.login(email, password)
+            var data = {
+                email: email,
+                password: password
+            };
+            RestService.post('/connect', data)
                 .then(function (request) {
                     if (request.data !== undefined) {
                         if (request.data.api_key !== undefined) {

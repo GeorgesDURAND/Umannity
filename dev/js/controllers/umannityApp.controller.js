@@ -5,15 +5,22 @@
         .module('umannityApp.controllers')
         .controller('umannityAppController', umannityAppController);
 
-    umannityAppController.$inject = ['$location', 'UserService'];
+    umannityAppController.$inject = ['$location', 'UserService', 'RestService'];
 
-    function umannityAppController($location, UserService) {
+    function umannityAppController($location, UserService, RestService) {
         /* jshint validthis: true */
         var vm = this;
+        var appVm = vm;
 
+        appVm.getIsLoading = getIsLoading;
+        appVm.getUser = UserService.getUser;
         vm.name = "umannityAppController";
 
         ////
+
+        function getIsLoading() {
+            return RestService.getIsLoading();
+        }
 
         function checkUser() {
             var api_key = UserService.getApiKey();

@@ -5,11 +5,12 @@
     .module('umannityApp.services')
     .factory('RestService', restService);
 
-  restService.$inject = ['$http', 'ConstantService', '$cookies'];
+  restService.$inject = [ '$q', '$http', 'ConstantService', '$cookies' ];
 
-  function restService ($http, ConstantService, $cookies) {
+  function restService ($q, $http, ConstantService, $cookies) {
     var _api_url = ConstantService.api_url;
     var _api_key = $cookies.get('api_key');
+    var _isLoading = false;
 
     var service = {
       login: login,
@@ -19,12 +20,17 @@
       delete: _delete,
       setApiKey: setApiKey,
       getApiKey: getApiKey,
-      removeApiKey: removeApiKey
+      removeApiKey: removeApiKey,
+      getIsLoading: getIsLoading,
     };
 
     return service;
 
     ////
+
+    function getIsLoading () {
+      return _isLoading;
+    }
 
     function getApiKey () {
       return _api_key;
@@ -39,7 +45,28 @@
       _api_key = api_key;
     }
 
-    function get (route, data, headers) {
+    function doRequest (req, showLoader) {
+      var deferred = $q.defer();
+      if (undefined !== showLoader)
+        _isLoading = showLoader;
+      else {
+        _isLoading = true;
+      }
+      $http(req)
+        .then(
+          function (data) {
+            _isLoading = false;
+            deferred.resolve(data);
+          })
+        .catch(
+          function (error) {
+            _isLoading = false;
+            deferred.reject(error);
+          });
+      return deferred.promise;
+    }
+
+    function get (route, data, headers, showLoader) {
       var req = {
         method: 'GET',
         url: _api_url + route,
@@ -49,10 +76,10 @@
         params: data
       };
       angular.extend(req.headers, headers);
-      return $http(req);
+      return doRequest(req, showLoader);
     }
 
-    function _delete (route, data, headers) {
+    function _delete (route, data, headers, showLoader) {
       var req = {
         method: 'DELETE',
         url: _api_url + route,
@@ -62,10 +89,10 @@
         params: data
       };
       angular.extend(req.headers, headers);
-      return $http(req);
+      return doRequest(req, showLoader);
     }
 
-    function put (route, data, headers) {
+    function put (route, data, headers, showLoader) {
       var req = {
         method: 'PUT',
         url: _api_url + route,
@@ -75,10 +102,10 @@
         data: data
       };
       angular.extend(req.headers, headers);
-      return $http(req);
+      return doRequest(req, showLoader);
     }
 
-    function post (route, data, headers) {
+    function post (route, data, headers, showLoader) {
       var req = {
         method: 'POST',
         url: _api_url + route,
@@ -88,15 +115,11 @@
         data: data
       };
       angular.extend(req.headers, headers);
-      return $http(req);
+      return doRequest(req, showLoader);
     }
 
     function login (email, password) {
-      var data = {
-        email: email,
-        password: password
-      };
-      return $http.post(_api_url + '/connect', data);
+
     }
   }
 })();

@@ -10,6 +10,7 @@
   function profileController ($scope, UserService) {
     /* jshint validthis: true */
     var vm = this;
+    vm.name = "profileController";
     $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
     function onViewContentLoaded () {

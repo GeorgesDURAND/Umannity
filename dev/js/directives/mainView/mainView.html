@@ -1,6 +1,12 @@
+<div class="main-view-loader" ng-if="appVm.getIsLoading()">
+    <div class="main-view-loader-text">
+        <p><i class="glyphicon glyphicon-refresh rotating"></i></p>
+        {{ 'LOADING' | translate }}
+    </div>
+</div>
 <div class="main-view-container">
-    <u-side-menu ng-if="vm.user"></u-side-menu>
-    <u-header ng-if="vm.user"></u-header>
+    <u-side-menu ng-if="appVm.getUser()"></u-side-menu>
+    <u-header ng-if="appVm.getUser()"></u-header>
     <div class="main-view-content">
         <ng-transclude></ng-transclude>
     </div>

@@ -28,11 +28,11 @@
         vm.state = 'disconnected';
         vm.offers = [];
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
+        $scope.$on("$destroy", onDestroy);
 
         ////
 
         function onViewContentLoaded() {
-            vm.user = UserService.getUser();
             setUserMedia();
             getUserMedia();
             initOffersData();
@@ -136,6 +136,20 @@
 
         function onUserMediaError(error) {
             console.log(vm.name + ':: navigator.getUserMedia error: ', error);
+        }
+
+        function onDestroy(){
+            var localStream = WebRTCService.getLocalMediaStream();
+            var externalStream = WebRTCService.getExternalMediaStream();
+
+            if (undefined !== localStream) {
+                localStream.getVideoTracks()[0].stop();
+                localStream.getVideoTracks()[0].stop();
+            }
+            if (undefined !== externalStream){
+                externalStream.getVideoTracks()[0].stop();
+                externalStream.getVideoTracks()[0].stop();
+            }
         }
 
     }
