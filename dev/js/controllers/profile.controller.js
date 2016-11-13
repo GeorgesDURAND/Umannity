@@ -33,10 +33,9 @@
 
         function onViewContentLoaded() {
             //Loading the user
-            vm.user = UserService.getUser();
-            if (undefined === vm.user) {
+//            vm.user = UserService.getUser();
+//            if (undefined === vm.user) {
                 loadUser();
-            }
         }
 
         function loadUser() {

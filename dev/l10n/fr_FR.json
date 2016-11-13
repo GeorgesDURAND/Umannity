@@ -12,18 +12,10 @@
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
-    "USERS_RATIO": "Ratio benevoles/demandeurs",
-    "USERS_BY_TYPE": "Utilisateurs par type",
-    "REQUESTS_RATIO": "Demandes par statut",
-    "OFFERS": "Offres",
-    "POINTS_STATS": "Statistiques des points",
     "USER_PROFILE": "Profile de l'utilisateur",
     "BIRTHDATE": "Date de naissance",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom",
-    "ADDRESS": "Adresse",
-    "CHANGE_PHOTO": "Modifier votre photo de profile"
-    "ADDRESS": "Adresse"
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
@@ -54,7 +46,7 @@
     "VISIO_HANGUP": "Raccrocher",
     "VISIO_ISCALLING": "vous appelle.",
 
-    "5": "Mauvaises informations de connexion"
+    "5": "Mauvaises informations de connexion",
     "CHANGE_PHOTO": "Modifier votre photo de profile",
     "TYPE_YOUR_PASSWORD": "Tapez votre mot de passe",
     "NEW_PASSWORD": "Nouveau mot de passe",

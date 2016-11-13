@@ -13,7 +13,6 @@
     var _isLoading = false;
 
     var service = {
-      login: login,
       get: get,
       post: post,
       put: put,
