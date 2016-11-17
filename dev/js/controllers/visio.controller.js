@@ -138,7 +138,7 @@
             console.log(vm.name + ':: navigator.getUserMedia error: ', error);
         }
 
-        function onDestroy(){
+        function onDestroy() {
             var localStream = WebRTCService.getLocalMediaStream();
             var externalStream = WebRTCService.getExternalMediaStream();
 
@@ -146,7 +146,7 @@
                 localStream.getVideoTracks()[0].stop();
                 localStream.getVideoTracks()[0].stop();
             }
-            if (undefined !== externalStream){
+            if (undefined !== externalStream) {
                 externalStream.getVideoTracks()[0].stop();
                 externalStream.getVideoTracks()[0].stop();
             }

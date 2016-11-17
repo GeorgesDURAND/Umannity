@@ -5,7 +5,7 @@
     .module('umannityApp.services')
     .factory('RestService', restService);
 
-  restService.$inject = [ '$q', '$http', 'ConstantService', '$cookies' ];
+  restService.$inject = ['$q', '$http', 'ConstantService', '$cookies'];
 
   function restService ($q, $http, ConstantService, $cookies) {
     var _api_url = ConstantService.api_url;
@@ -46,8 +46,9 @@
 
     function doRequest (req, showLoader) {
       var deferred = $q.defer();
-      if (undefined !== showLoader)
+      if (undefined !== showLoader) {
         _isLoading = showLoader;
+      }
       else {
         _isLoading = true;
       }

@@ -14,7 +14,6 @@
         vm.name = "sideMenuController";
         vm.logout = logout;
         vm.changeView = changeView;
-        vm.changeMenu = changeMenu;
         vm.isCollapsed = false;
         vm.user = UserService.getUser();
 
