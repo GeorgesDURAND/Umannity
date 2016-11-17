@@ -42,17 +42,6 @@
             $cookies.put(_cache_key, JSON.stringify(user));
         }
 
-        function putPicture(picture) {
-            var deferred = $q.defer();
-            RestService.put("/user/picture", picture)
-                .then(function (request) {
-                    deferred.resolve(request.data);
-                })
-                .catch(function (error) {
-                    deferred.reject(error);
-                });
-            return deferred.promise;
-        }
 
         function putPicture(picture) {
             var deferred = $q.defer();
