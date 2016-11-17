@@ -10,6 +10,7 @@ var umannityApp = angular.module('umannityApp', [
     'ngCookies',
     'chart.js',
     'base64',
+    'vsGoogleAutocomplete',
     'flow',
     'ngImgCrop',
     'ngAria',

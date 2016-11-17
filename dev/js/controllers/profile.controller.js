@@ -56,12 +56,8 @@
 
         function editProfile() {
             if (undefined !== vm.edited_user) {
-                //Check user enter a birthdate, if not set to undefined
-                if (0 === vm.edited_user.birthdateDateFormat) {
-                    vm.edited_user.birthdateDateFormat = undefined;
-                }
                 //Check user enter a birthdate
-                if (undefined !== vm.edited_user.birthdateDateFormat) {
+                if (null !== vm.edited_user.birthdateDateFormat) {
                     vm.edited_user.birthdate = new Date(vm.edited_user.birthdateDateFormat).getTime() / 1000;
                 }
                 //Check user want change password
@@ -78,6 +74,7 @@
                                     vm.edited_user.password = vm.edited_user.new_password;
                                     UserService.editProfile(vm.edited_user)
                                         .then(function (user) {
+                                            vm.edited_user = undefined;
                                             loadUser();
                                         })
                                         .catch(function (error) {
@@ -96,6 +93,7 @@
                     UserService.editProfile(vm.edited_user)
                         .then(function (user) {
                             loadUser();
+                            vm.edited_user = undefined;
                         })
                         .catch(function (error) {
                             //TODO: Proper error management
