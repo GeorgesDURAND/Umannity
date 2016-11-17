@@ -1,106 +1,107 @@
 @import "variables";
 
-.hamburger {
-  margin-left: 10px;
-}
-
 .u-sidemenu {
-  transition: 0.2s ease-in-out;
-  width: $sidemenu-width;
-  height: 100%;
-  float: left;
-  background-color: $u-black;
-  color: $app-gray;
+    transition: 0.2s ease-in-out;
+    width: $sidemenu-width;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 5000;
+    background-color: $u-black;
+    color: $app-gray;
 }
 
 .u-sidemenu-collapsed {
-  transition: 0.2s ease-in-out;
-  width: $sidemenu-collapsed-width;
-  height: 100%;
-  float: left;
-  background-color: $umannity-black;
-  color: $app-gray;
+    transition: 0.2s ease-in-out;
+    width: $sidemenu-collapsed-width;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 5000;
+    background-color: $umannity-black;
+    color: $app-gray;
 }
 
-.btn-block {
-  font-size: $hamburger-font-size;
-  width: $hamburger-size;
-  cursor: pointer;
+.menu-logo {
+    text-align: center;
+
+    .menu-img-short {
+        margin-top: 5px;
+    }
+
+    .menu-img-name {
+        margin-top: 25px;
+    }
+
+    .img-logo-name {
+        width: 180px;
+    }
+
+    .img-logo-short {
+        width: 60px;
+    }
+}
+
+.hamburger-position {
+    margin-top: -45px;
+    color: $umannity-black;
+    border: none;
+    
+    .btn-block {
+        font-size: $hamburger-font-size;
+        width: $hamburger-size;
+        cursor: pointer;
+    }
+    
+    .collapse-btn {
+        transition: 0.2s ease-in-out;
+        margin-left: $sidemenu-width + 10;
+    }
+
+    .collapse-btn-reduce {
+        transition: 0.2s ease-in-out;
+        margin-left: $sidemenu-collapsed-width + 10px;
+    }
+    
+    .hamburger {
+        margin-left: 10px;
+    }
+    
 }
 
 .menu-list-block {
-  margin-top: $hamburger-size;
+    margin-top: $hamburger-size;
+    width: $sidemenu-width;
+}
+
+.menu-list-block-collapsed {
+    margin-top: $hamburger-size;
+    width: $sidemenu-collapsed-width;
 }
 
 .menu-item {
-  cursor: pointer;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  vertical-align: middle;
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    vertical-align: middle;
+    
+    .menu-icon {
+        float: left;
+        margin-left: $hamburger-size;
+        font-size: $sidemenu-icon-size;
+    }
+    
+    .menu-text {
+        position: relative;
+        font-size: $u-font-size;
+        margin-left: 60px;
+    }
+
+    .menu-text-collapsed {
+        padding-top: 5px;
+        text-align: center;
+        font-size: $u-font-size-small;
+    }
 }
 
 .menu-item:hover {
-  background-color: $umannity-black-menu;
-}
-
-.menu-icon {
-  float: left;
-  margin-left: $hamburger-size;
-  font-size: $sidemenu-icon-size;
-}
-
-.menu-icon-chat {
-  float: left;
-  margin-left: $hamburger-size;
-  margin-top: 12px;
-  font-size: $u-font-size;
-}
-
-.menu-img-short {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.menu-img-name {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.img-logo-name {
-  width: 180px;
-}
-
-.img-logo-short {
-  width: 60px;
-}
-
-.menu-icon-chat-collapsed {
-  float: left;
-  margin-left: $hamburger-size;
-  font-size: $sidemenu-icon-size;
-}
-
-.menu-text {
-  position: relative;
-  font-size: $u-font-size;
-  margin-left: 60px;
-}
-
-.menu-text-collapsed {
-  padding-top: 5px;
-  text-align: center;
-  font-size: $u-font-size-small;
-}
-
-.collapse-btn {
-  margin-left: $sidemenu-width + 10;
-  margin-top: -37px;
-  color: $umannity-black;
-}
-
-.collapse-btn-reduce {
-  margin-left: 85px;
-  margin-top: -50px;
-  color: $umannity-black;
-  border: none;
+    background-color: $umannity-black-menu;
 }

@@ -23,7 +23,7 @@
         ////
 
         function changeMenu() {
-            vm.isCollapsed = !vm.isCollapsed; 
+            appVm.isCollapsed = !appVm.isCollapsed; 
         }
 
         function logout() {
