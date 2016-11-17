@@ -74,7 +74,11 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">{{ 'ADDRESS' | translate }}</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" placeholder="{{ vm.user.address }}" ng-model="vm.edited_user.address">
+                                    <input class="form-control" type="text" placeholder="{{ vm.user.address }}" vs-google-autocomplete
+                                           vs-street="vm.edited_user.address.street"
+                                           vs-city="vm.edited_user.address.city"
+                                           vs-post-code="vm.edited_user.address.zipcode"
+                                           ng-model="vm.edited_user.address.name">
                                 </div>
                             </div>
                             <div class="form-group">

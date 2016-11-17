@@ -1,6 +1,17 @@
 /*global angular */
 var umannityApp = angular.module('umannityApp', [
-    'umannityApp.controllers',
+  'umannityApp.controllers',
+  'umannityApp.services',
+  'umannityApp.directives',
+  'ngRoute',
+  'ui.bootstrap',
+  'pascalprecht.translate',
+  'ngSanitize',
+  'ngCookies',
+  'chart.js',
+  'base64',
+  'vsGoogleAutocomplete'
+  'umannityApp.controllers',
     'umannityApp.services',
     'umannityApp.directives',
     'ngRoute',
