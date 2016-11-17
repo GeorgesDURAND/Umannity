@@ -22,10 +22,6 @@
 
         ////
 
-        function changeMenu() {
-            vm.isCollapsed = !vm.isCollapsed; 
-        }
-
         function logout() {
             UserService.logout();
             $location.path("/login");

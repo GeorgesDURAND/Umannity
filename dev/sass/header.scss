@@ -1,10 +1,13 @@
 @import "variables";
 
 .u-header{
-  height: 70px;
-  background: $u-orange;
+    height: 70px;
+    background: $u-orange;
+    min-width: 100vw;
+    
+    position: fixed;
 
-  .u-header-admin{
-    background: $app-gray;
-  }
+    .u-header-admin{
+        background: $app-gray;
+    }
 }
