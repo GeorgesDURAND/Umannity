@@ -16,6 +16,7 @@
     border-color: white; 
     border-width: 0px 0px 1px 0px;
     border-style: solid;
+    cursor: pointer;
 
 }
 
@@ -23,6 +24,7 @@
 .u-to-loginUser:active, 
 .u-to-loginUser:focus {
     border-color: $u-blue;
+    cursor: pointer;
 }
 
 
@@ -86,6 +88,7 @@
             color: white;
             display: block;
             padding-top: 10px;
+            cursor: pointer;
         }        
     }
 }

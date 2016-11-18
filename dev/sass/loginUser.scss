@@ -18,13 +18,14 @@
     border-color: $u-grey; 
     border-width: 0px 0px 1px 0px;
     border-style: solid;
-
+    cursor: pointer;
 }
 
 .u-to-loginPartner:hover, 
 .u-to-loginPartner:active, 
 .u-to-loginPartner:focus {
     border-color: $u-orange;
+    cursor: pointer;
 }
 
 .u-center-block {
@@ -86,6 +87,7 @@
             color: white;
             display: block;
             padding-top: 10px;
+            cursor: pointer;
         }        
     }
 }
