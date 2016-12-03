@@ -22,6 +22,16 @@
     "CROPPREVIEW": "Aperçu de votre image : ",
     "DROPIMAGE": "Vous pouvez glisser-deposer votre image ici",
     
+    "REPORTSLIST": "Aides signalées",
+    "FILTERS": "Filtres : ",
+    "REPORTNUMBER": "N° rapport",
+    "REQUESTNUMBER": "N° requête",
+    "USERID": "N° Utilisateur",
+    "USERNAME": "Nom d'utilisateur",
+    "REQUESTNAME": "Nom de la requête",
+    "REQUESTDATE": "Date",
+    "REPORTMOTIV": "Message",
+    "ACTIONS": "Mes actions",
     
     "STATS": "Statistiques",
     "HOME": "Accueil",
@@ -34,7 +44,6 @@
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
 
-    "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
     "takers" : "Demandeurs",
