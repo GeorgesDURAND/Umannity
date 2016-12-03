@@ -5,3 +5,4 @@ node_modules/*
 dev/lib/*
 dev/css/*
 prod/*
+dev/img/Thumbs.db
