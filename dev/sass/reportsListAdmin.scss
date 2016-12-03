@@ -3,23 +3,32 @@
 .u-reports-box {
     background-color: white;
     border-radius: 5px;
-    
-    
-    table, th {
-        text-align: center;
-        
+    word-break: break-all;
+
+    .no-pad {
+        padding: 0px;
     }
-    
+
+    table, th {
+        text-align: center;   
+    }
+
+    .u-report-filter-input {
+        border-radius: 5px;
+        font-size: 19px;
+        margin-left: 10px;
+    }
+
     .u-btn-delete, .u-btn-unreport, .u-btn-view, .u-btn-filter {
         color: white;
         border-radius: 4px;
         border: none;
     }
-    
+
     .u-btn-filter {
         font-size: 20px;
     }
-    
+
     .u-btn-delete {
         background-color: #ff9800;
     }
@@ -29,18 +38,17 @@
     .u-btn-view, .u-btn-filter {
         background-color: rgb(167, 172, 193);
     }
-    
+
     .glyphicon {
         padding-top: 5px; 
     }
-    
-    
+
     .u-report-filter {
         cursor: text;
         text-align: center;
         background-color: transparent;
     }
-    
+
     .u-report-filter[disabled] {
         background-color: transparent;
         border: none;

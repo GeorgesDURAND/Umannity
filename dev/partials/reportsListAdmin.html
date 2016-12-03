@@ -5,46 +5,44 @@
 
         <div class="u-reports-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-            <div class="panel-heading">
-                <!--<h3 class="panel-title">{{'FILTERS'| translate}}</h3>-->
-                <div class="pull-right">
-                    <button class="u-btn-filter clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                        <i class="glyphicon glyphicon-filter"></i>
-                    </button>
-                </div>
+            <div class="panel-heading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="u-btn-filter no-pad col-lg-1 col-md-1 col-sm-1 col-xs-1" ng-click="vm.isFiltered = !vm.isFiltered">
+                    <i class="glyphicon glyphicon-filter"></i>
+                </button>
+                <input class="u-report-filter-input col-lg-10 col-md-10 col-sm-10 col-xs-10" ng-show="vm.isFiltered" type="text" placeholder="{{'REPORTFILTER' | translate }}" ng-model="vm.filterQuery">
             </div>
 
-            <table class="table table-hover filtertable" id="dev-table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'REPORTNUMBER'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'REQUESTNUMBER'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'USERID'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'USERNAME'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'REQUESTNAME'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'REQUESTDATE'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'REPORTMOTIV'| translate}}" disabled></th>
-                        <th><input type="text" class="form-control u-report-filter" placeholder="{{'ACTIONS'|translate}}" disabled></th>
+                        <th>{{'REPORTNUMBER'| translate}}</th>
+                        <th>{{'REQUESTNUMBER'| translate}}</th>
+                        <th>{{'USERID'| translate}}</th>
+                        <th>{{'USERNAME'| translate}}</th>
+                        <th>{{'REQUESTNAME'| translate}}</th>
+                        <th>{{'REQUESTDATE'| translate}}</th>
+                        <th>{{'REPORTMOTIV'| translate}}</th>
+                        <th>{{'ACTIONS'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="report in vm.reportsList">
+                    <tr ng-repeat="report in vm.reportsList | filter : (vm.isFiltered ? vm.filterQuery : '') ">
                         <td>{{report.report_id}}</td>
                         <td>{{report.request_id}}</td>
                         <td>{{report.user_id}}</td>
                         <td>{{report.user_name}}</td>
-                        <td>Demande d'aides</td>
+                        <td>{{report.request_name}}</td>
                         <td>{{report.date}}</td>
                         <td>{{report.message}}</td>
                         <td>
+                            <!-- AJOUTER LE LIEN POUR VOIR UNE DEMANDE -->
                             <button class="u-btn-view"><i class="glyphicon glyphicon-eye-open"></i></button>
-                            <button class="u-btn-unreport"><i class="glyphicon glyphicon-ok-sign"></i></button>
-                            <button class="u-btn-delete"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                            <button class="u-btn-unreport" ng-click="vm.unReport(report.request_id)"><i class="glyphicon glyphicon-ok-sign"></i></button>
+                            <button class="u-btn-delete" ng-click="vm.deleteRequest(report.request_id)"><i class="glyphicon glyphicon-remove-sign"></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </u-main-view>
