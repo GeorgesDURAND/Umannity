@@ -1,1 +1,32 @@
 @import "variables";
+
+.u-createPartner-box {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+
+    div {
+        text-align: left;
+        input {
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding-right: 1px;
+        }
+    }
+
+    .u-createPartner-btn {
+        background-color: $u-orange;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width:500px;
+        height:350px;
+    }
+
+}

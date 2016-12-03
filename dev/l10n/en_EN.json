@@ -9,6 +9,15 @@
     "LOST_PWD":"Lost password ?",
     "WRONG_CONNEXION": "You are on the wrong connexion page",
 
+    "CREATEPARTNER": "Create partner",
+    "PARTNERNAME": "Name",
+    "PARTNERBASELINE": "Baseline",
+    "PARTNERIMAGE": "Logo",
+    "PARTNEREMAIL": "E-mail",
+    "PARTNERPASSWORD": "Password",
+    "PARTNERPOINTS": "Number of points",
+    "CREATEPARTNERBUTTON": "Create the partner",
+    
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
