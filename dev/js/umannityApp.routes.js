@@ -43,6 +43,11 @@
         controller: 'statsAdminController',
         controllerAs: 'vm'
       })
+        .when('/admin/reports', {
+        templateUrl: "partials/reportsListAdmin.html",
+        controller: 'reportsListAdminController',
+        controllerAs: 'vm'
+    })
       .when('/error', {
         templateUrl: 'partials/error.html'
       })

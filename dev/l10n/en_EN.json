@@ -9,6 +9,17 @@
     "LOST_PWD":"Lost password ?",
     "WRONG_CONNEXION": "You are on the wrong connexion page",
 
+    "REPORTSLIST": "Requests reported",
+    "FILTERS": "Filters : ",
+    "REPORTNUMBER": "Report #",
+    "REQUESTNUMBER": "Request #",
+    "USERID": "User #",
+    "USERNAME": "User name",
+    "REQUESTNAME": "Request name",
+    "REQUESTDATE": "Date",
+    "REPORTMOTIV": "Message",
+    "ACTIONS": "Actions",
+    
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
@@ -29,8 +40,7 @@
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
     "CHAT": "Instant messaging",
-
-    "TITLE_STATS": "STATISTIQUES",
+    
     "USERS_RATIO": "Ratio Helpers/Volunteers",
     "helpers" : "Volunteers",
     "takers" : "Needers",

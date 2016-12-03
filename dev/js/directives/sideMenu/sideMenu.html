@@ -38,6 +38,10 @@
                 <div class="menu-icon glyphicon glyphicon-stats"></div>
                 <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'STATS' | translate }}</div>
             </div>
+            <div class="menu-item" ng-click="vm.changeView('/admin/reports')">
+                <div class="menu-icon glyphicon glyphicon-warning-sign"></div>
+                <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'REPORTSLIST' | translate }}</div>
+            </div>
         </div>
     </div>
 </div>

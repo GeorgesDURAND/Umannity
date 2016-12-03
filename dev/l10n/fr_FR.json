@@ -9,6 +9,17 @@
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
 
+    "REPORTSLIST": "Aides signalées",
+    "FILTERS": "Filtres : ",
+    "REPORTNUMBER": "N° rapport",
+    "REQUESTNUMBER": "N° requête",
+    "USERID": "N° Utilisateur",
+    "USERNAME": "Nom d'utilisateur",
+    "REQUESTNAME": "Nom de la requête",
+    "REQUESTDATE": "Date",
+    "REPORTMOTIV": "Message",
+    "ACTIONS": "Mes actions",
+    
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
@@ -20,7 +31,6 @@
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
 
-    "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
     "takers" : "Demandeurs",
