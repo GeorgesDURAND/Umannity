@@ -46,6 +46,8 @@
     "BIRTHDATE": "Date de naissance",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom",
+    "POINTS": "Points",
+    "ADDRESS": "Adresse",
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
