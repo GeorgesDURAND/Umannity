@@ -15,7 +15,7 @@
         vm.filterQuery = "";
         vm.isFiltered = false;
 
-        vm.unReport = unReport;
+        vm.notAReportAnymore = deleteReport;
         vm.deleteRequest = deleteRequest;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
@@ -41,24 +41,22 @@
         function deleteRequest(request_id) {
             RestService.delete("/request", {request_id:request_id})
                 .then (function (data) {
-                if (data.status === 200) {
-                    console.log("Request :: correctly deleted");
-                    vm.unReport(request_id);
-                }else {
-                    console.log("Request :: Error while tempting to delete");   
-                }
+                console.log("Request :: correctly deleted");
+                deleteReport(request_id);
+            })
+                .catch (function () {
+                console.log("Request :: Error while tempting to delete");   
             });
         }
 
-        function unReport(request_id) {
+        function deleteReport(request_id) {
             RestService.delete("/report", {request_id:request_id})
                 .then (function (data) {
-                if (data.status === 200) {
-                    console.log("Report :: correctly deleted");
-                    _refreshReportList(request_id);
-                }else {
-                    console.log("Report :: Error while tempting to delete");   
-                }
+                console.log("Report :: correctly deleted");
+                _refreshReportList(request_id);
+            })
+                .catch (function () {
+                console.log("Report :: Error while tempting to delete");   
             });
         }
 
