@@ -10,7 +10,8 @@ var umannityApp = angular.module('umannityApp', [
     'ngCookies',
     'chart.js',
     'base64',
-    'flow'
+    'flow',
+    'ngImgCrop'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);

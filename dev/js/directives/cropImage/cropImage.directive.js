@@ -5,32 +5,15 @@
         .module('umannityApp.directives')
         .directive('cropImage', cropImage);
 
-    cropImage.$inject = ['$translate'];
-
-    function cropImage($translate) {
+    function cropImage() {
         var directive = {
-            templateUrl:  'js/directives/pageTitle/pageTitle.html',
-            restrict: 'E',
+            templateUrl:  'js/directives/cropImage/cropImage.html',
+            controller: 'cropImageController',
+            controllerAs: 'crop',
             scope: {
-                title_page: '=title'
-            },
-            link: link
+                obj: "=object"
+            }
         };
-
-
-
-        /*var handleFileSelect = function(evt) {
-            var file = evt.currentTarget.files[0];
-            var reader = new FileReader();
-            reader.onload = function (evt) {
-                $scope.$apply(function($scope) {
-                    $scope.myImage = evt.target.result;
-                });
-            };
-            reader.readAsDataURL(file);
-        };
-        angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect); */
-
         return directive;
     }
 })();

@@ -1,11 +1,16 @@
-<div>
-    <div>
-        Select an image file: 
-        <input type="file" id="fileInput" />
-    </div>
-    <div class="cropArea">
-        <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
-    </div>
-    <div>Cropped Image:</div>
-
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 drop-box" 
+     flow-init="{singleFile:true}" 
+     flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" 
+     flow-files-added="crop.uploadImage($files)"
+     flow-drag-enter="style={border: '1px double green'}" 
+     flow-drag-leave="style={}"
+     ng-style="style"
+     flow-drop>
+    <button type="button" class="crop-upload-btn" flow-btn>{{"UPLOADIMAGE" | translate}}</button>
+    <img-crop class="crop-box col-lg-12 col-md-12 col-sm-12 col-xs-12" data-bg-text="{{'DROPIMAGE' | translate}}" flow-img="$flow.files[0]" image="crop.newImage" result-image="obj.cropImage">
+    </img-crop>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <span>{{"CROPPREVIEW" | translate}}</span>
+    <img class="crop-img-preview" ng-src="{{obj.cropImage}}"/>
 </div>

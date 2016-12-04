@@ -18,6 +18,11 @@
     "PARTNERPOINTS": "Nombre de points",
     "CREATEPARTNERBUTTON": "Créer le partenaire",
     
+    "UPLOADIMAGE": "Choisissez votre image",
+    "CROPPREVIEW": "Aperçu de votre image : ",
+    "DROPIMAGE": "Vous pouvez glisser-deposer votre image ici",
+    
+    
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
