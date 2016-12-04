@@ -1,15 +1,16 @@
 /*global angular */
 var umannityApp = angular.module('umannityApp', [
-  'umannityApp.controllers',
-  'umannityApp.services',
-  'umannityApp.directives',
-  'ngRoute',
-  'ui.bootstrap',
-  'pascalprecht.translate',
-  'ngSanitize',
-  'ngCookies',
-  'chart.js',
-  'base64'
+    'umannityApp.controllers',
+    'umannityApp.services',
+    'umannityApp.directives',
+    'ngRoute',
+    'ui.bootstrap',
+    'pascalprecht.translate',
+    'ngSanitize',
+    'ngCookies',
+    'chart.js',
+    'base64',
+    'flow'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);

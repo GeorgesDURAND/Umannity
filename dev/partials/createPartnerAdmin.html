@@ -3,40 +3,38 @@
         <u-page-title title="CREATEPARTNER">
         </u-page-title>
 
-        <form class="u-createPartner-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div>
+        <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.user.picture}}">
+
+        <form role="form" class="u-createPartner-box col-lg-12 col-md-12 col-sm-12 col-xs-12"
+              ng-submit="vm.createPartner()" >
+            <div class="form-group">
                 <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNERNAME' | translate }}" ng-model="vm.newPartner.name">
             </div>
-            <div>
+            <div class="form-group">
                 <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNERBASELINE' | translate }}" ng-model="vm.newPartner.baseline">
             </div>
-            <div>
-                
-                <!--{{'PARTNERIMAGE' | translate }}-->
-                <div>
-                    Select an image file: 
-                    <input type="file" id="fileInput" />
+            <div class="form-group">
+                <div flow-init="{singleFile: true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-name="vm.logoPartner">
+                    <div flow-drop flow-btn>
+                        Drag And Drop your file here
+                    </div>
+                    <img ng-flow="vm.logoPartner.files[0]" src=""/>
+                    <button ng-click="vm.createPartner()">TEST</button>
                 </div>
-                <div class="cropArea">
-                    <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
-                </div>
-                <div>Cropped Image:</div>
-
-                
             </div>
-            <div>
+            <div class="form-group">
                 <input type="email" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNEREMAIL' | translate }}" ng-model="vm.newPartner.email">
             </div>
-            <div>
+            <div class="form-group">
                 <input type="password" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNERPASSWORD' | translate }}" ng-model="vm.newPartner.password">
             </div>
-            <div>
+            <div class="form-group">
                 <input type="number" min="0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNERPOINTS' | translate }}" ng-model="vm.newPartner.points">
             </div>
-            <button class="u-createPartner-btn" ng-click="vm.createNewPartner()">
-                {{'CREATEPARTNERBUTTON' | translate }}
-            </button>
+            <div class="form-group">
+                <input type="submit" value="{{'CREATEPARTNERBUTTON' | translate }}">
+            </div>
         </form>
-
+        {{vm.newPartner}}
     </div>
 </u-main-view>
