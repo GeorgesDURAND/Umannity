@@ -161,8 +161,31 @@
       }
     }
 
+        function editPassword() {
+            UserService.login(vm.user.email, vm.edited_user.old_password)
+                .then(function (user) {
+                    vm.edited_user.password = vm.edited_user.new_password;
+                    UserService.editProfile(vm.edited_user)
+                        .then(function (user) {
+                            vm.edited_user = undefined;
+                            loadUser();
+                        })
+                        .catch(function (error) {
+                            //TODO: Proper error management
+                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
+                        });
+                })
+                .catch(function (error) {
+                    //TODO: Proper error management
+                    addAlert('ERROR_WRONG_PASSWORD');
+                });
+        }
+
         function editProfile() {
             if (undefined !== vm.edited_user) {
+                if (undefined !== vm.edited_user.address) {
+                    vm.edited_user.address = vm.edited_user.address.name;
+                }
                 //Check user enter a birthdate
                 if (null !== vm.edited_user.birthdateDateFormat) {
                     vm.edited_user.birthdate = new Date(vm.edited_user.birthdateDateFormat).getTime() / 1000;
@@ -176,23 +199,7 @@
                             addAlert('ERROR_NO_SAME_PASSWORD');
                         }
                         else {
-                            UserService.login(vm.user.email, vm.edited_user.old_password)
-                                .then(function (user) {
-                                    vm.edited_user.password = vm.edited_user.new_password;
-                                    UserService.editProfile(vm.edited_user)
-                                        .then(function (user) {
-                                            vm.edited_user = undefined;
-                                            loadUser();
-                                        })
-                                        .catch(function (error) {
-                                            //TODO: Proper error management
-                                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
-                                        });
-                                })
-                                .catch(function (error) {
-                                    //TODO: Proper error management
-                                    addAlert('ERROR_WRONG_PASSWORD');
-                                });
+                            editPassword();
                         }
                     }
                 }
