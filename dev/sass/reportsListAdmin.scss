@@ -30,13 +30,13 @@
     }
 
     .u-btn-delete {
-        background-color: #ff9800;
+        background-color: $u-orange;
     }
     .u-btn-unreport {
-        background-color: #42a5f5;
+        background-color: $u-blue;
     }
     .u-btn-view, .u-btn-filter {
-        background-color: rgb(167, 172, 193);
+        background-color: $u-logo-grey;
     }
 
     .glyphicon {
