@@ -9,6 +9,20 @@
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
 
+    "CREATEPARTNER": "Creer un partenaire",
+    "PARTNERNAME": "Nom",
+    "PARTNERBASELINE": "Baseline",
+    "PARTNERIMAGE": "Logo",
+    "PARTNEREMAIL": "E-mail",
+    "PARTNERPASSWORD": "Mot de passe",
+    "PARTNERPOINTS": "Nombre de points",
+    "CREATEPARTNERBUTTON": "Créer le partenaire",
+    
+    "UPLOADIMAGE": "Choisissez votre image",
+    "CROPPREVIEW": "Aperçu de votre image : ",
+    "DROPIMAGE": "Vous pouvez glisser-deposer votre image ici",
+    
+    
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",

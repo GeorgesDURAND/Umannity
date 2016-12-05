@@ -43,6 +43,11 @@
         controller: 'statsAdminController',
         controllerAs: 'vm'
       })
+        .when('/admin/createPartner', {
+        templateUrl: "partials/createPartnerAdmin.html",
+        controller: 'createPartnerAdminController',
+        controllerAs: 'vm'
+    })
       .when('/error', {
         templateUrl: 'partials/error.html'
       })

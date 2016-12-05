@@ -1,0 +1,42 @@
+@import "variables";
+
+.drop-box {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px dashed $u-orange;
+    
+    .crop-upload-btn {
+        padding: 5px;
+        color: white;
+        background-color: $u-orange;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .crop-box {
+        height: 300px;
+        line-height: 100px;
+        background: rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+    }
+
+    .crop-box::after {
+        color: #fff;
+        content: attr(data-bg-text);
+        overflow: hidden;
+        display: block;
+        font-size: 40px;
+    }
+    
+    
+}
+
+.drop-box:hover {
+    border: 1px double $u-orange;
+}
+
+.crop-img-preview {
+    height: auto;
+    border-radius: 50%;
+    margin-top: 25px;
+}
