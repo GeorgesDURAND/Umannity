@@ -1,0 +1,9 @@
+<div class="main-view-loader" ng-if="appVm.getIsLoading()">
+    <div class="main-view-loader-text">
+        <p><i class="glyphicon glyphicon-refresh rotating"></i></p>
+        {{ 'LOADING' | translate }}
+    </div>
+</div>
+<div class="main-view-container-no-menu">
+        <ng-transclude></ng-transclude>
+</div>

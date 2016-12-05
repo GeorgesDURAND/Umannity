@@ -4,11 +4,14 @@ $main-view-loader-color: rgba(64, 64, 64, 0.91);
 $main-view-loader-font-size: 2em;
 $main-view-font-color: #fff;
 
-.main-view-container{
-    /*position:relative;
-    flex:content;
+.main-view-container-no-menu {
+    display: block;
+    position: fixed;
+    width: 100%;
+    /* -webkit-background-size: cover; */
     height: 100%;
-    overflow: scroll;*/
+}
+.main-view-container{
     display: block;
     position: fixed;
     width: 100%;

@@ -1,3 +1,9 @@
+// USAGE :
+//  <u-page-title title="MYTITLE"></u-page-title>
+//  
+//  MYTITLE must be a keyword store in en_ENjson and fr_FR.json, 
+//  as it will be translated then display in the right way
+
 (function() {
     'use strict';
 
