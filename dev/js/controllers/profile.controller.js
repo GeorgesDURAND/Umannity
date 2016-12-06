@@ -15,6 +15,9 @@
         vm.editProfilePicture = editProfilePicture;
         vm.errors = [];
         vm.closeAlert = closeAlert;
+        vm.searchProfile = searchProfile;
+        vm.hide_element = false;
+        vm.hideElement = hideElement;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -38,17 +41,16 @@
                 loadUser();
         }
 
-        function loadUser() {
-            UserService.loadUser()
+        function loadUser(id) {
+            UserService.loadUser(id)
                 .then(function (user) {
                     vm.user = user;
-                    loadPicture();
+                    loadPicture(id);
                 });
         }
 
-        //Loading the picture
-        function loadPicture() {
-            UserService.loadPicture()
+        function loadPicture(id) {
+            UserService.loadPicture(id)
                 .then(function (picture) {
                     vm.user.picture = picture;
                 });
@@ -121,6 +123,23 @@
             else {
                 console.log("editProfilePicture in profile controller: picture undefined");
             }
+        }
+
+        function hideElement() {
+            console.log("hide element.................");
+            vm.hide_element = true;
+        }
+
+        function searchProfile() {
+            vm.hide_element = true;
+            console.log("searchProfile.................");
+            UserService.loadUser(vm.user_id) //id
+                .then(function() {
+                    console.log("USER FIND.................");
+                    //user/:id .HTML
+                    loadUser(vm.user_id)
+                    $location.path("/profile/" + vm.user_id);
+                })
         }
     }
 })();

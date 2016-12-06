@@ -107,10 +107,11 @@
             return _user;
         }
 
-        function loadPicture() {
+        function loadPicture(id) {
             var deferred = $q.defer();
+            var params = {id:id};
 
-            RestService.get("/user/picture")
+            RestService.get("/user/picture", params)
                 .then(function (request) {
                     var picture = request.data.picture;
 
