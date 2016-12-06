@@ -33,7 +33,29 @@
                 <span class="text-muted">{{ 'ADDRESS' | translate }}</span> {{ vm.user.address }}<br><br>
             </div>
         </div>
+
+        <div class="row" ng-hide="vm.hide_element">
+            <button type="submit" class="btn btn-primary" ng-submit="vm.hideElement();">
+                <span class="glyphicon glyphicon-cog"></span> {{ 'EDIT' | translate }}
+            </button>
+            <form class="form-horizontal" role="form" ng-submit="vm.searchProfile()">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"> Type ID</label>
+                    <div class="col-lg-1">
+                        <input class="form-control" type="text" ng-model="vm.user_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-primary" value="Search">
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')" close="vm.closeAlert($index)">{{error | translate}}</div>
+        <div class="row" ng-hide="vm.hide_element">
             <form class="form-horizontal" role="form" ng-submit="vm.editProfile()">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">{{ 'FIRSTNAME' | translate }}</label>
@@ -105,6 +127,7 @@
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     </div>
     -->
