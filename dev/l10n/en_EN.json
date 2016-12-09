@@ -22,6 +22,18 @@
     "CROPPREVIEW": "Preview of your image : ",
     "DROPIMAGE": "You can drop your image here",
     
+    "REPORTSLIST": "Requests reported",
+    "REPORTFILTER": "What are you searching for ?",
+    "FILTERS": "Filters : ",
+    "REPORTNUMBER": "Report #",
+    "REQUESTNUMBER": "Request #",
+    "USERID": "User #",
+    "USERNAME": "User name",
+    "REQUESTNAME": "Request name",
+    "REQUESTDATE": "Date",
+    "REPORTMOTIV": "Message",
+    "ACTIONS": "Actions",
+    
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
@@ -42,8 +54,7 @@
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
     "CHAT": "Instant messaging",
-
-    "TITLE_STATS": "STATISTIQUES",
+    
     "USERS_RATIO": "Ratio Helpers/Volunteers",
     "helpers" : "Volunteers",
     "takers" : "Needers",
