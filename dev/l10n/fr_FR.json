@@ -9,6 +9,10 @@
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
 
+    "TOCONNECTION": "Retourner à la page de connexion",
+    "RESETPWD": "Changer mon mot de passe",
+    "NOTIFICATIONSEND": "Vous allez recevoir un e-mail sous peu, si ce n'est le cas, merci de vérifier vos spams puis de contacter le service support.",
+    
     "CREATEPARTNER": "Creer un partenaire",
     "PARTNERNAME": "Nom",
     "PARTNERBASELINE": "Baseline",

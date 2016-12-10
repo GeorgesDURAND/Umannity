@@ -29,6 +29,11 @@
             controller: 'loginController',
             controllerAs: 'vm'
         })
+            .when('/resetPassword', {
+            templateUrl: "partials/resetPassword.html",
+            controller: 'resetPasswordController',
+            controllerAs: 'vm'
+        })
             .when('/subscribe', {
             templateUrl: "partials/subscribe.html",
             controller: 'subscribeController'
