@@ -1,13 +1,17 @@
 @import "variables";
 
-.u-header{
-    height: 70px;
-    background: $u-orange;
-    min-width: 100vw;
-    
-    position: fixed;
+u-header {
+    position: fixed !important;
+    padding: 0px !important;
+    top: 0px;
+    z-index: 90;
 
-    .u-header-admin{
-        background: $app-gray;
+    .u-header{
+        height: 70px;
+        background: $u-orange;
+
+        .u-header-admin{
+            background: $app-gray;
+        }
     }
 }

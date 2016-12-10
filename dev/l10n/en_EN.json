@@ -80,6 +80,8 @@
     "VISIO_HANGUP": "Hang up",
     "VISIO_ISCALLING": "is calling you.",
 
-    "5": "Wrong login informations"
+    "5": "Wrong login informations",
+    "ADMINISTRATION": "Administration"
+    
 
 }

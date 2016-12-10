@@ -78,5 +78,6 @@
     "ERROR_WRONG_PASSWORD": "Vérifiez votre mot de passe et réessayez",
     "ERROR_WRONG_FORMAT_PASSWORD": "Votre mot de passe doit faire entre 5 et 14 caractères",
     "ERROR_NO_SAME_PASSWORD": "Vous n'avez pas renseignez 2 fois le même mot de passe",
-    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile"
+    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile",
+    "ADMINISTRATION": "Administration"
 }
