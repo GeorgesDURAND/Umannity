@@ -1,0 +1,64 @@
+<u-main-view-no-menu>
+    <div class="u-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div ng-click="vm.changeView('/login')" class="u-to-connection col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            {{ 'TOCONNECTION' | translate }}
+        </div>
+        <div class="u-center-block col-lg-offset-4 col-lg-4  col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+            <div class="col-md-offset-1 col-md-10">
+                <img class="img-responsive u-logo-subscribe" src="../img/logoUmannityLogin.png" />
+            </div>
+            <div class="u-subscribe-navigation col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input type="radio" id="step1" ng-model="vm.step" ng-value="0">
+                <input type="radio" id="step2" ng-model="vm.step" ng-value="1">
+                <input type="radio" id="step3" ng-model="vm.step" ng-value="2">
+                
+                <label for="step1" ng-class="vm.step === 0 ? 'subscribe-circle-active' : 'subscribe-circle'">
+                </label>
+                <!--<span for="step1"> Etape 1 </span>-->
+                <label for="step2" ng-class="vm.step === 1 ? 'subscribe-circle-active' : 'subscribe-circle'">
+                    <!--<span> Etape 1 </span>-->
+                </label>
+                <label for="step3" ng-class="vm.step === 2 ? 'subscribe-circle-active' : 'subscribe-circle'">
+                   <!-- <span> Etape 1 </span>-->
+                </label>
+                
+            </div>
+            <div class="u-subscribe-block col-md-12">
+                <label uib-alert class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 alert-danger u-alert-login-blue" ng-repeat="error in vm.errors track by $index" close="vm.closeAlert($index)">{{error | translate}}</label>
+                <form class="css-form" novalidate>
+
+                    <div ng-show="vm.step === 0">
+                        <label class="u-label-subscribe col-md-12 ">
+                            {{ 'EMAIL' | translate }}
+                        </label>
+                        <input class="u-input-subscribe col-md-12" type="text" ng-model="vm.email" name="email"/>
+                        <label class="u-label-subscribe col-md-12">
+                            {{ 'PASSWORD' | translate }}
+                        </label>
+                        <input class="u-input-subscribe col-md-12" type="password" ng-model="vm.password" name="password"/>
+                        
+                        <btn class="btn u-btn-subscribe" ng-click="vm.click()">
+                            {{ 'CONNECT' | translate }}
+                        </btn>
+                        
+                    </div>
+                    <div ng-show="vm.step === 1">
+                        INFOS PSEUDO IMAGE
+                    </div>
+                    <div ng-show="vm.step === 2">
+                       INFOS COMPETENCES
+                    </div>
+                    
+
+
+                    <!--<btn class="btn u-btn-subscribe col-lg-offset-0 col-lg-12 col-md-offset-0 col-md-12 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8 " ng-click="vm.click()">
+                        {{ 'CONNECT' | translate }}
+                    </btn>
+-->
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</u-main-view-no-menu>

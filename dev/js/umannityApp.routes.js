@@ -30,8 +30,9 @@
             controllerAs: 'vm'
         })
             .when('/subscribe', {
-            templateUrl: "partials/subscribe.html",
-            controller: 'subscribeController'
+            templateUrl: "partials/subscribeUser.html",
+            controller: 'subscribeUserController',
+            controllerAs: 'vm'
         })
             .when('/chat', {
             templateUrl: "partials/chat.html",
