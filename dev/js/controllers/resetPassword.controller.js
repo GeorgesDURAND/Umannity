@@ -31,11 +31,11 @@
 
         function resetPassword () {
             RestService.post('/user/reset_password', {"email": vm.email} )
-            .then(function (data){
+            .then(function (data) {
                 console.log("ResetPassword :: notification sent");
                 vm.reset = true;
             })
-            .catch(function (error){
+            .catch(function (error) {
                 vm.errors.push(error.data.error);
             });
         }
