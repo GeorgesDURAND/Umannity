@@ -32,31 +32,30 @@
                 <span class="text-muted">{{ 'BIRTHDATE' | translate }}</span> {{ vm.user.formattedBirthdate }}<br>
                 <span class="text-muted">{{ 'ADDRESS' | translate }}</span> {{ vm.user.address }}<br><br>
             </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-primary glyphicon glyphicon-cog" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit"> Edit</button>
+            </div>
         </div>
-
-        <div class="row" ng-hide="vm.hide_element">
-            <button type="submit" class="btn btn-primary" ng-submit="vm.hideElement();">
-                <span class="glyphicon glyphicon-cog"></span> {{ 'EDIT' | translate }}
-            </button>
-            <form class="form-horizontal" role="form" ng-submit="vm.searchProfile()">
+        <div class="row">
+            <form class="form-horizontal" role="form" ng-submit="vm.otherUser()">
                 <div class="form-group">
-                    <label class="col-lg-3 control-label"> Type ID</label>
-                    <div class="col-lg-1">
-                        <input class="form-control" type="text" ng-model="vm.user_id">
+                    <label class="col-lg-3 control-label">ID</label>
+                    <div class="col-lg-3">
+                        <input class="form-control" type="text" ng-model="vm.other_user_id">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
                         <input type="submit" class="btn btn-primary" value="Search">
+                        <span></span>
                     </div>
                 </div>
             </form>
         </div>
 
         <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')" close="vm.closeAlert($index)">{{error | translate}}</div>
-        <div class="row" ng-hide="vm.hide_element">
-            <form class="form-horizontal" role="form" ng-submit="vm.editProfile()">
+            <form class="form-horizontal" role="form" ng-submit="vm.editProfile()" ng-hide="vm.goEdit">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">{{ 'FIRSTNAME' | translate }}</label>
                         <div class="col-lg-8">
@@ -72,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">{{ 'EMAIL' | translate }}</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
+                        <input class="form-control" type="email" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
                     </div>
                 </div>
                 <div class="form-group">

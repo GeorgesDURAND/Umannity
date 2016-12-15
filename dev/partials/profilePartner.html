@@ -1,0 +1,99 @@
+<u-main-view>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <img class="u-banner-profile" src="../img/banner.jpg"/>
+            </div>
+            <div class="navbar">
+                <span>TEXTE_1</span>
+                <span>TEXTE_2</span>
+                <span>TEXTE_3</span>
+            </div>
+            <div class="col-md-offset-2">
+                <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.partner.picture}}"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="only-bottom-margin">{{ vm.partner.name }}</h1>
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    <h1 class="only-bottom-margin"> {{ vm.partner.points }}</h1>
+                    <u-page-title title=Points></u-page-title>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <span class="text-muted">{{ 'POINTS' | translate }}</span> {{ vm.partner.points }}<br>
+                    <span class="text-muted">{{ 'EMAIL' | translate }}</span> {{ vm.partner.email }}<br>
+                    <span class="text-muted">{{ 'BASELINE' | translate }}</span> {{ vm.partner.baseline }}<br>
+                    <span class="text-muted">{{ 'NAME' | translate }}</span> {{ vm.partner.name }}<br><br>
+                </div>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-primary glyphicon glyphicon-cog" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit"> Edit</button>
+                </div>
+            </div>
+            <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')" close="vm.closeAlert($index)">{{error | translate}}</div>
+            <form class="form-horizontal" role="form" ng-submit="vm.editProfile()" ng-hide="vm.goEdit">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'NAME' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" placeholder="{{ vm.partner.name }}" ng-model="vm.edited_partner.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'BASELINE' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" placeholder="{{ vm.partner.baseline }}" ng-model="vm.edited_partner.baseline">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'EMAIL' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="email" placeholder="{{ vm.partner.email }}" ng-model="vm.edited_partner.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'TYPE_YOUR_PASSWORD' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="password" ng-model="vm.edited_partner.old_password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'NEW_PASSWORD' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="password" ng-model="vm.edited_partner.new_password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">{{ 'CONFIRM_PASSWORD' | translate }}</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="password" ng-model="vm.edited_partner.confirm_new_password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <label class="btn btn-default btn-file">
+                            {{ 'CHANGE_PHOTO' | translate }}
+                            <input type="file" style="display: none;" u-upload-picture="vm.edited_partner.picture">
+                        </label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                        <span></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    -->
+</u-main-view>

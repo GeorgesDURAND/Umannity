@@ -19,6 +19,11 @@
             controller: 'profileController',
             controllerAs: 'vm'
         })
+            .when('/partner', {
+                templateUrl: 'partials/profilePartner.html',
+                controller: 'profilePartnerController',
+                controllerAs: 'vm'
+            })
             .when('/login', {
             templateUrl: "partials/loginUser.html",
             controller: 'loginController',
