@@ -1,5 +1,12 @@
 @import "variables";
 
+
+u-side-menu {
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+}
+
 .u-sidemenu {
     transition: 0.2s ease-in-out;
     width: $sidemenu-width;

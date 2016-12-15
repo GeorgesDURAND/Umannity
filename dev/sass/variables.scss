@@ -27,9 +27,32 @@ html {
 
 body {
     height: 100%;
+    background-color: $app-gray;
 }
 
-.u-view {
-    height: 100%;
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: $u-orange;
+    border: 0px none #ffffff;
+}
+::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 0px 50px 0px 0px;
+}
+::-webkit-scrollbar-thumb:vertical {
+    border-radius: 0px 0px 0px 50px;
+}
+::-webkit-scrollbar-track {
     background: $app-gray;
+    border: 0px none #ffffff;
+    border-radius: 0px
+}
+::-webkit-scrollbar-corner {
+    background: $u-orange;
 }

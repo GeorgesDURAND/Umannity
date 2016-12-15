@@ -6,7 +6,7 @@
 </div>
 <div class="main-view-container">
     <u-side-menu ng-if="appVm.getUser()"></u-side-menu>
-    <u-header ng-if="appVm.getUser()"></u-header>
+    <u-header class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="appVm.getUser()"></u-header>
     <div ng-class="appVm.isCollapsed ? 'main-view-content-collapsed' : 'main-view-content'">
         <ng-transclude></ng-transclude>
     </div>
