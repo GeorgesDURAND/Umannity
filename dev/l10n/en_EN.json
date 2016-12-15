@@ -2,6 +2,7 @@
     "CONNECT": "Connect",
     "EMAIL": "E-mail",
     "PASSWORD": "Password",
+    "CONFIRMPASSWORD": "Confirm your password",
     "TOLOGINPARTNER": "You are a commercial partner ? Click here",
     "TOLOGINUSER":"You are an user ? Click here",
     "SUBSCRIBE":"To subscribe, it's here !",
@@ -44,7 +45,7 @@
     "USER_PROFILE": "User profile",
     "BIRTHDATE": "Birthdate",
     "FIRSTNAME": "First name",
-    "LASTNAME": "Name",
+    "LASTNAME": "Last Name",
     "TYPE_YOUR_PASSWORD": "Type your password",
     "NEW_PASSWORD": "New password",
     "CONFIRM_PASSWORD": "Confirm new password",
@@ -85,7 +86,20 @@
     "VISIO_ISCALLING": "is calling you.",
 
     "5": "Wrong login informations",
-    "ADMINISTRATION": "Administration"
+    "ADMINISTRATION": "Administration",
     
-
+    "ACCEPTCGV": "I know and accept the condition and terms of use of Umannity",
+    "SUBSCRIBENOW": "I subscribe now",
+    "FILLPROFIL": "I fill my profile now",
+    "LASTSTEP": "Previous step",
+    "NEXTSTEP": "Next step",
+    
+    "BADCONFIRMPWD": "The password and confirm password are not the same",
+    "ALLCHAMPFILL": "First_name, Last_name, birthdate, e-mail and password must be filled",
+    
+    "PROFILIMAGEQUESTION": "Please, choose your profile image :",
+    "LOCATIONQUESTION": "Where are you most likely going to help people around ?",
+    "SEXQUESTION": "You are a :",
+    "SEXWOMAN":"Woman",
+    "SEXMAN": "Man"
 }

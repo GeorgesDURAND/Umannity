@@ -11,51 +11,129 @@
                 <input type="radio" id="step1" ng-model="vm.step" ng-value="0">
                 <input type="radio" id="step2" ng-model="vm.step" ng-value="1">
                 <input type="radio" id="step3" ng-model="vm.step" ng-value="2">
-                
+
                 <label for="step1" ng-class="vm.step === 0 ? 'subscribe-circle-active' : 'subscribe-circle'">
                 </label>
-                <!--<span for="step1"> Etape 1 </span>-->
                 <label for="step2" ng-class="vm.step === 1 ? 'subscribe-circle-active' : 'subscribe-circle'">
-                    <!--<span> Etape 1 </span>-->
                 </label>
                 <label for="step3" ng-class="vm.step === 2 ? 'subscribe-circle-active' : 'subscribe-circle'">
-                   <!-- <span> Etape 1 </span>-->
                 </label>
-                
             </div>
             <div class="u-subscribe-block col-md-12">
                 <label uib-alert class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 alert-danger u-alert-login-blue" ng-repeat="error in vm.errors track by $index" close="vm.closeAlert($index)">{{error | translate}}</label>
                 <form class="css-form" novalidate>
 
-                    <div ng-show="vm.step === 0">
-                        <label class="u-label-subscribe col-md-12 ">
+                    <div ng-show="vm.step === 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <label class="u-label-subscribe">
+                            {{ 'FIRSTNAME' | translate }}
+                        </label>
+                        <input class="u-input-subscribe" type="text" ng-model="vm.newUser.first_name" name="first_name"/>
+                        <label class="u-label-subscribe">
+                            {{ 'LASTNAME' | translate }}
+                        </label>
+                        <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="last_name"/>
+                        <label class="u-label-subscribe">
+                            {{ 'BIRTHDATE' | translate }}
+                        </label>
+                        <md-datepicker ng-model="vm.newUser.birthdate" type="date"></md-datepicker>
+                        <label class="u-label-subscribe">
                             {{ 'EMAIL' | translate }}
                         </label>
-                        <input class="u-input-subscribe col-md-12" type="text" ng-model="vm.email" name="email"/>
-                        <label class="u-label-subscribe col-md-12">
+                        <input class="u-input-subscribe " type="text" ng-model="vm.newUser.email" name="email"/>
+                        <label class="u-label-subscribe ">
                             {{ 'PASSWORD' | translate }}
                         </label>
-                        <input class="u-input-subscribe col-md-12" type="password" ng-model="vm.password" name="password"/>
-                        
-                        <btn class="btn u-btn-subscribe" ng-click="vm.click()">
-                            {{ 'CONNECT' | translate }}
-                        </btn>
-                        
+                        <input class="u-input-subscribe " type="password" ng-model="vm.newUser.password" name="password"/>
+                        <label class="u-label-subscribe ">
+                            {{ 'CONFIRMPASSWORD' | translate }}
+                        </label>
+                        <input class="u-input-subscribe " type="password" ng-model="vm.confirmPwd" name="password"/>
+
+                        <div class="cgv-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <span class="no-padding col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <input id="cgv" type="checkbox" ng-model="vm.cgv">
+                                <label for="cgv">
+                                </label>
+                            </span>
+                            <a ng-href="#!/cgv" target="_blank" class="cgv-link col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                                {{"ACCEPTCGV" | translate}}
+                            </a>
+                        </div>
+
+                        <button class="btn u-btn-subscribe col-lg-4 col-md-4 col-sm-5 col-xs-5" ng-click="vm.subscribe()" ng-disabled="!vm.cgv">
+                            {{ 'SUBSCRIBENOW' | translate }}
+                        </button>
+
+                        <button class="btn u-btn-subscribe col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-2 col-xs-5" ng-click="vm.changeStep(vm.step+1)" ng-disabled="!vm.cgv">
+                            {{ 'FILLPROFIL' | translate }}
+                        </button>
+
+
                     </div>
                     <div ng-show="vm.step === 1">
-                        INFOS PSEUDO IMAGE
+
+                        <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {{'PROFILIMAGEQUESTION' | translate }}
+                        </label>
+                        <crop-image object="vm.tmp" class="u-input-image col-lg-12 col-md-12 col-sm-12 col-xs-12"></crop-image>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {{'LOCATIONQUESTION' | translate}}
+                            </label>
+                            <label class="u-label-subscribe">
+                                {{ 'ADDRESS' | translate }}
+                            </label>
+                            <input class="u-input-subscribe" type="text" ng-model="vm.newUser.first_name" name="first_name"/>
+                            <label class="u-label-subscribe">
+                                {{ 'ZIPCODE' | translate }}
+                            </label>
+                            <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="last_name"/>
+                        </div>
+
+                        <div class="sex-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {{'SEXQUESTION' | translate }}
+                            </label>
+                            <div class="sex-radio col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <span class="no-padding col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <input id="sex-women" type="radio" ng-model="vm.sex" ng-value="0">
+                                    <label for="sex-women"></label>
+                                </span>
+                                <label class="cgv-link col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    {{"SEXWOMAN" | translate}}
+                                </label>
+
+                                <span class="no-padding col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <input id="sex-men" type="radio" ng-model="vm.sex" ng-value="1">
+                                    <label for="sex-men"></label>
+                                </span>
+                                <label class="cgv-link col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    {{"SEXMAN" | translate}}
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn u-btn-subscribe col-lg-4  col-md-4  col-sm-5 col-xs-5" ng-click="vm.changeStep(vm.step-1)">
+                            {{ 'LASTSTEP' | translate }}
+                        </button>
+                        <button class="btn u-btn-subscribe col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-2 col-xs-5" ng-click="vm.changeStep(vm.step+1)">
+                            {{ 'NEXTSTEP' | translate }}
+                        </button>
+
                     </div>
                     <div ng-show="vm.step === 2">
-                       INFOS COMPETENCES
+
+                        <button class="btn u-btn-subscribe col-lg-4  col-md-4  col-sm-5 col-xs-5" ng-click="vm.changeStep(vm.step-1)">
+                            {{ 'LASTSTEP' | translate }}
+                        </button>
+                        <button class="btn u-btn-subscribe col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-2 col-xs-5" ng-click="vm.subscribe()">
+                            {{ 'SUBSCRIBENOW' | translate }}
+                        </button>
+
+
                     </div>
-                    
-
-
-                    <!--<btn class="btn u-btn-subscribe col-lg-offset-0 col-lg-12 col-md-offset-0 col-md-12 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8 " ng-click="vm.click()">
-                        {{ 'CONNECT' | translate }}
-                    </btn>
--->
-
 
                 </form>
             </div>

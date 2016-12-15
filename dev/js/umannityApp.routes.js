@@ -39,6 +39,11 @@
             controller: 'subscribeUserController',
             controllerAs: 'vm'
         })
+            .when('/cgv', {
+            templateUrl: "partials/cgv.html",
+            controller: 'subscribeUserController',
+            controllerAs: 'vm'
+        })
             .when('/chat', {
             templateUrl: "partials/chat.html",
             controller: 'chatController',

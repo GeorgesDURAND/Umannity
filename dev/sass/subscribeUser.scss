@@ -55,10 +55,9 @@
             height: 50px;
             width: 50px;
             margin-left: 4%;
-            margin-right: 4%
-                
+            margin-right: 4%;
         }
-        
+
         .subscribe-circle-active {
             background-color: $u-orange;
         }
@@ -66,14 +65,19 @@
 
     .u-subscribe-block {
         background-color: rgba(0, 0, 0, 0.15);
+        padding-bottom: 15px;
 
-        .u-label-subscribe {
+        .u-label-subscribe, .u-question-subscribe {
             padding-top: 10px;
             line-height: 23px;
             text-transform: uppercase;
             font-weight: 500;
         }
 
+        .u-question-subscribe {
+           text-align: left;
+        }
+        
         .u-input-subscribe {
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.6);
@@ -92,6 +96,85 @@
             border: 1px solid $u-blue;
         }
 
+        .cgv-box {
+            text-align: left;
+            margin-top: 10px;
+            height: 30px;
+            line-height: 30px;
+
+            .no-padding {
+                padding: 0px;
+            }
+
+            input[type=checkbox] {
+                display: none;
+            }
+
+            input[type=checkbox] + label {
+                background-image: url(/img/input/orange.png);
+                width: 30px;
+                height: 30px;
+                background-position: 0px;
+                background-size: cover;
+            }
+
+            input[type=checkbox] + label:hover {
+                background-position: -30px;
+            }
+
+            input[type=checkbox]:checked + label {
+                background-position: -60px;
+            }
+
+            .cgv-link {
+                cursor: pointer;
+                text-decoration: none;
+                color: white;
+            }
+
+            .cgv-link:hover {
+                text-decoration: underline;
+            }
+        }
+
+
+        .sex-box {
+
+            .no-padding {
+                padding: 0px;
+            }
+
+            .sex-radio {
+
+                margin-top: 10px;
+
+                input[type=radio] {
+                    display: none;
+                }
+
+                input[type=radio] + label {
+                    background-image: url(/img/input/orange.png);
+                    width: 30px;
+                    height: 30px;
+                    background-position: -150px;
+                    background-size: cover;
+                }
+
+                input[type=radio] + label:hover {
+                    background-position: -180px;
+                }
+
+                input[type=radio]:checked + label {
+                    background-position: -210px;
+                }
+            }
+
+        }
+        
+        .u-input-image {
+            margin-top: 20px;
+        }
+
         .u-btn-subscribe {
             margin-top: 10px;
             padding: 9px;
@@ -104,6 +187,11 @@
             color: white;
             background-color: $u-orange;
             opacity: 1;
+        }
+
+        .u-btn-subscribe[disabled] {
+            background-color: $u-logo-grey;
+            cursor: default;
         }
 
         .u-subs-link-subscribe, .u-pwd-link-subscribe {
