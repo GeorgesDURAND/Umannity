@@ -57,6 +57,7 @@
             .when('/admin/createPartner', {
             templateUrl: "partials/createPartnerAdmin.html",
             controller: 'createPartnerAdminController',
+            controllerAs: 'vm'
         })
             .when('/admin/reports', {
             templateUrl: "partials/reportsListAdmin.html",

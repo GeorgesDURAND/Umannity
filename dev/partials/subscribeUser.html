@@ -19,7 +19,7 @@
                 <label for="step3" ng-class="vm.step === 2 ? 'subscribe-circle-active' : 'subscribe-circle'">
                 </label>
             </div>
-            <div class="u-subscribe-block col-md-12">
+            <div md-content class="u-subscribe-block col-md-12">
                 <label uib-alert class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 alert-danger u-alert-login-blue" ng-repeat="error in vm.errors track by $index" close="vm.closeAlert($index)">{{error | translate}}</label>
                 <form class="css-form" novalidate>
 
@@ -33,10 +33,10 @@
                             {{ 'LASTNAME' | translate }}
                         </label>
                         <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="last_name"/>
-                        <label class="u-label-subscribe">
+                        <label class="u-label-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             {{ 'BIRTHDATE' | translate }}
                         </label>
-                        <md-datepicker ng-model="vm.newUser.birthdate" type="date"></md-datepicker>
+                        <md-datepicker ng-model="vm.newUser.birthdate" md-placeholder="Enter date" md-min-date="vm.dateMin" md-max-date="vm.dateMax" type="date" class="u-datepicker-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12"></md-datepicker>
                         <label class="u-label-subscribe">
                             {{ 'EMAIL' | translate }}
                         </label>
@@ -82,14 +82,12 @@
                             <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {{'LOCATIONQUESTION' | translate}}
                             </label>
-                            <label class="u-label-subscribe">
-                                {{ 'ADDRESS' | translate }}
-                            </label>
-                            <input class="u-input-subscribe" type="text" ng-model="vm.newUser.first_name" name="first_name"/>
-                            <label class="u-label-subscribe">
-                                {{ 'ZIPCODE' | translate }}
-                            </label>
-                            <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="last_name"/>
+                            <input class="u-input-subscribe" type="text" ng-model="vm.newUser.address.name" name="first_name" 
+                                   vs-google-autocomplete 
+                                   vs-street="vm.newUser.address.street"
+                                   vs-city="vm.newUser.address.city"
+                                   vs-post-code="vm.newUser.address.zipcode"/>
+
                         </div>
 
                         <div class="sex-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -114,7 +112,7 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <button class="btn u-btn-subscribe col-lg-4  col-md-4  col-sm-5 col-xs-5" ng-click="vm.changeStep(vm.step-1)">
                             {{ 'LASTSTEP' | translate }}
                         </button>

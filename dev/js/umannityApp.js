@@ -11,7 +11,9 @@ var umannityApp = angular.module('umannityApp', [
     'chart.js',
     'base64',
     'flow',
-    'ngImgCrop'
+    'ngImgCrop',
+    'ngAria',
+    'ngMaterial'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);
