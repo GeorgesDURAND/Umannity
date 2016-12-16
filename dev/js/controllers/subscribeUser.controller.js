@@ -17,14 +17,24 @@
         vm.closeAlert = closeAlert;
         /*vm.openCGV = openCGV;*/
 
-        vm.step = 1;
+        vm.step = 0;
         vm.cgv = false;
         vm.confirmPwd = "";
         vm.newUser = [];
         vm.errors = [];
         
         vm.sex = 0;
-        vm.tmp = [];
+        vm.tmp = {};
+        vm.tmp.cropImage = '';
+        vm.now = new Date();
+        vm.dateMax = new Date(
+            vm.now.getFullYear() - 13,
+            vm.now.getMonth(),
+            vm.now.getDate());
+        vm.dateMin = new Date(
+            vm.now.getFullYear() - 100,
+            vm.now.getMonth(),
+            vm.now.getDate());
 
         /* $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
