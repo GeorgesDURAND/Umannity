@@ -123,6 +123,7 @@
                     </div>
                     <div ng-show="vm.step === 2">
 
+                        <choose-skills object="vm.newUser"></choose-skills>
                         <button class="btn u-btn-subscribe col-lg-4  col-md-4  col-sm-5 col-xs-5" ng-click="vm.changeStep(vm.step-1)">
                             {{ 'LASTSTEP' | translate }}
                         </button>
