@@ -13,11 +13,13 @@
         var _cache_key = 'partner';
 
         var service = {
-            logout: logout,
+            getPartner: getPartner,
+            getApiKey: getApiKey,
             loadPartner: loadPartner,
+            login: login,
+            logout: logout,
             editProfile: editProfile,
-            putPicture: putPicture,
-            login: login
+            putPicture: putPicture
         };
 
         return service;
@@ -81,6 +83,21 @@
                     deferred.reject(error);
                 });
             return deferred.promise;
+        }
+
+        function getPartner() {
+            console.log("partnerService :: getPartner called");
+            if (undefined === _partner) {
+                var storePartner = $cookies.get(_cache_key);
+                if (undefined !== storePartner) {
+                    _partner = JSON.parse(storePartner);
+                }
+            }
+            return _partner;
+        }
+
+        function getApiKey() {
+            return RestService.getApiKey();
         }
 
         function login(email, password) {

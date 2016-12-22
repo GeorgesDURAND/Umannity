@@ -104,8 +104,8 @@
                                         vm.edited_partner = undefined;
                                     })
                                     .catch(function (error) {
-                                        addAlert('EDIT_PROFILE_ERROR');
-                                    })
+                                        addAlert(error.data.error);
+                                    });
                             }
                         })
                         .catch(function (error) {
@@ -120,8 +120,8 @@
                             vm.edited_partner = undefined;
                         })
                         .catch(function (error) {
-                            addAlert('EDIT_PROFILE_ERROR');
-                        })
+                            addAlert(error.data.error);
+                        });
                 }
             }
         }

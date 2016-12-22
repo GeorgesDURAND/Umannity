@@ -13,8 +13,6 @@ $profile-banner-height: 170px;
   background: -o-linear-gradient(bottom right, gray, transparent); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom right, gray, transparent); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, gray, transparent); /* Standard syntax */
-
-
 }
 
 .navbar {
@@ -32,8 +30,17 @@ $profile-banner-height: 170px;
   margin-top: -120px;
   margin-left: 40px;
   position: relative;
-  z-index: 0;
+  z-index: 2;
   border:5px solid #ffffff;
   max-width: $profile-picture-size;
   max-height: $profile-banner-height;
+}
+
+.toppad {
+  padding-top: 80px;
+  padding-bottom: 20px;
+  position: relative;
+  top: -70px;
+  background-color: white;
+  z-index: 1;
 }

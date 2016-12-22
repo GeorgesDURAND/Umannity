@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('profileController', profileController);
 
-    profileController.$inject = ['$scope', 'UserService'];
+    profileController.$inject = ['$scope', 'UserService', '$translate', '$q'];
 
-    function profileController($scope, UserService) {
+    function profileController($scope, UserService, $translate, $q) {
         /* jshint validthis: true */
         var vm = this;
         vm.edited_user = {};
@@ -27,7 +27,7 @@
                 if (vm.errors.length >= 4) {
                     vm.errors.splice(0, 1);
                 }
-            vm.errors.push(error);
+                vm.errors.push(error);
             }
         }
 
@@ -44,14 +44,20 @@
 
         function loadUser(id) {
             if (undefined !== id) {
-                vm.hideButtonEdit = true
+                vm.hideButtonEdit = true;
             }
             else {
-                vm.hideButtonEdit = false
+                vm.hideButtonEdit = false;
             }
             UserService.loadUser(id)
                 .then(function (user) {
                     vm.user = user;
+                    if (vm.user.sex === 0) {
+                        vm.user.gender = $translate.instant("WOMAN");
+                    }
+                    else {
+                        vm.user.gender = $translate.instant("MAN");
+                    }
                     loadPicture(id);
                 });
         }
@@ -64,24 +70,24 @@
                 });
         }
 
-        function editPassword() {
-            UserService.login(vm.user.email, vm.edited_user.old_password)
-                .then(function (user) {
-                    vm.edited_user.password = vm.edited_user.new_password;
-                    UserService.editProfile(vm.edited_user)
-                        .then(function (user) {
-                            vm.edited_user = undefined;
-                            loadUser();
-                        })
-                        .catch(function (error) {
-                            //TODO: Proper error management
-                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
-                        });
-                })
-                .catch(function (error) {
-                    //TODO: Proper error management
-                    addAlert('ERROR_WRONG_PASSWORD');
-                });
+        function checkPassword() {
+            var deferred = $q.defer();
+            if (undefined !== vm.edited_user.old_password && undefined !== vm.edited_user.new_password &&
+                undefined !== vm.edited_user.confirm_new_password) {
+                if (vm.edited_user.new_password !== vm.edited_user.confirm_new_password) {
+                    addAlert('ERROR_NO_SAME_PASSWORD');
+                }
+                UserService.login(vm.user.email, vm.edited_user.old_password)
+                    .then(function (user) {
+                        vm.edited_user.password = vm.edited_user.new_password;
+                        deferred.resolve(user);
+                    })
+                    .catch(function (error) {
+                        deferred.reject(error);
+                    });
+            }
+            console.log("deferred.promise.........", deferred.promise);
+            return deferred.promise;
         }
 
         function editProfile() {
@@ -93,18 +99,25 @@
                 if (null !== vm.edited_user.birthdateDateFormat) {
                     vm.edited_user.birthdate = new Date(vm.edited_user.birthdateDateFormat).getTime() / 1000;
                 }
-                //Check user want change password
                 if (undefined !== vm.edited_user.old_password && undefined !== vm.edited_user.new_password &&
                     undefined !== vm.edited_user.confirm_new_password) {
-                    if (vm.edited_user.old_password.length > 0 && vm.edited_user.new_password.length > 0 &&
-                        vm.edited_user.confirm_new_password.length > 0) {
-                        if (vm.edited_user.confirm_new_password !== vm.edited_user.new_password) {
-                            addAlert('ERROR_NO_SAME_PASSWORD');
-                        }
-                        else {
-                            editPassword();
-                        }
-                    }
+                    checkPassword()
+                        .then(function (user) {
+                            if (undefined !== vm.edited_user) {
+                                UserService.editProfile(vm.edited_user)
+                                    .then(function (user) {
+                                        loadUser();
+                                        vm.edited_user = undefined;
+                                    })
+                                    .catch(function (error) {
+                                        addAlert(error.data.error);
+                                    });
+                            }
+                        })
+                        .catch(function (error) {
+                            addAlert(error.data.error);
+                            console.log("error editProfile User ........", error);
+                        });
                 }
                 else {
                     UserService.editProfile(vm.edited_user)
@@ -113,8 +126,7 @@
                             vm.edited_user = undefined;
                         })
                         .catch(function (error) {
-                            //TODO: Proper error management
-                            addAlert('EDIT_PROFILE_ERROR');
+                            addAlert(error.data.error);
                         });
                 }
             }
