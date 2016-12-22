@@ -37,6 +37,13 @@
             vm.errors.splice(index, 1);
         }
 
+        function loadPicture(id) {
+            PartnerService.loadPicture(id)
+                .then(function (picture) {
+                    vm.partner.picture = picture;
+                });
+        }
+
         function loadPartner(id) {
             /*if (undefined !== id) {
                 vm.hideButtonEdit = true
@@ -47,7 +54,7 @@
             PartnerService.loadPartner(id)
                 .then(function (partner) {
                     vm.partner = partner;
-                    //loadPicture(id);
+                    loadPicture(vm.partner.id);
                 });
         }
 
@@ -128,8 +135,8 @@
 
         function editProfilePicture(picture) {
             if (undefined !== picture) {
-                vm.edited_partner.picture = picture;
-                PartnerService.putPicture(vm.edited_partner)
+                vm.edited_partner.image = picture;
+                PartnerService.editProfile(vm.edited_partner)
                     .then(function () {
                         loadPartner();
                     });

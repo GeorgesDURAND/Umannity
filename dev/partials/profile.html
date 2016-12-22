@@ -43,6 +43,10 @@
                             <td>{{ vm.user.address }}</td>
                         </tr>
                         <tr>
+                            <td>{{ 'SKILLS' | translate }}:</td>
+                            <td><div ng-repeat="skill in vm.user.skills">{{skill}}</div></td>
+                        </tr>
+                        <tr>
                             <td>Age:</td>
                             <td>ajouté âge</td>
                         </tr>
@@ -129,3 +133,25 @@
         </button>
     </div>
 </u-main-view>
+
+<!--
+                SEE OTHER PROFILE
+<div class="row">
+    <form class="form-horizontal" role="form" ng-submit="vm.otherUser()">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">ID</label>
+            <div class="col-lg-3">
+                <input class="form-control" type="text" ng-model="vm.other_user_id">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input type="submit" class="btn btn-primary" value="Search">
+                <span></span>
+            </div>
+        </div>
+    </form>
+</div>
+
+-->

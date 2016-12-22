@@ -20,6 +20,8 @@
         vm.goEdit = true;
         vm.hideButtonEdit = false;
 
+        vm.skills = ["couture", "menage"];
+
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         function addAlert(error) {

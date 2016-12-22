@@ -14,12 +14,12 @@
 
         var service = {
             getPartner: getPartner,
-            getApiKey: getApiKey,
             loadPartner: loadPartner,
             login: login,
             logout: logout,
-            editProfile: editProfile,
-            putPicture: putPicture
+            loadPicture: loadPicture,
+            getPicture: getPicture,
+            editProfile: editProfile
         };
 
         return service;
@@ -38,18 +38,6 @@
             partner = {email: partner.email, id:partner.id, baseline: partner.baseline, name: partner.name};
             _partner = partner;
             $cookies.put(_cache_key, JSON.stringify(partner));
-        }
-
-        function putPicture(picture) {
-            var deferred = $q.defer();
-            RestService.put("/partner/picture", picture)
-                .then(function (request) {
-                    deferred.resolve(request.data);
-                })
-                .catch(function (error) {
-                    deferred.reject(error);
-                });
-            return deferred.promise;
         }
 
         function editProfile(partnerData) {
@@ -85,6 +73,28 @@
             return deferred.promise;
         }
 
+        function loadPicture(id) {
+            var deferred = $q.defer();
+            var params = {id:id};
+
+            RestService.get("/partner/picture", params)
+                .then(function (request) {
+                    var picture = request.data.picture;
+
+                    _picture = picture;
+                    deferred.resolve(picture);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function getPicture() {
+            console.log("PartnerService :: getPicture called");
+            return _picture;
+        }
+
         function getPartner() {
             console.log("partnerService :: getPartner called");
             if (undefined === _partner) {
@@ -94,10 +104,6 @@
                 }
             }
             return _partner;
-        }
-
-        function getApiKey() {
-            return RestService.getApiKey();
         }
 
         function login(email, password) {

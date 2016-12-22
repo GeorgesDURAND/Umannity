@@ -5,16 +5,15 @@
         .module('umannityApp.services')
         .factory('UserService', userService);
 
-    userService.$inject = ['$q', '$cookies', 'RestService'];
+    userService.$inject = ['$q', '$cookies', 'RestService'/*, '$moment'*/];
 
-    function userService($q, $cookies, RestService) {
+    function userService($q, $cookies, RestService/*, $moment*/) {
         var _user;
         var _picture;
         var _cache_key = 'user';
 
         var service = {
             getUser: getUser,
-            getApiKey: getApiKey,
             loadUser: loadUser,
             login: login,
             logout: logout,
@@ -117,10 +116,6 @@
             return _picture;
         }
 
-        function getApiKey() {
-            return RestService.getApiKey();
-        }
-
         function login(email, password) {
             var deferred = $q.defer();
 
@@ -143,11 +138,27 @@
             return deferred.promise;
         }
 
+        /*function getAge(date) {
+            var deferred = $q.defer();
+
+            var moment = require('moment');
+
+            moment().format();
+
+            console.log("moment", $moment);
+
+            $moment.then(function(moment) {
+                $scope.anotherTime = moment("20111031", "YYYYMMDD").fromNow();
+            });
+            return deferred.promise;
+        }*/
+
         function formatBirthdate(birthdate) {
             var tmp = new Date(birthdate * 1000);
             var date = (tmp.getDate() > 9 ? tmp.getDate() : "0" + tmp.getDate());
             var month = (tmp.getMonth() > 9 ? (tmp.getMonth() + 1) : "0" + (tmp.getMonth() + 1));
             var year = tmp.getYear() + 1900;
+            //getAge(date);
             return date + "/" + month + "/" + year;
         }
     }

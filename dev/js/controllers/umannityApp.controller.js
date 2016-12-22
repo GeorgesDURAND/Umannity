@@ -5,15 +5,16 @@
         .module('umannityApp.controllers')
         .controller('umannityAppController', umannityAppController);
 
-    umannityAppController.$inject = ['$location', 'UserService', 'RestService'];
+    umannityAppController.$inject = ['$location', 'UserService', 'RestService', 'PartnerService'];
 
-    function umannityAppController($location, UserService, RestService) {
+    function umannityAppController($location, UserService, RestService, PartnerService) {
         /* jshint validthis: true */
         var vm = this;
         var appVm = vm;
 
         appVm.getIsLoading = getIsLoading;
         appVm.getUser = UserService.getUser;
+        appVm.getPartner = PartnerService.getPartner;
         vm.name = "umannityAppController";
 
         ////
@@ -23,9 +24,11 @@
         }
 
         function checkUser() {
-            var api_key = UserService.getApiKey();
+            //var api_key = UserService.getApiKey();
+            var api_key = RestService.getApiKey();
             console.log("umannityAppController :: Api Key", api_key);
             var user = UserService.getUser();
+            var partner = PartnerService.getPartner();
 
             if (undefined === api_key) {
                 console.log("umannityAppController :: User is not logged");
@@ -38,26 +41,6 @@
                 } else {
                     $location.path("/login");
                 }
-            }
-            else if (undefined === user) {
-                console.log("umannityAppController :: User is logged and its data isn't loaded");
-                UserService.loadUser()
-                    .then(function (user) {
-                    console.log("umannityAppController :: User loaded");
-                    vm.user = user;
-                    loadPicture();
-                })
-                    .catch(function (error) {
-                    //TODO: Proper error management
-                    console.log(vm.name + ":: Unauthorized user");
-                    UserService.logout();
-                    $location.path('/login');
-                    /*window.alert(error.data.error);*/
-                });
-            }
-            else {
-                vm.user = user;
-                console.log("umannityAppController :: User is logged and has data", user);
             }
         }
 
