@@ -34,7 +34,7 @@
                 console.log($location.path() + " && " + user);
                 if ($location.path() === "/loginPartner" && user === "partner") {
                     console.log(vm.name + ":: Partner connected");
-                    $location.path("/");
+                    $location.path("/partner");
                 }else if ($location.path() === "/login" && user === "user")  {
                     console.log(vm.name + ":: User connected");
                     $location.path("/");

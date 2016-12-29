@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('sideMenuController', sideMenuController);
 
-    sideMenuController.$inject = ['$scope', '$location', 'UserService', 'RestService'];
+    sideMenuController.$inject = ['$scope', '$location', 'UserService', 'RestService', 'PartnerService'];
 
-    function sideMenuController($scope, $location, UserService, RestService) {
+    function sideMenuController($scope, $location, UserService, RestService, PartnerService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -16,14 +16,21 @@
         vm.changeView = changeView;
         vm.isCollapsed = false;
         vm.user = UserService.getUser();
+        vm.partner = PartnerService.getPartner();
+
         vm.adminSubmenu = false;
-        
+
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         ////
 
         function logout() {
-            UserService.logout();
+            if (undefined !== vm.user) {
+                UserService.logout();
+            }
+            if (undefined !== vm.partner) {
+                PartnerService.logout();
+            }
             $location.path("/login");
         }
 
@@ -32,15 +39,15 @@
         }
 
         function onViewContentLoaded() {
-            if (undefined === vm.user){
-                RestService.loadUser()
-                    .then(function (user){
-                    vm.user = user;
-                })
-                    .catch(function (error){
-                    console.log(error);
-                });
-            }
+            // if (undefined === vm.user){
+            //     RestService.loadUser()
+            //         .then(function (user){
+            //         vm.user = user;
+            //     })
+            //         .catch(function (error){
+            //         console.log(error);
+            //     });
+            // }
         }
     }
 })();

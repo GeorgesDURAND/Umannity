@@ -13,7 +13,7 @@
     "TOCONNECTION": "Retourner à la page de connexion",
     "RESETPWD": "Changer mon mot de passe",
     "NOTIFICATIONSEND": "Vous allez recevoir un e-mail sous peu, si ce n'est le cas, merci de vérifier vos spams puis de contacter le service support.",
-    
+
     "CREATEPARTNER": "Creer un partenaire",
     "PARTNERNAME": "Nom",
     "PARTNERBASELINE": "Baseline",
@@ -38,7 +38,7 @@
     "REQUESTDATE": "Date",
     "REPORTMOTIV": "Message",
     "ACTIONS": "Mes actions",
-    
+
     "STATS": "Statistiques",
     "HOME": "Accueil",
     "LOGOUT": "Se déconnecter",
@@ -46,9 +46,12 @@
     "BIRTHDATE": "Date de naissance",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom",
+    "POINTS": "Points",
+    "ADDRESS": "Adresse",
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
+    "EDIT": "Modifier le profile",
 
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
@@ -85,19 +88,34 @@
     "ERROR_NO_SAME_PASSWORD": "Vous n'avez pas renseignez 2 fois le même mot de passe",
     "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile",
     "ADMINISTRATION": "Administration",
-    
+
     "ACCEPTCGV": "Je connais et j'accepte les condiotions d'utilisation de Umannity",
     "SUBSCRIBENOW": "Je m'inscris",
     "FILLPROFIL": "Je fais mon profil",
     "LASTSTEP": "Étape précédente",
     "NEXTSTEP": "Étape suivante",
-    
+
     "BADCONFIRMPWD": "Le mot de passe et sa confirmation ne sont pas similaires",
     "ALLCHAMPFILL": "Tout les champs sur cette page doivent être remplis",
-    
+
     "PROFILIMAGEQUESTION": "Merci de choisir votre image de profil :",
     "LOCATIONQUESTION": "Où allez vous le plus souvent aider des gens ?",
     "SEXQUESTION": "Vous êtes une/un :",
     "SEXWOMAN":"Femme",
-    "SEXMAN": "Homme"
+    "SEXMAN": "Homme",
+    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile",
+
+    "BASELINE": "Slogan",
+    "NAME": "Nom",
+
+    "WOMAN": "Femme",
+    "MAN": "Homme",
+    "GENDER": "Genre",
+    "MAX_OFFERS": "Nombre d'offres max",
+    "Total_OFFERS": "Nombre d'offres total",
+    "SKILLS": "Compétences",
+    "CREATE_OFFER": "Créer une offre",
+    "OFFER_NAME": "Nom de l'offre",
+    "DESCRIPTION": "Description",
+    "MAX_PARTICIPANT": "Nombre max de participant"
 }

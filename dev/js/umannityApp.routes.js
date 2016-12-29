@@ -19,6 +19,11 @@
             controller: 'profileController',
             controllerAs: 'vm'
         })
+            .when('/partner', {
+                templateUrl: 'partials/profilePartner.html',
+                controller: 'profilePartnerController',
+                controllerAs: 'vm'
+            })
             .when('/login', {
             templateUrl: "partials/loginUser.html",
             controller: 'loginController',
@@ -72,6 +77,11 @@
             templateUrl: 'partials/visio.html',
             controllerAs: 'vm'
         })
+            .when('/createOffer', {
+                controller: 'createOfferController',
+                templateUrl: 'partials/createOffer.html',
+                controllerAs: 'vm'
+            })
             .otherwise({
             redirectTo: '/error'
         });

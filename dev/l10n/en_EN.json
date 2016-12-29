@@ -13,7 +13,7 @@
     "TOCONNECTION": "Return to the connection page",
     "RESETPWD": "Reset my password",
     "NOTIFICATIONSEND": "You are going to receive an e-mail soon to reset your password. If you don't rceive it, plesae check your spam then contact the support.",
-    
+
     "CREATEPARTNER": "Create partner",
     "PARTNERNAME": "Name",
     "PARTNERBASELINE": "Baseline",
@@ -22,11 +22,11 @@
     "PARTNERPASSWORD": "Password",
     "PARTNERPOINTS": "Number of points",
     "CREATEPARTNERBUTTON": "Create the partner",
-    
+
     "UPLOADIMAGE": "Choose your image",
     "CROPPREVIEW": "Preview of your image : ",
     "DROPIMAGE": "You can drop your image here",
-    
+
     "REPORTSLIST": "Requests reported",
     "REPORTFILTER": "What are you searching for ?",
     "FILTERS": "Filters : ",
@@ -38,7 +38,7 @@
     "REQUESTDATE": "Date",
     "REPORTMOTIV": "Message",
     "ACTIONS": "Actions",
-    
+
     "STATS": "Statistics",
     "HOME": "Home",
     "LOGOUT": "Logout",
@@ -59,7 +59,7 @@
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
     "CHAT": "Instant messaging",
-    
+
     "USERS_RATIO": "Ratio Helpers/Volunteers",
     "helpers" : "Volunteers",
     "takers" : "Needers",
@@ -87,19 +87,32 @@
 
     "5": "Wrong login informations",
     "ADMINISTRATION": "Administration",
-    
+
     "ACCEPTCGV": "I know and accept the condition and terms of use of Umannity",
     "SUBSCRIBENOW": "I subscribe now",
     "FILLPROFIL": "I fill my profile now",
     "LASTSTEP": "Previous step",
     "NEXTSTEP": "Next step",
-    
+
     "BADCONFIRMPWD": "The password and confirm password are not the same",
     "ALLCHAMPFILL": "First_name, Last_name, birthdate, e-mail and password must be filled",
-    
+
     "PROFILIMAGEQUESTION": "Please, choose your profile image :",
     "LOCATIONQUESTION": "Where are you most likely going to help people around ?",
     "SEXQUESTION": "You are a :",
     "SEXWOMAN":"Woman",
-    "SEXMAN": "Man"
+    "SEXMAN": "Man",
+
+    "BASELINE": "Baseline",
+    "NAME": "Name",
+    "WOMAN": "Woman",
+    "MAN": "Man",
+    "GENDER": "Gender",
+    "MAX_OFFERS": "Max offers",
+    "Total_OFFERS": "Total offers",
+    "SKILLS": "Skills",
+    "CREATE_OFFER": "Create offer",
+    "OFFER_NAME": "Offer name",
+    "DESCRIPTION": "Description",
+    "MAX_PARTICIPANT": "Number max of participant"
 }
