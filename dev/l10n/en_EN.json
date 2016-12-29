@@ -111,5 +111,8 @@
     "MAX_OFFERS": "Max offers",
     "Total_OFFERS": "Total offers",
     "SKILLS": "Skills",
-    "CREATE_OFFER": "Create offer"
+    "CREATE_OFFER": "Create offer",
+    "OFFER_NAME": "Offer name",
+    "DESCRIPTION": "Description",
+    "MAX_PARTICIPANT": "Number max of participant"
 }

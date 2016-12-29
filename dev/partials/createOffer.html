@@ -1,0 +1,39 @@
+<u-main-view>
+    <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 u-offer-form ng-scope">
+        <u-page-title title=CREATE_OFFER></u-page-title>
+        <form class="form-horizontal ng-valid ng-dirty ng-valid-date ng-submitted" role="form" ng-submit="vm.createOffer()">
+            <div class="form-group">
+                <label class="col-md-3 control-label ng-binding">{{ 'OFFER_NAME' | translate }}</label>
+                <div class="col-lg-4 col-md-4">
+                    <input class="form-control" type="text" ng-model="vm.offer.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label ng-binding">{{ 'POINTS' | translate }}</label>
+                <div class="col-lg-4 col-md-4">
+                    <input class="form-control" type="text" ng-model="vm.offer.points">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label ng-binding">{{ 'MAX_PARTICIPANT' | translate }}</label>
+                <div class="col-lg-4 col-md-4">
+                    <input class="form-control" type="text" ng-model="vm.offer.max_participants">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label ng-binding">{{ 'DESCRIPTION' | translate }}</label>
+                <div class="col-lg-4 col-md-4">
+                    <textarea class="form-control textarea-offer-form" ng-model="vm.offer.description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <input type="submit" class="btn btn-primary" value="Créer l'offre">
+                    <span></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</u-main-view>

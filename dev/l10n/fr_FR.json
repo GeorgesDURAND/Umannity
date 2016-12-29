@@ -113,6 +113,9 @@
     "GENDER": "Genre",
     "MAX_OFFERS": "Nombre d'offres max",
     "Total_OFFERS": "Nombre d'offres total",
-    "SKILLS": "Compétences,
-    "CREATE_OFFER": "Créer une offre"
+    "SKILLS": "Compétences",
+    "CREATE_OFFER": "Créer une offre",
+    "OFFER_NAME": "Nom de l'offre",
+    "DESCRIPTION": "Description",
+    "MAX_PARTICIPANT": "Nombre max de participant"
 }

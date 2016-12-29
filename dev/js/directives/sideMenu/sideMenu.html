@@ -33,7 +33,7 @@
             <div class="menu-icon glyphicon glyphicon-camera"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'VISIO' | translate }}</div>
         </div>
-        <div class="menu-item" ng-if="appVm.getPartner()">
+        <div class="menu-item" ng-click="vm.changeView('/createOffer')" ng-if="appVm.getPartner()">
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_OFFER' | translate }}</div>
         </div>
