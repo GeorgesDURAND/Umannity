@@ -38,13 +38,10 @@
                 });
             });
         }
-        
-        
+
         function viewItem(type, item_id) {
             if (type === "request"){
-                
                 /*AJOUTER ICI LE WINDOWS.LOCATION*/
-                
             } else {
                 console.log(vm.name , " :: view ", type, " not handle for the moment");
             }
@@ -52,7 +49,6 @@
 
         function deleteItem(item_id, type, report_id) {
             if (type === "request"){
-                
                 RestService.delete("/request", {request_id:item_id})
                     .then (function (data) {
                     console.log("Request :: correctly deleted");
@@ -61,7 +57,6 @@
                     .catch (function () {
                     console.log("Request :: Error while tempting to delete");   
                 });
-                
             } else {
                 console.log(vm.name , " :: delete ", type, " not handle for the moment");
             }

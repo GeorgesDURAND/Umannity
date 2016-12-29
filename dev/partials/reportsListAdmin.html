@@ -26,7 +26,6 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="report in vm.reportsList | filter : (vm.isFiltered ? vm.filterQuery : '') ">
-                         
                         <td>{{report.id}}</td>
                         <td>{{report.item_id}}</td>
                         <td>{{report.type}}</td>
