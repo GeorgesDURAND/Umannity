@@ -56,35 +56,31 @@
         }
 
         function subscribe() {
-            if (checkInfo() === false){
+            if (checkInfo() === false) {
                 vm.errors = [];
                 
                 vm.newUser.birthdate = new Date(vm.tmp.birthdate).getTime() / 1000;
                 vm.newUser.picture = vm.tmp.cropImage;
                 
-                
                 RestService.put("/user", vm.newUser)
-                    .then(function(data){
-                    console.log("DATA = ", data.data);
-                }).catch(function(ret){
+                    .then(function(data) {
+                    console.log(vm.name, " :: New user created");
+                }).catch(function(ret) {
                     addAlert(ret.data.error);
                 });
-                
-                
-                
             }
         }
 
         function changeStep(index) {
-            if (checkInfo() === false){
+            if (checkInfo() === false) {
                 vm.errors = [];
                 vm.step = index;
             }
         }
 
         function checkInfo() {
-            if (vm.newUser.first_name && vm.newUser.last_name && vm.newUser.email && vm.newUser.password && vm.confirmPwd){
-                if (vm.newUser.password !== vm.confirmPwd){
+            if (vm.newUser.first_name && vm.newUser.last_name && vm.newUser.email && vm.newUser.password && vm.confirmPwd) {
+                if (vm.newUser.password !== vm.confirmPwd) {
                     addAlert('BADCONFIRMPWD');
                     vm.step = 0;
                     return true;
