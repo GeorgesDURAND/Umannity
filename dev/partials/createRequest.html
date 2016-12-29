@@ -1,0 +1,61 @@
+<u-main-view>
+    <div class="u-box-center">
+        <u-page-title title="CREATE_REQUEST"> </u-page-title>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12 mail_view_info">
+                <div class="form-group">
+                    <label class="form-label">Sujet</label>
+
+                    <div class="controls">
+                        <input type="text" ng-model="vm.requestName" class="form-control" placeholder="exemple : Besoin d'aide pour réparer ma voiture" value="" required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Location</label>
+                    <input g-places-autocomplete force-selection="true"
+                           ng-model="vm.requestLocation" type="text"
+                           class="form-control"  placeholder="Où ça ?" required/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Description</label>
+                    <textarea ng-model="vm.requestDescription" placeholder="Vous pouvez ajouter des détails ici..." style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;"required></textarea>
+                </div>
+
+
+                <label class="form-label">Quelles sont les compétences requises ?</label>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                        <div ng-repeat="category in data.categories">
+                            <span id="{{$index}}" ng-class="'check_button catbutton_'+($index % 2)+'_help'" ng-click="pushCategory($index, category)">{{category}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8 skills">
+                        <div ng-repeat="c in cat track by $index">
+                            <div id="button{{c.index}}" ng-class="mbutton">
+                                <span id="button{{c.index}}0" ng-class="'check_all sbutton_'+({{c.index}} % 2)+'_help'">Toutes</span>
+                                <span ng-repeat="skill in c.skills">
+                                                <span id="button{{c.index}}{{$index+1}}" ng-class="'check_pbutton sbutton_'+({{c.index}} % 2)+'_help'">{{skill}}</span>
+                                            </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="yourSkill" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 skill_box_help">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class='pull-left'>
+                    <button type="submit" ng-click="vm.createRequest()" class="btn btn-primary">
+                        <i class="fa fa-paper-plane-o icon-xs"></i> &nbsp; Envoyer la demande
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</u-main-view>
