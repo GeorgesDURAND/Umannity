@@ -1,0 +1,117 @@
+@import "variables";
+
+
+.chat_name {
+  text-align: center;
+  font-size: 25px;
+  color: $u-orange;
+}
+
+.chat__wrapper {
+  padding: 0px;
+  background-color: $u-grey;
+}
+
+.chat__human {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  box-shadow: 0 1px 1px -1px rgba(89, 87, 87, 0.47);
+}
+.chat__human:nth-child(odd) {
+  background: rgba(74,74,75,1);
+}
+.chat__human:hover {
+  background: #0c0c0c;
+}
+.chat__human > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.chat__avatar {
+  width: 40px;
+  heigt: 40px;
+  background: #fff;
+  border-radius: 100px;
+  margin-right: 20px;
+}
+
+.u-right {
+  float: right;
+}
+
+.u-left {
+  float: left;
+}
+
+.chat__users {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #ccc;
+  padding: 10px 20px;
+  background: black;
+  margin: 0px;
+  text-align: center;
+}
+
+.conversation {
+  overflow-y: scroll;
+  height: 700px;
+}
+
+.conversation ul{
+  padding-left: 0px;
+}
+
+.conversation__msg {
+  padding: 5px 10px;
+  color: white;
+  list-style-type: none;
+  font-size: 12px;
+}
+.conversation__msg .message {
+  background: $u-orange;
+  color: white;
+  display: table;
+  padding: 10px 20px;
+  border-radius: 10px;
+  float: left;
+  font-size: 17px;
+}
+
+.u-right-message {
+  float: right !important;
+  background: $u-blue !important;
+  color: white !important;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+.u-time {
+  color: grey;
+  font-size: small;
+  margin-right: 15px;
+}
+
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.u-send-button {
+  padding: 16px;
+}
+
+
+
+

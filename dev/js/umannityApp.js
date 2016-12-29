@@ -14,6 +14,7 @@ var umannityApp = angular.module('umannityApp', [
     'flow',
     'ngImgCrop',
     'ngAria',
+    'luegg.directives',
     'ngMaterial'
 ]);
 

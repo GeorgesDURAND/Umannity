@@ -1,33 +1,84 @@
 <u-main-view>
-    <div class="container">
+    <div class="u-box-center">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
-                <span ng-repeat="dialogue in vm.dialogues" class="animated fadeIn">
+            <div class="col-lg-12 col-md-12">
 
-							<li class="">
-								<span> {{dialogue.message}} </span>
-							</li>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="chat_name">{{vm.request_name}}</div>
+                        </div>
 
-						</span>
+                        <div class="conversation" scroll-glue />
+                            <ul class="conversation__wrap" >
+                                <span ng-repeat="dialogue in vm.dialogues" class="animated fadeIn">
+                                    <li ng-if="vm.user.id == dialogue.author_id" class="conversation__msg cf">
+
+                                        <div class="u-right">
+                                            <img class="chat__avatar u-right" ng-src="{{vm.user.picture}}">
+                                            <div class="u-time">
+                                                {{ dialogue.date | date:'HH:mm' }}
+                                            </div>
+                                        </div>
+                                        <span class="u-right-message">
+                                            {{ dialogue.message }}
+                                        </span>
+
+                                    </li>
+                                    <li ng-if="vm.user.id != dialogue.author_id" class="conversation__msg cf">
+                                        <div class="u-left">
+                                            <img class="chat__avatar " ng-src="{{vm.recipient_picture}}">
+                                            <div class="u-time">
+                                                {{ dialogue.date | date:'HH:mm' }}
+                                            </div>
+                                        </div>
+                                        <span class="message">
+                                            {{ dialogue.message }}
+                                        </span>
+                                    </li>
+                                </span>
+
+                            </ul>
+                        </div>
+
+                        <div class="panel-footer">
+                            <form ng-submit="vm.sendMessage()">
+                                <div class="input-group">
+                                    <textarea class="form-control" ng-enter="vm.sendMessage()" ng-model="vm.buffer" value=""></textarea>
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-help-1 u-send-button">
+                                            Envoyer
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <nav class="chat">
+                        <h2 class="chat__users">
+                            {{ 'CONTACTS_HEADER' | translate }}
+                        </h2>
+                        <div class="chat__wrapper">
+                            <li ng-repeat="chat in vm.chatsUsers"
+                                ng-click="vm.changeConversation(chat)"
+                                class="animated fadeIn chat__human">
+                                <img class="chat__avatar" ng-src="{{chat.user.picture}}">
+                                <span class="chat__name">
+                                    <strong>
+                                        {{chat.user.last_name }}
+                                    </strong>
+                                        {{chat.user.first_name }}
+                                </span>
+                            </li>
+                        </div>
+                    </nav>
+                </div>
+
+
             </div>
-
-            <div class="col-lg-4 col-md-4">
-                    <span ng-repeat="chat in vm.chatsUsers"
-                          ng-click="vm.changeConversation(chat.user.id, chat.conversation_id)"
-                          class="animated fadeIn">
-                            <img ng-src="{{chat.user.picture}}">
-                            <p>
-                                <strong>{{chat.user.last_name }}</strong>
-                                <span>{{chat.user.first_name }}</span>
-                            </p>
-                    </span>
-            </div>
-            <form ng-submit="vm.sendMessage()">
-                <input type="text" size="136" ng-model="vm.buffer" value="" />
-                <button type="submit" class="btn btn-help-1">
-                    Envoyer
-                </button>
-            </form>
         </div>
     </div>
 </u-main-view>

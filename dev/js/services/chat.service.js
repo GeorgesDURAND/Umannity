@@ -24,7 +24,7 @@
         function loadChat(id_conv) {
             var deferred = $q.defer();
 
-            RestService.get("/chat/" + id_conv)
+            RestService.get("/chat/" + id_conv, undefined, undefined, false)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -51,7 +51,7 @@
         function sendMessage(buffer) {
             var deferred = $q.defer();
 
-            RestService.put("/chat", buffer)
+            RestService.put("/chat", buffer, undefined, false)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
