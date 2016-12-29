@@ -1,0 +1,22 @@
+<div class="choose-skill-box no-pad col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="select-skill-box no-pad col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <span  ng-repeat="category in skill.categories track by $index" ng-class="'box-'+($index % 3)" class="cat-box col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="skill.showSkills($index)">
+                {{ category.name | translate}}
+            </span>
+        </div>
+        <div class="no-pad col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <span id="{{category.name}}" ng-repeat="category in skill.categories track by $index" class="skills-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="skill-box" ng-class="'box-'+($index % 3)" ng-repeat="skillname in category.skills" ng-click="skill.toggleSkill(skillname)">
+                    {{ skillname | translate}}
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="preview-skill-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <span class="skill-box" ng-class="'box-'+($index % 3)" ng-repeat="skillname in skills" ng-click="skill.toggleSkill(skillname)">
+            {{ skillname | translate }}
+            <i class="glyphicon glyphicon-remove"></i>
+        </span>
+    </div>
+</div>

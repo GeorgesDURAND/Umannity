@@ -35,8 +35,14 @@
             controllerAs: 'vm'
         })
             .when('/subscribe', {
-            templateUrl: "partials/subscribe.html",
-            controller: 'subscribeController'
+            templateUrl: "partials/subscribeUser.html",
+            controller: 'subscribeUserController',
+            controllerAs: 'vm'
+        })
+            .when('/cgv', {
+            templateUrl: "partials/cgv.html",
+            controller: 'subscribeUserController',
+            controllerAs: 'vm'
         })
             .when('/chat', {
             templateUrl: "partials/chat.html",
@@ -51,6 +57,7 @@
             .when('/admin/createPartner', {
             templateUrl: "partials/createPartnerAdmin.html",
             controller: 'createPartnerAdminController',
+            controllerAs: 'vm'
         })
             .when('/admin/reports', {
             templateUrl: "partials/reportsListAdmin.html",

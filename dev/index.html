@@ -1,75 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-<head>
-    <title>Umannity</title>
-    <!--Favicon-->
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <!--[if IE]><link rel="shortcut icon" type="image/png" href="/img/favicon.png" /><![endif]-->
-    <!--CSS-->
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/umannity.css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <!--External imports-->
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-animate/angular-animate.js"></script>
-    <script src="lib/angular-touch/angular-touch.js"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
-    <script src="lib/angular-translate/angular-translate.js"></script>
-    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-    <script src="lib/angular-base64/angular-base64.js"></script>
-    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
-    <script src="lib/angular-cookies/angular-cookies.js"></script>
-    <script src="lib/chart.js/dist/Chart.js"></script>
-    <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
-    
-    <script src="lib/ng-flow/dist/ng-flow-standalone.min.js"></script>
-    <script src="lib/flow.js/dist/flow.min.js"></script>
-    <script src="lib/ng-flow/dist/ng-flow.min.js"></script>
-    
-    <script src="lib/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
-    <link rel="stylesheet" type="text/css" href="lib/ng-img-crop/compile/unminified/ng-img-crop.css">
-    <!--
-    <script src="lib/socket.io-client/socket.io.js"></script>-->
-    <!--App Imports-->
-    <script src="js/umannityApp.js"></script>
-    <script src="js/umannityApp.config.js"></script>
-    <script src="js/umannityApp.routes.js"></script>
-    <script src="js/umannityApp.run.js"></script>
-    <!--Controllers-->
-    <script src="js/controllers/umannityApp.controller.js"></script>
-    <script src="js/controllers/login.controller.js"></script>
-    <script src="js/controllers/resetPassword.controller.js"></script>
-    <script src="js/controllers/subscribe.controller.js"></script>
-    <script src="js/controllers/reportsListAdmin.controller.js"></script>
-    <script src="js/controllers/statsAdmin.controller.js"></script>
-    <script src="js/controllers/createPartnerAdmin.controller.js"></script>
-    <script src="js/controllers/profile.controller.js"></script>
-    <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
-    <script src="js/directives/cropImage/cropImage.controller.js"></script>
-    <script src="js/controllers/chat.controller.js"></script>
-    <script src="js/controllers/visio.controller.js"></script>
-    <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
-    <!--Services-->
-    <script src="js/services/rest.service.js"></script>
-    <script src="js/services/constant.service.js"></script>
-    <script src="js/services/user.service.js"></script>
-    <script src="js/services/webrtc.service.js"></script>
-    <script src="js/services/chat.service.js"></script>
-    <!--Directives-->
-    <script src="js/directives/header/header.directive.js"></script>
-    <script src="js/directives/sideMenu/sideMenu.directive.js"></script>
-    <script src="js/directives/mainView/mainView.directive.js"></script>
-    <script src="js/directives/mainViewNoMenu/mainViewNoMenu.directive.js"></script>
-    <script src="js/directives/chart/chart.directive.js"></script>
-    <script src="js/directives/pageTitle/pageTitle.directive.js"></script>
-    <script src="js/directives/cropImage/cropImage.directive.js"></script>
-    <script src="js/directives/uploadPicture/uploadPicture.directive.js"></script>
-</head>
-<!--Body-->
-<body ng-app="umannityApp" ng-controller="umannityAppController as appVm">
-  <div class="u-view" ng-view>
-</div>
-</body>
+    <head>
+        <title>Umannity</title>
+        <!--Favicon-->
+        <link rel="icon" type="image/png" href="/img/favicon.png" />
+        <!--[if IE]><link rel="shortcut icon" type="image/png" href="/img/favicon.png" /><![endif]-->
+        <!--CSS-->
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/umannity.css">
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <!--External imports-->
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-animate/angular-animate.js"></script>
+        <script src="lib/angular-touch/angular-touch.js"></script>
+        <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="lib/angular-route/angular-route.js"></script>
+        <script src="lib/angular-translate/angular-translate.js"></script>
+        <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+        <script src="lib/angular-base64/angular-base64.js"></script>
+        <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+        <script src="lib/angular-cookies/angular-cookies.js"></script>
+        <script src="lib/chart.js/dist/Chart.js"></script>
+        <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
+
+        <script src="lib/angular-aria/angular-aria.js"></script>
+        <!--<script src="lib/angular-material/angular-material.min.js"></script>
+<link rel="stylesheet" type="text/css" src="lib/angular-material/angular-material.min.css">-->
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+        <script src="lib/ng-flow/dist/ng-flow-standalone.min.js"></script>
+        <script src="lib/flow.js/dist/flow.min.js"></script>
+        <script src="lib/ng-flow/dist/ng-flow.min.js"></script>
+
+        <script src="lib/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
+        <link rel="stylesheet" type="text/css" href="lib/ng-img-crop/compile/unminified/ng-img-crop.css">
+        <!--
+<script src="lib/socket.io-client/socket.io.js"></script>-->
+        <!--App Imports-->
+        <script src="js/umannityApp.js"></script>
+        <script src="js/umannityApp.config.js"></script>
+        <script src="js/umannityApp.routes.js"></script>
+        <script src="js/umannityApp.run.js"></script>
+        <!--Controllers-->
+        <script src="js/controllers/umannityApp.controller.js"></script>
+        <script src="js/controllers/login.controller.js"></script>
+        <script src="js/controllers/subscribeUser.controller.js"></script>
+        <script src="js/controllers/reportsListAdmin.controller.js"></script>
+        <script src="js/controllers/statsAdmin.controller.js"></script>
+        <script src="js/controllers/createPartnerAdmin.controller.js"></script>
+        <script src="js/controllers/profile.controller.js"></script>
+        <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
+        <script src="js/directives/cropImage/cropImage.controller.js"></script>
+        <script src="js/directives/chooseSkills/chooseSkills.controller.js"></script>
+        <script src="js/controllers/chat.controller.js"></script>
+        <script src="js/controllers/visio.controller.js"></script>
+        <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
+        <!--Services-->
+        <script src="js/services/rest.service.js"></script>
+        <script src="js/services/constant.service.js"></script>
+        <script src="js/services/user.service.js"></script>
+        <script src="js/services/webrtc.service.js"></script>
+        <script src="js/services/chat.service.js"></script>
+        <!--Directives-->
+        <script src="js/directives/header/header.directive.js"></script>
+        <script src="js/directives/sideMenu/sideMenu.directive.js"></script>
+        <script src="js/directives/mainView/mainView.directive.js"></script>
+        <script src="js/directives/mainViewNoMenu/mainViewNoMenu.directive.js"></script>
+        <script src="js/directives/chart/chart.directive.js"></script>
+        <script src="js/directives/pageTitle/pageTitle.directive.js"></script>
+        <script src="js/directives/cropImage/cropImage.directive.js"></script>
+        <script src="js/directives/chooseSkills/chooseSkills.directive.js"></script>
+        <script src="js/directives/uploadPicture/uploadPicture.directive.js"></script>
+    </head>
+    <!--Body-->
+    <body ng-app="umannityApp" ng-controller="umannityAppController as appVm">
+        <div class="u-view" ng-view>
+        </div>
+    </body>
 </html>
