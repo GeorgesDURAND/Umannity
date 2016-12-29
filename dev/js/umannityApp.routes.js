@@ -74,6 +74,11 @@
             controller: 'formController',
             controllerAs: 'vm'
         })
+            .when('/form/:requestId', {
+            templateUrl: "partials/form.html",
+            controller: 'formController',
+            controllerAs: 'vm'
+        })
             .when('/admin/stats', {
             templateUrl: "partials/statsAdmin.html",
             controller: 'statsAdminController',
