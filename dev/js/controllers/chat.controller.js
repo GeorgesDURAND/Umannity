@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('chatController', chatController);
 
-    chatController.$inject = ['$scope', 'UserService', 'ChatService'];
+    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService'];
 
-    function chatController($scope, UserService, ChatService) {
+    function chatController($scope, UserService, ChatService, RequestService) {
         /* jshint validthis: true */
 
         var vm = this;
@@ -15,33 +15,71 @@
 
         vm.name = "chatController";
         vm.user = UserService.getUser();
+        vm.user.picture = UserService.getPicture();
         vm.changeConversation = changeConversation;
         vm.sendMessage = sendMessage;
+        vm.loadChatName = loadChatName;
+        vm.fixDateFormat = fixDateFormat;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
+        $scope.$on("$destroy", onDestroy);
         ////
 
-        function onViewContentLoaded() {
+        function onViewContentLoaded () {
+            if (undefined === vm.user.picture) {
+                UserService.loadPicture(vm.user.id).then(function (picture) {
+                    vm.user.picture = picture;
+                });
+            }
             loadChatsUsers();
         }
 
-        function loadChat() {
+        // Cette fonction se lance après avoir changer de vue. Elle arrête le refresh du chat.
+        function onDestroy () {
+            clearInterval(vm.timerId);
+        }
+
+        // A appeler pour actualiser la conversation
+        function loadChat () {
             ChatService.loadChat(vm.conversation_id).then(function (data) {
-                console.log(data);
                 vm.dialogues = data.messages;
-                //vm.recipient_id = data.data.messages.recipient_id;
+                fixDateFormat();
             });
         }
 
+        function fixDateFormat () {
+            angular.forEach(vm.dialogues, function(message) {
+                message.date = message.date * 1000;
+            });
+        }
+
+        // Charge la première conversation lorsque l'utilisateur arrive sur le chat
         function loadFirstConversation () {
             var firstConv = vm.chatsUsers[0];
             ChatService.loadChat(firstConv.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
+                fixDateFormat();
+                vm.loadChatName(data.messages[0].request_id);
                 vm.recipient_id = firstConv.user.id;
+                vm.conversation_id = firstConv.conversation_id;
+                vm.recipient_picture = firstConv.user.picture;
+                vm.recipient_last_name = firstConv.user.last_name;
+                vm.recipient_first_name = firstConv.user.first_name;
+            });
+            vm.timerId = setInterval(loadChat, 3000);
+        }
+
+        function loadChatName (id_conv) {
+            var _loadRequest = {
+                id: id_conv
+            };
+            RequestService.loadRequest(_loadRequest).then(function (Request) {
+                vm.request_name = Request.name;
             });
         }
 
-        function loadChatsUsers() {
+        // Charge les contacts
+        function loadChatsUsers () {
             ChatService.loadChatsUsers().then(function (chatsUsers) {
                 vm.chatsUsers = chatsUsers;
                 if (undefined !== vm.chatsUsers) {
@@ -50,24 +88,32 @@
             });
         }
 
-        function changeConversation(id, conv_id) {
-            vm.recipient_id = id;
-            vm.conversation_id = conv_id;
-            loadChat();
+        function changeConversation (chatUser) {
+            vm.recipient_id = chatUser.user.id;
+            vm.conversation_id = chatUser.conversation_id;
+            ChatService.loadChat(vm.conversation_id).then(function (data) {
+                vm.dialogues = data.messages;
+                fixDateFormat();
+                vm.loadChatName(data.messages[0].request_id);
+                vm.recipient_picture = chatUser.user.picture;
+                vm.recipient_last_name = chatUser.user.last_name;
+                vm.recipient_first_name = chatUser.user.first_name;
+            });
         }
 
-        function sendMessage() {
+        function sendMessage () {
             if (undefined !== vm.buffer) {
                 _message = {
                     message : vm.buffer,
-                    recipient_id: vm.recipient_id
+                    recipient_id: vm.recipient_id,
+                    conversation_id: vm.conversation_id
                 };
 
                 ChatService.sendMessage(_message).then(function (data) {
                     vm.buffer = "";
+                    loadChat();
                 });
             }
         }
-
     }
 })();
