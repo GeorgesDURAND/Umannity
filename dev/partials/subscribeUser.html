@@ -8,9 +8,9 @@
                 <img class="img-responsive u-logo-subscribe" src="../img/logoUmannityLogin.png" />
             </div>
             <div class="u-subscribe-navigation col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <input type="radio" id="step1" ng-model="vm.step" ng-value="0">
-                <input type="radio" id="step2" ng-model="vm.step" ng-value="1">
-                <input type="radio" id="step3" ng-model="vm.step" ng-value="2">
+                <input type="radio" id="step1"  ng-click="vm.changeStep(0)" ng-value="0">
+                <input type="radio" id="step2"  ng-click="vm.changeStep(1)" ng-value="1">
+                <input type="radio" id="step3"  ng-click="vm.changeStep(2)" ng-value="2">
 
                 <label for="step1" ng-class="vm.step === 0 ? 'subscribe-circle-active' : 'subscribe-circle'">
                 </label>
@@ -36,7 +36,7 @@
                         <label class="u-label-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             {{ 'BIRTHDATE' | translate }}
                         </label>
-                        <md-datepicker ng-model="vm.newUser.birthdate" md-placeholder="Enter date" md-min-date="vm.dateMin" md-max-date="vm.dateMax" type="date" class="u-datepicker-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12"></md-datepicker>
+                        <md-datepicker ng-model="vm.tmp.birthdate" md-placeholder="Enter date" md-min-date="vm.dateMin" md-max-date="vm.dateMax" type="date" class="u-datepicker-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12"></md-datepicker>
                         <label class="u-label-subscribe">
                             {{ 'EMAIL' | translate }}
                         </label>
@@ -77,7 +77,6 @@
                             {{'PROFILIMAGEQUESTION' | translate }}
                         </label>
                         <crop-image object="vm.tmp" class="u-input-image col-lg-12 col-md-12 col-sm-12 col-xs-12"></crop-image>
-
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {{'LOCATIONQUESTION' | translate}}
@@ -96,7 +95,7 @@
                             </label>
                             <div class="sex-radio col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <span class="no-padding col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                    <input id="sex-women" type="radio" ng-model="vm.sex" ng-value="0">
+                                    <input id="sex-women" type="radio" ng-model="vm.newUser.sex" ng-value="0">
                                     <label for="sex-women"></label>
                                 </span>
                                 <label class="cgv-link col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -104,7 +103,7 @@
                                 </label>
 
                                 <span class="no-padding col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                    <input id="sex-men" type="radio" ng-model="vm.sex" ng-value="1">
+                                    <input id="sex-men" type="radio" ng-model="vm.newUser.sex" ng-value="1">
                                     <label for="sex-men"></label>
                                 </span>
                                 <label class="cgv-link col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -123,7 +122,7 @@
                     </div>
                     <div ng-show="vm.step === 2">
 
-                        <choose-skills object="vm.newUser"></choose-skills>
+                        <choose-skills object="vm.newUser.skills"></choose-skills>
                         <button class="btn u-btn-subscribe col-lg-4  col-md-4  col-sm-5 col-xs-5" ng-click="vm.changeStep(vm.step-1)">
                             {{ 'LASTSTEP' | translate }}
                         </button>
