@@ -17,9 +17,8 @@
                     <tr>
                         <th>{{'REPORTNUMBER'| translate}}</th>
                         <th>{{'REQUESTNUMBER'| translate}}</th>
-                        <th>{{'USERID'| translate}}</th>
+                        <th>{{'TYPE'| translate}}</th>
                         <th>{{'USERNAME'| translate}}</th>
-                        <th>{{'REQUESTNAME'| translate}}</th>
                         <th>{{'REQUESTDATE'| translate}}</th>
                         <th>{{'REPORTMOTIV'| translate}}</th>
                         <th>{{'ACTIONS'|translate}}</th>
@@ -27,18 +26,18 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="report in vm.reportsList | filter : (vm.isFiltered ? vm.filterQuery : '') ">
-                        <td>{{report.report_id}}</td>
-                        <td>{{report.request_id}}</td>
-                        <td>{{report.user_id}}</td>
+                         
+                        <td>{{report.id}}</td>
+                        <td>{{report.item_id}}</td>
+                        <td>{{report.type}}</td>
                         <td>{{report.user_name}}</td>
-                        <td>{{report.request_name}}</td>
                         <td>{{report.date}}</td>
                         <td>{{report.message}}</td>
                         <td>
                             <!-- AJOUTER LE LIEN POUR VOIR UNE DEMANDE -->
                             <button class="u-btn-view"><i class="glyphicon glyphicon-eye-open"></i></button>
-                            <button class="u-btn-unreport" ng-click="vm.notAReportAnymore(report.request_id)"><i class="glyphicon glyphicon-ok-sign"></i></button>
-                            <button class="u-btn-delete" ng-click="vm.deleteRequest(report.request_id)"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                            <button class="u-btn-unreport" ng-click="vm.notAReportAnymore(report.id)"><i class="glyphicon glyphicon-ok-sign"></i></button>
+                            <button class="u-btn-delete" ng-click="vm.deleteItem(report.item_id, report.type, report.id)"><i class="glyphicon glyphicon-remove-sign"></i></button>
                         </td>
                     </tr>
                 </tbody>
