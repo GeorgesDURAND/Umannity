@@ -102,8 +102,8 @@
     "LOCATIONQUESTION": "Où allez vous le plus souvent aider des gens ?",
     "SEXQUESTION": "Vous êtes une/un :",
     "SEXWOMAN":"Femme",
-    "SEXMAN": "Homme"
-    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile"
+    "SEXMAN": "Homme",
+    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile",
 
     "BASELINE": "Slogan",
     "NAME": "Nom",
