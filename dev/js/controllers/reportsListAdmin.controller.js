@@ -17,6 +17,7 @@
 
         vm.notAReportAnymore = deleteReport;
         vm.deleteItem = deleteItem;
+        vm.viewItem = viewItem;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -36,6 +37,17 @@
                     vm.reportsList[key].date = UserService.formatBirthdate(vm.reportsList[key].date);
                 });
             });
+        }
+        
+        
+        function viewItem(type, item_id) {
+            if (type === "request"){
+                
+                /*AJOUTER ICI LE WINDOWS.LOCATION*/
+                
+            } else {
+                console.log(vm.name , " :: view ", type, " not handle for the moment");
+            }
         }
 
         function deleteItem(item_id, type, report_id) {

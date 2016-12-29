@@ -35,7 +35,7 @@
                         <td>{{report.message}}</td>
                         <td>
                             <!-- AJOUTER LE LIEN POUR VOIR UNE DEMANDE -->
-                            <button class="u-btn-view"><i class="glyphicon glyphicon-eye-open"></i></button>
+                            <button class="u-btn-view" ng-click="vm.viewItem(report.type, report.item_id)"><i class="glyphicon glyphicon-eye-open"></i></button>
                             <button class="u-btn-unreport" ng-click="vm.notAReportAnymore(report.id)"><i class="glyphicon glyphicon-ok-sign"></i></button>
                             <button class="u-btn-delete" ng-click="vm.deleteItem(report.item_id, report.type, report.id)"><i class="glyphicon glyphicon-remove-sign"></i></button>
                         </td>
