@@ -1,0 +1,118 @@
+@import "variables";
+
+.u-managePartner-box {
+    background-color: white;
+    border-radius: 5px;
+    word-break: break-word;
+    padding: 0px;
+
+    .u-choosePartner-box {
+        border-radius: 5px;
+        border-left: solid 1px lightgrey;
+        border-right: solid 1px lightgrey;
+        padding: 0px;
+
+        .no-pad {
+            padding: 0px;
+        }
+
+        table, th {
+            text-align: center;   
+        }
+
+        .u-report-filter-input {
+            border-radius: 5px;
+            font-size: 19px;
+            margin-left: 10px;
+        }
+
+        .u-btn-filter {
+            color: white;
+            border-radius: 4px;
+            border: none;
+            font-size: 20px;
+            background-color: $u-logo-grey;
+        }
+
+        .glyphicon {
+            padding-top: 5px; 
+        }
+
+        .u-report-filter {
+            cursor: text;
+            text-align: center;
+            background-color: transparent;
+        }
+
+        .u-report-filter[disabled] {
+            background-color: transparent;
+            border: none;
+            cursor: auto;
+            box-shadow: none;
+            padding: 0;
+            height: auto;
+            text-align: center;
+        }
+
+        .u-report-filter::-webkit-input-placeholder {
+            color: black;
+        }
+        .u-report-filter::-moz-placeholder {
+            color: black;
+        }
+        .u-report-filter:-ms-input-placeholder {
+            color: black;
+        }
+    }
+    
+    .u-showPartner-box {
+        padding-top: 20px;
+        
+        
+        .partner-logo {
+            border-radius: 50%;
+        }
+        
+        .partner-name-baseline {
+            text-align: center;
+        }
+        
+        .partner-info {
+            margin-top: 10px;
+            
+            div {
+                padding-bottom: 5px;
+            }
+        }
+        
+        .u-btn-delete, .u-btn-addPoints, .u-btn-edit {
+            color: white;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .u-btn-delete {
+            margin-top: 10px;
+            background-color: $u-orange;
+        }
+
+        .add-point-box {
+            margin-top: 10px;
+            
+            .u-btn-addPoints {
+                background-color: $u-logo-grey;
+                padding-top: 3px;
+            }
+            
+        }
+        
+        .u-btn-edit {
+            background-color: $u-blue;
+        }
+        
+        .add-point-box, ,u-btn-delete {
+            padding-bottom: 10px;
+        }
+    }
+    
+}
