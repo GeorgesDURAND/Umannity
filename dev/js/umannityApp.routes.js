@@ -69,9 +69,9 @@
             controller: 'requestController',
             controllerAs: 'vm'
         })
-            .when('/request/:requestId', {
-            templateUrl: "partials/request.html",
-            controller: 'requestController',
+            .when('/form/:requestId', {
+            templateUrl: "partials/form.html",
+            controller: 'formController',
             controllerAs: 'vm'
         })
             .when('/admin/stats', {
