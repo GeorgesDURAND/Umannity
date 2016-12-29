@@ -59,6 +59,11 @@
             controller: 'createRequestController',
             controllerAs: 'vm'
         })
+            .when('/requestsList', {
+            templateUrl: "partials/requestsList.html",
+            controller: 'requestsListController',
+            controllerAs: 'vm'
+        })
             .when('/admin/stats', {
             templateUrl: "partials/statsAdmin.html",
             controller: 'statsAdminController',
@@ -82,11 +87,6 @@
             templateUrl: 'partials/visio.html',
             controllerAs: 'vm'
         })
-            .when('/createOffer', {
-                controller: 'createOfferController',
-                templateUrl: 'partials/createOffer.html',
-                controllerAs: 'vm'
-            })
             .otherwise({
             redirectTo: '/error'
         });

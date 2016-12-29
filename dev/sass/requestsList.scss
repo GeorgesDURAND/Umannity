@@ -1,0 +1,98 @@
+@import "variables";
+
+.input-group-addon {
+  border-color: #42a5f5;
+  background-color: #42a5f5;
+  color: #ffffff;
+}
+
+.u-help-status li {
+  display: inline-block;
+  border: 1px solid #d7d7d7;
+  color: $u-grey;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 30px;
+  height: 35px;
+  width: 95px;
+  line-height: 35px;
+  margin-right: 10px;
+}
+
+.u-help-status li:hover {
+  border: 1px solid $u-orange;
+  color: $u-orange;
+  cursor: pointer;
+}
+
+.u-help-status .u-selectedTab {
+  color: $u-orange;
+  border: 1px solid $u-orange;
+}
+
+.skill-button0 {
+  background-color: $u-orange;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.skill-button1 {
+  background-color: $u-grey;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.skill-button2 {
+  background-color: $u-blue;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.nav {
+  padding-right: 0px;
+}
+
+.nav > li > a:hover {
+  background-color : $u-orange !important;
+  color: white !important;
+}
+
+.u-my-skills {
+  background-color : #eaeaea;
+  color : #333333;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.u-my-skills li{
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.u-my-skills .u-selected-filter {
+  background-color: white;
+  color: #333333;
+}
+
+.u-tab-requests {
+  background-color: #ffffff;
+  min-height: 400px;
+}
+
+.u-tab-requests .distance {
+  color: $u-grey;
+  font-size: 10px;
+}
+
+.block-request {
+  cursor: pointer;
+}
+
+
+
