@@ -64,6 +64,11 @@
             controller: 'requestsListController',
             controllerAs: 'vm'
         })
+            .when('/request/:requestId', {
+            templateUrl: "partials/request.html",
+            controller: 'requestController',
+            controllerAs: 'vm'
+        })
             .when('/admin/stats', {
             templateUrl: "partials/statsAdmin.html",
             controller: 'statsAdminController',

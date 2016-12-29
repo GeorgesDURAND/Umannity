@@ -1,0 +1,249 @@
+@import "variables";
+
+.u-user-image {
+  height: 200px;
+  width: 200px;
+}
+
+.u-padding {
+  padding-left: 25px;
+  padding-right: 10px;
+}
+
+.u-request-bloc {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding: 40px;
+  margin-top: 30px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+  box-shadow: 0px 1px 1px 0px rgba(163,163,163,1);
+}
+
+.u-request-bloc .u-author-func {
+  float: right;
+  margin-bottom: 25px;
+  margin-top: -25px;
+  font-style: italic;
+  text-decoration: underline;
+  color: $u-grey;
+  cursor: pointer;
+}
+
+.u-request-bloc .u-author-func .u-delete {
+  padding-left: 15px;
+}
+
+.u-request-bloc h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.u-request-bloc .u-request-skills {
+  text-align: center;
+  font-size: 25px;
+}
+
+.u-request-bloc .u-request-skills .skill-button0 {
+  background-color: $u-orange;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.u-request-bloc .u-request-skills .skill-button1 {
+  background-color: $u-grey;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.u-request-bloc .u-request-skills .skill-button2 {
+  background-color: $u-blue;
+  padding: 2px 14px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.u-request-bloc .u-candidate-skills .skill-button0 {
+  background-color: $u-orange;
+  padding: 2px 7px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 2px;
+}
+
+.u-request-bloc .u-candidate-skills .skill-button1 {
+  background-color: $u-grey;
+  padding: 2px 7px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 2px;
+}
+
+.u-request-bloc .u-candidate-skills .skill-button2 {
+  background-color: $u-blue;
+  padding: 2px 7px;
+  color: white;
+  border-radius: 100px;
+  margin-right: 2px;
+}
+
+.u-request-bloc .u-request-localisation-img {
+  height: 40px;
+  width: 40px;
+}
+
+.u-request-bloc .u-request-localisation {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.u-request-bloc .u-description1 {
+  min-height: 150px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+  box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+}
+
+.u-request-bloc .u-description2 {
+  min-height: 150px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+  box-shadow: 0px 0px 2px 0px rgba(163,163,163,1);
+}
+
+.u-request-bloc .u-accept-request {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.u-request-bloc .u-accept-request .u-big-button {
+  padding: 20px;
+  font-size: 17px;
+}
+
+// BLOC CANDIDATS
+
+.u-candidate-bloc {
+  background-color: #f1f2f7;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(163,163,163,1);
+  box-shadow: 0px 0px 3px 0px rgba(163,163,163,1);
+}
+
+.u-candidate-bloc header {
+  height: 70px;
+  padding-top: 5px;
+}
+
+.u-picture {
+  padding-right: 0;
+}
+
+.u-candidate-picture {
+  height: 60px;
+  width: 60px;
+}
+
+.u-candidate-bloc .picture {
+  height: 14%;
+  width: 14%;
+  float: left;
+}
+
+.u-candidate-bloc .name {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 7px;
+}
+
+.u-candidate-bloc .u-candidate-first_name {
+  font-size: 16px;
+}
+
+.u-candidate-bloc .u-candidate-last_name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.u-request-bloc .u-candidate-skills {
+  padding-left: 15px;
+  padding-bottom: 10px;
+  min-height: 40px;
+  max-height: 75px;
+  padding-top: 5px;
+  overflow-x: auto;
+}
+
+.u-candidate-bloc .u-contact {
+  background-color: forestgreen;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.u-candidate-bloc .u-chosen {
+  background-color: goldenrod;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.u-candidate-bloc .u-delete {
+  width: 10%;
+  float: right;
+  cursor: pointer;
+}
+
+.u-candidate-bloc .u-delete .u-delete-img {
+  width: 100%;
+  height: 100%;
+}
+
+.u-request-bloc h3 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.u-request-bloc .u-author {
+  font-size: 15px;
+}
+
+.u-content-body {
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-top: 0px;
+  -webkit-transition: 800ms;
+  -moz-transition: 800ms;
+  -o-transition: 800ms;
+  transition: 800ms;
+}
+
+.u-author-desc {
+  text-align: center;
+}
+
+
