@@ -8,6 +8,7 @@
     createOfferController.$inject = ['$scope', 'OfferService', 'PartnerService'];
 
     function createOfferController($scope, OfferService, PartnerService) {
+        /* jshint validthis: true */
         var vm = this;
         vm.createOffer = createOffer;
         var _partner;
@@ -19,7 +20,7 @@
         }
 
         function getPartnerId() {
-            _partner = PartnerService.getPartner()
+            _partner = PartnerService.getPartner();
             console.log("_partner.id.............", _partner.id);
             return _partner.id;
         }

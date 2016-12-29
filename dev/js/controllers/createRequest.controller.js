@@ -14,7 +14,6 @@
 
         vm.createRequest = createRequest;
 
-
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
 

@@ -40,15 +40,16 @@
         }
 
         function viewItem(type, item_id) {
-            if (type === "request"){
+            if (type === "request") {
                 /*AJOUTER ICI LE WINDOWS.LOCATION*/
+                console.log(vm.name , " :: redirect to ", type, item_id);
             } else {
                 console.log(vm.name , " :: view ", type, " not handle for the moment");
             }
         }
 
         function deleteItem(item_id, type, report_id) {
-            if (type === "request"){
+            if (type === "request") {
                 RestService.delete("/request", {request_id:item_id})
                     .then (function (data) {
                     console.log("Request :: correctly deleted");

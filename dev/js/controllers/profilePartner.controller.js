@@ -8,6 +8,7 @@
     profilePartnerController.$inject = ['$scope', 'PartnerService', '$q'];
 
     function profilePartnerController($scope, PartnerService, $q) {
+        /* jshint validthis: true */
         var vm = this;
         vm.edited_partner = {};
         vm.errors = [];
