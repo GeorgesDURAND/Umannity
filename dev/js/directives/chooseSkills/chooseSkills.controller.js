@@ -19,8 +19,6 @@
         vm.name = "chooseSkillsController";
         vm.showSkills = showSkills;
         vm.toggleSkill = toggleSkill;
-
-        console.log(vm.name);
         vm.categories = [];
 
         RestService.get('/skillcategory')
@@ -32,11 +30,10 @@
                 vm.categories.push(obj);
             });
         }).catch(function(ret){
-            console.log("Error = ", ret);
+            console.log(vm.name, " :: Error : ", ret.data.error);
         });
 
         function showSkills(idx) {
-            console.log("Show skills from ", vm.categories[idx].name);
             /* GET SKILLS OF THE CLICKED CATEGORY */
             if (!vm.categories[idx].skills){
                 var data = {
@@ -45,8 +42,8 @@
                 RestService.get('/skillcategory', data)
                     .then(function(data){
                     vm.categories[idx].skills = data.data.skills;
-                }).catch(function(){
-                    console.log("Error = ", ret);
+                }).catch(function(ret){
+                    console.log(vm.name, " :: Error : ", ret.data.error);
                 });
             }
             /* SHOW/HIDE THE DIV WITH THE SKILL */
@@ -57,7 +54,6 @@
         }
 
         function toggleSkill(str) {
-            console.log(str);
             var idx = $scope.skills.indexOf(str);
             if (idx === -1){
                 $scope.skills.push(str);
