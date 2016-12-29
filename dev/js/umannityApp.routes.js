@@ -92,6 +92,11 @@
             templateUrl: 'partials/visio.html',
             controllerAs: 'vm'
         })
+            .when('/createOffer', {
+                controller: 'createOfferController',
+                templateUrl: 'partials/createOffer.html',
+                controllerAs: 'vm'
+            })
             .otherwise({
             redirectTo: '/error'
         });
