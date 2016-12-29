@@ -74,6 +74,11 @@
             controller: 'reportsListAdminController',
             controllerAs: 'vm'
         })
+            .when('/admin/managePartner', {
+            templateUrl: "partials/managePartner.html",
+            controller: 'managePartnerController',
+            controllerAs: 'vm'
+        })
             .when('/error', {
             templateUrl: 'partials/error.html'
         })
