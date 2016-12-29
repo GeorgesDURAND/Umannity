@@ -2,6 +2,12 @@
 $u-orange : #FF9800;
 $u-blue: #42a5f5;
 $u-grey: #515151;
+
+$u-orange-transparent : rgba(255, 152, 0, 0.5);
+$u-blue-transparent: rgba(66, 165, 245, 0.5);
+$u-grey-transparent: rgba(109, 110, 112, 0.5);
+
+$u-logo-grey: rgb(167, 172, 193);
 $umannity-black: rgba(50, 50, 58, 1.0);
 $umannity-black-menu: rgba(40, 40, 48, 1.0);
 $u-black: $umannity-black;
@@ -26,9 +32,32 @@ html {
 
 body {
     height: 100%;
+    background-color: $app-gray;
 }
 
-.u-view {
-    height: 100%;
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: $u-orange;
+    border: 0px none #ffffff;
+}
+::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 0px 50px 0px 0px;
+}
+::-webkit-scrollbar-thumb:vertical {
+    border-radius: 0px 0px 0px 50px;
+}
+::-webkit-scrollbar-track {
     background: $app-gray;
+    border: 0px none #ffffff;
+    border-radius: 0px
+}
+::-webkit-scrollbar-corner {
+    background: $u-orange;
 }

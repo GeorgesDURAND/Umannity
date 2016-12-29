@@ -16,6 +16,7 @@
         vm.changeView = changeView;
         vm.isCollapsed = false;
         vm.user = UserService.getUser();
+        vm.adminSubmenu = false;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -41,6 +42,5 @@
                 });
             }
         }
-
     }
 })();

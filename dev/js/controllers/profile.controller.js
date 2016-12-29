@@ -54,14 +54,33 @@
                 });
         }
 
+        function editPassword() {
+            UserService.login(vm.user.email, vm.edited_user.old_password)
+                .then(function (user) {
+                    vm.edited_user.password = vm.edited_user.new_password;
+                    UserService.editProfile(vm.edited_user)
+                        .then(function (user) {
+                            vm.edited_user = undefined;
+                            loadUser();
+                        })
+                        .catch(function (error) {
+                            //TODO: Proper error management
+                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
+                        });
+                })
+                .catch(function (error) {
+                    //TODO: Proper error management
+                    addAlert('ERROR_WRONG_PASSWORD');
+                });
+        }
+
         function editProfile() {
             if (undefined !== vm.edited_user) {
-                //Check user enter a birthdate, if not set to undefined
-                if (0 === vm.edited_user.birthdateDateFormat) {
-                    vm.edited_user.birthdateDateFormat = undefined;
+                if (undefined !== vm.edited_user.address) {
+                    vm.edited_user.address = vm.edited_user.address.name;
                 }
                 //Check user enter a birthdate
-                if (undefined !== vm.edited_user.birthdateDateFormat) {
+                if (null !== vm.edited_user.birthdateDateFormat) {
                     vm.edited_user.birthdate = new Date(vm.edited_user.birthdateDateFormat).getTime() / 1000;
                 }
                 //Check user want change password
@@ -73,22 +92,7 @@
                             addAlert('ERROR_NO_SAME_PASSWORD');
                         }
                         else {
-                            UserService.login(vm.user.email, vm.edited_user.old_password)
-                                .then(function (user) {
-                                    vm.edited_user.password = vm.edited_user.new_password;
-                                    UserService.editProfile(vm.edited_user)
-                                        .then(function (user) {
-                                            loadUser();
-                                        })
-                                        .catch(function (error) {
-                                            //TODO: Proper error management
-                                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
-                                        });
-                                })
-                                .catch(function (error) {
-                                    //TODO: Proper error management
-                                    addAlert('ERROR_WRONG_PASSWORD');
-                                });
+                            editPassword();
                         }
                     }
                 }
@@ -96,6 +100,7 @@
                     UserService.editProfile(vm.edited_user)
                         .then(function (user) {
                             loadUser();
+                            vm.edited_user = undefined;
                         })
                         .catch(function (error) {
                             //TODO: Proper error management

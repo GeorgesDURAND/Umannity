@@ -1,0 +1,72 @@
+@import "variables";
+
+.u-reports-box {
+    background-color: white;
+    border-radius: 5px;
+    word-break: break-all;
+
+    .no-pad {
+        padding: 0px;
+    }
+
+    table, th {
+        text-align: center;   
+    }
+
+    .u-report-filter-input {
+        border-radius: 5px;
+        font-size: 19px;
+        margin-left: 10px;
+    }
+
+    .u-btn-delete, .u-btn-unreport, .u-btn-view, .u-btn-filter {
+        color: white;
+        border-radius: 4px;
+        border: none;
+    }
+
+    .u-btn-filter {
+        font-size: 20px;
+    }
+
+    .u-btn-delete {
+        background-color: $u-orange;
+    }
+    .u-btn-unreport {
+        background-color: $u-blue;
+    }
+    .u-btn-view, .u-btn-filter {
+        background-color: $u-logo-grey;
+    }
+
+    .glyphicon {
+        padding-top: 5px; 
+    }
+
+    .u-report-filter {
+        cursor: text;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    .u-report-filter[disabled] {
+        background-color: transparent;
+        border: none;
+        cursor: auto;
+        box-shadow: none;
+        padding: 0;
+        height: auto;
+        text-align: center;
+    }
+
+    .u-report-filter::-webkit-input-placeholder {
+        color: black;
+    }
+    .u-report-filter::-moz-placeholder {
+        color: black;
+    }
+    .u-report-filter:-ms-input-placeholder {
+        color: black;
+    }
+
+}

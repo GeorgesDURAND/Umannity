@@ -10,8 +10,21 @@ var umannityApp = angular.module('umannityApp', [
     'ngCookies',
     'chart.js',
     'base64',
+    'vsGoogleAutocomplete',
+    'umannityApp.controllers',
+    'umannityApp.services',
+    'umannityApp.directives',
+    'ngRoute',
+    'ui.bootstrap',
+    'pascalprecht.translate',
+    'ngSanitize',
+    'ngCookies',
+    'chart.js',
+    'base64',
     'flow',
-    'ngImgCrop'
+    'ngImgCrop',
+    'ngAria',
+    'ngMaterial'
 ]);
 
 var umannityAppControllers = angular.module('umannityApp.controllers', []);

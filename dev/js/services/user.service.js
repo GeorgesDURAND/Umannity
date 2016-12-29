@@ -42,6 +42,7 @@
             $cookies.put(_cache_key, JSON.stringify(user));
         }
 
+
         function putPicture(picture) {
             var deferred = $q.defer();
             RestService.put("/user/picture", picture)

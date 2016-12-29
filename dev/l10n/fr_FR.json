@@ -2,6 +2,7 @@
     "CONNECT": "Se Connecter",
     "EMAIL": "E-mail",
     "PASSWORD": "Mot de passe",
+    "CONFIRMPASSWORD": "Confirmez votre mot de passe",
     "TOLOGINPARTNER": "Vous êtes un partenaire commercial ? Cliquez ici",
     "TOLOGINUSER":"Vous êtes un utilisateur ? Cliquez ici",
     "SUBSCRIBE":"Pour s'inscrire, c'est par ici !",
@@ -9,6 +10,10 @@
     "LOST_PWD":"Mot de passe perdu ?",
     "WRONG_CONNEXION": "Vous êtes sur la mauvaise page de connexion",
 
+    "TOCONNECTION": "Retourner à la page de connexion",
+    "RESETPWD": "Changer mon mot de passe",
+    "NOTIFICATIONSEND": "Vous allez recevoir un e-mail sous peu, si ce n'est le cas, merci de vérifier vos spams puis de contacter le service support.",
+    
     "CREATEPARTNER": "Creer un partenaire",
     "PARTNERNAME": "Nom",
     "PARTNERBASELINE": "Baseline",
@@ -22,6 +27,17 @@
     "CROPPREVIEW": "Aperçu de votre image : ",
     "DROPIMAGE": "Vous pouvez glisser-deposer votre image ici",
     
+    "REPORTSLIST": "Aides signalées",
+    "REPORTFILTER": "Que cherchez vous ?",
+    "FILTERS": "Filtres : ",
+    "REPORTNUMBER": "N° rapport",
+    "REQUESTNUMBER": "N° requête",
+    "USERID": "N° Utilisateur",
+    "USERNAME": "Nom d'utilisateur",
+    "REQUESTNAME": "Nom de la requête",
+    "REQUESTDATE": "Date",
+    "REPORTMOTIV": "Message",
+    "ACTIONS": "Mes actions",
     
     "STATS": "Statistiques",
     "HOME": "Accueil",
@@ -30,11 +46,12 @@
     "BIRTHDATE": "Date de naissance",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom",
+    "POINTS": "Points",
+    "ADDRESS": "Adresse",
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
     "CHAT": "Messagerie instantanée",
 
-    "TITLE_STATS": "STATISTIQUES",
     "USERS_RATIO": "Ratio Bénévoles/Demandeurs",
     "helpers" : "Bénévoles",
     "takers" : "Demandeurs",
@@ -68,5 +85,21 @@
     "ERROR_WRONG_PASSWORD": "Vérifiez votre mot de passe et réessayez",
     "ERROR_WRONG_FORMAT_PASSWORD": "Votre mot de passe doit faire entre 5 et 14 caractères",
     "ERROR_NO_SAME_PASSWORD": "Vous n'avez pas renseignez 2 fois le même mot de passe",
-    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile"
+    "EDIT_PROFILE_ERROR" : "Erreur: nous n'avons pas pu modifier votre profile",
+    "ADMINISTRATION": "Administration",
+    
+    "ACCEPTCGV": "Je connais et j'accepte les condiotions d'utilisation de Umannity",
+    "SUBSCRIBENOW": "Je m'inscris",
+    "FILLPROFIL": "Je fais mon profil",
+    "LASTSTEP": "Étape précédente",
+    "NEXTSTEP": "Étape suivante",
+    
+    "BADCONFIRMPWD": "Le mot de passe et sa confirmation ne sont pas similaires",
+    "ALLCHAMPFILL": "Tout les champs sur cette page doivent être remplis",
+    
+    "PROFILIMAGEQUESTION": "Merci de choisir votre image de profil :",
+    "LOCATIONQUESTION": "Où allez vous le plus souvent aider des gens ?",
+    "SEXQUESTION": "Vous êtes une/un :",
+    "SEXWOMAN":"Femme",
+    "SEXMAN": "Homme"
 }

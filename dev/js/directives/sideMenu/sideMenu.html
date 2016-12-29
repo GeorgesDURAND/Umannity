@@ -34,13 +34,20 @@
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'LOGOUT' | translate }}</div>
         </div>
         <div ng-if="vm.user.group > 0">
-            <div class="menu-item" ng-click="vm.changeView('/admin/stats')">
-                <div class="menu-icon glyphicon glyphicon-stats"></div>
-                <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'STATS' | translate }}</div>
+            <div ng-click="vm.adminSubmenu = !vm.adminSubmenu" class="menu-item">
+                <div class="menu-icon glyphicon glyphicon-eye-open"></div>
+                <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{'ADMINISTRATION' | translate}}</div>
             </div>
-            <div class="menu-item" ng-click="vm.changeView('/admin/createPartner')">
-                <div class="menu-icon glyphicon glyphicon-plus"></div>
-                <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATEPARTNER' | translate }}</div>
+            <div ng-show="vm.adminSubmenu" class="submenu">
+                <div class="menu-item" ng-click="vm.changeView('/admin/stats')">
+                    <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'STATS' | translate }}</div>
+                </div>
+                <div class="menu-item" ng-click="vm.changeView('/admin/createPartner')">
+                    <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATEPARTNER' | translate }}</div>
+                </div>
+                <div class="menu-item" ng-click="vm.changeView('/admin/reports')">
+                    <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'REPORTSLIST' | translate }}</div>
+                </div>
             </div>
         </div>
     </div>
