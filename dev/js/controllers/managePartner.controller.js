@@ -14,8 +14,7 @@
         vm.partnersList = [];
         vm.filterQuery = "";
         vm.isFiltered = false;
-       
-
+        
         vm.selectPartner = selectPartner;
         vm.deletePartner = deletePartner;
         vm.addPoints = addPoints;
@@ -44,10 +43,10 @@
 
         function deletePartner() {
             RestService.delete("/partner", {id: vm.selectedPartner.id})
-                .then(function(data){
+                .then(function(data) {
                 console.log(vm.name, ":: Partner deleted");
                 loadPartnersList();
-            }).catch(function(ret){
+            }).catch(function(ret) {
                 console.log(vm.name, ":: Error ", ret.data.message);
             });
         }
@@ -57,25 +56,23 @@
                 var obj = {
                     "partner_id": vm.selectedPartner.id,
                     "points": vm.points + vm.selectedPartner.points
-                }
+                };
                 RestService.post('/partner/points', obj)
-                    .then(function(data){
+                    .then(function(data) {
                     console.log(vm.name, ":: ", vm.points, " added");
                     loadPartnersList();
-                }).catch(function(ret){
+                }).catch(function(ret) {
                     console.log(vm.name, ":: Error ", ret.data.message);
                 });
-
-
             }
         }
         
         function _reloadSelectedPartner() {
-            angular.forEach(vm.partnersList, function(value){
-                if (value.id === vm.selectedPartner.id){
+            angular.forEach(vm.partnersList, function(value) {
+                if (value.id === vm.selectedPartner.id) {
                     vm.selectedPartner = value;
                 }
-            })
+            });
         }
 
     }
