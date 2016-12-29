@@ -16,7 +16,8 @@
         vm.isFiltered = false;
 
         vm.notAReportAnymore = deleteReport;
-        vm.deleteRequest = deleteRequest;
+        vm.deleteItem = deleteItem;
+        vm.viewItem = viewItem;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -38,31 +39,43 @@
             });
         }
 
-        function deleteRequest(request_id) {
-            RestService.delete("/request", {request_id:request_id})
-                .then (function (data) {
-                console.log("Request :: correctly deleted");
-                deleteReport(request_id);
-            })
-                .catch (function () {
-                console.log("Request :: Error while tempting to delete");   
-            });
+        function viewItem(type, item_id) {
+            if (type === "request"){
+                /*AJOUTER ICI LE WINDOWS.LOCATION*/
+            } else {
+                console.log(vm.name , " :: view ", type, " not handle for the moment");
+            }
         }
 
-        function deleteReport(request_id) {
-            RestService.delete("/report", {request_id:request_id})
+        function deleteItem(item_id, type, report_id) {
+            if (type === "request"){
+                RestService.delete("/request", {request_id:item_id})
+                    .then (function (data) {
+                    console.log("Request :: correctly deleted");
+                    deleteReport(report_id);
+                })
+                    .catch (function () {
+                    console.log("Request :: Error while tempting to delete");   
+                });
+            } else {
+                console.log(vm.name , " :: delete ", type, " not handle for the moment");
+            }
+        }
+
+        function deleteReport(report_id) {
+            RestService.delete("/report", {id:report_id})
                 .then (function (data) {
                 console.log("Report :: correctly deleted");
-                _refreshReportList(request_id);
+                _refreshReportList(report_id);
             })
                 .catch (function () {
                 console.log("Report :: Error while tempting to delete");   
             });
         }
 
-        function _refreshReportList(request_id) {
+        function _refreshReportList(report_id) {
             angular.forEach(vm.reportsList, function(report, key) {
-                if (report.request_id === request_id) {
+                if (report.id === report_id) {
                     vm.reportsList.splice(key, 1);
                     console.log("ReportsList :: correctly refreshed");
                 }
