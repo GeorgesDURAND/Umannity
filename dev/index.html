@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/umannity.css">
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link rel="stylesheet" href="lib/angular-google-places-autocomplete/src/autocomplete.css">
         <!--External imports-->
         <script src="lib/angular/angular.js"></script>
         <script src="lib/angular-animate/angular-animate.js"></script>
@@ -24,7 +25,8 @@
         <script src="lib/chart.js/dist/Chart.js"></script>
         <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-
+        <script async defer src="http://maps.googleapis.com/maps/api/js?libraries=places&language=fr?key=AIzaSyB0Y_6eH1qDNMySSBGmQKVBbkAN20v1tAM" type="text/javascript"></script>
+        <script src="lib/angular-google-places-autocomplete/src/autocomplete.js"></script>
         <script type="text/javascript" src="lib/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
 
         <script src="lib/angular-aria/angular-aria.js"></script>
@@ -59,7 +61,7 @@
         <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
         <script src="js/directives/cropImage/cropImage.controller.js"></script>
         <script src="js/directives/chooseSkills/chooseSkills.controller.js"></script>
-        <script src="js/controllers/chat.controller.js"></script>
+        <script src="js/controllers/chat.controller.js"></script><script src="js/controllers/subscribe.controller.js"></script>
         <script src="js/controllers/visio.controller.js"></script>
         <script src="js/directives/sideMenu/sideMenu.controller.js"></script>
         <script src="js/controllers/profilePartner.controller.js"></script>
@@ -71,6 +73,7 @@
         <script src="js/services/webrtc.service.js"></script>
         <script src="js/services/chat.service.js"></script>
         <script src="js/services/request.service.js"></script>
+        <script src="js/services/createRequest.service.js"></script>
         <script src="js/services/partner.service.js"></script>
         <script src="js/services/offer.service.js"></script>
         <!--Directives-->

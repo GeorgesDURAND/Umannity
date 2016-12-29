@@ -21,7 +21,7 @@
             <div class="menu-icon glyphicon glyphicon-user"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'PROFILE' | translate }}</div>
         </div>
-        <div class="menu-item" ng-click="vm.changeView('/profile')" ng-if="appVm.getUser()">
+        <div class="menu-item" ng-click="vm.changeView('/createRequest')">
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_HELP' | translate }}</div>
         </div>

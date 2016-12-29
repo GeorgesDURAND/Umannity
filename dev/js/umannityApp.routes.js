@@ -54,6 +54,11 @@
             controller: 'chatController',
             controllerAs: 'vm'
         })
+            .when('/createRequest', {
+            templateUrl: "partials/createRequest.html",
+            controller: 'createRequestController',
+            controllerAs: 'vm'
+        })
             .when('/admin/stats', {
             templateUrl: "partials/statsAdmin.html",
             controller: 'statsAdminController',
