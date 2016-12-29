@@ -31,8 +31,11 @@
                 console.log("umannityAppController :: User is not logged");
                 if ($location.path() === "/loginPartner") {
                     $location.path("/loginPartner");
-                }
-                else {
+                } else if ($location.path() === "/cgv") {
+                    $location.path("/cgv");
+                } else if ($location.path() === "/subscribe") {
+                    $location.path("/subscribe");
+                } else {
                     $location.path("/login");
                 }
             }

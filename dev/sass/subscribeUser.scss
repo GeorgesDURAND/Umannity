@@ -56,6 +56,7 @@
             width: 50px;
             margin-left: 4%;
             margin-right: 4%;
+            cursor: pointer;
         }
 
         .subscribe-circle-active {
@@ -75,9 +76,9 @@
         }
 
         .u-question-subscribe {
-           text-align: left;
+            text-align: left;
         }
-        
+
         .u-input-subscribe {
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.6);
@@ -95,41 +96,26 @@
         .u-input-subscribe:focus {
             border: 1px solid $u-blue;
         }
-        
+
         .u-datepicker-subscribe {
             background-color: rgba(255,255,255,.6);
             display: inline-block;
             border-radius: 5px;
-            
-            .md-button.md-icon-button {
-                margin: 0 6px;
-                height: 40px;
-                min-width: 0;
-                line-height: 24px;
-                padding: 8px;
+
+            .md-button.md-icon-button {    
                 width: 10%;
                 float: inherit;
-                border-radius: 50%;
-                font-size: 19px;
             }
             
             .md-datepicker-input-container {
-                position: relative;
-                padding-bottom: 5px;
-                border-bottom-width: 1px;
-                border-bottom-style: solid;
-                display: inline-block;
                 width: 85%;
-                margin-left: 12px;
-                float: inherit;
-                /* height: 100%; */
                 font-size: 24px;
             }
-            
+
             .md-datepicker-input-container.md-datepicker-focused {
                 border-bottom-color: $u-blue;
             }
-            
+
             .md-datepicker-triangle-button.md-button.md-icon-button {
                 height: 100%;
                 width: 36px;
@@ -212,7 +198,7 @@
             }
 
         }
-        
+
         .u-input-image {
             margin-top: 20px;
         }

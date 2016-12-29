@@ -1,7 +1,7 @@
 // USAGE :
 //  <choose-skills object="MYOBJECT"></choose-skills>
 //  
-//  MYOBJECT.skills will be the array of skills selected by the user.
+//  MYOBJECT will be the array of skills selected by the user.
 //
 
 (function () {

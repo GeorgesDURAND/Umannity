@@ -15,17 +15,19 @@
         vm.changeStep = changeStep;
         vm.subscribe = subscribe;
         vm.closeAlert = closeAlert;
-        /*vm.openCGV = openCGV;*/
 
         vm.step = 0;
         vm.cgv = false;
-        vm.confirmPwd = "";
-        vm.newUser = [];
-        vm.errors = [];
-        
-        vm.sex = 0;
         vm.tmp = {};
         vm.tmp.cropImage = '';
+        vm.confirmPwd = "";
+        vm.errors = [];
+        
+        vm.newUser = {};
+        vm.newUser.zipcode = 93110;
+        vm.newUser.skills = [];
+        vm.newUser.sex = -1;
+        
         vm.now = new Date();
         vm.dateMax = new Date(
             vm.now.getFullYear() - 13,
@@ -35,13 +37,7 @@
             vm.now.getFullYear() - 100,
             vm.now.getMonth(),
             vm.now.getDate());
-
-        /* $scope.$on('$viewContentLoaded', onViewContentLoaded);
-
-        function onViewContentLoaded() {
-           vm.step = 0;
-        }*/
-
+        
         function changeView(viewName) {
             $location.path(viewName);
         }
@@ -62,34 +58,40 @@
         function subscribe() {
             if (checkInfo() === false){
                 vm.errors = [];
-                console.log("SUBSCRIBE");
+                
+                vm.newUser.birthdate = new Date(vm.tmp.birthdate).getTime() / 1000;
+                vm.newUser.picture = vm.tmp.cropImage;
+                
+                
+                RestService.put("/user", vm.newUser)
+                    .then(function(data){
+                    console.log("DATA = ", data.data);
+                }).catch(function(ret){
+                    addAlert(ret.data.error);
+                });
+                
+                
+                
             }
         }
 
         function changeStep(index) {
-            /*if (checkInfo() === false){
+            if (checkInfo() === false){
                 vm.errors = [];
                 vm.step = index;
-            }*/
-            vm.step = index;
+            }
         }
-
-        /*function openCGV () {
-            console.log($location.path('/cgv'));
-            
-            window.open("#!/cgv", "_blank");
-        }*/
-
-
 
         function checkInfo() {
             if (vm.newUser.first_name && vm.newUser.last_name && vm.newUser.email && vm.newUser.password && vm.confirmPwd){
-                if (vm.newUser.password != vm.confirmPwd){
-                    addAlert('BADCONFIRMPWD')
+                if (vm.newUser.password !== vm.confirmPwd){
+                    addAlert('BADCONFIRMPWD');
+                    vm.step = 0;
                     return true;
                 }
             } else {
-                addAlert('ALLCHAMPFILL')
+                addAlert('ALLCHAMPFILL');
+                vm.step = 0;
                 return true;
             }
             return false;
