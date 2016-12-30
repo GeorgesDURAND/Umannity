@@ -1,0 +1,71 @@
+<u-main-view class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <u-page-title title="MANAGEPARTNER">
+        </u-page-title>
+
+        <div class="u-managePartner-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="u-choosePartner-box col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="panel-heading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="u-btn-filter no-pad col-lg-1 col-md-1 col-sm-1 col-xs-1" ng-click="vm.isFiltered = !vm.isFiltered">
+                        <i class="glyphicon glyphicon-filter"></i>
+                    </button>
+                    <input class="u-report-filter-input col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-show="vm.isFiltered" type="text" placeholder="{{'PARTNERNAME' | translate }}" ng-model="vm.filterQuery.name">
+                    <input class="u-report-filter-input col-lg-3 col-md-3 col-sm-3 col-xs-3" ng-show="vm.isFiltered" type="text" placeholder="{{'PARTNERPOINTS' | translate }}" ng-model="vm.filterQuery.points">
+                    <input class="u-report-filter-input col-lg-3 col-md-3 col-sm-3 col-xs-3" ng-show="vm.isFiltered" type="text" placeholder="{{'PARTNEROFFER' | translate }}" ng-model="vm.filterQuery.total_offers">
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{'PARTNERNAME'| translate}}</th>
+                            <th>{{'PARTNERPOINTS'| translate}}</th>
+                            <th>{{'PARTNEROFFER'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="partner in vm.partnersList | filter : (vm.isFiltered ? vm.filterQuery : '') " ng-click="vm.selectPartner(partner)">
+                            <td>{{partner.name}}</td>
+                            <td>{{partner.points}}</td>
+                            <td>{{partner.total_offers}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div ng-show="vm.selectedPartner" class="u-showPartner-box col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <img ng-src="{{vm.selectedPartner.image}}" class="partner-logo col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                <span class="partner-name-baseline col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h2>
+                        {{vm.selectedPartner.name}}
+                    </h2>
+                    <h4>
+                        {{vm.selectedPartner.baseline}}
+                    </h4>
+                </span>
+
+                <span class="partner-info col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        {{"EMAILCONTACT"}} : {{vm.selectedPartner.email}}
+                    </div>
+                    <div>
+                        {{'NUMBERPOINTS' | translate }} : {{vm.selectedPartner.points}}
+                    </div>
+                </span>
+
+                <span class="add-point-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input type="number" ng-model="vm.points" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <button class="u-btn-addPoints col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click="vm.addPoints()"> 
+                        {{ 'ADDPOINTS' | translate }}
+                    </button>
+                </span>
+
+                <span  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="u-btn-delete col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click="vm.deletePartner()" > 
+                        {{ 'DELETEPARTNER' | translate }} 
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</u-main-view>
