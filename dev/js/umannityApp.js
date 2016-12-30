@@ -16,6 +16,7 @@ var umannityApp = angular.module('umannityApp', [
     'ngAria',
     'luegg.directives',
     'ngMaterial',
+    'ngImgCrop',
     'google.places'
 ]);
 
