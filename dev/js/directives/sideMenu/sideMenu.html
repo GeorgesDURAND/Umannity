@@ -25,7 +25,11 @@
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_HELP' | translate }}</div>
         </div>
-        <div class="menu-item" ng-click="vm.changeView('/chat')" ng-if="appVm.getUser()">
+        <div class="menu-item" ng-click="vm.changeView('/requestsList')">
+            <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
+            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'HELP_LIST' | translate }}</div>
+        </div>
+        <div class="menu-item" ng-click="vm.changeView('/chat')">
             <div class="menu-icon glyphicon glyphicon-envelope"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CHAT' | translate }}</div>
         </div>
