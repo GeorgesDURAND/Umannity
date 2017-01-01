@@ -81,7 +81,9 @@
                 }
                 UserService.login(vm.user.email, vm.edited_user.old_password)
                     .then(function (user) {
-                        vm.edited_user.password = vm.edited_user.new_password;
+                        if (vm.edited_user.new_password === vm.edited_user.confirm_new_password) {
+                            vm.edited_user.password = vm.edited_user.new_password;
+                        }
                         deferred.resolve(user);
                     })
                     .catch(function (error) {
