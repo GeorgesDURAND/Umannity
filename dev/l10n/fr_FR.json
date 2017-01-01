@@ -125,6 +125,7 @@
     "POINTSUSED": "Points utilisés : ",
     "AGE": "Age",
     "YEARS": "ans",
+
     "CREATE_REQUEST" : "Créer une demande d'aide",
     "SUBJECT" : "Sujet",
     "PLACEHOLDER_SUBJECT" : "exemple : Besoin d'aide pour réparer ma voiture",
