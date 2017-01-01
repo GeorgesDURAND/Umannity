@@ -34,5 +34,8 @@
     "angular-material": "^1.1.1",
     "angular-google-places-autocomplete": "^0.2.7",
     "angular-scroll-glue": "^2.1.0"
+  },
+  "resolutions": {
+    "angular": "^1.5.8"
   }
 }
