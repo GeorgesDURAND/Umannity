@@ -117,5 +117,19 @@
     "CREATE_OFFER": "Créer une offre",
     "OFFER_NAME": "Nom de l'offre",
     "DESCRIPTION": "Description",
-    "MAX_PARTICIPANT": "Nombre max de participant"
+    "MAX_PARTICIPANT": "Nombre max de participant",
+
+    "FORM_TITLE_REQUEST": "Formulaire d'évaluation",
+    "DURATION": "Durée de l'aide",
+    "COMENTARY": "Commentaire",
+    "PLACEHOLDER_COMENTARY": "Vous pouvez ajouter des détails ici...",
+    "PROBLEM_DONE": "Le problème est-il résolu ?",
+    "YES": "Oui",
+    "PARTIALLY": "En partie",
+    "NO": "Non",
+    "NEXT_CRITERIA": "Merci de noter les critères suivants",
+    "ATTITUDE": "Attitude",
+    "PONCTUALITY": "Ponctualité",
+    "GLOBAL": "Général",
+    "SEND_FORM_REQUEST": "Envoyer le formulaire"
 }

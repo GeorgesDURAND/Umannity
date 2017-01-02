@@ -114,5 +114,19 @@
     "CREATE_OFFER": "Create offer",
     "OFFER_NAME": "Offer name",
     "DESCRIPTION": "Description",
-    "MAX_PARTICIPANT": "Number max of participant"
+    "MAX_PARTICIPANT": "Number max of participant",
+
+    "FORM_TITLE_REQUEST": "Evaluation form",
+    "DURATION": "Duration of aid",
+    "COMENTARY": "Comment",
+    "PLACEHOLDER_COMENTARY": "You can add details here ...",
+    "PROBLEM_DONE": "Is the problem solved ?",
+    "YES": "Yes",
+    "PARTIALLY": "Partially",
+    "NO": "No",
+    "NEXT_CRITERIA": "Please note the following criteria",
+    "ATTITUDE": "Attitude",
+    "PONCTUALITY": "Ponctuality",
+    "GLOBAL": "Global",
+    "SEND_FORM_REQUEST": "Send evaluation form"
 }
