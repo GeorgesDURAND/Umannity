@@ -133,5 +133,23 @@
     "PLACEHOLDER_LOCATION" : "où ça ?",
     "PLACEHOLDER_DESCRIPTION" : "Vous pouvez ajouter des détails ici...",
     "CREATE_REQUEST_SKILLS" : "Quelles sont les compétences requises ?",
-    "CREATE_REQUEST_BUTTON" : "Envoyer la demande"
+    "CREATE_REQUEST_BUTTON" : "Envoyer la demande",
+    
+    "TITLE_REQUEST": "La demande d'aide",
+    "REPORT": "signaler",
+    "EDIT": "éditer",
+    "DELETE": "supprimer",
+    "SUJECT": "Sujet",
+    "LOCATION": "Adresse",
+    "DESCRIPTION": "Description",
+    "SKILLS": "Compétences",
+    "SAVE_BUTTON": "Enregistrer les modifications",
+    "NO_CANDIDATE": "Aucun bénévole ne s'est encore proposé de vous aider.",
+    "PROPOSE_BUTTON": "Je propose mon aide",
+    "THANK_BUTTON": "Merci d'avoir proposé votre aide",
+    "CONTACT_CANDIDATE": "contacter",
+    "CHOOSE_CANDIDATE": "choisir ce bénévole",
+    "CHOSEN_CANDIDATE": "votre héros",
+    "GRADE_BUTTON": "Noter",
+    "LAST_BUTTON": "Merci pour votre notation"
 }
