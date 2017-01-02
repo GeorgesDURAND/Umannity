@@ -1,10 +1,11 @@
 <u-main-view class="u-profil">
     <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="u-banner-profile no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!--<div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <img class="u-banner-profile">
-        </div>
+        </div>-->
         <div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <span class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-12 col-xs-12">
+            <span class="col-lg-offset-5 col-lg-7 col-md-offset-6 col-md-6 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12">
                 <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
                     <div>{{'HELPGIVEN' | translate}} </div>
                     <div>0</div>
@@ -19,15 +20,15 @@
                 </span>
             </span>
         </div>
+        </div>
         <div class="col-md-offset-2 col-md-2">
             <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.user.picture}}"/>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">
-        <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-2 toppad">
             <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')"
                  close="vm.closeAlert($index)">{{error | translate}}</div>
-            <div class=" col-md-9 col-lg-9 col-md-offset-2 col-lg-offset-2 col-sm-offset-1 col-xs-offset-1" ng-show="vm.goEdit">
+            <div class=" col-md-9 col-lg-9 col-sm-10 col-xs-10 col-md-offset-2 col-lg-offset-2 col-sm-offset-1 col-xs-offset-1" ng-show="vm.goEdit">
                 <h1 class="only-bottom-margin col-lg-6 col-md-6 .hidden-md-down">{{ vm.user.first_name }} {{ vm.user.last_name }}</h1>
                 <span class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h1 class="only-bottom-margin col-lg-2 col-md-2 col-sm-3 col-xs-3"> {{ vm.user.points }}</h1>
@@ -66,7 +67,7 @@
                     </tbody>
                 </table>
             </div>
-            <form class="col-md-8 col-md-offset-2 form-horizontal" role="form" ng-submit="vm.editProfile()" ng-hide="vm.goEdit">
+            <form class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 form-horizontal" role="form" ng-submit="vm.editProfile()" ng-hide="vm.goEdit">
                 <div class="form-group">
                     <label class="col-lg-2 col-md-2 control-label">{{ 'FIRSTNAME' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
@@ -140,15 +141,14 @@
                     </div>
                 </div>
             </form>
-        </div>
         <button type="button" class="btn btn-sm btn-warning" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit">
             <i class="glyphicon glyphicon-edit"></i>
             Edit
         </button>
-        <button class="btn btn-sm btn-danger">
+        <!--<button class="btn btn-sm btn-danger">
             <i class="glyphicon glyphicon-remove"></i>
             Sup
-        </button>
+        </button>-->
     </div>
 </u-main-view>
 
