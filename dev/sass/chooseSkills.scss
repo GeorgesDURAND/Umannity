@@ -14,11 +14,12 @@
 
     .select-skill-box {
         padding-top: 15px;
+        word-break: break-all;
 
         .cat-box {
             border-radius: 5px;
             margin-bottom: 10px;
-            font-size: 18px;
+            font-size: 15px;
             border: solid 1px;
         }
 
@@ -47,7 +48,7 @@
             .skill-box {
                 border-radius: 15px;
                 margin: 5px 5px;
-                font-size: 18px;
+                font-size: 15px;
                 padding: 2px 10px;
                 display: inline-block;
             }
@@ -78,7 +79,7 @@
         .skill-box {
             border-radius: 15px;
             margin: 5px 5px;
-            font-size: 18px;
+            font-size: 15px;
             padding: 2px 10px;
             display: inline-block;
 
