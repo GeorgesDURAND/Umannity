@@ -1,80 +1,82 @@
 <u-main-view>
     <div class="u-box-center">
-        <u-page-title title="CREATE_REQUEST"> </u-page-title>
+        <u-page-title title="FORM_TITLE_REQUEST"> </u-page-title>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <header class="panel_header">
-                <h2 class="">{{aide_name}}</h2>
-            </header>
+            <form ng-submit="vm.sendForm()">
+                <header class="panel_header">
+                    <h2 class="">{{aide_name}}</h2>
+                </header>
 
-            <div class="form-group ">
-                <label class="form-label">Durée de l'aide : {{vm.duration}} <span ng-show="vm.duration">minutes</span></label>
-                <input ng-model="vm.duration" type="range" value="0" max="600" min="0" step="1" required>
-            </div>
+                <div class="form-group ">
+                    <label class="form-label">{{ 'DURATION' | translate }} : {{vm.duration}} <span ng-show="vm.duration">minutes</span></label>
+                    <input ng-model="vm.duration" type="range" value="0" max="600" min="0" step="1">
+                </div>
 
-            <div class="form-group">
-                <label class="form-label">Commentaire</label>
-                <textarea ng-model="vm.commentary" placeholder="Vous pouvez ajouter des détails ici..." style="width: 100%; height: 150px; font-size: 14px; line-height: 23px;padding:15px;" required></textarea>
-            </div>
-
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-label">Le problème est-il résolu ?</label>
+                    <label class="form-label">{{ 'COMENTARY' | translate }}</label>
+                    <textarea ng-model="vm.commentary" placeholder="{{ 'PLACEHOLDER_COMENTARY' | translate }}" style="width: 100%; height: 150px; font-size: 14px; line-height: 23px;padding:15px;"></textarea>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-                    <input ng-model="vm.state" value="0" type="radio" name="resolution" id="radio1" checked>
-                    <label for="radio1">
-                        Oui
-                    </label>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-                    <input ng-model="vm.state" value="1" type="radio" name="resolution" id="radio2">
-                    <label for="radio2">
-                        En partie
-                    </label>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-                    <input ng-model="vm.state" value="2" type="radio" name="resolution" id="radio3">
-                    <label for="radio3">
-                        Non
-                    </label>
-                </div>
-            </div>
 
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <label class="form-label">Merci de noter les critères suivants</label>
-                <div class=" test col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-                        <label>Attitude</label>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="form-label">{{ 'PROBLEM_DONE' | translate }}</label>
                     </div>
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
-                        <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click1(param)"></div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <input ng-model="vm.state" value="0" type="radio" name="resolution" id="radio1">
+                        <label for="radio1">
+                            {{ 'YES' | translate }}
+                        </label>
                     </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class=" retest col-lg-2 col-md-2 col-sm-4 col-xs-4">
-                        <label>Ponctualité</label>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <input ng-model="vm.state" value="1" type="radio" name="resolution" id="radio2">
+                        <label for="radio2">
+                            {{ 'PARTIALLY' | translate }}
+                        </label>
                     </div>
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
-                        <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click2(param)"></div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-                        <label>Général</label>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
-                        <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click3(param)"></div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <input ng-model="vm.state" value="2" type="radio" name="resolution" id="radio3">
+                        <label for="radio3">
+                            {{ 'NO' | translate }}
+                        </label>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class='pull-left'>
-                    <button ng-click="vm.sendForm()" class="btn btn-primary">
-                        <i class="fa fa-paper-plane-o icon-xs"></i> &nbsp; Envoyer ce formualaire
-                    </button>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label class="form-label">{{ 'NEXT_CRITERIA' | translate }}</label>
+                    <div class=" test col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                            <label>{{ 'ATTITUDE' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+                            <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click1(param)"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class=" retest col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                            <label>{{ 'PONCTUALITY' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+                            <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click2(param)"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                            <label>{{ 'GLOBAL' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+                            <div star-rating rating="vm.starRating1" read-only="false" max-rating="5" click="vm.click3(param)"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class='pull-left'>
+                        <button type="submit" ng-click="vm.sendForm()" class="btn btn-primary">
+                            <i class="fa fa-paper-plane-o icon-xs"></i> &nbsp; {{ 'SEND_FORM_REQUEST' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </u-main-view>
