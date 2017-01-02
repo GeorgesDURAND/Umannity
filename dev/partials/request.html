@@ -7,16 +7,16 @@
                 <span ng-show="vm.status === 'author'"
                       class="u-author-func">
                      <span ng-click="vm.editButton = !vm.editButton">
-                         éditer
+                         {{ 'EDIT' | translate }}
                      </span>
                      <span class="u-delete" ng-click="vm.deleteRequest()">
-                        supprimer
+                        {{ 'DELETE' | translate }}
                      </span>
                 </span>
                 <span ng-show="vm.status !== 'author'"
                       class="u-author-func">
                      <span ng-click="vm.reportRequest()">
-                         signaler
+                         {{ 'REPORT' | translate }}
                      </span>
                 </span>
 
@@ -29,7 +29,7 @@
                     <div ng-show="vm.editButton">
                         <div class="form-group ">
                             <label class="form-label">
-                                Sujet :
+                                {{ 'SUBJECT' | translate }} :
                             </label>
                             <div class="controls">
                                 <input type="text"
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="u-request-skills">
+                    <div ng-hide="vm.editButton" class="u-request-skills">
                         <span ng-repeat="skill in vm.request.skills track by $index">
                             <span ng-class="'skill-button'+($index % 3)">{{skill}}</span>
                         </span>
@@ -54,7 +54,7 @@
                         <div ng-show="vm.editButton">
                             <span class="form-group ">
                                 <label class="form-label">
-                                    Adresse :
+                                    {{ 'LOCATION' | translate }} :
                                 </label>
                                 <span class="controls">
                                     <input type="text"
@@ -72,7 +72,7 @@
 
 
                     </div>
-                    <div class="">
+                    <div ng-hide="true">
                         <img class="u-request-localisation-img" src="../../img/calendar.png">
                         <span class="u-request-localisation"> 66/66/66 </span>
                     </div>
@@ -87,54 +87,74 @@
                     </div>
                     <span ng-show="vm.editButton">
                         <label class="form-label">
-                            Description :
+                            {{ 'DESCRIPTION' | translate }} :
                         </label>
                     </span>
-                    <div ng-show="vm.editButton" class="u-description2">
+                    <div ng-show="vm.editButton">
                         <div ng-show="vm.editButton">
                             <span class="form-group ">
                                 <div class="controls">
                                     <textarea ng-model="vm.requestDescription"
                                               ng-value="vm.request.description"
                                               class="form-control"
-                                              rows="8"></textarea>
+                                              rows="8">
+                                    </textarea>
                                 </div>
                             </span>
                         </div>
                     </div>
+                    <span ng-show="vm.editButton">
+                        <label class="form-label">
+                            {{ 'SKILLS' | translate }} :
+                        </label>
+                        <choose-skills object="vm.skills"></choose-skills>
+                    </span>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div ng-show="vm.request.accepted_user === -1 &&
+                    <div ng-hide="vm.editButton">
+                        <div ng-show="vm.request.accepted_user === -1 &&
                                   vm.status != 'author' &&
                                   !vm.isCandidate() &&
                                   !vm.isPreSelected()"
-                         class="u-accept-request">
-                        <button ng-click="vm.acceptRequest()"
-                                class="btn btn-success u-big-button">
-                            Je propose mon aide
-                        </button>
-                    </div>
-                    <div ng-show="vm.isCandidate() ||
+                             class="u-accept-request">
+                            <button ng-click="vm.acceptRequest()"
+                                    class="btn btn-success u-big-button">
+                                {{ 'PROPOSE_BUTTON' | translate }}
+                            </button>
+                        </div>
+                        <div ng-show="vm.isCandidate() ||
                                   vm.isPreSelected() &&
                                   !vm.isChosen()"
-                         class="u-accept-request">
-                        <button class="btn btn-info u-big-button">
-                            J'ai déjà proposé mon aide
-                        </button>
-                    </div>
-                    <div ng-show="vm.isChosen() ||
+                             class="u-accept-request">
+                            <button class="btn btn-info u-big-button">
+                                {{ 'THANK_BUTTON' | translate }}
+                            </button>
+                        </div>
+                        <div ng-show="(vm.user.id === vm.authorId && !vm.request.requester_completed) ||
+                                  (vm.isChosen() && !vm.request.volunteer_completed)">
+                            <div ng-show="vm.isChosen() ||
                                   vm.authorChose()"
-                         ng-click="vm.changeView('/form/', vm.request.id)"
-                         class="u-accept-request">
-                        <button class="btn btn-info u-big-button">
-                            Noter
-                        </button>
+                                 ng-click="vm.changeView('/form/', vm.request.id)"
+                                 class="u-accept-request">
+                                <button class="btn btn-info u-big-button">
+                                    {{ 'GRADE_BUTTON' | translate }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div ng-show="(vm.user.id === vm.authorId && vm.request.requester_completed) ||
+                                  (vm.isChosen() && vm.request.volunteer_completed)"
+                             class="u-accept-request">
+                            <button class="btn btn-info u-big-button">
+                                {{ 'LAST_BUTTON' | translate }}
+                            </button>
+                        </div>
                     </div>
                     <div ng-show="vm.editButton"
                          class="u-accept-request">
                         <button ng-click="vm.editRequest(); vm.editButton = !vm.editButton"
                                 class="btn btn-success u-big-button">
-                            Enregistrer les modifications
+                            {{ 'SAVE_BUTTON' | translate }}
                         </button>
                     </div>
                 </div>
@@ -145,7 +165,7 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div ng-show="vm.status === 'author'" class="col-lg-12 col-md-12 col-sm-6 col-xs-12 u-request-bloc">
-                    <span ng-show="vm.candidatesList.length == 0"> Aucun bénévole ne s'est encore proposé de vous aider.</span>
+                    <span ng-show="vm.candidatesList.length == 0"> {{ 'NO_CANDIDATE' | translate }}</span>
                     <span ng-show="{{vm.request.accepted_user === -1}}" class="col-lg-4 col-md-12 col-sm-12 col-xs-12"
                           ng-repeat="candidate in vm.candidatesList">
                         <div class="u-candidate-bloc">
@@ -170,12 +190,12 @@
                                 <div ng-hide="{{vm.isPreSelected(candidate.id)}}"
                                      ng-click="vm.preSelectUser(candidate.id)"
                                      class="u-contact">
-                                    Contacter
+                                    {{ 'CONTACT_CANDIDATE' | translate }}
                                 </div>
                                 <div ng-show="{{vm.isPreSelected(candidate.id)}}"
                                      ng-click="vm.SelectUser(candidate.id)"
                                      class="u-contact">
-                                    Choisir ce bénévole
+                                    {{ 'CHOOSE_CANDIDATE' | translate }}
                                 </div>
                             </footer>
                         </div>
@@ -198,7 +218,7 @@
                             </div>
                             <footer>
                                 <div class="u-chosen">
-                                    Votre héros
+                                    {{ 'CHOSEN_CANDIDATE' | translate }}
                                 </div>
                             </footer>
                         </div>
@@ -214,9 +234,9 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <h3>{{vm.author.first_name + ' ' + vm.author.last_name}}</h3>
-                        <div class="u-author">
+                        <div ng-hide="true" class="u-author">
                             <p>Petit héros</p>
-                            <p>A déjà apporté {{vm.author.given_helps}} aides</p>
+                            <p ng-if="vm.author.given_helps">A déjà apporté {{vm.author.given_helps}} aides</p>
                         </div>
                     </div>
                 </div>

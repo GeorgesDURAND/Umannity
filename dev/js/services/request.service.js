@@ -127,7 +127,7 @@
         function reportRequest (data)
         {
             var deferred = $q.defer();
-            RestService.post("/report", data)
+            RestService.put("/report", data)
                 .then(function (report) {
                     deferred.resolve(report.data);
                 })

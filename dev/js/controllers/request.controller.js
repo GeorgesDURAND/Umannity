@@ -14,6 +14,7 @@
         vm.name = "requestController";
         vm.candidatesList = [];
         vm.candidatesListPicture = [];
+        vm.skills = [];
 
         vm.setUserStatut = setUserStatut;
 
@@ -220,8 +221,9 @@
         // Signaler la demande d'aide
         function reportRequest () {
             var _reportRequestData = {
+                item_id: vm.requestId,
                 message: "A user reported this post",
-                request_id: vm.requestId
+                type: "request"
             };
             RequestService.reportRequest(_reportRequestData).then(function (data) {
 
@@ -246,6 +248,7 @@
                 var _editRequestData = {
                     request_id: vm.requestId,
                     name: vm.requestName,
+                    skills: vm.skills,
                     description: formatedString
                 };
             } else {
@@ -253,6 +256,7 @@
                     request_id: vm.requestId,
                     name: vm.requestName,
                     description: formatedString,
+                    skills: vm.skills,
                     location: vm.requestLocation.formatted_address
                 };
             }
