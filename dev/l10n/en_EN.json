@@ -114,6 +114,7 @@
     "SKILLS": "Skills",
     "CREATE_OFFER": "Create offer",
     "OFFER_NAME": "Offer name",
+    "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Number max of participant"
 }
