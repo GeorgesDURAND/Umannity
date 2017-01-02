@@ -38,7 +38,7 @@
         {
             var params = {
                 id : id
-            }
+            };
             var deferred = $q.defer();
             RestService.get("/user/picture", params)
                 .then(function (userPicture) {

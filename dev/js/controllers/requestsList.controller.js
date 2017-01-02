@@ -37,7 +37,6 @@
         function onViewContentLoaded () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-
                     var latitude = position.coords.latitude.toString();
                     var longitude = position.coords.longitude.toString();
                     _coordonnees = latitude + ',' + longitude;
@@ -66,7 +65,7 @@
 
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
                 angular.forEach(allRequests.requests, function(request, key)
-                {
+                                {
                     if (request.accepted_user !== vm.user.id) {
                         vm.helpsList.push(request);
                     }
@@ -75,7 +74,7 @@
             });
             RequestsListService.loadAcceptedRequestsList(_requestParams1).then(function (myRequests) {
                 angular.forEach(myRequests.requests, function(request, key)
-                {
+                                {
                     vm.current_helps.push(request);
                 });
                 vm.loadPicture(vm.current_helps);
@@ -90,7 +89,7 @@
         // Charge les images des demandeurs d'aide
         function loadPicture (requestsList) {
             angular.forEach(requestsList, function(request)
-            {
+                            {
                 RequestsListService.loadPicture(request.user_id).then(function (picture) {
                     var userPicture = {
                         user_id : request.user_id,
@@ -103,35 +102,39 @@
 
         function getPicture (id) {
             angular.forEach(vm._listauthorData, function(authorData)
-            {
-                if(id === authorData.user_id) {
-                    console.log(authorData.picture)
+                            {
+                if (id === authorData.user_id) {
+                    console.log(authorData.picture);
                     return (authorData.picture);
                 }
             });
         }
 
         function search (item) {
-            if (vm.searchText === undefined)
+            if (vm.searchText === undefined) {   
                 return true;
-            else {
-                if (item.name.toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1)
+            } else {
+                if (item.name.toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1) {
                     return true;
+                }
                 for (var i = item.skills.length - 1; i >= 0; i--) {
-                    if (item.skills[i].toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1)
+                    if (item.skills[i].toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1) {
                         return true;
+                    }
                 }
             }
             return false;
         }
 
         function searchBySkill (item) {
-            if (vm.chosenSkill === undefined)
+            if (vm.chosenSkill === undefined) {
                 return true;
+            }
             else {
                 for (var i = item.skills.length - 1; i >= 0; i--) {
-                    if (item.skills[i].toLowerCase().indexOf(vm.chosenSkill.toLowerCase()) !== -1)
+                    if (item.skills[i].toLowerCase().indexOf(vm.chosenSkill.toLowerCase()) !== -1) {
                         return true;
+                    }
                 }
             }
             return false;

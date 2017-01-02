@@ -54,8 +54,9 @@
             if (vm.user.id === vm.authorId) { // AUTEUR
                 vm.status = "author";
              } else if (vm.request.accepted_user !== -1) { // Bénévole choisi
-                if (vm.user.id === vm.volunteer.id)
+                if (vm.user.id === vm.volunteer.id) {
                     vm.status = "chosen_volunteer";
+                }
              } else {
                 vm.status = "normal";
             }
@@ -72,8 +73,9 @@
                 vm.authorId = vm.request.user_id;
                 loadAuthorData();
                 loadVolunteersData();
-                if (vm.request.accepted_user !== -1)
+                if (vm.request.accepted_user !== -1) {
                     loadChosenVolunteerData();
+                }
                 else {
                     setUserStatut();
                 }
@@ -196,8 +198,9 @@
         // Renvoi "true" si l'utilisateur a déjà été pré-sélectionné
         function isPreSelected (userId) {
             var show = false;
-            if (userId === undefined)
+            if (userId === undefined) {
                 userId = vm.user.id;
+            }
             angular.forEach(vm.request.pre_selected, function(preSelectedUser) {
                 if (preSelectedUser === userId) {
                     show = true;
@@ -240,16 +243,20 @@
 
         // Modifie les données de la demande d'aide
         function editRequest () {
-            if (vm.requestDescription !== undefined)
-                var formatedString = vm.requestDescription.replace(/\n/g,"<br/>");
+            var formatedString = '';
+            if (vm.requestDescription !== undefined) {
+                formatedString = vm.requestDescription.replace(/\n/g,"<br/>");
+            }
+            
+            var _editRequestData = {};
             if (vm.requestLocation === undefined) {
-                var _editRequestData = {
+                _editRequestData = {
                     request_id: vm.requestId,
                     name: vm.requestName,
                     description: formatedString
                 };
             } else {
-                var _editRequestData = {
+                _editRequestData = {
                     request_id: vm.requestId,
                     name: vm.requestName,
                     description: formatedString,

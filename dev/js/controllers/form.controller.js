@@ -19,7 +19,6 @@
         vm.click3 = click3;
         vm.starRating1 = 0;
 
-
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
 
@@ -41,8 +40,9 @@
             console.log("vm.user.id ",vm.user.id);
             console.log("vvm.authorId ",vm.authorId);
             console.log("vm.volunteer ",vm.volunteer);
-            if (vm.authorId !== vm.user.id && vm.volunteer !== vm.user.id)
+            if (vm.authorId !== vm.user.id && vm.volunteer !== vm.user.id) {
                 $location.path('/requestsList');
+            }
         }
 
         function click1 (param) {
@@ -57,10 +57,11 @@
             vm.global = param;
         }
 
-
         function sendForm() {
-            if (vm.commentary !== undefined)
-                var formatedString = vm.commentary.replace(/\n/g,"<br/>");
+            var formatedString = '';
+            if (vm.commentary !== undefined) {
+                formatedString = vm.commentary.replace(/\n/g,"<br/>");
+            }
             var _newFormData = {
                 "request_id": vm.requestId,
                 "name": vm.request.name,
