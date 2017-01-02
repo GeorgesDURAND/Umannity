@@ -10,17 +10,20 @@
     function profileController($scope, UserService, $translate, $q) {
         /* jshint validthis: true */
         var vm = this;
-        vm.edited_user = {};
+
         vm.editProfile = editProfile;
         vm.editProfilePicture = editProfilePicture;
-        vm.errors = [];
         vm.closeAlert = closeAlert;
-        vm.hide_element = false;
         vm.otherUser = otherUser;
+
+        vm.errors = [];
+        vm.edited_user = {};
+        vm.tmp = {};
+        vm.tmp.cropImage = '';
+        vm.hide_element = false;
         vm.goEdit = true;
         vm.hideButtonEdit = false;
-
-        vm.skills = ["couture", "menage"];
+        vm.birthday = false;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -39,9 +42,9 @@
 
         function onViewContentLoaded() {
             //Loading the user
-//            vm.user = UserService.getUser();
-//            if (undefined === vm.user) {
-                loadUser();
+            //            vm.user = UserService.getUser();
+            //            if (undefined === vm.user) {
+            loadUser();
         }
 
         function loadUser(id) {
@@ -53,23 +56,26 @@
             }
             UserService.loadUser(id)
                 .then(function (user) {
-                    vm.user = user;
-                    if (vm.user.sex === 0) {
-                        vm.user.gender = $translate.instant("WOMAN");
-                    }
-                    else {
-                        vm.user.gender = $translate.instant("MAN");
-                    }
-                    loadPicture(id);
-                });
+                vm.user = user;
+                if (vm.user.sex === 0) {
+                    vm.user.gender = $translate.instant("WOMAN");
+                }
+                else {
+                    vm.user.gender = $translate.instant("MAN");
+                }
+                vm.edited_user.skills = vm.user.skills;
+                vm.user.age = UserService.getAge(vm.user.birthdate);
+                loadPicture(id);
+            });
         }
 
         //Loading the picture
         function loadPicture(id) {
             UserService.loadPicture(id)
                 .then(function (picture) {
-                    vm.user.picture = picture;
-                });
+                vm.user.picture = picture;
+                vm.tmp.cropImage = picture;
+            });
         }
 
         function checkPassword() {
@@ -81,12 +87,12 @@
                 }
                 UserService.login(vm.user.email, vm.edited_user.old_password)
                     .then(function (user) {
-                        vm.edited_user.password = vm.edited_user.new_password;
-                        deferred.resolve(user);
-                    })
+                    vm.edited_user.password = vm.edited_user.new_password;
+                    deferred.resolve(user);
+                })
                     .catch(function (error) {
-                        deferred.reject(error);
-                    });
+                    deferred.reject(error);
+                });
             }
             console.log("deferred.promise.........", deferred.promise);
             return deferred.promise;
@@ -105,42 +111,49 @@
                     undefined !== vm.edited_user.confirm_new_password) {
                     checkPassword()
                         .then(function (user) {
-                            if (undefined !== vm.edited_user) {
-                                UserService.editProfile(vm.edited_user)
-                                    .then(function (user) {
-                                        loadUser();
-                                        vm.edited_user = undefined;
-                                    })
-                                    .catch(function (error) {
-                                        addAlert(error.data.error);
-                                    });
-                            }
-                        })
+                        if (undefined !== vm.edited_user) {
+                            UserService.editProfile(vm.edited_user)
+                                .then(function (user) {
+                                editProfilePicture();
+                                loadUser();
+                                vm.edited_user = undefined;
+                                vm.edited_user.skills = vm.user.skills;
+                                vm.goEdit = true;
+                            })
+                                .catch(function (error) {
+                                addAlert(error.data.error);
+                            });
+                        }
+                    })
                         .catch(function (error) {
-                            addAlert(error.data.error);
-                            console.log("error editProfile User ........", error);
-                        });
+                        addAlert(error.data.error);
+                        console.log("error editProfile User ........", error);
+                    });
                 }
                 else {
                     UserService.editProfile(vm.edited_user)
                         .then(function (user) {
-                            loadUser();
-                            vm.edited_user = undefined;
-                        })
+                        editProfilePicture();
+                        loadUser();
+                        vm.edited_user.skills = vm.user.skills;
+                        vm.goEdit = true;
+                    })
                         .catch(function (error) {
-                            addAlert(error.data.error);
-                        });
+                        addAlert(error.data.error);
+                    });
                 }
             }
         }
 
-        function editProfilePicture(picture) {
-            if (undefined !== picture) {
-                vm.edited_user.picture = picture;
+        function editProfilePicture() {
+            if (undefined !== vm.tmp.cropImage) {
+                vm.edited_user.picture = vm.tmp.cropImage;
                 UserService.putPicture(vm.edited_user)
                     .then(function () {
-                        loadUser();
-                    });
+                    loadUser();
+                }).catch(function(ret) {
+                    console.log("editProfilePicture :: Error ", ret.data.messages);
+                });
             }
             else {
                 console.log("editProfilePicture in profile controller: picture undefined");

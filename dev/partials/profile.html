@@ -1,17 +1,26 @@
-<u-main-view>
-    <div class="row">
-        <div class="col-md-12">
-            <div>
-                <img class="u-banner-profile">
-            </div>
-            <div class="navbar">
-                <span>Aides apportés 0</span>
-                <span>Aides reçus 0</span>
-                <span>Points dépensés 0</span>
-            </div>
-            <div class="col-md-offset-2">
-                <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.user.picture}}"/>
-            </div>
+<u-main-view class="u-profil">
+    <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <img class="u-banner-profile">
+        </div>
+        <div class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <span class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-12 col-xs-12">
+                <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                    <div>{{'HELPGIVEN' | translate}} </div>
+                    <div>0</div>
+                </span>
+                <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                    <div>{{'HELPTAKEN' | translate}} </div>
+                    <div>0</div>
+                </span>
+                <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                    <div>{{'POINTSUSED' | translate}} </div>
+                    <div>0</div>
+                </span>
+            </span>
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+            <img class="img-circle avatar avatar-original u-picture-profile" ng-src="{{vm.user.picture}}"/>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">
@@ -27,77 +36,81 @@
                 <table class="table table-user-information">
                     <tbody>
                         <tr>
-                            <td>{{ 'EMAIL' | translate }}:</td>
+                            <td>{{ 'EMAIL' | translate }} :</td>
                             <td>{{ vm.user.email }}</td>
                         </tr>
                         <tr>
-                            <td>{{ 'GENDER' | translate }}:</td>
+                            <td>{{ 'GENDER' | translate }} :</td>
                             <td>{{ vm.user.gender }}</td>
                         </tr>
                         <tr>
-                            <td>{{ 'BIRTHDATE' | translate }}:</td>
+                            <td>{{ 'BIRTHDATE' | translate }} :</td>
                             <td>{{ vm.user.formattedBirthdate }}</td>
                         </tr>
                         <tr>
-                            <td>{{ 'ADDRESS' | translate }}</td>
+                            <td>{{ 'ADDRESS' | translate }} :</td>
                             <td>{{ vm.user.address }}</td>
                         </tr>
                         <tr>
-                            <td>{{ 'SKILLS' | translate }}:</td>
-                            <td><div ng-repeat="skill in vm.user.skills">{{skill}}</div></td>
+                            <td>{{ 'SKILLS' | translate }} :</td>
+                            <td>
+                                <div ng-repeat="skill in vm.user.skills">
+                                    {{skill}}
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Age:</td>
-                            <td>ajouté âge</td>
+                            <td>{{ 'AGE' | translate }} :</td>
+                            <td>{{ vm.user.age }} {{"YEARS" | translate}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <form class="col-md-8 col-md-offset-2 form-horizontal" role="form" ng-submit="vm.editProfile()" ng-hide="vm.goEdit">
                 <div class="form-group">
-                    <label class="col-md-3 control-label">{{ 'FIRSTNAME' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'FIRSTNAME' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="text" placeholder="{{ vm.user.first_name }}" ng-model="vm.edited_user.first_name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'LASTNAME' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'LASTNAME' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="text" placeholder="{{ vm.user.last_name }}" ng-model="vm.edited_user.last_name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'EMAIL' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'EMAIL' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="email" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'TYPE_YOUR_PASSWORD' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'TYPE_YOUR_PASSWORD' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="password" ng-model="vm.edited_user.old_password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'NEW_PASSWORD' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'NEW_PASSWORD' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="password" ng-model="vm.edited_user.new_password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'CONFIRM_PASSWORD' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'CONFIRM_PASSWORD' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="password" ng-model="vm.edited_user.confirm_new_password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'BIRTHDATE' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'BIRTHDATE' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="date" placeholder="{{ vm.user.formattedBirthdate }}" ng-model="vm.edited_user.birthdateDateFormat">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-3 control-label">{{ 'ADDRESS' | translate }}</label>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'ADDRESS' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="text" placeholder="{{ vm.user.address }}" vs-google-autocomplete
                                vs-street="vm.edited_user.address.street"
@@ -107,12 +120,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">
-                        <label class="btn btn-default btn-file">
-                            {{ 'CHANGE_PHOTO' | translate }}
-                            <input type="file" style="display: none;" u-upload-picture="vm.edited_user.picture">
-                        </label>
-                        <span></span>
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'SKILLS' | translate }}</label>
+                    <div class="col-lg-10 col-md-10">
+                        <choose-skills object="vm.edited_user.skills"></choose-skills>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label">
+                        {{ 'CHANGE_PHOTO' | translate }}
+                    </label>
+                    <div class="col-lg-10 col-md-10">
+                        <crop-image object="vm.tmp"></crop-image>
                     </div>
                 </div>
                 <div class="form-group">
@@ -135,23 +153,23 @@
 </u-main-view>
 
 <!--
-                SEE OTHER PROFILE
+SEE OTHER PROFILE
 <div class="row">
-    <form class="form-horizontal" role="form" ng-submit="vm.otherUser()">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">ID</label>
-            <div class="col-lg-3">
-                <input class="form-control" type="text" ng-model="vm.other_user_id">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-                <input type="submit" class="btn btn-primary" value="Search">
-                <span></span>
-            </div>
-        </div>
-    </form>
+<form class="form-horizontal" role="form" ng-submit="vm.otherUser()">
+<div class="form-group">
+<label class="col-lg-3 control-label">ID</label>
+<div class="col-lg-3">
+<input class="form-control" type="text" ng-model="vm.other_user_id">
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-3 control-label"></label>
+<div class="col-md-8">
+<input type="submit" class="btn btn-primary" value="Search">
+<span></span>
+</div>
+</div>
+</form>
 </div>
 
 -->

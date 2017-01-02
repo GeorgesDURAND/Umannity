@@ -21,7 +21,8 @@
             loadPicture: loadPicture,
             getPicture: getPicture,
             editProfile: editProfile,
-            putPicture: putPicture
+            putPicture: putPicture,
+            getAge: getAge
         };
 
         return service;
@@ -138,28 +139,24 @@
             return deferred.promise;
         }
 
-        /*function getAge(date) {
-            var deferred = $q.defer();
-
-            var moment = require('moment');
-
-            moment().format();
-
-            console.log("moment", $moment);
-
-            $moment.then(function(moment) {
-                $scope.anotherTime = moment("20111031", "YYYYMMDD").fromNow();
-            });
-            return deferred.promise;
-        }*/
-
         function formatBirthdate(birthdate) {
             var tmp = new Date(birthdate * 1000);
             var date = (tmp.getDate() > 9 ? tmp.getDate() : "0" + tmp.getDate());
             var month = (tmp.getMonth() > 9 ? (tmp.getMonth() + 1) : "0" + (tmp.getMonth() + 1));
             var year = tmp.getYear() + 1900;
-            //getAge(date);
             return date + "/" + month + "/" + year;
+        }
+        
+        function getAge(userBirthdate) {
+            var birthdate = new Date(userBirthdate * 1000);
+            var today = new Date();
+            var age = today.getYear() - birthdate.getYear();
+            if (today.getMonth() < birthdate.getMonth() ||
+                (today.getMonth() === birthdate.getMonth() &&
+                 today.getDate() < birthdate.getDate()) ) {
+                age -= 1;
+            }
+            return age;
         }
     }
 })();

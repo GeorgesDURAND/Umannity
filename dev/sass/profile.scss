@@ -5,42 +5,57 @@ $profile-banner-height: 170px;
 .u-banner-profile
 .u-navbar-profile
 */
-.u-banner-profile {
-  width: 100%;
-  height: $profile-banner-height;
-  background: gray; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, gray, transparent); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, gray, transparent); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, gray, transparent); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, gray, transparent); /* Standard syntax */
-}
 
-.navbar {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin-top: -50px;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 0px;
-}
+.u-profil {
+  
+  .no-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .u-banner-profile {
+    width: 100%;
+    height: $profile-banner-height;
+    background: gray; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, gray, transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, gray, transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, gray, transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, gray, transparent); /* Standard syntax */
+  }
 
-.u-picture-profile {
-  width: $profile-picture-size;
-  height: $profile-picture-size;
-  margin-top: -120px;
-  margin-left: 40px;
-  position: relative;
-  z-index: 2;
-  border:5px solid #ffffff;
-  max-width: $profile-picture-size;
-  max-height: $profile-banner-height;
-}
+  .navbar {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: -50px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0px;
+    padding-top: 5px;
+    
+    span {
+      margin-bottom: 5px;
+    }
+    
+  }
 
-.toppad {
-  padding-top: 80px;
-  padding-bottom: 20px;
-  position: relative;
-  top: -70px;
-  background-color: white;
-  z-index: 1;
+  .u-picture-profile {
+    /*width: $profile-picture-size;
+    height: $profile-picture-size;*/
+    margin-top: -120px;
+    margin-left: 40px;
+    position: relative;
+    z-index: 2;
+    border:5px solid #ffffff;
+    max-width: $profile-picture-size;
+    max-height: $profile-banner-height;
+  }
+
+  .toppad {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    position: relative;
+    top: -70px;
+    background-color: white;
+    z-index: 1;
+  }
 }
