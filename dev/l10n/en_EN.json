@@ -58,6 +58,7 @@
     "ADDRESS": "Address",
     "PROFILE": "Profil",
     "CREATE_HELP": "Create request",
+    "HELP_LIST": "Help request list",
     "CHAT": "Instant messaging",
 
     "USERS_RATIO": "Ratio Helpers/Volunteers",
@@ -113,6 +114,7 @@
     "SKILLS": "Skills",
     "CREATE_OFFER": "Create offer",
     "OFFER_NAME": "Offer name",
+    "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Number max of participant",
     

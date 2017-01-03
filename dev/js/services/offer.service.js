@@ -31,5 +31,21 @@
                 });
             return deferred.promise;
         }
+
+        function getOffer(partner_id) {
+            var deferred = $q.defer();
+            var params = {id:partner_id};
+
+            RestService.get("/offer", params)
+                .then(function (request) {
+                    var offer = request.data;
+                    _offer = offer;
+                    deferred.resolve(offer);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
     }
 })();

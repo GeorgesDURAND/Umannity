@@ -50,6 +50,7 @@
     "ADDRESS": "Adresse",
     "PROFILE": "Profile",
     "CREATE_HELP": "Créer une demande",
+    "HELP_LIST": "Liste des demandes d'aides",
     "CHAT": "Messagerie instantanée",
     "EDIT": "Modifier le profile",
 
@@ -116,6 +117,7 @@
     "SKILLS": "Compétences",
     "CREATE_OFFER": "Créer une offre",
     "OFFER_NAME": "Nom de l'offre",
+    "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Nombre max de participant",
     
