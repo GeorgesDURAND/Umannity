@@ -46,16 +46,16 @@
 
         function _formatDate(f, s, t, separator) {
             var date = "";
-            if (f < 10){
-                date += "0"
+            if (f < 10) {
+                date += "0";
             }
             date += f + separator;
-            if (s < 10){
-                date += "0"
+            if (s < 10) {
+                date += "0";
             }
             date += s + separator;
-            if (t < 10){
-                date += "0"
+            if (t < 10) {
+                date += "0";
             }
             date += t;
             return date;
