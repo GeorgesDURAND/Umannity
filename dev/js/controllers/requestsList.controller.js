@@ -58,15 +58,16 @@
                 radius: vm.radius
             };
             /*var _requestParams2 = {
-                skills: vm.user.skills,
-                coordinates: _coordonnees,
-                radius: vm.radius
-            };*/
+             skills: vm.user.skills,
+             coordinates: _coordonnees,
+             radius: vm.radius
+             };*/
 
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
-                angular.forEach(allRequests.requests, function(request, key)
-                                {
-                    if (request.accepted_user !== vm.user.id) {
+                angular.forEach(allRequests.requests, function(request, key) {
+                    if (request.requester_completed === true && request.volunteer_completed === true) {
+                        vm.completed_helps.push(request)
+                    } else {
                         vm.helpsList.push(request);
                     }
                 });
@@ -101,10 +102,8 @@
         }
 
         function getPicture (id) {
-            angular.forEach(vm._listauthorData, function(authorData)
-                            {
-                if (id === authorData.user_id) {
-                    console.log(authorData.picture);
+            angular.forEach(vm._listauthorData, function(authorData) {
+                if(id === authorData.user_id) {
                     return (authorData.picture);
                 }
             });

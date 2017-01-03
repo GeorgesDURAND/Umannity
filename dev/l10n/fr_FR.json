@@ -169,5 +169,18 @@
     
     "SUBSCRIBESUCCESS": "Félicitations, vous venez de vous inscrire à Umannity. Merci de regarder vos mails afin d'activer votre compte.",
     "REDIRECTIN": "Retour a la page de connexion dans ",
-    "SUCESSCREATEPARTNER": "Nouveau partenaire crée "
+    "SUCESSCREATEPARTNER": "Nouveau partenaire crée ",
+    "MAX_PARTICIPANT": "Nombre max de participant",
+
+    "REQUESTLIST_TITLE": "Les demandes d'aides",
+    "MYREQUESTLIST_TITLE": "Mes demandes d'aides",
+    "PLACEHOLDER_SEARCH": "rechercher...",
+    "SKILLS_MENU": "Toutes les compétences",
+    "MY_SKILLS_MENU": "Toutes mes compétences",
+    "ALL": "TOUTES",
+    "IN_PROGRESS": "EN COURS",
+    "FINISHED": "TERMINEES",
+    "NO_HELP": "Pas de demande d'aide.",
+    "NO_HELP_IN_PROGRESS": "Pas de demande d'aide en cours.",
+    "NO_FINISHED_HELP": "Pas de demande d'aide terminée."
 }

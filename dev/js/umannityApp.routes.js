@@ -79,6 +79,11 @@
             controller: 'formController',
             controllerAs: 'vm'
         })
+            .when('/myRequestsList', {
+            templateUrl: "partials/myRequestsList.html",
+            controller: 'myRequestsListController',
+            controllerAs: 'vm'
+        })
             .when('/admin/stats', {
             templateUrl: "partials/statsAdmin.html",
             controller: 'statsAdminController',
