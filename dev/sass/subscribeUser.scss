@@ -37,9 +37,17 @@
     }
 
     .u-alert-login-blue {
-        background-color: rgba(66, 165, 245, 0.49);
+        background-color: rgba(66, 165, 245, 0.5);
         color: rgba(255, 255, 255, 0.71);
         border-color: #42a5f5;
+    }
+    
+    .u-alert-login-green {
+        background-color: rgba(51, 205, 34, 0.5);
+        color: rgba(255,255,255,1);
+        border-color: rgba(51, 205, 34, 1);
+        font-size: 18px;
+        margin-top: 10px;
     }
 
     .u-subscribe-navigation {
@@ -81,7 +89,7 @@
 
         .u-input-subscribe {
             border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.3);
             color: $u-orange;
             font-size: 19px;
             border: 1px solid transparent;
@@ -90,38 +98,11 @@
         }
 
         .u-input-subscribe:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.35);
         }
 
         .u-input-subscribe:focus {
             border: 1px solid $u-blue;
-        }
-
-        .u-datepicker-subscribe {
-            background-color: rgba(255,255,255,.6);
-            display: inline-block;
-            border-radius: 5px;
-
-            .md-button.md-icon-button {    
-                width: 10%;
-                float: inherit;
-            }
-            
-            .md-datepicker-input-container {
-                width: 85%;
-                font-size: 24px;
-            }
-
-            .md-datepicker-input-container.md-datepicker-focused {
-                border-bottom-color: $u-blue;
-            }
-
-            .md-datepicker-triangle-button.md-button.md-icon-button {
-                height: 100%;
-                width: 36px;
-                position: absolute;
-                top: 10px;
-            }
         }
 
         .cgv-box {
@@ -205,16 +186,16 @@
 
         .u-btn-subscribe {
             margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
             padding: 9px;
-            background-color: $u-orange;
-            opacity: 0.8;
+            background-color: $u-orange-opacity-8;
             border-radius: 4px;
         }
 
         .u-btn-subscribe:hover {
             color: white;
             background-color: $u-orange;
-            opacity: 1;
         }
 
         .u-btn-subscribe[disabled] {

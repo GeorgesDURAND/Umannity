@@ -162,5 +162,8 @@
     "ATTITUDE": "Attitude",
     "PONCTUALITY": "Ponctuality",
     "GLOBAL": "Global",
-    "SEND_FORM_REQUEST": "Send evaluation form"
+    "SEND_FORM_REQUEST": "Send evaluation form",
+    
+    "SUBSCRIBESUCCESS": "Congratulations, you just registered on Umannity, please check your e-mail to activate your account.",
+    "REDIRECTIN": "Redirect to login page in"
 }

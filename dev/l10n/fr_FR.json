@@ -165,5 +165,8 @@
     "ATTITUDE": "Attitude",
     "PONCTUALITY": "Ponctualité",
     "GLOBAL": "Général",
-    "SEND_FORM_REQUEST": "Envoyer le formulaire"
+    "SEND_FORM_REQUEST": "Envoyer le formulaire",
+    
+    "SUBSCRIBESUCCESS": "Félicitations, vous venez de vous inscrire à Umannity. Merci de regarder vos mails afin d'activer votre compte.",
+    "REDIRECTIN": "Retour a la page de connexion dans "
 }

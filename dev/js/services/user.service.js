@@ -153,7 +153,7 @@
             var age = today.getYear() - birthdate.getYear();
             if (today.getMonth() < birthdate.getMonth() ||
                 (today.getMonth() === birthdate.getMonth() &&
-                 today.getDate() < birthdate.getDate()) ) {
+                 today.getDate() < birthdate.getDate())) {
                 age -= 1;
             }
             return age;
