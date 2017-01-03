@@ -130,5 +130,23 @@
     "PLACEHOLDER_LOCATION" : "where ?",
     "PLACEHOLDER_DESCRIPTION" : "you can add details here ...",
     "CREATE_REQUEST_SKILLS" : "What skills are required ?",
-    "CREATE_REQUEST_BUTTON" : "Send the request"
+    "CREATE_REQUEST_BUTTON" : "Send the request",
+
+    "TITLE_REQUEST": "The request for assistance",
+    "REPORT": "report",
+    "EDIT": "edit",
+    "DELETE": "delete",
+    "SUJECT": "Topic",
+    "LOCATION": "Location",
+    "DESCRIPTION": "Description",
+    "SKILLS": "Skills",
+    "SAVE_BUTTON": "Save modifications",
+    "NO_CANDIDATE": "No volunteer has volunteered to help you.",
+    "PROPOSE_BUTTON": "I propose my help",
+    "THANK_BUTTON": "Thank you for proposing help",
+    "CONTACT_CANDIDATE": "contact",
+    "CHOOSE_CANDIDATE": "choose this volunteer",
+    "CHOSEN_CANDIDATE": "your hero",
+    "GRADE_BUTTON": "Evaluate",
+    "LAST_BUTTON": "Thank you for your evaluation"
 }
