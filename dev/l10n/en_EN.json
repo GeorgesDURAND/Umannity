@@ -148,5 +148,19 @@
     "CHOOSE_CANDIDATE": "choose this volunteer",
     "CHOSEN_CANDIDATE": "your hero",
     "GRADE_BUTTON": "Evaluate",
-    "LAST_BUTTON": "Thank you for your evaluation"
+    "LAST_BUTTON": "Thank you for your evaluation",
+
+    "FORM_TITLE_REQUEST": "Evaluation form",
+    "DURATION": "Duration of aid",
+    "COMENTARY": "Comment",
+    "PLACEHOLDER_COMENTARY": "You can add details here ...",
+    "PROBLEM_DONE": "Is the problem solved ?",
+    "YES": "Yes",
+    "PARTIALLY": "Partially",
+    "NO": "No",
+    "NEXT_CRITERIA": "Please note the following criteria",
+    "ATTITUDE": "Attitude",
+    "PONCTUALITY": "Ponctuality",
+    "GLOBAL": "Global",
+    "SEND_FORM_REQUEST": "Send evaluation form"
 }

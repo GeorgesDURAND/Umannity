@@ -150,9 +150,20 @@
     "CHOOSE_CANDIDATE": "choisir ce bénévole",
     "CHOSEN_CANDIDATE": "votre héros",
     "GRADE_BUTTON": "Noter",
-    "LAST_BUTTON": "Merci pour votre notation"
-<<<<<<< HEAD
-=======
+    "LAST_BUTTON": "Merci pour votre notation",
+    "MAX_PARTICIPANT": "Nombre max de participant",
 
->>>>>>> b22befecd302354fe0af872f770c1610e7ffda9a
+    "FORM_TITLE_REQUEST": "Formulaire d'évaluation",
+    "DURATION": "Durée de l'aide",
+    "COMENTARY": "Commentaire",
+    "PLACEHOLDER_COMENTARY": "Vous pouvez ajouter des détails ici...",
+    "PROBLEM_DONE": "Le problème est-il résolu ?",
+    "YES": "Oui",
+    "PARTIALLY": "En partie",
+    "NO": "Non",
+    "NEXT_CRITERIA": "Merci de noter les critères suivants",
+    "ATTITUDE": "Attitude",
+    "PONCTUALITY": "Ponctualité",
+    "GLOBAL": "Général",
+    "SEND_FORM_REQUEST": "Envoyer le formulaire"
 }
