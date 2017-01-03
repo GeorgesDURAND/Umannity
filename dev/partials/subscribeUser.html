@@ -24,7 +24,7 @@
                 <form class="css-form" novalidate>
 
                     <div ng-show="vm.step === 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+                       
                         <label class="u-label-subscribe">
                             {{ 'FIRSTNAME' | translate }}
                         </label>
@@ -32,7 +32,7 @@
                         <label class="u-label-subscribe">
                             {{ 'LASTNAME' | translate }}
                         </label>
-                        <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="last_name"/>
+                        <input class="u-input-subscribe " type="text" ng-model="vm.newUser.last_name" name="name"/>
                         <label class="u-label-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             {{ 'BIRTHDATE' | translate }}
                         </label>
@@ -81,14 +81,16 @@
                             <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {{'LOCATIONQUESTION' | translate}}
                             </label>
-                            <input class="u-input-subscribe" type="text" ng-model="vm.newUser.address.name" name="first_name" 
+                            <input class="u-input-subscribe" type="text" ng-model="vm.newUser.address" name="first_name" 
                                    vs-google-autocomplete 
-                                   vs-street="vm.newUser.address.street"
-                                   vs-city="vm.newUser.address.city"
-                                   vs-post-code="vm.newUser.address.zipcode"/>
+                                   vs-post-code="vm.newUser.zipcode"/>
 
+                           <!-- <input g-places-autocomplete="" force-selection="true" ng-model="vm.newUser.address" type="text" class="u-input-subscribe">-->
+                            
                         </div>
 
+                        
+                        
                         <div class="sex-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {{'SEXQUESTION' | translate }}
@@ -129,8 +131,6 @@
                         <button class="btn u-btn-subscribe col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-5 col-xs-offset-2 col-xs-5" ng-click="vm.subscribe()">
                             {{ 'SUBSCRIBENOW' | translate }}
                         </button>
-
-
                     </div>
 
                 </form>

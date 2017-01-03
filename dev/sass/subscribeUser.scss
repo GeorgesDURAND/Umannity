@@ -37,7 +37,7 @@
     }
 
     .u-alert-login-blue {
-        background-color: rgba(66, 165, 245, 0.49);
+        background-color: rgba(66, 165, 245, 0.5);
         color: rgba(255, 255, 255, 0.71);
         border-color: #42a5f5;
     }
@@ -81,7 +81,7 @@
 
         .u-input-subscribe {
             border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.3);
             color: $u-orange;
             font-size: 19px;
             border: 1px solid transparent;
@@ -90,7 +90,7 @@
         }
 
         .u-input-subscribe:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.35);
         }
 
         .u-input-subscribe:focus {
@@ -98,10 +98,11 @@
         }
 
         .u-datepicker-subscribe {
-            background-color: rgba(255,255,255,.6);
+            background-color: rgba(255,255,255,.3);
             display: inline-block;
             border-radius: 5px;
-
+            color: $u-orange;
+            
             .md-button.md-icon-button {    
                 width: 10%;
                 float: inherit;
@@ -112,6 +113,12 @@
                 font-size: 24px;
             }
 
+            .md-datepicker-input {
+                color: $u-orange;
+                font-size: 18px;
+                font-family: "Varela round";
+            }
+            
             .md-datepicker-input-container.md-datepicker-focused {
                 border-bottom-color: $u-blue;
             }
@@ -205,16 +212,16 @@
 
         .u-btn-subscribe {
             margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
             padding: 9px;
-            background-color: $u-orange;
-            opacity: 0.8;
+            background-color: $u-orange-opacity-8;
             border-radius: 4px;
         }
 
         .u-btn-subscribe:hover {
             color: white;
             background-color: $u-orange;
-            opacity: 1;
         }
 
         .u-btn-subscribe[disabled] {
