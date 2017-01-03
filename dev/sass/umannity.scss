@@ -10,8 +10,10 @@ body {
 
 .u-view {
     height: 100%;
+    min-height: 100vh;
     background: $app-gray;
     font-family: 'Varela Round', sans-serif;
+    padding: 0px;
 }
 
 .u-login {
