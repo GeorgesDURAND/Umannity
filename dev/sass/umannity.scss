@@ -9,7 +9,7 @@ body {
 }
 
 .u-view {
-    display: inline-block;
+    height: 100%;
     background: $app-gray;
     font-family: 'Varela Round', sans-serif;
 }
@@ -24,7 +24,6 @@ body {
     border-radius: 1vh;
     min-height: 50vh;
     vertical-align: middle;
-    text-align: center;
     background: $app-gray;
 }
 

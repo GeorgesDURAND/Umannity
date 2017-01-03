@@ -114,5 +114,17 @@
     "CREATE_OFFER": "Create offer",
     "OFFER_NAME": "Offer name",
     "DESCRIPTION": "Description",
-    "MAX_PARTICIPANT": "Number max of participant"
+    "MAX_PARTICIPANT": "Number max of participant",
+
+    "REQUESTLIST_TITLE": "Applications for aid",
+    "MYREQUESTLIST_TITLE": "My applications for aid",
+    "PLACEHOLDER_SEARCH": "search...",
+    "SKILLS_MENU": "All skills",
+    "MY_SKILLS_MENU": "All my skills",
+    "ALL": "ALL",
+    "IN_PROGRESS": "PENDING",
+    "FINISHED": "FINISHED",
+    "NO_HELP": "No request for help.",
+    "NO_HELP_IN_PROGRESS": "No request for help in progress.",
+    "NO_FINISHED_HELP": "No help request completed."
 }

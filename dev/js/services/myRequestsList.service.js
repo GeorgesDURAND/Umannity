@@ -3,11 +3,11 @@
 
     angular
         .module('umannityApp.services')
-        .factory('RequestsListService', requestsListService);
+        .factory('MyRequestsListService', myRequestsListService);
 
-    requestsListService.$inject = ['$q', 'RestService'];
+    myRequestsListService.$inject = ['$q', 'RestService'];
 
-    function requestsListService($q, RestService) {
+    function myRequestsListService($q, RestService) {
 
         var service = {
             loadRequestsList: loadRequestsList,
