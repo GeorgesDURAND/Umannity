@@ -134,7 +134,6 @@
     "PLACEHOLDER_DESCRIPTION" : "Vous pouvez ajouter des détails ici...",
     "CREATE_REQUEST_SKILLS" : "Quelles sont les compétences requises ?",
     "CREATE_REQUEST_BUTTON" : "Envoyer la demande",
-    
     "TITLE_REQUEST": "La demande d'aide",
     "REPORT": "signaler",
     "EDIT": "éditer",
@@ -152,4 +151,8 @@
     "CHOSEN_CANDIDATE": "votre héros",
     "GRADE_BUTTON": "Noter",
     "LAST_BUTTON": "Merci pour votre notation"
+<<<<<<< HEAD
+=======
+
+>>>>>>> b22befecd302354fe0af872f770c1610e7ffda9a
 }
