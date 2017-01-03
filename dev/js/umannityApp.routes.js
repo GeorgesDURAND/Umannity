@@ -107,6 +107,11 @@
             templateUrl: 'partials/visio.html',
             controllerAs: 'vm'
         })
+            .when('/offersList', {
+            controller: 'offersListController',
+            templateUrl: 'partials/offersList.html',
+            controllerAs: 'vm'
+        })
             .when('/createOffer', {
             controller: 'createOfferController',
             templateUrl: 'partials/createOffer.html',

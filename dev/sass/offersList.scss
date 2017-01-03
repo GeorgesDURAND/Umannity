@@ -1,0 +1,39 @@
+@import "variables";
+
+.offers-bloc {
+  background-color: white;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 100%;
+  font-size: 25px;
+}
+
+.offer-line {
+  border-bottom: 1px solid rgb(235,235,235);
+  line-height: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+.cel {
+  line-height: 40px;
+}
+
+.partener-name {
+
+}
+
+.baseline {
+  color: $u-blue;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.offer_title {
+  color: $u-orange;
+}
+
+.offer_point {
+  color: $u-orange;
+}

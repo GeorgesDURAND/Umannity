@@ -66,7 +66,7 @@
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
                 angular.forEach(allRequests.requests, function(request, key) {
                     if (request.requester_completed === true && request.volunteer_completed === true) {
-                        vm.completed_helps.push(request)
+                        vm.completed_helps.push(request);
                     } else {
                         vm.helpsList.push(request);
                     }

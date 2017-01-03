@@ -45,6 +45,10 @@
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'CREATE_OFFER' | translate }}</div>
         </div>
+        <div class="menu-item" ng-click="vm.changeView('/offersList')" ng-if="appVm.getUser()">
+            <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
+            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'OFFERS_LIST' | translate }}</div>
+        </div>
         <div class="menu-item" ng-click="vm.logout()">
             <div class="menu-icon glyphicon glyphicon-off"></div>
             <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'LOGOUT' | translate }}</div>
