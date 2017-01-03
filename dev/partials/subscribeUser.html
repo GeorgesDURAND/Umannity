@@ -36,7 +36,8 @@
                         <label class="u-label-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             {{ 'BIRTHDATE' | translate }}
                         </label>
-                        <md-datepicker ng-model="vm.tmp.birthdate" md-placeholder="Enter date" md-min-date="vm.dateMin" md-max-date="vm.dateMax" type="date" class="u-datepicker-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12"></md-datepicker>
+                        <input class="u-input-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12" min="{{vm.dateMin}}" max="{{vm.dateMax}}" type="date" ng-model="vm.tmp.birthdate">
+                        
                         <label class="u-label-subscribe">
                             {{ 'EMAIL' | translate }}
                         </label>
@@ -84,13 +85,8 @@
                             <input class="u-input-subscribe" type="text" ng-model="vm.newUser.address" name="first_name" 
                                    vs-google-autocomplete 
                                    vs-post-code="vm.newUser.zipcode"/>
-
-                           <!-- <input g-places-autocomplete="" force-selection="true" ng-model="vm.newUser.address" type="text" class="u-input-subscribe">-->
-                            
                         </div>
 
-                        
-                        
                         <div class="sex-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label class="u-question-subscribe col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 {{'SEXQUESTION' | translate }}
@@ -134,7 +130,14 @@
                     </div>
 
                 </form>
+                
             </div>
+            
+            <label uib-alert ng-show="vm.success" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert-danger u-alert-login-green">
+                {{ 'SUBSCRIBESUCCESS' | translate}}
+            <br>
+                {{'REDIRECTIN' | translate }} : {{vm.time}} 
+            </label>
         </div>
     </div>
 </u-main-view-no-menu>
