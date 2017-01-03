@@ -1,0 +1,52 @@
+<u-main-view>
+    <div class="u-box-center">
+
+        <!-- Titre -->
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                <div class="pull-left">
+                    <u-page-title title="OFFERSLIST_TITLE"> </u-page-title>
+                </div>
+            </div>
+        </div>
+        <!-- FIN Titre -->
+
+        <!-- Barre de recherche -->
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <div class="input-group primary">
+                    <span class="input-group-addon">
+                        <span class="arrow"></span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                <input type="text" ng-model="vm.searchText" class="form-control search-page-input" placeholder="{{ 'PLACEHOLDER_SEARCH' | translate}}" value="">
+            </div>
+        </div>
+        <!-- FIN Barre de recherche -->
+
+        <div class="offers-bloc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <span ng-repeat="offer in vm.offersList | filter:vm.search" class="offer-line">
+                <div class="offer-line col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                     ng-click="vm.changeView('/offer/', offer.id)">
+                    <div class="cel col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="partener-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {{offer.partner_name}}
+                        </div>
+                        <div class="baseline col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {{offer.partner_baseline}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="offer_title">{{offer.name}}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="">{{offer.points}} points</div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="offer_point">{{offer.max_participants -offer.participants.length}}/ {{offer.max_participants}}</div>
+                    </div>
+                </div>
+            </span>
+        </div>
+
+    </div>
+</u-main-view>

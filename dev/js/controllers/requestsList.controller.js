@@ -68,7 +68,7 @@
                 angular.forEach(allRequests.requests, function(request, key)
                 {
                     if (request.requester_completed === true && request.volunteer_completed === true) {
-                        vm.completed_helps.push(request)
+                        vm.completed_helps.push(request);
                     } else {
                         vm.helpsList.push(request);
                     }
@@ -106,7 +106,7 @@
         function getPicture (id) {
             angular.forEach(vm._listauthorData, function(authorData)
             {
-                if(id === authorData.user_id) {
+                if (id === authorData.user_id) {
                     return (authorData.picture);
                 }
             });

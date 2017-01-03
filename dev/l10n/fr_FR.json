@@ -131,5 +131,8 @@
     "FINISHED": "TERMINEES",
     "NO_HELP": "Pas de demande d'aide.",
     "NO_HELP_IN_PROGRESS": "Pas de demande d'aide en cours.",
-    "NO_FINISHED_HELP": "Pas de demande d'aide terminée."
+    "NO_FINISHED_HELP": "Pas de demande d'aide terminée.",
+
+    "OFFERS_LIST": "Offres",
+    "OFFERSLIST_TITLE": "Offres commerciales"
 }

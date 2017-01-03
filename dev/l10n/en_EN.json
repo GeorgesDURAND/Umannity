@@ -128,5 +128,8 @@
     "FINISHED": "FINISHED",
     "NO_HELP": "No request for help.",
     "NO_HELP_IN_PROGRESS": "No request for help in progress.",
-    "NO_FINISHED_HELP": "No help request completed."
+    "NO_FINISHED_HELP": "No help request completed.",
+
+    "OFFERS_LIST": "Offers",
+    "OFFERSLIST_TITLE": "Business offers"
 }
