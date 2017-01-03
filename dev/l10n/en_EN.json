@@ -116,6 +116,8 @@
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Number max of participant",
 
+    "REQUEST_LIST": "They need help",
+    "MYREQUEST_LIST": "My applications for aid",
     "REQUESTLIST_TITLE": "Applications for aid",
     "MYREQUESTLIST_TITLE": "My applications for aid",
     "PLACEHOLDER_SEARCH": "search...",
