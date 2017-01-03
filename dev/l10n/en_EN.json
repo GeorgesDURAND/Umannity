@@ -117,12 +117,18 @@
     "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Number max of participant",
-    
     "HELPGIVEN": "Given helps :",
     "HELPTAKEN": "Received helps : ",
     "POINTSUSED": "Used points : ",
     "AGE": "Age",
-    "YEARS": "years old"
-    
-    
+    "YEARS": "years old",
+
+    "CREATE_REQUEST" : "Create a help request",
+    "SUBJECT" : "Topic",
+    "PLACEHOLDER_SUBJECT" : "example: Need help repairing my car",
+    "LOCATION" : "Location",
+    "PLACEHOLDER_LOCATION" : "where ?",
+    "PLACEHOLDER_DESCRIPTION" : "you can add details here ...",
+    "CREATE_REQUEST_SKILLS" : "What skills are required ?",
+    "CREATE_REQUEST_BUTTON" : "Send the request"
 }

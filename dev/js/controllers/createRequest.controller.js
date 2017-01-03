@@ -11,6 +11,7 @@
         /* jshint validthis: true */
 
         var vm = this;
+        vm.skills = [];
 
         vm.createRequest = createRequest;
 
@@ -28,7 +29,7 @@
                 "description": formatedString,
                 "location": vm.requestLocation.formatted_address,
                 "name": vm.requestName,
-                "skills": []
+                "skills": vm.skills
             };
             createRequestService.createRequest(_newRequestData).then(function (createdRequest) {
                 $location.path('/request/' + createdRequest.id);

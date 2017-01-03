@@ -120,11 +120,18 @@
     "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Nombre max de participant",
-    
     "HELPGIVEN": "Aides apportées :",
     "HELPTAKEN": "Aides reçues : ",
     "POINTSUSED": "Points utilisés : ",
     "AGE": "Age",
-    "YEARS": "ans"
-    
+    "YEARS": "ans",
+
+    "CREATE_REQUEST" : "Créer une demande d'aide",
+    "SUBJECT" : "Sujet",
+    "PLACEHOLDER_SUBJECT" : "exemple : Besoin d'aide pour réparer ma voiture",
+    "LOCATION" : "Localisation",
+    "PLACEHOLDER_LOCATION" : "où ça ?",
+    "PLACEHOLDER_DESCRIPTION" : "Vous pouvez ajouter des détails ici...",
+    "CREATE_REQUEST_SKILLS" : "Quelles sont les compétences requises ?",
+    "CREATE_REQUEST_BUTTON" : "Envoyer la demande"
 }
