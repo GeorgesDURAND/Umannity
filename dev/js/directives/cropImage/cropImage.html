@@ -1,4 +1,4 @@
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 drop-box" 
+<div class="col-lg-8 col-md-7 col-sm-6 col-xs-6 drop-box" 
      flow-init="{singleFile:true}" 
      flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" 
      flow-files-added="crop.uploadImage($files)"
@@ -10,7 +10,7 @@
     <img-crop class="crop-box col-lg-12 col-md-12 col-sm-12 col-xs-12" data-bg-text="{{'DROPIMAGE' | translate}}" flow-img="$flow.files[0]" image="crop.newImage" result-image="obj.cropImage">
     </img-crop>
 </div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<div class="col-lg-4 col-md-5 col-sm-6 col-xs-6" style="text-align: center">
     <span>{{"CROPPREVIEW" | translate}}</span>
     <img class="crop-img-preview" ng-src="{{obj.cropImage}}"/>
 </div>

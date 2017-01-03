@@ -34,8 +34,10 @@ html {
 }
 
 body {
-    height: 100%;
+    height: auto !important;
     background-color: $app-gray;
+    padding: 0px;
+    display: flex;
 }
 
 ::-webkit-scrollbar {
@@ -47,8 +49,8 @@ body {
     height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-    background: $u-orange;
-    border: 0px none #ffffff;
+    background: $u-grey;
+    border: 0px none #fff;
 }
 ::-webkit-scrollbar-thumb:horizontal {
     border-radius: 0px 50px 0px 0px;

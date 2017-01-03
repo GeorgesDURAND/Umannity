@@ -119,5 +119,12 @@
     "OFFER_NAME": "Nom de l'offre",
     "POINTS": "Points",
     "DESCRIPTION": "Description",
-    "MAX_PARTICIPANT": "Nombre max de participant"
+    "MAX_PARTICIPANT": "Nombre max de participant",
+    
+    "HELPGIVEN": "Aides apportées :",
+    "HELPTAKEN": "Aides reçues : ",
+    "POINTSUSED": "Points utilisés : ",
+    "AGE": "Age",
+    "YEARS": "ans"
+    
 }
