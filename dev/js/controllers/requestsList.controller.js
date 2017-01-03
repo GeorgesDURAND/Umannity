@@ -58,10 +58,10 @@
                 radius: vm.radius
             };
             /*var _requestParams2 = {
-                skills: vm.user.skills,
-                coordinates: _coordonnees,
-                radius: vm.radius
-            };*/
+             skills: vm.user.skills,
+             coordinates: _coordonnees,
+             radius: vm.radius
+             };*/
 
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
                 angular.forEach(allRequests.requests, function(request, key) {
