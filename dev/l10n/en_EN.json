@@ -122,7 +122,6 @@
     "POINTSUSED": "Used points : ",
     "AGE": "Age",
     "YEARS": "years old",
-
     "CREATE_REQUEST" : "Create a help request",
     "SUBJECT" : "Topic",
     "PLACEHOLDER_SUBJECT" : "example: Need help repairing my car",
@@ -163,6 +162,8 @@
     "PONCTUALITY": "Ponctuality",
     "GLOBAL": "Global",
     "SEND_FORM_REQUEST": "Send evaluation form",
+    "REQUEST_LIST": "They need help",
+    "MYREQUEST_LIST": "My applications for aid",
     "REQUESTLIST_TITLE": "Applications for aid",
     "MYREQUESTLIST_TITLE": "My applications for aid",
     "PLACEHOLDER_SEARCH": "search...",
