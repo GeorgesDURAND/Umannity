@@ -122,7 +122,6 @@
     "POINTSUSED": "Used points : ",
     "AGE": "Age",
     "YEARS": "years old",
-
     "CREATE_REQUEST" : "Create a help request",
     "SUBJECT" : "Topic",
     "PLACEHOLDER_SUBJECT" : "example: Need help repairing my car",
@@ -167,6 +166,8 @@
     "SUBSCRIBESUCCESS": "Congratulations, you just registered on Umannity, please check your e-mail to activate your account.",
     "REDIRECTIN": "Redirect to login page in",
     "SUCESSCREATEPARTNER": "New partner created ",
+    "REQUEST_LIST": "They need help",
+    "MYREQUEST_LIST": "My applications for aid",
     "REQUESTLIST_TITLE": "Applications for aid",
     "MYREQUESTLIST_TITLE": "My applications for aid",
     "PLACEHOLDER_SEARCH": "search...",

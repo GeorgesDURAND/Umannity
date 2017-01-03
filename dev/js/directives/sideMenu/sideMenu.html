@@ -27,11 +27,11 @@
         </div>
         <div class="menu-item" ng-click="vm.changeView('/requestsList')" ng-if="appVm.getUser()">
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
-            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'HELP_LIST' | translate }}</div>
+            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'REQUEST_LIST' | translate }}</div>
         </div>
         <div class="menu-item" ng-click="vm.changeView('/myRequestsList')" ng-if="appVm.getUser()">
             <div class="menu-icon glyphicon glyphicon-plus-sign"></div>
-            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'MY_HELP_LIST' | translate }}</div>
+            <div ng-class="appVm.isCollapsed ? 'menu-text-collapsed' : 'menu-text'">{{ 'MYREQUEST_LIST' | translate }}</div>
         </div>
         <div class="menu-item" ng-click="vm.changeView('/chat')" ng-if="appVm.getUser()">
             <div class="menu-icon glyphicon glyphicon-envelope"></div>
