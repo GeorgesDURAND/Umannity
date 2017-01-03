@@ -74,11 +74,6 @@
             controller: 'formController',
             controllerAs: 'vm'
         })
-            .when('/form/:requestId', {
-            templateUrl: "partials/form.html",
-            controller: 'formController',
-            controllerAs: 'vm'
-        })
             .when('/myRequestsList', {
             templateUrl: "partials/myRequestsList.html",
             controller: 'myRequestsListController',
