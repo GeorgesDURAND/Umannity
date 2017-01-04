@@ -122,7 +122,6 @@
     "POINTSUSED": "Used points : ",
     "AGE": "Age",
     "YEARS": "years old",
-
     "CREATE_REQUEST" : "Create a help request",
     "SUBJECT" : "Topic",
     "PLACEHOLDER_SUBJECT" : "example: Need help repairing my car",
@@ -166,5 +165,21 @@
     
     "SUBSCRIBESUCCESS": "Congratulations, you just registered on Umannity, please check your e-mail to activate your account.",
     "REDIRECTIN": "Redirect to login page in",
-    "SUCESSCREATEPARTNER": "New partner created "
+    "SUCESSCREATEPARTNER": "New partner created ",
+    "REQUEST_LIST": "They need help",
+    "MYREQUEST_LIST": "My applications for aid",
+    "REQUESTLIST_TITLE": "Applications for aid",
+    "MYREQUESTLIST_TITLE": "My applications for aid",
+    "PLACEHOLDER_SEARCH": "search...",
+    "SKILLS_MENU": "All skills",
+    "MY_SKILLS_MENU": "All my skills",
+    "ALL": "ALL",
+    "IN_PROGRESS": "PENDING",
+    "FINISHED": "FINISHED",
+    "NO_HELP": "No request for help.",
+    "NO_HELP_IN_PROGRESS": "No request for help in progress.",
+    "NO_FINISHED_HELP": "No help request completed.",
+
+    "OFFERS_LIST": "Offers",
+    "OFFERSLIST_TITLE": "Business offers"
 }

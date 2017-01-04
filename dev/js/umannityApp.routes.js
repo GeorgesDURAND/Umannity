@@ -74,9 +74,9 @@
             controller: 'formController',
             controllerAs: 'vm'
         })
-            .when('/form/:requestId', {
-            templateUrl: "partials/form.html",
-            controller: 'formController',
+            .when('/myRequestsList', {
+            templateUrl: "partials/myRequestsList.html",
+            controller: 'myRequestsListController',
             controllerAs: 'vm'
         })
             .when('/admin/stats', {
@@ -105,6 +105,11 @@
             .when('/visio', {
             controller: 'visioController',
             templateUrl: 'partials/visio.html',
+            controllerAs: 'vm'
+        })
+            .when('/offersList', {
+            controller: 'offersListController',
+            templateUrl: 'partials/offersList.html',
             controllerAs: 'vm'
         })
             .when('/createOffer', {

@@ -6,7 +6,7 @@
         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
             <div class="page-title">
                 <div class="pull-left">
-                    <u-page-title title="REQUESTLIST_TITLE"> </u-page-title>
+                    <u-page-title title="MYREQUESTLIST_TITLE"> </u-page-title>
                 </div>
             </div>
         </div>
@@ -23,27 +23,20 @@
                     </span>
                 <input type="text" ng-model="vm.searchText" class="form-control search-page-input" placeholder="{{ 'PLACEHOLDER_SEARCH' | translate}}" value="">
             </div>
-            <input type="range" value="10" min="0" max="50" step="1"
-                   ng-model="vm.radius" ng-change="vm.loadRequestsList()">
-            {{vm.radius}}
         </div>
 
         <!-- FIN Barre de recherche -->
 
         <!-- Onglets  -->
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="fix-margin col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
-
             </div>
             <div class="col-md-9 col-lg-10 col-sm-8 col-xs-8">
                 <ul class="u-help-status">
                     <li ng-click="tab = 1" ng-class="tab == 1 ? 'u-selectedTab' : ''">
-                        {{ 'ALL' | translate}}
-                    </li>
-                    <li ng-click="tab = 2" ng-class="tab == 2 ? 'u-selectedTab' : ''">
                         {{ 'IN_PROGRESS' | translate}}
                     </li>
-                    <li ng-click="tab = 3" ng-class="tab == 3 ? 'u-selectedTab' : ''">
+                    <li ng-click="tab = 2" ng-class="tab == 2 ? 'u-selectedTab' : ''">
                         {{ 'FINISHED' | translate}}
                     </li>
                 </ul>
@@ -56,12 +49,13 @@
             <ul class="nav col-md-3 col-lg-2 col-sm-4 col-xs-4">
                 <li class="u-my-skills">
                     <a ng-click="vm.setSkill('', $index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
-                        {{ 'MY_SKILLS_MENU' | translate}}
+                        {{ 'SKILLS_MENU' | translate}}
                     </a>
                 </li>
-                <li class="u-my-skills" ng-repeat="skill in vm.user.skills | orderBy : parsedSkill">
-                    <a ng-click="vm.setSkill(skill, $index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
-                        {{skill}}
+                <li class="u-my-skills"
+                    ng-repeat="parsedSkill in vm.my_skills | orderBy : parsedSkill">
+                    <a ng-click="vm.setSkill(parsedSkill, $index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
+                        {{parsedSkill}}
                     </a>
                 </li>
             </ul>
@@ -71,9 +65,8 @@
 
             <div class="u-tab-requests col-md-9 col-lg-10 col-sm-8 col-xs-8">
 
-                    <span ng-if="tab === 1 && vm.helpsList.length === 0">{{ 'NO_HELP' | translate}}</span>
-                    <span ng-if="tab === 2 && vm.current_helps.length === 0">{{ 'NO_HELP_IN_PROGRESS' | translate}}</span>
-                    <span ng-if="tab === 3 && vm.completed_helps.length === 0">{{ 'NO_FINISHED_HELP' | translate}}</span>
+                    <span ng-if="tab === 1 && vm.helpsList.length === 0">{{ 'NO_HELP_IN_PROGRESS' | translate}}</span>
+                    <span ng-if="tab === 2 && vm.completed_helps.length === 0">{{ 'NO_FINISHED_HELP' | translate}}</span>
                     <!-- Listing des demande d'aides -->
 
                     <div ng-show="tab === 1" ng-repeat="request in vm.helpsList | filter:vm.search | filter:vm.searchBySkill">
@@ -81,14 +74,8 @@
                     </div>
                     <!-- FIN Listing des demande d'aides -->
 
-                    <!-- Listing des demande d'aides en cours -->
-                    <div ng-show="tab === 2" ng-repeat="request in vm.current_helps | filter:vm.search | filter:vm.searchBySkill">
-                        <u-requests-list> </u-requests-list>
-                    </div>
-                    <!-- FIN Listing des demande d'aides -->
-
                     <!-- Listing des demande d'aides terminées -->
-                    <div ng-show="tab === 3" ng-repeat="request in vm.completed_helps | filter:vm.search | filter:vm.searchBySkill">
+                    <div ng-show="tab === 2" ng-repeat="request in vm.completed_helps | filter:vm.search | filter:vm.searchBySkill">
                         <u-requests-list> </u-requests-list>
                     </div>
                     <!-- FIN Listing des demandes d'aides -->
