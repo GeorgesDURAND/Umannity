@@ -3,7 +3,7 @@
         <u-page-title title="CREATEPARTNER">
         </u-page-title>
 
-        <form role="form" class="u-createPartner-box col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-submit="vm.createPartner()" >
+        <form role="form" class="u-createPartner-box col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12" ng-submit="vm.createPartner()" >
             
             <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')" close="vm.closeAlert($index)">{{error | translate}}</div>
             
@@ -13,7 +13,7 @@
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="{{'PARTNERBASELINE' | translate }}" ng-model="vm.newPartner.baseline">
             </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group col-lg-offset-2 col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <crop-image object="vm.tmp"></crop-image>
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -28,6 +28,11 @@
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <input class="u-createPartner-btn" type="submit" value="{{'CREATEPARTNERBUTTON' | translate }}">
             </div>
+            
+            <div ng-show="vm.success" class="create-partner-success col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {{'SUCESSCREATEPARTNER' | translate}} : {{vm.partnerCreated}}
+            </div>
+            
         </form>
     </div>
 </u-main-view>

@@ -1,6 +1,6 @@
 @import "variables";
 
-.u-createPartner-box {
+.u-createRequest-box {
     background-color: white;
     border-radius: 5px;
     padding: 15px;
@@ -9,7 +9,7 @@
 
     div {
         display: inline-block;
-        input {
+        input, textarea {
             font-size: 20px;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -17,26 +17,14 @@
         }
     }
 
-    .u-createPartner-btn {
+    .form-label {
+        text-align: left;    
+    }
+
+    .u-createRequest-btn {
         background-color: $u-orange;
         color: white;
         padding: 10px;
         border-radius: 5px;
     }
-    
-    .cropArea {
-        background: #E4E4E4;
-        overflow: hidden;
-        width:500px;
-        height:350px;
-    }
-
-    .create-partner-success {
-        background-color: $u-blue-transparent;
-        color: black;
-        border: $u-blue 1px solid;
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-    
 }

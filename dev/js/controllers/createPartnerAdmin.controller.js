@@ -16,6 +16,8 @@
         vm.tmp = {};
         vm.tmp.cropImage = '';
         vm.errors = [];
+        vm.success = false;
+        vm.partnerCreated = '';
         
         vm.createPartner = createPartner;
         vm.closeAlert = closeAlert;
@@ -38,6 +40,9 @@
             RestService.put('/partner', vm.newPartner)
                 .then(function(data) {
                 console.log("createPartner :: New partner created.");
+                vm.success = true;
+                vm.partnerCreated = vm.newPartner.name;
+                vm.errors = [];
             })
             .catch (function(data) {
                 addAlert(data.data.error);
