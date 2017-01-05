@@ -84,9 +84,9 @@
             });
         }
 
-        function setSkill (skill, index) {
-            vm.chosenSkill = skill;
+        function setSkill (index, skill) {
             vm.selectedIndex = index;
+            vm.chosenSkill = skill;
         }
 
         // Charge les images des demandeurs d'aide
