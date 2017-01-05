@@ -55,12 +55,12 @@
             <!-- Menu de compétences -->
             <ul class="nav col-md-3 col-lg-2 col-sm-4 col-xs-4">
                 <li class="u-my-skills">
-                    <a ng-click="vm.setSkill('', $index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
+                    <a ng-click="vm.setSkill($index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
                         {{ 'MY_SKILLS_MENU' | translate}}
                     </a>
                 </li>
                 <li class="u-my-skills" ng-repeat="skill in vm.user.skills | orderBy : parsedSkill">
-                    <a ng-click="vm.setSkill(skill, $index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
+                    <a ng-click="vm.setSkill($index, skill)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
                         {{skill}}
                     </a>
                 </li>

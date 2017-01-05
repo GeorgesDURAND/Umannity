@@ -65,26 +65,28 @@
 
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
                 angular.forEach(allRequests.requests, function(request, key) {
-                    if (request.requester_completed === true && request.volunteer_completed === true) {
+                    if (vm.user.id === request.accepted_user &&
+                        request.requester_completed === true &&
+                        request.volunteer_completed === true) {
                         vm.completed_helps.push(request);
-                    } else {
+                    } else if (request.accepted_user === -1) {
                         vm.helpsList.push(request);
                     }
                 });
-                vm.loadPicture(vm.helpsList);
+                //vm.loadPicture(vm.helpsList);
             });
             RequestsListService.loadAcceptedRequestsList(_requestParams1).then(function (myRequests) {
-                angular.forEach(myRequests.requests, function(request, key)
-                                {
-                    vm.current_helps.push(request);
+                angular.forEach(myRequests.requests, function(request, key) {
+                    if (request.requester_completed === false || request.volunteer_completed === false)
+                        vm.current_helps.push(request);
                 });
-                vm.loadPicture(vm.current_helps);
+                //vm.loadPicture(vm.current_helps);
             });
         }
 
-        function setSkill (skill, index) {
-            vm.chosenSkill = skill;
+        function setSkill (index, skill) {
             vm.selectedIndex = index;
+            vm.chosenSkill = skill;
         }
 
         // Charge les images des demandeurs d'aide
