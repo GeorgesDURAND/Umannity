@@ -182,11 +182,11 @@
 
     "OFFERS_LIST": "Offers",
     "OFFERSLIST_TITLE": "Business offers",
-    "NO_FINISHED_HELP": "No help request completed.",
-    
+
     "MYCONTACT": "My contacts",
     "ACTIVATIONSUCCESS": "Welcome, your account has been activated",
     "ACTIVATIONERROR": "An error occured, please contact the support",
     "GETTOPAGE": "Go to the ",
-    "CONNECTION": "login page."
+    "CONNECTION": "login page.",
+    "MY_OFFERS": "My Offers"
 }

@@ -190,11 +190,12 @@
 
     "OFFERS_LIST": "Offres",
     "OFFERSLIST_TITLE": "Offres commerciales",
-    "NO_FINISHED_HELP": "Pas de demande d'aide terminée.",
-    
+
     "MYCONTACT": "Mes contacts",
     "ACTIVATIONSUCCESS": "Bienvenue, votre compte a bien été activé",
     "ACTIVATIONERROR": "Un problème est survenu",
     "GETTOPAGE": "Aller à la page de ",
-    "CONNECTION": "connexion."
+    "CONNECTION": "connexion.",
+    "MY_OFFERS": "Mes offres"
+
 }

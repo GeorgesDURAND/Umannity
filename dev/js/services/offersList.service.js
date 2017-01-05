@@ -18,10 +18,11 @@
         ////
 
         // Récupère l'ensemble des demandes d'aides
-        function loadOffersList (data)
+        function loadOffersList (id)
         {
+            var params = {partner_id:id};
             var deferred = $q.defer();
-            RestService.get("/offer", data)
+            RestService.get("/offer", params)
                 .then(function (offer) {
                     deferred.resolve(offer.data);
                 })
