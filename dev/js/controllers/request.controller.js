@@ -31,6 +31,7 @@
         vm.isChosen = isChosen;
         vm.authorChose = authorChose;
         vm.SelectUser = SelectUser;
+        vm.isCandidate2 = isCandidate2;
 
         vm.reportRequest = reportRequest;
         vm.deleteRequest = deleteRequest;
@@ -161,6 +162,18 @@
             var showAcceptButton = false;
             angular.forEach(vm.request.candidates, function(candidate) {
                 if (candidate === vm.user.id) {
+                    showAcceptButton = true;
+                    return showAcceptButton;
+                }
+            });
+            return showAcceptButton;
+        }
+
+        // Renvoi "true" si l'utilisateur est un candidat
+        function isCandidate2 (candidate_id) {
+            var showAcceptButton = false;
+            angular.forEach(vm.request.candidates, function(candidate) {
+                if (candidate === candidate_id) {
                     showAcceptButton = true;
                     return showAcceptButton;
                 }
