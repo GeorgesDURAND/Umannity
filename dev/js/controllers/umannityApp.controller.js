@@ -38,10 +38,10 @@
                     $location.path("/cgv");
                 } else if ($location.path() === "/subscribe") {
                     $location.path("/subscribe");
-                } else if ($location.path().slice(9) === "/activate") {
+                } else if ($location.path().slice(0, 9) === "/activate") {
                     console.log('activate page');
                     $location.path($location.path());
-                } else if ($location.path().slice(16) === "/activatePartner") {
+                } else if ($location.path().slice(0, 16) === "/activatePartner") {
                     console.log('activate partner');
                     $location.path($location.path());
                 } else {
