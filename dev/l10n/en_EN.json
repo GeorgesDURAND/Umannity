@@ -188,5 +188,9 @@
     "ACTIVATIONSUCCESS": "Welcome, your account has been activated",
     "ACTIVATIONERROR": "An error occured, please contact the support",
     "GETTOPAGE": "Go to the ",
-    "CONNECTION": "login page."
+    "CONNECTION": "login page.",
+    
+    "PENDINGACTIVATION": "Trying to activate ....",
+    "CHOOSEPWD": "Please choose your password :",
+    "ACTIVATEACCOUNT": "Activate my account"
 }
