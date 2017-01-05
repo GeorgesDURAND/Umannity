@@ -26,10 +26,10 @@
 
         function activate() {
             UserService.activate($routeParams.token)
-                .then(function(data){
+                .then(function(data) {
                 console.log(vm.name, ":: Activation success");
                 vm.message = 'ACTIVATIONSUCCESS';
-            }).catch(function(ret){
+            }).catch(function(ret) {
                 console.log(vm.name, ":: Activation error : ", ret);
                 vm.message = 'ACTIVATIONERROR';
             });
