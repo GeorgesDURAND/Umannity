@@ -13,7 +13,6 @@
             </h2>
             <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <span ng-repeat="contact in chat.contacts">
-                    <button class="btn btn-succes glyphicon glyphicon-phone" ng-click="vm.visioCall(contact.user_id)"></button>
                     <span class="no-padding contact-infos col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="chat.openClose(contact.user_id)">
                         <img class="chat__avatar" ng-src="{{contact.picture}}">
                         <span class="chat__name">
