@@ -38,7 +38,7 @@
             <button ng-if="vm.state !== 'disconnected'" type="button" class="btn btn-danger" id="u-visio-hangup-button" ng-click="vm.hangup()"><i class="glyphicon glyphicon-earphone
 "></i></button>
         </div>
-        <uib-accordion ng-if="vm.state === 'disconnected'" close-others="oneAtATime">
+        <uib-accordion ng-if="vm.state === 'disconnected' && false" close-others="oneAtATime">
             <div uib-accordion-group class="panel-default"
                  is-open="vm.isAccordionOpen" heading="[DEBUG] Call someone">
                 Enter an user_id to call

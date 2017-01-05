@@ -15,9 +15,14 @@
         vm.changeView = changeView;
         vm.openClose = openClose;
         vm.openConv = openConv;
+        vm.visioCall = visioCall;
         vm.isCollapsed = true;
         vm.contacts_id = [];
         vm.contacts = [];
+
+        function visioCall(id){
+            $location.path("/visio/" +  id);
+        }
 
         function changeView(viewName) {
             console.log("view = ", viewName);
