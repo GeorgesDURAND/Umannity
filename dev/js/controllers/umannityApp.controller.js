@@ -38,6 +38,8 @@
                     $location.path("/cgv");
                 } else if ($location.path() === "/subscribe") {
                     $location.path("/subscribe");
+                } else if ($location.path() === "/activate") {
+                    console.log("Activate");
                 } else {
                     $location.path("/login");
                 }
