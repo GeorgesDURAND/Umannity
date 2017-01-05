@@ -123,10 +123,15 @@
                 controllerAs: 'vm'
             })
             .when('/offersList', {
-                controller: 'offersListController',
-                templateUrl: 'partials/offersList.html',
+            controller: 'offersListController',
+            templateUrl: 'partials/offersList.html',
+            controllerAs: 'vm'
+        })
+            .when('/offer/:offerId', {
+                controller: 'printOfferController',
+                templateUrl: 'partials/printOffer.html',
                 controllerAs: 'vm'
-            })
+        })
             .when('/createOffer', {
                 controller: 'createOfferController',
                 templateUrl: 'partials/createOffer.html',

@@ -11,7 +11,9 @@
         var _offer;
 
         var service = {
-            putOffer: putOffer
+            putOffer: putOffer,
+            getOffer: getOffer,
+            editOffer: editOffer
         };
 
         return service;
@@ -32,13 +34,14 @@
             return deferred.promise;
         }
 
-        function getOffer(partner_id) {
+        function getOffer(id) {
             var deferred = $q.defer();
-            var params = {id:partner_id};
+            var params = {id:id};
 
             RestService.get("/offer", params)
                 .then(function (request) {
                     var offer = request.data;
+                    offer.formatOfferDate = formatOfferDate(offer.date);
                     _offer = offer;
                     deferred.resolve(offer);
                 })
@@ -46,6 +49,26 @@
                     deferred.reject(error);
                 });
             return deferred.promise;
+        }
+
+        function editOffer(offerData) {
+            var deferred = $q.defer();
+            RestService.post("/offer", offerData)
+                .then(function (offer) {
+                    deferred.resolve(offer.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function formatOfferDate(OfferDate) {
+            var tmp = new Date(OfferDate * 1000);
+            var date = (tmp.getDate() > 9 ? tmp.getDate() : "0" + tmp.getDate());
+            var month = (tmp.getMonth() > 9 ? (tmp.getMonth() + 1) : "0" + (tmp.getMonth() + 1));
+            var year = tmp.getYear() + 1900;
+            return date + "/" + month + "/" + year;
         }
     }
 })();
