@@ -34,6 +34,8 @@
 
         vm.reportRequest = reportRequest;
         vm.deleteRequest = deleteRequest;
+        vm.addAlert = addAlert;
+        vm.closeAlert = closeAlert;
 
         vm.editRequest = editRequest;
         vm.getPicture = getPicture;
@@ -181,9 +183,13 @@
             var _preSelectUserData = {
                 user_id: userId
             };
-            RequestService.preSelectUser(vm.requestId, _preSelectUserData).then(function (data) {
-                loadRequest ();
-            });
+            RequestService.preSelectUser(vm.requestId, _preSelectUserData)
+                .then(function (data) {
+                    loadRequest ();
+                 })
+                .catch(function (returnError) {
+                    vm.error = returnError.data.error;
+                });
         }
 
         // L'auteur dé-sélectionne un bénévole
@@ -216,9 +222,13 @@
                 accepted_user: userId,
                 request_id: vm.requestId
             };
-            RequestService.selectUser(_selectUserData).then(function (data) {
+            RequestService.selectUser(_selectUserData)
+                .then(function (data) {
                 loadRequest ();
-            });
+                })
+                .catch(function (returnError) {
+                    vm.error = returnError.data.error;
+                });
         }
 
         // Signaler la demande d'aide
@@ -228,9 +238,13 @@
                 message: "A user reported this post",
                 type: "request"
             };
-            RequestService.reportRequest(_reportRequestData).then(function (data) {
+            RequestService.reportRequest(_reportRequestData)
+                .then(function (data) {
 
-            });
+                })
+                .catch(function (returnError) {
+                    vm.error = returnError.data.error;
+                });
         }
 
         // Supprime la demande d'aide
@@ -238,9 +252,13 @@
             var _deleteRequestData = {
                 request_id: vm.requestId
             };
-            RequestService.deleteRequest(_deleteRequestData).then(function (data) {
+            RequestService.deleteRequest(_deleteRequestData)
+                .then(function (data) {
                 $location.path('/requestsList');
-            });
+                })
+                .catch(function (returnError) {
+                    vm.error = returnError.data.error;
+                });
         }
 
         // Modifie les données de la demande d'aide
@@ -267,9 +285,13 @@
                     location: vm.requestLocation.formatted_address
                 };
             }
-            RequestService.editRequest(_editRequestData).then(function (data) {
-                loadRequest();
-            });
+            RequestService.editRequest(_editRequestData)
+                .then(function (data) {
+                    loadRequest();
+                })
+                .catch(function (returnError) {
+                    vm.error = returnError.data.error;
+                });
         }
 
         // Renvoie l'image des candidats
@@ -286,6 +308,19 @@
 
         function changeView(viewName, requestId) {
             $location.path(viewName + requestId);
+        }
+
+        function addAlert(error) {
+            if (vm.errors.indexOf(error) === -1) {
+                if (vm.errors.length >= 4) {
+                    vm.errors.splice(0, 1);
+                }
+                vm.errors.push(error);
+            }
+        }
+
+        function closeAlert() {
+            vm.error = undefined;
         }
 
     }
