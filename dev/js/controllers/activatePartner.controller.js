@@ -36,13 +36,9 @@
             $location.path(viewName);
         }
 
-        function closeAlert(index) {
-            vm.errors.splice(index, 1);
-        }
-
         function activePartner() {
             console.log("TEST");
-            if (!vm.pwd || vm.pwd != vm.confirm_pwd){
+            if (!vm.pwd || vm.pwd !== vm.confirm_pwd) {
                 addAlert('BADCONFIRMPWD');
             } else {
                 vm.IsSubmitted = true;
@@ -51,7 +47,7 @@
                 var obj = {
                     token : $routeParams.token,
                     password : vm.pwd
-                }
+                };
 
                 RestService.post('/partner/activate', obj)
                     .then(function(data) {
@@ -63,12 +59,7 @@
                     addAlert(ret.data.error);
                     vm.message = 'ACTIVATIONERROR';
                 });
-
             }
-
-
-
         }
-
     }
 })();
