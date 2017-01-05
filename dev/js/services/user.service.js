@@ -165,7 +165,7 @@
 
             var obj = {
                 "token" : token
-            }
+            };
             RestService.post('/activate', obj)
                 .then(function(data){
                 deferred.resolve(data);
