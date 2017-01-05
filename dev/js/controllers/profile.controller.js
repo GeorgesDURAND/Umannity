@@ -100,6 +100,26 @@
             return deferred.promise;
         }
 
+        function editPassword() {
+            UserService.login(vm.user.email, vm.edited_user.old_password)
+                .then(function (user) {
+                    vm.edited_user.password = vm.edited_user.new_password;
+                    UserService.editProfile(vm.edited_user)
+                        .then(function (user) {
+                            vm.edited_user = undefined;
+                            loadUser();
+                        })
+                        .catch(function (error) {
+                            //TODO: Proper error management
+                            addAlert('ERROR_WRONG_FORMAT_PASSWORD');
+                        });
+                })
+                .catch(function (error) {
+                    //TODO: Proper error management
+                    addAlert('ERROR_WRONG_PASSWORD');
+                });
+        }
+
         function editProfile() {
             if (undefined !== vm.edited_user) {
                 if (undefined !== vm.edited_user.address) {
