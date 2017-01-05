@@ -8,7 +8,7 @@
     function configBlock($translateProvider) {
         /*$translateProvider.useSanitizeValueStrategy('sanitize');*/
         $translateProvider.useSanitizeValueStrategy(null);
-        $translateProvider.preferredLanguage('en_EN');
+        $translateProvider.preferredLanguage('fr_FR');
         $translateProvider.useStaticFilesLoader({
             prefix: 'l10n/',
             suffix: '.json'
