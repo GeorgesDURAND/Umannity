@@ -31,17 +31,19 @@
             var partner = PartnerService.getPartner();
 
             if (undefined === api_key) {
-                console.log("umannityAppController :: User is not logged");
+                console.log("umannityAppController :: User is not logged", $location.path());
                 if ($location.path() === "/loginPartner") {
                     $location.path("/loginPartner");
                 } else if ($location.path() === "/cgv") {
                     $location.path("/cgv");
                 } else if ($location.path() === "/subscribe") {
                     $location.path("/subscribe");
-                } else if ($location.path() === "/activate") {
-                    console.log("Activate");
-                } else if ($location.path() === "/activatePartner") {
-                    console.log("ActivatePartner");
+                } else if ($location.path().slice(0, 9) === "/activate") {
+                    console.log('activate page');
+                    $location.path($location.path());
+                } else if ($location.path().slice(0, 16) === "/activatePartner") {
+                    console.log('activate partner');
+                    $location.path($location.path());
                 } else {
                     $location.path("/login");
                 }
@@ -51,12 +53,12 @@
         function loadPicture() {
             UserService.loadPicture()
                 .then(function (picture) {
-                console.log("umannityAppController :: Picture loaded");
-                vm.picture = picture;
-            })
+                    console.log("umannityAppController :: Picture loaded");
+                    vm.picture = picture;
+                })
                 .catch(function (error) {
-                window.alert(error);
-            });
+                    window.alert(error);
+                });
         }
 
         if (vm.user === undefined) {

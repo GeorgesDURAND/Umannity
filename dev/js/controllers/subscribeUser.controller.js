@@ -29,7 +29,7 @@
         vm.errors = [];
 
         vm.newUser = {};
-        vm.newUser.zipcode = 0;
+        vm.newUser.zipcode = 75001;
         vm.newUser.skills = [];
         vm.newUser.sex = -1;
 
