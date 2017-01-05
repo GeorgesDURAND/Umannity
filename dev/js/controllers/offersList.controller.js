@@ -5,15 +5,16 @@
         .module('umannityApp.controllers')
         .controller('offersListController', offersListController);
 
-    offersListController.$inject = ['$scope', '$location', 'UserService', 'OffersListService'];
+    offersListController.$inject = ['$scope', '$location', 'UserService', 'OffersListService', 'PartnerService'];
 
-    function offersListController($scope, $location, UserService, OffersListService) {
+    function offersListController($scope, $location, UserService, OffersListService, PartnerService) {
         /* jshint validthis: true */
 
         var vm = this;
 
         vm.name = "offersListController";
         vm.user = UserService.getUser();
+        vm.partner = PartnerService.getPartner();
 
         vm.search = search;
         vm.loadOffersList = loadOffersList;
@@ -22,16 +23,21 @@
         ////
 
         function onViewContentLoaded () {
-            UserService.loadUser().then(function(user) {
-                vm.user = user;
-                loadOffersList();
-            });
+            loadOffersList();
         }
 
         function loadOffersList () {
-            OffersListService.loadOffersList().then(function (allOffers) {
-                vm.offersList = allOffers.offers;
-            });
+            if (undefined !== vm.partner) {
+                OffersListService.loadOffersList(vm.partner.id)
+                    .then(function (allOffers) {
+                    vm.offersList = allOffers.offers;
+                });
+            }
+            else {
+                OffersListService.loadOffersList().then(function (allOffers) {
+                    vm.offersList = allOffers.offers;
+                });
+            }
         }
 
         function search (item) {

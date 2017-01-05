@@ -1,0 +1,44 @@
+.offerDiv {
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.profilePic {
+  width: 140px;
+  height: 140px;
+  margin-top: 20px;
+  position: relative;
+  border:5px solid #000000;
+  z-index: 0;
+}
+
+.nameOffer {
+  margin-top: 70px;   /*img height / 2*/
+  position: relative;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.pointsOffer {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.namePartner {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.baseline {
+  font-size: 20px;
+  font-weight: italic;
+
+}
+
+.detailOffer {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
