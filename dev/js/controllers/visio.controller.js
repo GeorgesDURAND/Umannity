@@ -41,7 +41,6 @@
             if (undefined !== $routeParams.user_id) {
                 vm.user_id = $routeParams.user_id;
                 vm.recipient_id = vm.user_id;
-                makeCall();
             }
         }
 
@@ -145,6 +144,9 @@
             WebRTCService.init(stream, onConnect, onDisconnect, onPending);
             vm.stream = stream;
             vm.streamURL = window.URL.createObjectURL(vm.stream);
+            if (undefined !== vm.user_id) {
+                makeCall();
+            }
         }
 
         function onUserMediaError(error) {
