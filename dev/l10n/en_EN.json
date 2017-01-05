@@ -85,6 +85,7 @@
     "VISIO_NOTIF": "Someone is calling you !",
     "VISIO_HANGUP": "Hang up",
     "VISIO_ISCALLING": "is calling you.",
+    "VISIO_CHAT_USER_CALLING": "This user is trying to call you, click on the phone to enter the visio conference.",
 
     "5": "Wrong login informations",
     "ADMINISTRATION": "Administration",

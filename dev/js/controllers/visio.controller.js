@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('visioController', visioController);
 
-    visioController.$inject = ['$scope', '$window', '$sce', '$interval', 'WebRTCService', 'UserService'];
+    visioController.$inject = ['$scope', '$sce', '$location', '$interval', '$routeParams', 'WebRTCService', 'UserService'];
 
-    function visioController($scope, $window, $sce, $interval, WebRTCService, UserService) {
+    function visioController($scope, $sce, $location, $interval, $routeParams, WebRTCService) {
         window.URL = window.URL || window.mozURL || window.webkitURL;
         /* jshint validthis: true */
         var vm = this;
@@ -33,10 +33,16 @@
         ////
 
         function onViewContentLoaded() {
+            console.log($routeParams);
             setUserMedia();
             getUserMedia();
             initOffersData();
             _interval = $interval(getOffers, _pollingTime);
+            if (undefined !== $routeParams.user_id) {
+                vm.user_id = $routeParams.user_id;
+                vm.recipient_id = vm.user_id;
+                makeCall();
+            }
         }
 
         function initOffersData() {
@@ -67,6 +73,12 @@
             WebRTCService.getOffers()
                 .then(function (offers) {
                     angular.extend(vm.offers, offers);
+                    angular.forEach(offers, function (offer) {
+                        if (undefined !== vm.user_id &&
+                            vm.user_id == offer.emitter) {
+                            acceptVisioConference(offer);
+                        }
+                    });
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -104,7 +116,7 @@
         }
 
         function hangup() {
-            $window.location.reload();
+            $location.path('/chat');
         }
 
         function setState(state) {
@@ -139,16 +151,17 @@
         }
 
         function onDestroy() {
+            console.log(vm.name + ':: onDestroy');
             var localStream = WebRTCService.getLocalMediaStream();
             var externalStream = WebRTCService.getExternalMediaStream();
 
             if (undefined !== localStream) {
                 localStream.getVideoTracks()[0].stop();
-                localStream.getVideoTracks()[0].stop();
+                localStream.getAudioTracks()[0].stop();
             }
             if (undefined !== externalStream) {
                 externalStream.getVideoTracks()[0].stop();
-                externalStream.getVideoTracks()[0].stop();
+                externalStream.getAudioTracks()[0].stop();
             }
         }
 

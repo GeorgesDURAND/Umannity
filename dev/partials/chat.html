@@ -6,11 +6,13 @@
                 <div class="col-lg-9 col-md-9 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-heading">
+                            <button ng-if="vm.recipient_id" class="btn btn-sm btn-success glyphicon glyphicon-earphone"
+                                    ng-click="vm.visioCall(vm.recipient_id)"></button>
                             <div class="chat_name">{{vm.request_name}}</div>
                         </div>
 
-                        <div class="conversation" scroll-glue />
-                            <ul class="conversation__wrap" >
+                        <div class="conversation" scroll-glue/>
+                        <ul class="conversation__wrap">
                                 <span ng-repeat="dialogue in vm.dialogues" class="animated fadeIn">
                                     <li ng-if="vm.user.id == dialogue.author_id" class="conversation__msg cf">
 
@@ -38,47 +40,48 @@
                                     </li>
                                 </span>
 
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
 
-                        <div class="panel-footer">
-                            <form ng-submit="vm.sendMessage()">
-                                <div class="input-group">
-                                    <textarea class="form-control" ng-enter="vm.sendMessage()" ng-model="vm.buffer" value=""></textarea>
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-help-1 u-send-button">
-                                            Envoyer
-                                        </button>
-                                    </div>
+                    <div class="panel-footer">
+                        <form ng-submit="vm.sendMessage()">
+                            <div class="input-group">
+                                <textarea class="form-control" ng-enter="vm.sendMessage()" ng-model="vm.buffer"
+                                          value=""></textarea>
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-help-1 u-send-button">
+                                        Envoyer
+                                    </button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-3 col-md-3 col-xs-12">
-                    <nav class="chat">
-                        <h2 class="chat__users">
-                            {{ 'CONTACTS_HEADER' | translate }}
-                        </h2>
-                        <div class="chat__wrapper">
-                            <li ng-repeat="chat in vm.chatsUsers"
-                                ng-click="vm.changeConversation(chat)"
-                                class="animated fadeIn chat__human">
-                                <img class="chat__avatar" ng-src="{{chat.user.picture}}">
-                                <span class="chat__name">
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <nav class="chat">
+                    <h2 class="chat__users">
+                        {{ 'CONTACTS_HEADER' | translate }}
+                    </h2>
+                    <div class="chat__wrapper">
+                        <li ng-repeat="chat in vm.chatsUsers"
+                            ng-click="vm.changeConversation(chat)"
+                            class="animated fadeIn chat__human">
+                            <img class="chat__avatar" ng-src="{{chat.user.picture}}">
+                            <span class="chat__name">
                                     <strong>
                                         {{chat.user.last_name }}
                                     </strong>
                                         {{chat.user.first_name }}
                                 </span>
-                            </li>
-                        </div>
-                    </nav>
-                </div>
-
-
+                        </li>
+                    </div>
+                </nav>
             </div>
+
+
         </div>
+    </div>
     </div>
 </u-main-view>

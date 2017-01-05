@@ -78,6 +78,7 @@
     "VISIO_NOTIF": "Quelqu'un essaie de vous joindre !",
     "VISIO_HANGUP": "Raccrocher",
     "VISIO_ISCALLING": "vous appelle.",
+    "VISIO_CHAT_USER_CALLING": "Cet utilisateur essaie de vous appeller. Cliquez sur le téléphone ou allez sur la page VisioConférence pour rejoindre l'appel.",
 
     "5": "Mauvaises informations de connexion",
     "CHANGE_PHOTO": "Modifier votre photo de profile",

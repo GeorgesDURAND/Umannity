@@ -5,11 +5,10 @@
         .module('umannityApp.controllers')
         .controller('chatController', chatController);
 
-    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService'];
+    chatController.$inject = ['$scope', '$location', '$translate', 'UserService', 'ChatService', 'RequestService'];
 
-    function chatController($scope, UserService, ChatService, RequestService) {
+    function chatController($scope, $location, $translate, UserService, ChatService, RequestService) {
         /* jshint validthis: true */
-
         var vm = this;
         var _message;
 
@@ -20,12 +19,13 @@
         vm.sendMessage = sendMessage;
         vm.loadChatName = loadChatName;
         vm.fixDateFormat = fixDateFormat;
+        vm.visioCall = visioCall;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         $scope.$on("$destroy", onDestroy);
         ////
 
-        function onViewContentLoaded () {
+        function onViewContentLoaded() {
             if (undefined === vm.user.picture) {
                 UserService.loadPicture(vm.user.id).then(function (picture) {
                     vm.user.picture = picture;
@@ -35,26 +35,38 @@
         }
 
         // Cette fonction se lance après avoir changer de vue. Elle arrête le refresh du chat.
-        function onDestroy () {
+        function onDestroy() {
             clearInterval(vm.timerId);
         }
 
         // A appeler pour actualiser la conversation
-        function loadChat () {
+        function loadChat() {
             ChatService.loadChat(vm.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
                 fixDateFormat();
             });
         }
 
-        function fixDateFormat () {
-            angular.forEach(vm.dialogues, function(message) {
+        function fixDateFormat() {
+            angular.forEach(vm.dialogues, function (message) {
                 message.date = message.date * 1000;
             });
         }
 
+        function visioCall(id) {
+            var message = {
+                message: $translate.instant('VISIO_CHAT_USER_CALLING'),
+                recipient_id: vm.recipient_id,
+                conversation_id: vm.conversation_id
+            };
+            ChatService.sendMessage(message)
+                .then(function (data) {
+                    $location.path('/visio/' + id);
+                });
+        }
+
         // Charge la première conversation lorsque l'utilisateur arrive sur le chat
-        function loadFirstConversation () {
+        function loadFirstConversation() {
             var firstConv = vm.chatsUsers[0];
             ChatService.loadChat(firstConv.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
@@ -69,7 +81,7 @@
             vm.timerId = setInterval(loadChat, 3000);
         }
 
-        function loadChatName (id_conv) {
+        function loadChatName(id_conv) {
             var _loadRequest = {
                 id: id_conv
             };
@@ -79,7 +91,7 @@
         }
 
         // Charge les contacts
-        function loadChatsUsers () {
+        function loadChatsUsers() {
             ChatService.loadChatsUsers().then(function (chatsUsers) {
                 vm.chatsUsers = chatsUsers;
                 if (undefined !== vm.chatsUsers) {
@@ -88,7 +100,7 @@
             });
         }
 
-        function changeConversation (chatUser) {
+        function changeConversation(chatUser) {
             vm.recipient_id = chatUser.user.id;
             vm.conversation_id = chatUser.conversation_id;
             ChatService.loadChat(vm.conversation_id).then(function (data) {
@@ -101,10 +113,10 @@
             });
         }
 
-        function sendMessage () {
+        function sendMessage() {
             if (undefined !== vm.buffer) {
                 _message = {
-                    message : vm.buffer,
+                    message: vm.buffer,
                     recipient_id: vm.recipient_id,
                     conversation_id: vm.conversation_id
                 };
