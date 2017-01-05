@@ -39,9 +39,9 @@
                 } else if ($location.path() === "/subscribe") {
                     $location.path("/subscribe");
                 } else if ($location.path().slice(9) === "/activate") {
-                    console.log("Activate");
+                    $location.path($location.path());
                 } else if ($location.path().slice(16) === "/activatePartner") {
-                    console.log("ActivatePartner");
+                    $location.path($location.path());
                 } else {
                     $location.path("/login");
                 }
