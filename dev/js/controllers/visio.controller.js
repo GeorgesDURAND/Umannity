@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('visioController', visioController);
 
-    visioController.$inject = ['$scope', '$sce', '$location', '$interval', '$routeParams', 'WebRTCService', 'UserService'];
+    visioController.$inject = ['$scope', '$sce', '$window', '$interval', '$routeParams', 'WebRTCService', 'UserService'];
 
-    function visioController($scope, $sce, $location, $interval, $routeParams, WebRTCService) {
+    function visioController($scope, $sce, $window, $interval, $routeParams, WebRTCService) {
         window.URL = window.URL || window.mozURL || window.webkitURL;
         /* jshint validthis: true */
         var vm = this;
@@ -73,13 +73,13 @@
             WebRTCService.getOffers()
                 .then(function (offers) {
                     angular.extend(vm.offers, offers);
-                    angular.forEach(offers, function (offer) {
-                        if (undefined !== vm.user_id &&
-                            vm.user_id == offer.emitter &&
-                            offer.type === 'sdp-offer') {
-                            acceptVisioConference(offer);
-                        }
-                    });
+                    // angular.forEach(offers, function (offer) {
+                    //     if (undefined !== vm.user_id &&
+                    //         vm.user_id == offer.emitter &&
+                    //         offer.type === 'sdp-offer') {
+                    //         acceptVisioConference(offer);
+                    //     }
+                    // });
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -117,7 +117,7 @@
         }
 
         function hangup() {
-            $location.path('/chat');
+            $window.location.reload();
         }
 
         function setState(state) {
