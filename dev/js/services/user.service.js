@@ -22,7 +22,8 @@
             getPicture: getPicture,
             editProfile: editProfile,
             putPicture: putPicture,
-            getAge: getAge
+            getAge: getAge,
+            activate: activate
         };
 
         return service;
@@ -46,11 +47,11 @@
             var deferred = $q.defer();
             RestService.put("/user/picture", picture)
                 .then(function (request) {
-                    deferred.resolve(request.data);
-                })
+                deferred.resolve(request.data);
+            })
                 .catch(function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -58,11 +59,11 @@
             var deferred = $q.defer();
             RestService.post("/user", userData)
                 .then(function (request) {
-                    deferred.resolve(request.data);
-                })
+                deferred.resolve(request.data);
+            })
                 .catch(function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -72,15 +73,15 @@
 
             RestService.get("/user", params)
                 .then(function (request) {
-                    var user = request.data;
-                    user.formattedBirthdate = formatBirthdate(user.birthdate);
-                    _user = user;
-                    storeUser(user);
-                    deferred.resolve(user);
-                })
+                var user = request.data;
+                user.formattedBirthdate = formatBirthdate(user.birthdate);
+                _user = user;
+                storeUser(user);
+                deferred.resolve(user);
+            })
                 .catch(function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -101,14 +102,14 @@
 
             RestService.get("/user/picture", params)
                 .then(function (request) {
-                    var picture = request.data.picture;
+                var picture = request.data.picture;
 
-                    _picture = picture;
-                    deferred.resolve(picture);
-                })
+                _picture = picture;
+                deferred.resolve(picture);
+            })
                 .catch(function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -126,16 +127,16 @@
             };
             RestService.post('/connect', data)
                 .then(function (request) {
-                    if (request.data !== undefined) {
-                        if (request.data.api_key !== undefined) {
-                            RestService.setApiKey(request.data.api_key);
-                            deferred.resolve(request.data.type);
-                        }
+                if (request.data !== undefined) {
+                    if (request.data.api_key !== undefined) {
+                        RestService.setApiKey(request.data.api_key);
+                        deferred.resolve(request.data.type);
                     }
-                })
+                }
+            })
                 .catch(function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -146,7 +147,7 @@
             var year = tmp.getYear() + 1900;
             return date + "/" + month + "/" + year;
         }
-        
+
         function getAge(userBirthdate) {
             var birthdate = new Date(userBirthdate * 1000);
             var today = new Date();
@@ -158,5 +159,21 @@
             }
             return age;
         }
+
+        function activate(token) {
+            var deferred = $q.defer();
+
+            var obj = {
+                "token" : token
+            };
+            RestService.post('/activate', obj)
+                .then(function(data){
+                deferred.resolve(data);
+            }).catch(function(ret){
+                deferred.reject(ret);
+            });
+            return deferred.promise;
+        }
+
     }
 })();
