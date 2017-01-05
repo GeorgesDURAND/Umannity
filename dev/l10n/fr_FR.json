@@ -196,6 +196,8 @@
     "ACTIVATIONERROR": "Un problème est survenu",
     "GETTOPAGE": "Aller à la page de ",
     "CONNECTION": "connexion.",
-    "MY_OFFERS": "Mes offres"
-
+    "MY_OFFERS": "Mes offres",
+    "PENDINGACTIVATION": "Tentative d'activation ....",
+    "CHOOSEPWD": "Merci de choisir votre mot de passe",
+    "ACTIVATEACCOUNT": "J'active mon compte"
 }

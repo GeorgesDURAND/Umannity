@@ -188,5 +188,8 @@
     "ACTIVATIONERROR": "An error occured, please contact the support",
     "GETTOPAGE": "Go to the ",
     "CONNECTION": "login page.",
-    "MY_OFFERS": "My Offers"
+    "MY_OFFERS": "My Offers",
+    "PENDINGACTIVATION": "Trying to activate ....",
+    "CHOOSEPWD": "Please choose your password :",
+    "ACTIVATEACCOUNT": "Activate my account"
 }

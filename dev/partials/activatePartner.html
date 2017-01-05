@@ -1,0 +1,36 @@
+<u-main-view-no-menu>
+    <div class="activatePartner_page">
+        <label uib-alert class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 alert-danger u-alert-login-blue" ng-repeat="error in vm.errors track by $index" close="vm.closeAlert($index)">{{error | translate}}</label>
+        <div ng-show="vm.IsSubmitted">
+            <h1 class="activate_title">
+                {{ vm.message | translate }}
+            </h1>
+            <div class="activate_link">
+                {{'GETTOPAGE' | translate}}
+                <a class="blue_link" href="index.html">
+                    {{'CONNECTION' | translate}}
+                </a>
+            </div>
+        </div>
+        <form id="pwd_validate" ng-hide="vm.IsSubmitted">
+            <h1 class="activate_title">
+                {{'CHOOSEPWD' | translate}} <br/><br/>
+                <p>
+                    <label class="activate_pwd">
+                        {{'PASSWORD' | translate}}
+                        <br/>
+                        <input type="password" class="input" ng-model="vm.pwd" required/>
+                    </label>
+                </p>
+                <p>
+                    <label class="activate_pwd">
+                        {{'CONFIRMPASSWORD' | translate}}
+                        <br/>
+                        <input type="password" class="input" ng-model="vm.confirm_pwd" required/>
+                    </label>
+                </p>
+                <button ng-click="vm.activePartner()" class="activate_btn">{{'ACTIVATEACCOUNT' | translate}}</button>
+            </h1>
+        </form>
+    </div>
+</u-main-view-no-menu>
