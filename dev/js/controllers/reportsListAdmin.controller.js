@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('reportsListAdminController', reportsListAdminController);
 
-    reportsListAdminController.$inject = ['$scope', 'UserService', 'RestService'];
+    reportsListAdminController.$inject = ['$scope', 'UserService', 'RestService', '$location'];
 
-    function reportsListAdminController($scope, UserService, RestService) {
+    function reportsListAdminController($scope, UserService, RestService, $location) {
         /* jshint validthis: true */
         var vm = this;
         vm.name = "reportsListAdminController";
@@ -39,10 +39,13 @@
             });
         }
 
+        function changeView(viewName) {
+            $location.path(viewName);
+        }
+        
         function viewItem(type, item_id) {
             if (type === "request") {
-                /*AJOUTER ICI LE WINDOWS.LOCATION*/
-                console.log(vm.name , " :: redirect to ", type, item_id);
+                changeView('/request/'+item_id);
             } else {
                 console.log(vm.name , " :: view ", type, " not handle for the moment");
             }
