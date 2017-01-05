@@ -7,10 +7,10 @@
 <div class="main-view-container">
     <u-side-menu ng-if="appVm.getUser()"></u-side-menu>
     <u-header class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="appVm.getUser()"></u-header>
-    <u-header ng-if="appVm.getUser()"></u-header>
-
+    <!--<u-header ng-if="appVm.getUser()"></u-header>-->
+    <u-header class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="appVm.getPartner()"></u-header>
+    
     <u-side-menu ng-if="appVm.getPartner()"></u-side-menu>
-    <u-header ng-if="appVm.getPartner()"></u-header>
     <u-chat-menu></u-chat-menu>
 
     <div ng-class="appVm.isCollapsed ? 'main-view-content-collapsed' : 'main-view-content'">
