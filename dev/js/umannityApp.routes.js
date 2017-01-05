@@ -29,6 +29,11 @@
                 controller: 'loginController',
                 controllerAs: 'vm'
             })
+            .when('/activate/:token', {
+                templateUrl: "partials/activate.html",
+                controller: 'activateController',
+                controllerAs: 'vm'
+            })
             .when('/loginPartner', {
                 templateUrl: "partials/loginPartner.html",
                 controller: 'loginController',
