@@ -38,9 +38,9 @@
                     $location.path("/cgv");
                 } else if ($location.path() === "/subscribe") {
                     $location.path("/subscribe");
-                } else if ($location.path() === "/activate") {
+                } else if ($location.path().slice(9) === "/activate") {
                     console.log("Activate");
-                } else if ($location.path() === "/activatePartner") {
+                } else if ($location.path().slice(16) === "/activatePartner") {
                     console.log("ActivatePartner");
                 } else {
                     $location.path("/login");
