@@ -3,8 +3,8 @@
         <div class="u-visio-notification-bar">
             <uib-accordion close-others="oneAtATime">
                 <div ng-repeat="offer in vm.offers" uib-accordion-group class="panel-danger"
-                     is-open="vm.isAccordionOpen" heading="{{ 'VISIO_NOTIF' | translate }}">
-                    {{ offer.emitter }} {{ 'VISIO_ISCALLING' | translate }}
+                     is-open="!vm.isAccordionOpen" heading="{{ 'VISIO_NOTIF' | translate }}">
+                    {{ 'VISIO_ISCALLING' | translate }}
                     <button class="btn btn-sm btn-success" type="button" ng-click="vm.acceptVisioConference(offer)"><i class="glyphicon glyphicon-earphone
 "></i>
                     </button>

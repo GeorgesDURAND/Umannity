@@ -75,7 +75,8 @@
                     angular.extend(vm.offers, offers);
                     angular.forEach(offers, function (offer) {
                         if (undefined !== vm.user_id &&
-                            vm.user_id == offer.emitter) {
+                            vm.user_id == offer.emitter &&
+                            offer.type === 'sdp-offer') {
                             acceptVisioConference(offer);
                         }
                     });
