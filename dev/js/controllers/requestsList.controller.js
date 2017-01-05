@@ -69,18 +69,18 @@
                         request.requester_completed === true &&
                         request.volunteer_completed === true) {
                         vm.completed_helps.push(request);
-                    } else {
+                    } else if (request.accepted_user === -1) {
                         vm.helpsList.push(request);
                     }
                 });
-                vm.loadPicture(vm.helpsList);
+                //vm.loadPicture(vm.helpsList);
             });
             RequestsListService.loadAcceptedRequestsList(_requestParams1).then(function (myRequests) {
                 angular.forEach(myRequests.requests, function(request, key) {
                     if (request.requester_completed === false || request.volunteer_completed === false)
                         vm.current_helps.push(request);
                 });
-                vm.loadPicture(vm.current_helps);
+                //vm.loadPicture(vm.current_helps);
             });
         }
 
