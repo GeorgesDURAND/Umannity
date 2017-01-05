@@ -42,10 +42,11 @@
         }
 
         function deletePartner() {
-            RestService.delete("/partner", {id: vm.selectedPartner.id})
+            RestService.delete("/admin/partner/" + vm.selectedPartner.id)
                 .then(function(data) {
                 console.log(vm.name, ":: Partner deleted");
                 loadPartnersList();
+                  vm.selectedPartner = undefined;
             }).catch(function(ret) {
                 console.log(vm.name, ":: Error ", ret.data.message);
             });
