@@ -181,5 +181,7 @@
 
     "OFFERS_LIST": "Offers",
     "OFFERSLIST_TITLE": "Business offers",
-    "NO_FINISHED_HELP": "No help request completed."
+    "NO_FINISHED_HELP": "No help request completed.",
+    
+    "MYCONTACT": "My contacts"
 }

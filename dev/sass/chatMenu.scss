@@ -1,0 +1,70 @@
+@import "variables";
+
+
+u-chat-menu {
+    position: fixed;
+    top: 70px;
+    z-index: 100;
+}
+
+.u-chatmenu, .u-chatmenu-collapsed {
+    transition: 0.4s ease-in-out;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 5000;
+    background-color: $u-black;
+    color: $app-gray;
+
+    .no-padding {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .contact-infos {
+        font-size: 16px;
+        padding: 10px 0px;
+        border-bottom: solid 1px $u-grey;
+    }
+
+    .contact-convs {
+        height: 0px;
+        opacity: 0;
+        background-color: black;
+
+        span {
+            font-size: 14px;
+            padding: 10px 0px 10px 15px;
+            border-bottom: solid 1px $u-grey;
+            
+        }
+    }
+
+    .contact-convs.show {
+        height: auto;
+        opacity: 1;
+        transition: 0.4s ease-in-out;
+    }
+}
+
+.u-chatmenu {
+    right: 0px;
+}
+
+.u-chatmenu-collapsed {
+    right: -2000px;
+}
+
+.icon-position {
+    margin-top: -45px;
+    color: $umannity-black;
+    border: none;
+    right: 20px;
+    position: fixed;
+    opacity: 1;
+
+    .btn-block {
+        font-size: $icon-font-size;
+        width: $icon-size;
+        cursor: pointer;
+    }
+}

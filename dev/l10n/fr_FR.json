@@ -189,5 +189,7 @@
 
     "OFFERS_LIST": "Offres",
     "OFFERSLIST_TITLE": "Offres commerciales",
-    "NO_FINISHED_HELP": "Pas de demande d'aide terminée."
+    "NO_FINISHED_HELP": "Pas de demande d'aide terminée.",
+    
+    "MYCONTACT": "Mes contacts"
 }

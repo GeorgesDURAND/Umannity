@@ -49,7 +49,7 @@
             controller: 'subscribeUserController',
             controllerAs: 'vm'
         })
-            .when('/chat', {
+            .when('/chat/:convId', {
             templateUrl: "partials/chat.html",
             controller: 'chatController',
             controllerAs: 'vm'

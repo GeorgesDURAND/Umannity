@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('chatController', chatController);
 
-    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService'];
+    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService', '$routeParams'];
 
-    function chatController($scope, UserService, ChatService, RequestService) {
+    function chatController($scope, UserService, ChatService, RequestService, $routeParams) {
         /* jshint validthis: true */
 
         var vm = this;
@@ -55,7 +55,14 @@
 
         // Charge la première conversation lorsque l'utilisateur arrive sur le chat
         function loadFirstConversation () {
-            var firstConv = vm.chatsUsers[0];
+            var firstConv;
+            
+            angular.forEach(vm.chatsUsers, function(value, key) {
+                if ($routeParams.convId === value.conversation_id) {
+                    firstConv = vm.chatsUsers[key];
+                }
+            });
+            
             ChatService.loadChat(firstConv.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
                 fixDateFormat();
