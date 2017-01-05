@@ -11,6 +11,7 @@
 
     <u-side-menu ng-if="appVm.getPartner()"></u-side-menu>
     <u-header ng-if="appVm.getPartner()"></u-header>
+    <u-chat-menu></u-chat-menu>
 
     <div ng-class="appVm.isCollapsed ? 'main-view-content-collapsed' : 'main-view-content'">
         <ng-transclude></ng-transclude>
