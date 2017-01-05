@@ -40,6 +40,8 @@
                     $location.path("/subscribe");
                 } else if ($location.path() === "/activate") {
                     console.log("Activate");
+                } else if ($location.path() === "/activatePartner") {
+                    console.log("ActivatePartner");
                 } else {
                     $location.path("/login");
                 }
