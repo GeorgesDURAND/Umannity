@@ -3,7 +3,12 @@
         <u-page-title title="TITLE_REQUEST"> </u-page-title>
 
         <div class="u-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="u-request-bloc col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="u-request-bloc col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div ng-if="vm.error"
+                     uib-alert class="col-lg-6 col-md-6 col-sm-12 col-xs-12 alert-danger"
+                     close="vm.closeAlert()">
+                    {{vm.error | translate}}
+                </div>
                 <span ng-show="vm.status === 'author'"
                       class="u-author-func">
                      <span ng-click="vm.editButton = !vm.editButton">
@@ -157,21 +162,19 @@
                             {{ 'SAVE_BUTTON' | translate }}
                         </button>
                     </div>
+
                 </div>
             </div>
 
-
-
-
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div ng-show="vm.status === 'author'" class="col-lg-12 col-md-12 col-sm-6 col-xs-12 u-request-bloc">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div ng-show="vm.status === 'author'" class="col-lg-12 col-md-5 col-sm-6 col-xs-12 u-request-bloc">
                     <span ng-show="vm.candidatesList.length == 0"> {{ 'NO_CANDIDATE' | translate }}</span>
                     <span ng-show="{{vm.request.accepted_user === -1}}" class="col-lg-4 col-md-12 col-sm-12 col-xs-12"
                           ng-repeat="candidate in vm.candidatesList">
                         <div class="u-candidate-bloc">
                             <header>
                                 <div ng-click="vm.unSelectUser(candidate.id)" class="u-delete">
-                                    <img class="u-delete-img" src="../../img/delete.png">
+                                    <img ng-show="vm.isCandidate2(candidate.id)" class="u-delete-img" src="../../img/delete.png">
                                 </div>
                                 <div class="u-picture col-lg-5 col-md-5 col-sm-6 col-xs-12">
                                     <img class="img-circle u-candidate-picture" ng-src="{{vm.getPicture(candidate.id)}}">
@@ -228,7 +231,7 @@
 
 
 
-                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 u-request-bloc">
+                <div class="col-lg-12 col-md-7 col-sm-6 col-xs-12 u-request-bloc">
                     <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         <img ng-src="{{vm.authorPicture}}" class="u-user-image img-circle">
                     </div>

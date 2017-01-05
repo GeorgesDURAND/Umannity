@@ -190,10 +190,11 @@
 .u-request-bloc .u-candidate-skills {
   padding-left: 15px;
   padding-bottom: 10px;
-  min-height: 40px;
-  max-height: 75px;
+  min-height: 57px;
+  max-height: 57px;
   padding-top: 5px;
   overflow-x: auto;
+  overflow-y: overlay;
 }
 
 .u-candidate-bloc .u-contact {
@@ -246,4 +247,13 @@
   text-align: center;
 }
 
+.alert {
+  text-align: center;
+}
+
+.alert .u-alert {
+  background-color: rgba(66, 165, 245, 0.5);
+  color: rgba(255, 255, 255, 0.71);
+  border-color: #42a5f5;
+}
 
