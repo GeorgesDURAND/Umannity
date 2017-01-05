@@ -194,5 +194,6 @@
     "MY_OFFERS": "My Offers",
     "PENDINGACTIVATION": "Trying to activate ....",
     "CHOOSEPWD": "Please choose your password :",
-    "ACTIVATEACCOUNT": "Activate my account"
+    "ACTIVATEACCOUNT": "Activate my account",
+    "MANAGEPARTNER": "Manage the partner"
 }

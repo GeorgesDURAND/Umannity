@@ -199,5 +199,6 @@
     "MY_OFFERS": "Mes offres",
     "PENDINGACTIVATION": "Tentative d'activation ....",
     "CHOOSEPWD": "Merci de choisir votre mot de passe",
-    "ACTIVATEACCOUNT": "J'active mon compte"
+    "ACTIVATEACCOUNT": "J'active mon compte",
+    "MANAGEPARTNER": "Gérer les partenaire"
 }
