@@ -19,6 +19,7 @@
         vm.click2 = click2;
         vm.click3 = click3;
         vm.starRating1 = 0;
+        vm.closeAlert = closeAlert;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
@@ -61,6 +62,10 @@
             vm.global = param;
         }
 
+        function closeAlert() {
+            vm.error = undefined;
+        }
+
         function sendForm() {
             if (vm.commentary !== undefined) {
                 formatedString = vm.commentary.replace(/\n/g,"<br/>");
@@ -77,9 +82,14 @@
                 "ponctuality": vm.ponctuality,
                 "global": vm.global
             };
-            FormService.sendForm(_newFormData).then(function () {
-                $location.path('/requestsList');
-            });
+            FormService.sendForm(_newFormData)
+                .then(function () {
+                    $location.path('/requestsList');
+                })
+                .catch(function(returnError) {
+                    console.log(returnError.data.error);
+                    vm.error = returnError.data.error;
+                });
         }
 
     }
