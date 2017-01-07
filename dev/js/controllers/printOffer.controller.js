@@ -48,7 +48,7 @@
         }
 
         function editOffer() {
-            if (undefined != vm.edited_offer) {
+            if (undefined !== vm.edited_offer) {
                 vm.edited_offer.id = vm.offer.id;
                 OfferService.editOffer(vm.edited_offer)
                     .then(function (offer) {
