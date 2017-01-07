@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('offersListController', offersListController);
 
-    offersListController.$inject = ['$scope', '$location', 'UserService', 'OffersListService', 'PartnerService'];
+    offersListController.$inject = ['$scope', '$location', 'UserService', 'OfferService', 'PartnerService'];
 
-    function offersListController($scope, $location, UserService, OffersListService, PartnerService) {
+    function offersListController($scope, $location, UserService, OfferService, PartnerService) {
         /* jshint validthis: true */
 
         var vm = this;
@@ -28,13 +28,13 @@
 
         function loadOffersList () {
             if (undefined !== vm.partner) {
-                OffersListService.loadOffersList(vm.partner.id)
+                OfferService.loadOffersList(vm.partner.id)
                     .then(function (allOffers) {
                     vm.offersList = allOffers.offers;
                 });
             }
             else {
-                OffersListService.loadOffersList().then(function (allOffers) {
+                OfferService.loadOffersList().then(function (allOffers) {
                     vm.offersList = allOffers.offers;
                 });
             }

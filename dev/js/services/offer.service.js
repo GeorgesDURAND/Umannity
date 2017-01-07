@@ -13,7 +13,8 @@
         var service = {
             putOffer: putOffer,
             getOffer: getOffer,
-            editOffer: editOffer
+            editOffer: editOffer,
+            loadOffersList: loadOffersList
         };
 
         return service;
@@ -54,6 +55,20 @@
         function editOffer(offerData) {
             var deferred = $q.defer();
             RestService.post("/offer", offerData)
+                .then(function (offer) {
+                    deferred.resolve(offer.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function loadOffersList (id)
+        {
+            var params = {partner_id:id};
+            var deferred = $q.defer();
+            RestService.get("/offer", params)
                 .then(function (offer) {
                     deferred.resolve(offer.data);
                 })
