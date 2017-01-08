@@ -13,15 +13,17 @@
         vm.partner = PartnerService.getPartner();
         vm.goEdit = false;
         vm.edited_offer = {};
+        vm.errors = [];
 
         vm.closeAlert = closeAlert;
         vm.editOffer = editOffer;
+        vm.participateOffer = participateOffer;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
         function addAlert(error) {
             if (vm.errors.indexOf(error) === -1) {
-                if (vm.errors.length >= 2) {
+                if (vm.errors.length >= 3) {
                     vm.errors.splice(0, 1);
                 }
                 vm.errors.push(error);
@@ -61,6 +63,18 @@
                         addAlert(error.data.error);
                     });
             }
+        }
+        
+        function participateOffer() {
+            console.log("participateOffer CLICK......");
+
+            OfferService.participateOffer(vm.offer.id)
+                .then(function (response) {
+                    console.log("participateOffer success.......", response);
+                })
+                .catch(function (error) {
+                    addAlert(error.data.error);
+                });
         }
     }
 })();

@@ -14,8 +14,10 @@
             putOffer: putOffer,
             getOffer: getOffer,
             editOffer: editOffer,
-            loadOffersList: loadOffersList
-        };
+            getOfferList: getOfferList,
+            participateOffer: participateOffer
+
+    };
 
         return service;
 
@@ -52,6 +54,24 @@
             return deferred.promise;
         }
 
+        function getOfferList(isPartner, id)
+        {
+            var deferred = $q.defer();
+
+            if (isPartner == true) {
+                var params = {partner_id:id};
+            }
+            RestService.get("/offer", params)
+                .then(function (offer) {
+                    deferred.resolve(offer.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+
         function editOffer(offerData) {
             var deferred = $q.defer();
             RestService.post("/offer", offerData)
@@ -64,13 +84,13 @@
             return deferred.promise;
         }
 
-        function loadOffersList (id)
-        {
-            var params = {partner_id:id};
+        function participateOffer(offerId) {
             var deferred = $q.defer();
-            RestService.get("/offer", params)
-                .then(function (offer) {
-                    deferred.resolve(offer.data);
+            var params = {offer_id: offerId};
+
+            RestService.get("/offer/participate", params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
                 })
                 .catch(function (error) {
                     deferred.reject(error);

@@ -17,8 +17,8 @@
         vm.partner = PartnerService.getPartner();
 
         vm.search = search;
-        vm.loadOffersList = loadOffersList;
         vm.changeView = changeView;
+
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
 
@@ -28,13 +28,14 @@
 
         function loadOffersList () {
             if (undefined !== vm.partner) {
-                OfferService.loadOffersList(vm.partner.id)
+                OfferService.getOfferList(true, vm.partner.id)
                     .then(function (allOffers) {
                     vm.offersList = allOffers.offers;
                 });
             }
             else {
-                OfferService.loadOffersList().then(function (allOffers) {
+                OfferService.getOfferList(false)
+                    .then(function (allOffers) {
                     vm.offersList = allOffers.offers;
                 });
             }
