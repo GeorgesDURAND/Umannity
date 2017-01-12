@@ -66,11 +66,11 @@
         }
         
         function participateOffer() {
-            console.log("participateOffer CLICK......");
+            console.log("printOfferController :: participateOffer click.");
 
             OfferService.participateOffer(vm.offer.id)
                 .then(function (response) {
-                    console.log("participateOffer success.......", response);
+                    console.log("printOfferController :: participateOffer success.", response);
                 })
                 .catch(function (error) {
                     addAlert(error.data.error);
