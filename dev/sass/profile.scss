@@ -49,27 +49,33 @@ $profile-banner-height: 170px;
     z-index: 2;
     border:5px solid #ffffff;
     max-width: $profile-picture-size;
-    max-height: $profile-banner-height;
-  }
-  
-  .u-partner-profile {
-    position: relative;
-    z-index: 2;
-    border: 5px solid #fff;
-    top: 35px;
+    max-height: $profile-picture-size;
+    min-height: $profile-picture-size;
+    min-width: $profile-picture-size;
   }
 
   .toppad {
     padding-top: 60px;
     padding-bottom: 20px;
     position: relative;
-    top: -40px;
+    top: -60px;
     background-color: white;
     z-index: 1;
   }
-  
+  /*
+    .u-partner-profile {
+    margin-top: -120px;
+    margin-left: 40px;
+    position: relative;
+    z-index: 2;
+    border:5px solid #ffffff;
+    max-width: $profile-picture-size;
+    max-height: $profile-picture-size;
+  }
+
+
   .partner {
     top: 0px !important;
   }
-  
+  */
 }

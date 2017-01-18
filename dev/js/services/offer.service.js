@@ -13,8 +13,11 @@
         var service = {
             putOffer: putOffer,
             getOffer: getOffer,
-            editOffer: editOffer
-        };
+            editOffer: editOffer,
+            getOfferList: getOfferList,
+            participateOffer: participateOffer
+
+    };
 
         return service;
 
@@ -51,11 +54,43 @@
             return deferred.promise;
         }
 
+        function getOfferList(isPartner, id)
+        {
+            var deferred = $q.defer();
+
+            if (isPartner == true) {
+                var params = {partner_id:id};
+            }
+            RestService.get("/offer", params)
+                .then(function (offer) {
+                    deferred.resolve(offer.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+
         function editOffer(offerData) {
             var deferred = $q.defer();
             RestService.post("/offer", offerData)
                 .then(function (offer) {
                     deferred.resolve(offer.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function participateOffer(offerId) {
+            var deferred = $q.defer();
+            var params = {offer_id: offerId};
+
+            RestService.get("/offer/participate", params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
                 })
                 .catch(function (error) {
                     deferred.reject(error);
