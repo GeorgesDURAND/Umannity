@@ -1,11 +1,18 @@
 <div class="block-request" ng-click="vm.changeView('/request/', request.id)">
-    <div class="pull-left col-sm-12 col-xs-12 multiple-span">
-        <img class="img-circle float-left" ng-src=''>
-        <div class="padding-list">
-            <h4 class="blue">{{request.name}}</h4>
-            <img class="img-circle" ng-src="{{vm.getPicture(request.user_id)}}">
-            <span ng-if="request.distance">{{request.distance | number:2}} km</span>
-            <div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+            <u-request-picture
+                    user-id="{{request.user_id}}"
+                    class="u-img-author">
+            </u-request-picture>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
+            <h4 class="name-request">{{request.name}}</h4>
+            <div class="fix-space" ng-if="request.distance">
+                <span class="glyphicon glyphicon-map-marke"></span> {{request.location}} à
+                <span class="distance">{{request.distance | number:2}} km</span> de vous
+            </div>
+            <div class="fix-space">
                 <span ng-repeat="helpSkill in request.skills | orderBy:helpSkill track by $index"
                       ng-class="'skill-button'+($index % 3)">
                     {{helpSkill}}
