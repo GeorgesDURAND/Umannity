@@ -57,6 +57,7 @@
             UserService.loadUser(id)
                 .then(function (user) {
                 vm.user = user;
+                vm.edited_user.sex = vm.user.sex;
                 if (vm.user.sex === 0) {
                     vm.user.gender = $translate.instant("WOMAN");
                 }

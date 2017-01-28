@@ -81,6 +81,15 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'GENDER' | translate }}</label>
+                    <div class="col-lg-7 col-md-7">
+                        <md-radio-group ng-model="vm.edited_user.sex">
+                            <md-radio-button value=1 class="md-primary">{{ 'SEXMAN' | translate }}</md-radio-button>
+                            <md-radio-button value=0>{{ 'SEXWOMAN' | translate }}</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 col-md-2 control-label">{{ 'EMAIL' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="email" placeholder="{{ vm.user.email }}" ng-model="vm.edited_user.email">
