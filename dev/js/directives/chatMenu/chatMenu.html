@@ -1,4 +1,4 @@
-<div ng-class="chat.isCollapsed ? 'u-chatmenu-collapsed' : 'u-chatmenu'" class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+<div ng-class="vm.isCollapsed.isCollapsed ? 'u-chatmenu-collapsed' : 'u-chatmenu'" class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
 
     <!--<div class="u-chatmenu col-lg-2 col-md-3 col-sm-4 col-xs-4">-->
     <div class="icon-position">
@@ -13,7 +13,8 @@
             </h2>
             <div class="no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <span ng-repeat="contact in chat.contacts">
-                    <span class="no-padding contact-infos col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="chat.openClose(contact.user_id)">
+                    <span class="no-padding contact-infos col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                          ng-click="chat.openClose(contact.user_id)">
                         <img class="chat__avatar" ng-src="{{contact.picture}}">
                         <span class="chat__name">
                             <strong>
@@ -22,7 +23,8 @@
                         </span>
                     </span>
                     <span id="{{contact.user_id}}" class="contact-convs no-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <span ng-repeat="conv in contact.convs" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="chat.openConv(conv.id)">
+                        <span ng-repeat="conv in contact.convs" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                              ng-click="chat.openConv(conv.id)">
                             {{conv.name}}
                         </span>
                     </span>
@@ -31,4 +33,55 @@
         </nav>
 
     </div>
+
+    <div ng-show="chat.displayConv" class="col-lg-2 col-md-2 u-conversation">
+        <div class="panel panel-info no-bottom-margin">
+            <div class="panel-heading">
+                <div ng-click="chat.displayConv = !chat.displayConv">
+                    <img class="u-close-img" src="../img/close-conv.png">
+                </div>
+                <div class="chat_name">{{chat.request_name}}</div>
+            </div>
+
+            <div class="conversation" scroll-glue/>
+            <ul class="conversation__wrap">
+                <span ng-repeat="dialogue in chat.dialogues" class="animated fadeIn">
+                    <li ng-if="vm.user.id == dialogue.author_id" class="conversation__msg cf">
+                        <span class="u-right-message">
+                            {{ dialogue.message }}
+                        </span>
+
+                    </li>
+                    <li ng-if="vm.user.id != dialogue.author_id" class="conversation__msg cf">
+                        <div class="col-lg-2 col-md-2 no-padding">
+                            <div class="u-left">
+                                <img class="chat__avatar " ng-src="{{chat.recipient_picture}}">
+                                <div class="u-time">
+                                    {{ dialogue.date | date:'HH:mm' }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
+                            <span class="message">
+                                {{ dialogue.message }}
+                            </span>
+                        </div>
+                    </li>
+                </span>
+            </ul>
+        </div>
+
+        <div class="panel-footer">
+            <form ng-submit="chat.sendMessage()">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="chat.buffer"
+                           value="">
+                    </input>
+                    <button type="submit" class="no-display"></button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+

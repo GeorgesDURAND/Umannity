@@ -16,6 +16,12 @@
         vm.openClose = openClose;
         vm.openConv = openConv;
         vm.visioCall = visioCall;
+        vm.loadFirstConversation = loadFirstConversation;
+        vm.fixDateFormat = fixDateFormat;
+        vm.loadChatName = loadChatName;
+        vm.sendMessage = sendMessage;
+        var _message;
+        vm.displayConv = false;
         vm.isCollapsed = true;
         vm.contacts_id = [];
         vm.contacts = [];
@@ -35,9 +41,39 @@
         }
         
         function openConv(convId) {
-            var url = '/chat/' + convId;
-            console.log("URL = ", url);
-            vm.changeView(url);
+            var firstConv;
+            vm.displayConv = true;
+
+            angular.forEach(vm.contacts, function(value, key) {
+                if (convId === value.convs[0].id) {
+                    firstConv = vm.contacts[key];
+                }
+            });
+
+            ChatService.loadChat(firstConv.convs[0].id).then(function (data) {
+                vm.dialogues = data.messages;
+                fixDateFormat();
+                vm.loadChatName(data.messages[0].request_id);
+                vm.recipient_id = firstConv.user_id;
+                vm.conversation_id = firstConv.convs[0].id;
+                vm.recipient_picture = firstConv.picture;
+                vm.userName = firstConv.name;
+            });
+            vm.timerId = setInterval(loadChat, 3000);
+        }
+
+        function fixDateFormat() {
+            angular.forEach(vm.dialogues, function (message) {
+                message.date = message.date * 1000;
+            });
+        }
+
+        // A appeler pour actualiser la conversation
+        function loadChat() {
+            ChatService.loadChat(vm.conversation_id).then(function (data) {
+                vm.dialogues = data.messages;
+                fixDateFormat();
+            });
         }
 
         function _getConvName(convId) {
@@ -90,7 +126,55 @@
                     vm.contacts.push(obj);
                 }
             });
-        }                    
+
+        }
+
+        // Charge la première conversation lorsque l'utilisateur arrive sur le chat
+        function loadFirstConversation () {
+            var firstConv;
+
+            angular.forEach(vm.contacts, function(value, key) {
+                if ($routeParams.convId === value.conversation_id) {
+                    firstConv = vm.contacts[key];
+                }
+            });
+
+            ChatService.loadChat(firstConv.conversation_id).then(function (data) {
+                vm.dialogues = data.messages;
+                fixDateFormat();
+                vm.loadChatName(data.messages[0].request_id);
+                vm.recipient_id = firstConv.user.id;
+                vm.conversation_id = firstConv.conversation_id;
+                vm.recipient_picture = firstConv.user.picture;
+                vm.recipient_last_name = firstConv.user.last_name;
+                vm.recipient_first_name = firstConv.user.first_name;
+            });
+            //vm.timerId = setInterval(loadChat, 3000);
+        }
+
+        function loadChatName(id_conv) {
+            var _loadRequest = {
+                id: id_conv
+            };
+            RequestService.loadRequest(_loadRequest).then(function (Request) {
+                vm.request_name = Request.name;
+            });
+        }
+
+        function sendMessage() {
+            if (undefined !== vm.buffer) {
+                _message = {
+                    message: vm.buffer,
+                    recipient_id: vm.recipient_id,
+                    conversation_id: vm.conversation_id
+                };
+
+                ChatService.sendMessage(_message).then(function (data) {
+                    vm.buffer = "";
+                    loadChat();
+                });
+            }
+        }
 
         ChatService.loadChatsUsers()
             .then(function(data) {

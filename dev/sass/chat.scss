@@ -1,9 +1,18 @@
 @import "variables";
 
+.u-conversation {
+  right: 250px;
+  bottom:  0px;
+  position: fixed;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0px !important;
+}
 
 .chat_name {
   text-align: center;
-  font-size: 25px;
+  font-size: 12px;
   color: $u-orange;
 }
 
@@ -63,7 +72,7 @@
 
 .conversation {
   overflow-y: scroll;
-  height: 700px;
+  height: 200px;
 }
 
 .conversation ul{
@@ -76,14 +85,15 @@
   list-style-type: none;
   font-size: 12px;
 }
+
 .conversation__msg .message {
   background: $u-orange;
   color: white;
   display: table;
-  padding: 10px 20px;
+  padding: 0px 7px;
   border-radius: 10px;
   float: left;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .u-right-message {
@@ -91,9 +101,30 @@
   background: $u-blue !important;
   color: white !important;
   border-radius: 10px;
-  padding: 10px 20px;
-  margin-right: 20px;
-  font-size: 17px;
+  padding: 0px 7px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.panel-info > .panel-heading {
+  background-color: $u-black;
+}
+
+.panel-info {
+  border-color: $u-black;
+}
+
+.u-close-img {
+  height: 20px;
+  float: right;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no-display {
+  display:none;
 }
 
 .u-time {

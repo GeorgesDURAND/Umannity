@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('chatController', chatController);
 
-    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService', '$routeParams'];
+    chatController.$inject = ['$scope', 'UserService', 'ChatService', 'RequestService', '$routeParams', '$location'];
 
-    function chatController($scope, UserService, ChatService, RequestService, $routeParams) {
+    function chatController($scope, UserService, ChatService, RequestService, $routeParams, $location) {
         /* jshint validthis: true */
         var vm = this;
         var _message;
@@ -74,7 +74,7 @@
                     firstConv = vm.chatsUsers[key];
                 }
             });
-            
+
             ChatService.loadChat(firstConv.conversation_id).then(function (data) {
                 vm.dialogues = data.messages;
                 fixDateFormat();
