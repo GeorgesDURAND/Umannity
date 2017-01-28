@@ -53,7 +53,7 @@
                             <td>{{ 'BIRTHDATE' | translate }} :</td>
                             <td>{{ vm.user.formattedBirthdate }}</td>
                         </tr>
-                        <tr>
+                        <tr ng-show="vm.isUser">
                             <td>{{ 'ADDRESS' | translate }} :</td>
                             <td>{{ vm.user.address }}</td>
                         </tr>
@@ -155,7 +155,7 @@
                     </div>
                 </div>
             </form>
-        <button type="button" class="btn btn-sm btn-warning" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit">
+        <button type="button" class="btn btn-sm btn-warning" ng-show="vm.isUser" ng-click="vm.goEdit = !vm.goEdit">
             <i class="glyphicon glyphicon-edit"></i>
             Edit
         </button>

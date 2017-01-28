@@ -22,7 +22,7 @@
         vm.tmp.cropImage = '';
         vm.hide_element = false;
         vm.goEdit = true;
-        vm.hideButtonEdit = false;
+        vm.isUser = true;
         vm.birthday = false;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
@@ -50,10 +50,10 @@
 
         function loadUser(id) {
             if (undefined !== id) {
-                vm.hideButtonEdit = true;
+                vm.isUser = false;
             }
             else {
-                vm.hideButtonEdit = false;
+                vm.isUser = true;
             }
             UserService.loadUser(id)
                 .then(function (user) {
