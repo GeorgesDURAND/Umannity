@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('profileController', profileController);
 
-    profileController.$inject = ['$scope', 'UserService', '$translate', '$q'];
+    profileController.$inject = ['$scope', 'UserService', '$translate', '$q', '$routeParams'];
 
-    function profileController($scope, UserService, $translate, $q) {
+    function profileController($scope, UserService, $translate, $q, $routeParams) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -44,7 +44,8 @@
             //Loading the user
             //            vm.user = UserService.getUser();
             //            if (undefined === vm.user) {
-            loadUser();
+            var id = $routeParams.user_id;
+            loadUser(id);
         }
 
         function loadUser(id) {
