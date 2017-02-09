@@ -121,9 +121,10 @@
     "POINTS": "Points",
     "DESCRIPTION": "Description",
     "MAX_PARTICIPANT": "Nombre max de participant",
-    "HELPGIVEN": "Aides apportées :",
-    "HELPTAKEN": "Aides reçues : ",
-    "POINTSUSED": "Points utilisés : ",
+    "HELPGIVEN": "Aides apportées:",
+    "HELPTAKEN": "Aides reçues: ",
+    "POINTSUSED": "Points utilisés: ",
+    "REPUTATION": "Réputation: ",
     "AGE": "Age",
     "YEARS": "ans",
 

@@ -23,8 +23,8 @@
                     </span>
                 <input type="text" ng-model="vm.searchText" class="form-control search-page-input" placeholder="{{ 'PLACEHOLDER_SEARCH' | translate}}" value="">
             </div>
-            <input type="range" value="10" min="0" max="50" step="1"
-                   ng-model="vm.radius" ng-change="vm.loadRequestsList()">
+            <md-slider flex class="md-primary fix-margin" md-discrete ng-model="vm.radius" step="1" min="0" max="50" aria-label="rating"
+                       ng-change="vm.loadRequestsList()">
             {{vm.radius}}
         </div>
 

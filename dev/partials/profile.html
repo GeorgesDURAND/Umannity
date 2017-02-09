@@ -8,16 +8,21 @@
                 <span class="col-lg-offset-5 col-lg-7 col-md-offset-6 col-md-6 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12">
                     <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
                         <div>{{'HELPGIVEN' | translate}} </div>
-                        <div>0</div>
+                        <div>{{ vm.user.given_helps }}</div>
                     </span>
                     <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
                         <div>{{'HELPTAKEN' | translate}} </div>
+                        <div>{{ vm.user.taken_helps }}</div>
+                    </span>
+                    <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                        <div>{{'REPUTATION' | translate}} </div>
                         <div>0</div>
                     </span>
                     <span class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
                         <div>{{'POINTSUSED' | translate}} </div>
                         <div>0</div>
                     </span>
+
                 </span>
             </div>
         </div>
@@ -48,7 +53,7 @@
                             <td>{{ 'BIRTHDATE' | translate }} :</td>
                             <td>{{ vm.user.formattedBirthdate }}</td>
                         </tr>
-                        <tr>
+                        <tr ng-show="vm.isUser">
                             <td>{{ 'ADDRESS' | translate }} :</td>
                             <td>{{ vm.user.address }}</td>
                         </tr>
@@ -78,6 +83,15 @@
                     <label class="col-lg-2 col-md-2 control-label">{{ 'LASTNAME' | translate }}</label>
                     <div class="col-lg-7 col-md-7">
                         <input class="form-control" type="text" placeholder="{{ vm.user.last_name }}" ng-model="vm.edited_user.last_name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label">{{ 'GENDER' | translate }}</label>
+                    <div class="col-lg-7 col-md-7">
+                        <md-radio-group ng-model="vm.edited_user.sex">
+                            <md-radio-button value=1 class="md-primary">{{ 'SEXMAN' | translate }}</md-radio-button>
+                            <md-radio-button value=0>{{ 'SEXWOMAN' | translate }}</md-radio-button>
+                        </md-radio-group>
                     </div>
                 </div>
                 <div class="form-group">
@@ -141,7 +155,7 @@
                     </div>
                 </div>
             </form>
-        <button type="button" class="btn btn-sm btn-warning" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit">
+        <button type="button" class="btn btn-sm btn-warning" ng-show="vm.isUser" ng-click="vm.goEdit = !vm.goEdit">
             <i class="glyphicon glyphicon-edit"></i>
             Edit
         </button>

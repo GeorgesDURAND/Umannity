@@ -19,6 +19,11 @@
                 controller: 'profileController',
                 controllerAs: 'vm'
             })
+            .when('/profile/:user_id', {
+                templateUrl: 'partials/profile.html',
+                controller: 'profileController',
+                controllerAs: 'vm'
+            })
             .when('/partner', {
                 templateUrl: 'partials/profilePartner.html',
                 controller: 'profilePartnerController',

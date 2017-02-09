@@ -176,7 +176,8 @@
                                 <div ng-click="vm.unSelectUser(candidate.id)" class="u-delete">
                                     <img ng-show="vm.isCandidate2(candidate.id)" class="u-delete-img" src="../../img/delete.png">
                                 </div>
-                                <div class="u-picture col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                <div class="u-picture col-lg-5 col-md-5 col-sm-6 col-xs-12"
+                                     ng-click="vm.changeView('/profile/', candidate.id)">
                                     <img class="img-circle u-candidate-picture" ng-src="{{vm.getPicture(candidate.id)}}">
                                 </div>
                                 <div class="name col-lg-5 col-md-5 col-sm-6 col-xs-12">
@@ -207,7 +208,8 @@
                         <div class="u-candidate-bloc">
                             <header>
                                 <div class="u-picture col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                    <img class="img-circle u-candidate-picture" ng-src="{{vm.getPicture(vm.volunteer.id)}}">
+                                    <img class="img-circle u-candidate-picture" ng-src="{{vm.getPicture(vm.volunteer.id)}}"
+                                         ng-click="vm.changeView('/profile/', vm.volunteer.id)">
                                 </div>
                                 <div class="name col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <span class="u-candidate-first_name">{{vm.volunteer.first_name }}</span>

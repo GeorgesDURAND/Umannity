@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('profileController', profileController);
 
-    profileController.$inject = ['$scope', 'UserService', '$translate', '$q'];
+    profileController.$inject = ['$scope', 'UserService', '$translate', '$q', '$routeParams'];
 
-    function profileController($scope, UserService, $translate, $q) {
+    function profileController($scope, UserService, $translate, $q, $routeParams) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -22,7 +22,7 @@
         vm.tmp.cropImage = '';
         vm.hide_element = false;
         vm.goEdit = true;
-        vm.hideButtonEdit = false;
+        vm.isUser = true;
         vm.birthday = false;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
@@ -44,19 +44,21 @@
             //Loading the user
             //            vm.user = UserService.getUser();
             //            if (undefined === vm.user) {
-            loadUser();
+            var id = $routeParams.user_id;
+            loadUser(id);
         }
 
         function loadUser(id) {
             if (undefined !== id) {
-                vm.hideButtonEdit = true;
+                vm.isUser = false;
             }
             else {
-                vm.hideButtonEdit = false;
+                vm.isUser = true;
             }
             UserService.loadUser(id)
                 .then(function (user) {
                 vm.user = user;
+                vm.edited_user.sex = vm.user.sex;
                 if (vm.user.sex === 0) {
                     vm.user.gender = $translate.instant("WOMAN");
                 }
