@@ -46,7 +46,7 @@
 
         function putPicture(picture) {
             var deferred = $q.defer();
-            RestService.put("/user/picture", picture)
+            RestService.put("/users/picture", picture)
                 .then(function (request) {
                 deferred.resolve(request.data);
             })
@@ -58,7 +58,7 @@
 
         function editProfile(userData) {
             var deferred = $q.defer();
-            RestService.post("/user", userData)
+            RestService.post("/users", userData)
                 .then(function (request) {
                 deferred.resolve(request.data);
             })
@@ -72,7 +72,7 @@
             var deferred = $q.defer();
             var params = {id:id};
 
-            RestService.get("/user", params)
+            RestService.get("/users", params)
                 .then(function (request) {
                 var user = request.data;
                 user.formattedBirthdate = formatBirthdate(user.birthdate);
@@ -87,7 +87,7 @@
         }
 
         function getUser() {
-            console.log("userService :: getUser called");
+            //console.log("userService :: getUser called");
             if (undefined === _user) {
                 var storedUser = $cookies.get(_cache_key);
                 if (undefined !== storedUser) {
@@ -101,7 +101,7 @@
             var deferred = $q.defer();
             var params = {id:id};
 
-            RestService.get("/user/picture", params)
+            RestService.get("/users/picture", params)
                 .then(function (request) {
                 var picture = request.data.picture;
 

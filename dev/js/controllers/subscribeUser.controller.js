@@ -85,7 +85,7 @@
                 vm.newUser.birthdate = new Date(vm.tmp.birthdate).getTime() / 1000;
                 vm.newUser.picture = vm.tmp.cropImage;
 
-                RestService.put("/user", vm.newUser)
+                RestService.put("/users", vm.newUser)
                     .then(function(data) {
                     console.log(vm.name, " :: New user created");
                     vm.success = true;
