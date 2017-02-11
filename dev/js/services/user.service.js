@@ -131,7 +131,8 @@
                 if (request.data !== undefined) {
                     if (request.data.api_key !== undefined) {
                         RestService.setApiKey(request.data.api_key);
-                        deferred.resolve(request.data.type);
+                        RestService.setType(request.data.type);
+                        deferred.resolve(request.data);
                     }
                 }
             })

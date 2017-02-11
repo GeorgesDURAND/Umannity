@@ -17,8 +17,8 @@
             loadPartner: loadPartner,
             login: login,
             logout: logout,
-            loadPicture: loadPicture,
-            getPicture: getPicture,
+            //loadPicture: loadPicture,
+            //getPicture: getPicture,
             editProfile: editProfile
         };
 
@@ -60,7 +60,7 @@
             var deferred = $q.defer();
             var params = {id:id};
 
-            RestService.get("/partner", params)
+            RestService.get("/partners", params)
                 .then(function (request) {
                     var partner = request.data;
                     _partner = partner;
@@ -73,7 +73,7 @@
             return deferred.promise;
         }
 
-        function loadPicture(id) {
+        /*function loadPicture(id) {
             var deferred = $q.defer();
             var params = {id:id};
 
@@ -93,7 +93,7 @@
         function getPicture() {
             console.log("PartnerService :: getPicture called");
             return _picture;
-        }
+        }*/
 
         function getPartner() {
             console.log("partnerService :: getPartner called");
@@ -108,17 +108,18 @@
 
         function login(email, password) {
             var deferred = $q.defer();
-
             var data = {
                 email: email,
                 password: password
             };
-            RestService.post('/connect', data)
+
+            RestService.post("/connect", data)
                 .then(function (request) {
                     if (request.data !== undefined) {
                         if (request.data.api_key !== undefined) {
                             RestService.setApiKey(request.data.api_key);
-                            deferred.resolve(request.data.type);
+                            RestService.setType(request.data.type);
+                            deferred.resolve(request.data);
                         }
                     }
                 })

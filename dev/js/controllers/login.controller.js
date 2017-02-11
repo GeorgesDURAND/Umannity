@@ -5,13 +5,14 @@
         .module('umannityApp.controllers')
         .controller('loginController', loginController);
 
-    loginController.$inject = ['$location', 'UserService'];
+    loginController.$inject = ['$location', 'UserService', 'PartnerService'];
 
-    function loginController($location, UserService) {
+    function loginController($location, UserService, PartnerService) {
         /* jshint validthis: true */
         var vm = this;
 
         vm.login = login;
+        vm.loginPartner = loginPartner;
         vm.changeView = changeView;
         vm.name = "loginController";
         vm.closeAlert = closeAlert;
@@ -27,7 +28,32 @@
             vm.errors.splice(index, 1);
         }
 
+        function loginPartner() {
+            console.log("login controller :: loginPartner");
+            PartnerService.login(vm.email, vm.password)
+                .then(function (partner) {
+                    console.log("login controller :: PartnerService.login then");
+                    $location.path("/partner");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    if (vm.errors.length === 2) {
+                        vm.errors.splice(0, 1);
+                    }
+                    if (undefined !== error.data && null !== error.data) {
+                        if (undefined !== error.data.code) {
+                            vm.errors.push(error.data.code);
+                        }
+                        else {
+                            vm.errors.push(error.data);
+                        }
+                    }
+                });
+        }
+
+
         function login() {
+            console.log("login controller :: login");
             //TODO: Verifications on the mail and password
             UserService.login(vm.email, vm.password)
                 .then(function (user) {
