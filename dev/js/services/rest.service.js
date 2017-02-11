@@ -10,6 +10,7 @@
   function restService ($q, $http, ConstantService, $cookies) {
     var _api_url = ConstantService.api_url;
     var _api_key = $cookies.get('api_key');
+    var _type = $cookies.get('type');
     var _isLoading = false;
 
     var service = {
@@ -20,6 +21,9 @@
       setApiKey: setApiKey,
       getApiKey: getApiKey,
       removeApiKey: removeApiKey,
+      setType: setType,
+      getType: getType,
+      removeType: removeType,
       getIsLoading: getIsLoading
     };
 
@@ -42,6 +46,19 @@
     function setApiKey (api_key) {
       $cookies.put('api_key', api_key);
       _api_key = api_key;
+    }
+
+    function getType () {
+      return _type;
+    }
+
+    function removeType(type){
+      $cookies.remove('type');
+    }
+
+    function setType (type) {
+      $cookies.put('type', type);
+      _type = type;
     }
 
     function doRequest (req, showLoader) {

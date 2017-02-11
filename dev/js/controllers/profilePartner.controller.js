@@ -38,12 +38,12 @@
             vm.errors.splice(index, 1);
         }
 
-        function loadPicture(id) {
+        /*function loadPicture(id) {
             PartnerService.loadPicture(id)
                 .then(function (picture) {
                     vm.partner.picture = picture;
                 });
-        }
+        }*/
 
         function loadPartner(id) {
             /*if (undefined !== id) {
@@ -55,7 +55,7 @@
             PartnerService.loadPartner(id)
                 .then(function (partner) {
                     vm.partner = partner;
-                    loadPicture(vm.partner.id);
+                    //loadPicture(vm.partner.id);
                 });
         }
 
