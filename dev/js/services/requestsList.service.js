@@ -12,6 +12,7 @@
         var service = {
             loadRequestsList: loadRequestsList,
             loadAcceptedRequestsList: loadAcceptedRequestsList,
+            loadCandidateRequestsList: loadCandidateRequestsList,
             loadPicture : loadPicture
         };
 
@@ -51,10 +52,23 @@
             return deferred.promise;
         }
 
+        function loadCandidateRequestsList (data)
+        {
+            var deferred = $q.defer();
+            RestService.get("/users/requests/candidate")
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
         function loadAcceptedRequestsList (data)
         {
             var deferred = $q.defer();
-            RestService.get("/users/requests", data)
+            RestService.get("/users/requests/accepted")
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })

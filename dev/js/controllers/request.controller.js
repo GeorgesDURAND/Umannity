@@ -19,7 +19,6 @@
         vm.setUserStatut = setUserStatut;
 
         vm.loadRequest = loadRequest;
-        vm.loadAuthorData = loadAuthorData;
         vm.loadVolunteersData = loadVolunteersData;
         vm.loadChosenVolunteerData = loadChosenVolunteerData;
 
@@ -55,7 +54,8 @@
         // Définie si l'utilisateur courant est Auteur / Bénévole choisi / ...
         function setUserStatut () {
             vm.status = "normal";
-            if (vm.user.id === vm.authorId) { // AUTEUR
+            console.log(vm.user.id, vm.author.id)
+            if (vm.user.id === vm.author.id) { // AUTEUR
                 vm.status = "author";
              } else if (vm.request.accepted_user !== -1) { // Bénévole choisi
                 if (vm.user.id === vm.volunteer.id) {
@@ -64,6 +64,11 @@
              } else {
                 vm.status = "normal";
             }
+            console.log("Je suis un utilisateur => ",vm.status);
+            console.log("Je suis un utilisateur => ",vm.status);
+            console.log("Je suis un utilisateur => ",vm.status);
+            console.log("Je suis un utilisateur => ",vm.status);
+            console.log("Je suis un utilisateur => ",vm.status);
             console.log("Je suis un utilisateur => ",vm.status);
         }
 
@@ -74,37 +79,32 @@
             };
             RequestService.loadRequest(_loadRequest).then(function (Request) {
                 vm.request = Request;
-                vm.authorId = vm.request.user_id;
-                loadAuthorData();
+                vm.author = Request.author;
+                //vm.authorId = vm.request.user_id;
+                UserService.loadPicture(vm.author.id).then(function (picture) {
+                    vm.authorPicture = picture;
+                });
+                setUserStatut();
                 loadVolunteersData();
-                if (vm.request.accepted_user !== -1) {
+
+                /*if (vm.request.accepted_user !== null) {
                     loadChosenVolunteerData();
                 }
                 else {
                     setUserStatut();
-                }
+                }*/
 
             });
         }
 
-        // Récupère les données liées à l'auteur de la demande d'aide
-        function loadAuthorData () {
-            var _loadAuthorData = {
-                id: vm.authorId
-            };
-            // Récupère les données liées à l'auteur
-            RequestService.loadUserData(_loadAuthorData).then(function (author) {
-                vm.author = author;
-                // Récupère l'image de l'auteur
-                UserService.loadPicture(vm.authorId).then(function (picture) {
-                    vm.authorPicture = picture;
-                });
-
+        function loadVolunteersData () {
+            angular.forEach(vm.request.pre_selected, function(pre_selected, key) {
+                vm.request.candidates.push(pre_selected);
             });
         }
 
         // Récupère les informations des bénévoles s'étant proposés pour aider
-        function loadVolunteersData () {
+        /*function loadVolunteersData () {
             vm.candidatesList = [];
             angular.forEach(vm.request.candidates, function(candidate, key) {
                 var _loadVolunteersData = {
@@ -136,7 +136,7 @@
                     vm.candidatesListPicture.push(_candidatePicture);
                 });
             });
-        }
+        } */
 
         // Récupère les informations du bénévole choisi
         function loadChosenVolunteerData () {
@@ -161,7 +161,7 @@
         function isCandidate () {
             var showAcceptButton = false;
             angular.forEach(vm.request.candidates, function(candidate) {
-                if (candidate === vm.user.id) {
+                if (candidate.id === vm.user.id) {
                     showAcceptButton = true;
                     return showAcceptButton;
                 }
@@ -173,7 +173,7 @@
         function isCandidate2 (candidate_id) {
             var showAcceptButton = false;
             angular.forEach(vm.request.candidates, function(candidate) {
-                if (candidate === candidate_id) {
+                if (candidate.id === candidate_id) {
                     showAcceptButton = true;
                     return showAcceptButton;
                 }
@@ -193,10 +193,7 @@
 
         // L'auteur présélectionne un bénévole et peut le contacter
         function preSelectUser (userId) {
-            var _preSelectUserData = {
-                user_id: userId
-            };
-            RequestService.preSelectUser(vm.requestId, _preSelectUserData)
+            RequestService.preSelectUser(vm.requestId, userId)
                 .then(function (data) {
                     loadRequest ();
                  })
@@ -222,7 +219,7 @@
                 userId = vm.user.id;
             }
             angular.forEach(vm.request.pre_selected, function(preSelectedUser) {
-                if (preSelectedUser === userId) {
+                if (preSelectedUser.id === userId) {
                     show = true;
                 }
             });
@@ -231,13 +228,9 @@
 
         // L'auteur sélectionne le bénévole qui l'aidera
         function SelectUser (userId) {
-            var _selectUserData = {
-                accepted_user: userId,
-                request_id: vm.requestId
-            };
-            RequestService.selectUser(_selectUserData)
+            RequestService.selectUser(vm.requestId, userId)
                 .then(function (data) {
-                loadRequest ();
+                loadRequest();
                 })
                 .catch(function (returnError) {
                     vm.error = returnError.data.error;

@@ -57,30 +57,24 @@
                 coordinates: _coordonnees,
                 radius: vm.radius
             };
-            /*var _requestParams2 = {
-             skills: vm.user.skills,
-             coordinates: _coordonnees,
-             radius: vm.radius
-             };*/
 
             RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
                 angular.forEach(allRequests.requests, function(request, key) {
-                    if (vm.user.id === request.accepted_user &&
-                        request.requester_completed === true &&
-                        request.volunteer_completed === true) {
-                        vm.completed_helps.push(request);
-                    } else if (request.accepted_user === -1) {
-                        vm.helpsList.push(request);
-                    }
+                    vm.helpsList.push(request);
                 });
-                //vm.loadPicture(vm.helpsList);
             });
-            RequestsListService.loadAcceptedRequestsList(_requestParams1).then(function (myRequests) {
-                angular.forEach(myRequests.requests, function(request, key) {
-                    if (request.requester_completed === false || request.volunteer_completed === false)
-                        vm.current_helps.push(request);
+
+            RequestsListService.loadCandidateRequestsList().then(function (candidateRequests) {
+                console.log(candidateRequests);
+                angular.forEach(candidateRequests.requests, function(request, key) {
+                    vm.current_helps.push(request);
                 });
-                //vm.loadPicture(vm.current_helps);
+            });
+
+            RequestsListService.loadAcceptedRequestsList().then(function (allRequests) {
+                angular.forEach(allRequests.requests, function(request, key) {
+                    vm.completed_helps.push(request);
+                });
             });
         }
 

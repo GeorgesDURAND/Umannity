@@ -30,7 +30,7 @@
         function loadRequest (data)
         {
             var deferred = $q.defer();
-            RestService.get("/request", data)
+            RestService.get("/requests", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -44,7 +44,7 @@
         function loadUserData (data)
         {
             var deferred = $q.defer();
-            RestService.get("/user", data)
+            RestService.get("/users", data)
                 .then(function (user) {
                     deferred.resolve(user.data);
                 })
@@ -58,7 +58,7 @@
         function loadUserPicture (data)
         {
             var deferred = $q.defer();
-            RestService.get("/user/picture", data)
+            RestService.get("/users/picture", data)
                 .then(function (picture) {
                     deferred.resolve(picture.data);
                 })
@@ -72,7 +72,7 @@
         function acceptRequest(requestId) {
             var deferred = $q.defer();
 
-            RestService.post("/request/" + requestId + "/candidate")
+            RestService.put("/requests/" + requestId + "/candidates")
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -83,10 +83,10 @@
         }
 
         // Le demandeur d'aide présélectionne un candidat
-        function preSelectUser(requestId, data) {
+        function preSelectUser(requestId, userId) {
             var deferred = $q.defer();
 
-            RestService.post("/request/" + requestId + "/preselect_user", data)
+            RestService.put("/requests/" + requestId + "/preselected/" + userId)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -100,7 +100,7 @@
         function unSelectUser(requestId, data) {
             var deferred = $q.defer();
 
-            RestService.post("/request/" + requestId + "/unselect_user", data)
+            RestService.post("/requests/" + requestId + "/unselect_user", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -110,10 +110,10 @@
             return deferred.promise;
         }
 
-        function selectUser(data) {
+        function selectUser(requestId, userId) {
             var deferred = $q.defer();
 
-            RestService.post("/request", data)
+            RestService.put("/requests/" + requestId + "/accepted/" + userId)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -141,7 +141,7 @@
         function deleteRequest (data)
         {
             var deferred = $q.defer();
-            RestService.delete("/request", data)
+            RestService.delete("/requests", data)
                 .then(function (deletedRequest) {
                     deferred.resolve(deletedRequest.data);
                 })
@@ -155,7 +155,7 @@
         function editRequest (data)
         {
             var deferred = $q.defer();
-            RestService.post("/request", data)
+            RestService.post("/requests", data)
                 .then(function (editRequest) {
                     deferred.resolve(editRequest.data);
                 })
