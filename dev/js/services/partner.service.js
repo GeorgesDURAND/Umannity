@@ -17,6 +17,7 @@
             loadPartner: loadPartner,
             login: login,
             logout: logout,
+            putPicture: putPicture,
             //loadPicture: loadPicture,
             //getPicture: getPicture,
             editProfile: editProfile
@@ -46,7 +47,7 @@
             partnerData.id = id;
 
             var deferred = $q.defer();
-            RestService.post("/partner", partnerData)
+            RestService.post("/partners", partnerData)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -66,6 +67,22 @@
                     _partner = partner;
                     storePartner(partner);
                     deferred.resolve(partner);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function putPicture(image) {
+            var deferred = $q.defer();
+            var data = {
+                picture: image
+            };
+
+            RestService.put("/partners/picture", data)
+                .then(function (request) {
+                    deferred.resolve(request.data);
                 })
                 .catch(function (error) {
                     deferred.reject(error);
