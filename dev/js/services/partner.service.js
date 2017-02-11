@@ -108,12 +108,12 @@
 
         function login(email, password) {
             var deferred = $q.defer();
-
             var data = {
                 email: email,
                 password: password
             };
-            RestService.post('/connect', data)
+
+            RestService.post("/connect", data)
                 .then(function (request) {
                     if (request.data !== undefined) {
                         if (request.data.api_key !== undefined) {

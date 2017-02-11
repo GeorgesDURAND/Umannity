@@ -7,8 +7,8 @@
 
     function constantService() {
         var service = {
-            api_protocol : 'https',
-            api_host : 'umannity.com/api',
+            api_protocol : 'http',
+            api_host : '2.lp1.eu:1338',
             api_port : '',
             cache_id : 'u-cache'
         };
