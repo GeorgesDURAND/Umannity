@@ -12,7 +12,6 @@
         var vm = this;
 
         vm.name = "chatMenuController";
-        vm.changeView = changeView;
         vm.openClose = openClose;
         vm.openConv = openConv;
         vm.visioCall = visioCall;
@@ -30,36 +29,34 @@
             $location.path("/visio/" +  id);
         }
 
-        function changeView(viewName) {
-            console.log("view = ", viewName);
-            $location.path(viewName);
-        }
-
         function openClose(id) {
             var elem = document.getElementById(id);
             elem.classList.toggle('show');
         }
         
         function openConv(convId) {
-            var firstConv;
-            vm.displayConv = true;
+            if (convId !== vm.conversation_id) {
+                vm.displayConv = false;
+                var firstConv;
 
-            angular.forEach(vm.contacts, function(value, key) {
-                if (convId === value.convs[0].id) {
-                    firstConv = vm.contacts[key];
-                }
-            });
+                angular.forEach(vm.contacts, function(value, key) {
+                    if (convId === value.convs[0].id) {
+                        firstConv = vm.contacts[key];
+                    }
+                });
 
-            ChatService.loadChat(firstConv.convs[0].id).then(function (data) {
-                vm.dialogues = data.messages;
-                fixDateFormat();
-                vm.loadChatName(data.messages[0].request_id);
-                vm.recipient_id = firstConv.user_id;
-                vm.conversation_id = firstConv.convs[0].id;
-                vm.recipient_picture = firstConv.picture;
-                vm.userName = firstConv.name;
-            });
-            vm.timerId = setInterval(loadChat, 3000);
+                ChatService.loadChat(firstConv.convs[0].id).then(function (data) {
+                    vm.dialogues = data.messages;
+                    fixDateFormat();
+                    vm.loadChatName(data.messages[0].request_id);
+                    vm.recipient_id = firstConv.user_id;
+                    vm.conversation_id = firstConv.convs[0].id;
+                    vm.recipient_picture = firstConv.picture;
+                    vm.userName = firstConv.name;
+                    vm.displayConv = true;
+                });
+                vm.timerId = setInterval(loadChat, 3000);
+            }
         }
 
         function fixDateFormat() {
@@ -176,13 +173,16 @@
             }
         }
 
-        ChatService.loadChatsUsers()
-            .then(function(data) {
-            console.log(vm.name, ":: contacts loaded");
-            _getContacts(data);
-        }).catch(function(ret) {
-            console.log(vm.name, ":: Error : ", ret);
+        if (vm.contacts.length === 0) {
+            console.log("vm.contacts", vm.contacts.length);
+            ChatService.loadChatsUsers()
+                .then(function(data) {
+                console.log(vm.name, ":: contacts loaded");
+                _getContacts(data);
+            }).catch(function(ret) {
+                console.log(vm.name, ":: Error : ", ret);
 
-        });
+            });
+        }
     }
 })();

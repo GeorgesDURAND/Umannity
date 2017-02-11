@@ -37,7 +37,7 @@
     <div ng-show="chat.displayConv" class="col-lg-2 col-md-2 u-conversation">
         <div class="panel panel-info no-bottom-margin">
             <div class="panel-heading">
-                <div ng-click="chat.displayConv = !chat.displayConv">
+                <div ng-click="chat.displayConv = !chat.displayConv ; chat.conversation_id = undefined">
                     <img class="u-close-img" src="../img/close-conv.png">
                 </div>
                 <div class="chat_name">{{chat.request_name}}</div>
