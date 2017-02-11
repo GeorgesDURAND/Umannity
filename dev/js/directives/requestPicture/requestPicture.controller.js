@@ -11,11 +11,9 @@
         /* jshint validthis: true */
         var vmPic = this;
 
-        vmPic.name = "RequestPictureController";
-        vmPic.test = "Ca marche";
+        vmPic.name = "RequestPictureController";;
 
             var params = {id : $scope.userId};
-            console.log(params);
 
             RestService.get("/user/picture", params)
                 .then(function (request) {
@@ -24,6 +22,5 @@
                 .catch(function (error) {
 
                 });
-
     }
 })();
