@@ -27,7 +27,7 @@
             var deferred = $q.defer();
 
             //offerData.partner_id
-            RestService.put("/offer", offerData)
+            RestService.put("/offers", offerData)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
