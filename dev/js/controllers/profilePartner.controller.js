@@ -137,7 +137,7 @@
         function editProfilePicture(picture) {
             if (undefined !== picture) {
                 vm.edited_partner.image = picture;
-                PartnerService.putPicture(vm.edited_partner.image)
+                PartnerService.editProfile(vm.edited_partner)
                     .then(function () {
                         loadPartner();
                     });

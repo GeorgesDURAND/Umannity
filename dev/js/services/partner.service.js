@@ -17,7 +17,7 @@
             loadPartner: loadPartner,
             login: login,
             logout: logout,
-            putPicture: putPicture,
+            //putPicture: putPicture,
             //loadPicture: loadPicture,
             //getPicture: getPicture,
             editProfile: editProfile
@@ -74,21 +74,24 @@
             return deferred.promise;
         }
 
-        function putPicture(image) {
+       /* function putPicture(image) {
             var deferred = $q.defer();
             var data = {
                 picture: image
             };
-
+                console.log("putpicture partner service");
             RestService.put("/partners/picture", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
+                    console.log("putpicture partner service SUCCESS");
                 })
                 .catch(function (error) {
+                    console.log("putpicture partner ERROR");
+
                     deferred.reject(error);
                 });
             return deferred.promise;
-        }
+        }*/
 
         /*function loadPicture(id) {
             var deferred = $q.defer();
