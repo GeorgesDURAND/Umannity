@@ -15,8 +15,8 @@
             getOffer: getOffer,
             editOffer: editOffer,
             getOfferList: getOfferList,
-            participateOffer: participateOffer
-
+            participateOffer: participateOffer,
+            deleteOffer: deleteOffer
     };
 
         return service;
@@ -41,7 +41,7 @@
             var deferred = $q.defer();
             var params = {id:id};
 
-            RestService.get("/offer", params)
+            RestService.get("/offers/" + id)
                 .then(function (request) {
                     var offer = request.data;
                     offer.formatOfferDate = formatOfferDate(offer.date);
@@ -61,9 +61,9 @@
             if (isPartner == true) {
                 var params = {partner_id:id};
             }
-            RestService.get("/offer", params)
-                .then(function (offer) {
-                    deferred.resolve(offer.data);
+            RestService.get("/offers", params)
+                .then(function (offers) {
+                    deferred.resolve(offers.data);
                 })
                 .catch(function (error) {
                     deferred.reject(error);
@@ -74,7 +74,7 @@
 
         function editOffer(offerData) {
             var deferred = $q.defer();
-            RestService.post("/offer", offerData)
+            RestService.post("/offers/" + offerData.id, offerData)
                 .then(function (offer) {
                     deferred.resolve(offer.data);
                 })
@@ -88,9 +88,22 @@
             var deferred = $q.defer();
             var params = {offer_id: offerId};
 
-            RestService.get("/offer/participate", params)
+            RestService.get("/offers/" + offerId + "/participate", params)
                 .then(function (response) {
                     deferred.resolve(response.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function deleteOffer(offerId) {
+            var deferred = $q.defer();
+
+            RestService.delete("/offers/" + offerId)
+                .then(function (request) {
+                    deferred.resolve(request.data);
                 })
                 .catch(function (error) {
                     deferred.reject(error);

@@ -4,7 +4,7 @@
         <div uib-alert ng-repeat="error in vm.errors" ng-class="'alert-' + (error.type || 'danger')"
              close="vm.closeAlert($index)">{{error | translate}}</div>
         <div class="col-md-3 col-sm-3 col-xs-4 col-md-offset-0 col-sm-offset-0 col-xs-offset-4">
-            <img class="img-circle avatar avatar-original profilePic" ng-src="{{vm.offer.partner_image}}"/>
+            <img class="img-circle avatar avatar-original profilePic" ng-src="{{vm.offer.partner.image}}"/>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 nameOffer">
             <div class="col-md-7 col-sm-7" ng-hide="vm.goEdit">
@@ -22,8 +22,8 @@
         </div>
         <div class="col-md-3 col-md-offset-9 col-sm-3 col-sm-offset-8 col-xs-12 col-xs-offset-0 namePartner">
             <div>
-                <p class="namePartner">{{ vm.offer.partner_name }}</p>
-                <p class="baseline">{{ vm.offer.partner_baseline }}</p>
+                <p class="namePartner">{{ vm.offer.partner.name }}</p>
+                <p class="baseline">{{ vm.offer.partner.baseline }}</p>
             </div>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 detailOffer">
@@ -38,9 +38,13 @@
                 {{participant}}
             </div>
             <div ng-if="vm.partner">
-                <button type="button" class="btn btn-sm btn-warning" ng-hide="vm.goEdit" ng-hide="vm.hideButtonEdit" ng-click="vm.goEdit = !vm.goEdit">
+                <button type="button" class="btn btn-sm btn-warning" ng-hide="vm.goEdit" ng-click="vm.goEdit = !vm.goEdit">
                     <i class="glyphicon glyphicon-edit"></i>
                     Edit
+                </button>
+                <button class="btn btn-sm btn-danger" ng-hide="vm.goEdit" ng-click="vm.deleteOffer()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    Sup
                 </button>
                 <button type="button" class="btn btn-default" ng-show="vm.goEdit" ng-click="vm.goEdit = !vm.goEdit">
                     <i class="glyphicon glyphicon-remove"></i>

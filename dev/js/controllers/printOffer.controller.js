@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('printOfferController', printOfferController);
 
-    printOfferController.$inject = ['$scope', 'OfferService', 'PartnerService', '$routeParams'];
+    printOfferController.$inject = ['$scope', 'OfferService', 'PartnerService', '$routeParams', '$location'];
 
-    function printOfferController($scope, OfferService, PartnerService, $routeParams) {
+    function printOfferController($scope, OfferService, PartnerService, $routeParams, $location) {
         /* jshint validthis: true */
         var vm = this;
         vm.partner = PartnerService.getPartner();
@@ -18,6 +18,7 @@
         vm.closeAlert = closeAlert;
         vm.editOffer = editOffer;
         vm.participateOffer = participateOffer;
+        vm.deleteOffer = deleteOffer;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
 
@@ -65,9 +66,20 @@
             }
         }
         
+        function deleteOffer() {
+            OfferService.deleteOffer(vm.offer.id)
+                .then(function (offer) {
+                    console.log("print offer controller :: delete offer :: offer deleted");
+                    $location.path("/offersList");
+                })
+                .catch(function (error) {
+                    addAlert(error.data);
+                });
+
+        }
+        
         function participateOffer() {
             console.log("printOfferController :: participateOffer click.");
-
             OfferService.participateOffer(vm.offer.id)
                 .then(function (response) {
                     console.log("printOfferController :: participateOffer success.", response);
