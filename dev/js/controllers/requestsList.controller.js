@@ -53,28 +53,24 @@
             vm.helpsList = [];
             vm.completed_helps = [];
             vm.current_helps = [];
-            var _requestParams1 = {
+            var _requestParams = {
                 coordinates: _coordonnees,
                 radius: vm.radius
             };
 
-            RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
-                angular.forEach(allRequests.requests, function(request, key) {
-                    vm.helpsList.push(request);
-                });
+            RequestsListService.loadRequestsList(_requestParams).then(function (allRequests) {
+                vm.helpsList = allRequests;
             });
 
-            RequestsListService.loadCandidateRequestsList().then(function (candidateRequests) {
-                console.log(candidateRequests);
+            /*RequestsListService.loadCandidateRequestsList().then(function (candidateRequests) {
                 angular.forEach(candidateRequests.requests, function(request, key) {
                     vm.current_helps.push(request);
                 });
-            });
+            });*/
 
-            RequestsListService.loadAcceptedRequestsList().then(function (allRequests) {
-                angular.forEach(allRequests.requests, function(request, key) {
-                    vm.completed_helps.push(request);
-                });
+            RequestsListService.loadCompletedRequest().then(function (completedRequests) {
+                console.log(completedRequests);
+                vm.completed_helps = completedRequests;
             });
         }
 
@@ -106,7 +102,7 @@
         }
 
         function search (item) {
-            if (vm.searchText === undefined) {   
+            if (vm.searchText === undefined) {
                 return true;
             } else {
                 if (item.name.toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1) {

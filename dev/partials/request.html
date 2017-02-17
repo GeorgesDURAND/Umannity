@@ -2,8 +2,8 @@
     <div class="u-box-center">
         <u-page-title title="TITLE_REQUEST"> </u-page-title>
 
-        <div class="u-padding col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="u-request-bloc col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="u-request-bloc col-lg-7 col-md-12 col-sm-12 col-xs-12">
                 <div ng-if="vm.error"
                      uib-alert class="col-lg-6 col-md-6 col-sm-12 col-xs-12 alert-danger"
                      close="vm.closeAlert()">
@@ -135,11 +135,9 @@
                                 {{ 'THANK_BUTTON' | translate }}
                             </button>
                         </div>
-                        <div ng-show="(vm.user.id === vm.authorId && !vm.request.requester_completed) ||
-                                  (vm.isChosen() && !vm.request.volunteer_completed)">
-                            <div ng-show="vm.isChosen() ||
-                                  vm.authorChose()"
-                                 ng-click="vm.changeView('/form/', vm.request.id)"
+                        <div ng-show="(vm.user.id === vm.author.id && vm.request.requester_completed === false) ||
+                                  (vm.user.id === vm.request.accepted_user.id && vm.request.volunteer_completed === false)">
+                            <div ng-show="vm.request.accepted_user" ng-click="vm.changeView('/form/', vm.request.id)"
                                  class="u-accept-request">
                                 <button class="btn btn-info u-big-button">
                                     {{ 'GRADE_BUTTON' | translate }}
@@ -147,8 +145,8 @@
                             </div>
                         </div>
 
-                        <div ng-show="(vm.user.id === vm.authorId && vm.request.requester_completed) ||
-                                  (vm.isChosen() && vm.request.volunteer_completed)"
+                        <div ng-show="(vm.user.id === vm.author.id && vm.request.requester_completed === true) ||
+                                  (vm.user.id === vm.request.accepted_user.id && vm.request.volunteer_completed === true)"
                              class="u-accept-request">
                             <button class="btn btn-info u-big-button">
                                 {{ 'LAST_BUTTON' | translate }}
@@ -166,11 +164,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <div ng-show="vm.status === 'author'" class="col-lg-12 col-md-5 col-sm-6 col-xs-12 u-request-bloc">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 u-padding">
+                <div ng-show="vm.status === 'author'" class="col-lg-12 col-md-5 col-sm-12 col-xs-12 u-request-bloc">
                     <span ng-show="vm.request.candidates.length === 0 &&
                                    vm.request.accepted_user === null"> {{ 'NO_CANDIDATE' | translate }}</span>
-                    <span ng-show="{{vm.request.accepted_user === null}}" class="col-lg-4 col-md-12 col-sm-12 col-xs-12"
+                    <span ng-show="{{vm.request.accepted_user === null}}" class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
                           ng-repeat="candidate in vm.request.candidates">
                         <div class="u-candidate-bloc">
                             <header>
@@ -204,7 +202,7 @@
                             </footer>
                         </div>
                     </span>
-                    <span ng-if="vm.request.accepted_user !== null" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                    <span ng-if="vm.request.accepted_user !== null" class="col-lg-6 col-md-12 col-sm-6 col-xs-6">
                         <div class="u-candidate-bloc">
                             <header>
                                 <div class="u-picture col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -232,8 +230,8 @@
 
 
 
-                <div class="col-lg-12 col-md-7 col-sm-6 col-xs-12 u-request-bloc">
-                    <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-7 col-sm-12 col-xs-12 u-request-bloc">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <img ng-src="{{vm.authorPicture}}" class="u-user-image img-circle">
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">

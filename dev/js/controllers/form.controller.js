@@ -32,19 +32,20 @@
             };
             RequestService.loadRequest(_loadRequest).then(function (Request) {
                 vm.request = Request;
-                vm.authorId = Request.user_id;
-                vm.volunteer = Request.accepted_user;
+                vm.author = Request.author;
+                vm.volunteer = Request.accepted_user.id;
                 checkAllowedUser();
             });
         }
 
         function checkAllowedUser () {
-            if (vm.authorId !== vm.user.id && vm.volunteer !== vm.user.id) {
+            if (vm.author.id !== vm.user.id && vm.volunteer !== vm.user.id) {
                 $location.path('/requestsList');
             }
-            if (vm.request.requester_completed === true && vm.authorId === vm.user.id) {
+            if (vm.request.requester_completed === true && vm.author.id === vm.user.id) {
                 $location.path('/requestsList');
             }
+            // Si l'évaluation a déjà été faite
             if (vm.request.volunteer_completed === true && vm.volunteer === vm.user.id) {
                 $location.path('/requestsList');
             }
@@ -55,7 +56,7 @@
         }
 
         function click2 (param) {
-            vm.ponctuality = param;
+            vm.punctuality = param;
         }
 
         function click3 (param) {
@@ -74,12 +75,12 @@
                 "request_id": vm.requestId,
                 "name": vm.request.name,
                 "requester_id" : vm.request.user_id,
-                "volunteer_id" : vm.request.accepted_user,
+                "volunteer_id" : vm.request.accepted_user.id,
                 "duration": vm.duration,
                 "commentary": formatedString,
                 "state": vm.state,
                 "attitude": vm.attitude,
-                "ponctuality": vm.ponctuality,
+                "punctuality": vm.punctuality,
                 "global": vm.global
             };
             FormService.sendForm(_newFormData)

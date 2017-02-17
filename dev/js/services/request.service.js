@@ -97,10 +97,10 @@
         }
 
         // Le demandeur d'aide supprime un candidat
-        function unSelectUser(requestId, data) {
+        function unSelectUser(requestId, userId) {
             var deferred = $q.defer();
 
-            RestService.post("/requests/" + requestId + "/unselect_user", data)
+            RestService.delete("/requests/" + requestId + "/candidates/" + userId)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -138,10 +138,10 @@
         }
 
         // Supprime une demande d'aide
-        function deleteRequest (data)
+        function deleteRequest (id)
         {
             var deferred = $q.defer();
-            RestService.delete("/requests", data)
+            RestService.delete("/requests/" + id)
                 .then(function (deletedRequest) {
                     deferred.resolve(deletedRequest.data);
                 })
@@ -152,10 +152,10 @@
         }
 
         // Met à jour la demande d'aide
-        function editRequest (data)
+        function editRequest (requestId, data)
         {
             var deferred = $q.defer();
-            RestService.post("/requests", data)
+            RestService.post("/requests/" + requestId, data)
                 .then(function (editRequest) {
                     deferred.resolve(editRequest.data);
                 })

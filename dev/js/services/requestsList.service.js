@@ -11,7 +11,7 @@
 
         var service = {
             loadRequestsList: loadRequestsList,
-            loadAcceptedRequestsList: loadAcceptedRequestsList,
+            loadCompletedRequest: loadCompletedRequest,
             loadCandidateRequestsList: loadCandidateRequestsList,
             loadPicture : loadPicture
         };
@@ -65,10 +65,10 @@
             return deferred.promise;
         }
 
-        function loadAcceptedRequestsList (data)
+        function loadCompletedRequest (data)
         {
             var deferred = $q.defer();
-            RestService.get("/users/requests/accepted")
+            RestService.get("/users/forms")
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })

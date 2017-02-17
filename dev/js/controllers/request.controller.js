@@ -12,15 +12,15 @@
         var vm = this;
 
         vm.name = "requestController";
-        vm.candidatesList = [];
         vm.candidatesListPicture = [];
         vm.skills = [];
 
         vm.setUserStatut = setUserStatut;
 
         vm.loadRequest = loadRequest;
-        vm.loadVolunteersData = loadVolunteersData;
+        vm.mergeVolunteersData = mergeVolunteersData;
         vm.loadChosenVolunteerData = loadChosenVolunteerData;
+        vm.loadVolunteersPicture = loadVolunteersPicture;
 
         vm.acceptRequest = acceptRequest;
         vm.preSelectUser = preSelectUser;
@@ -54,21 +54,15 @@
         // Définie si l'utilisateur courant est Auteur / Bénévole choisi / ...
         function setUserStatut () {
             vm.status = "normal";
-            console.log(vm.user.id, vm.author.id)
             if (vm.user.id === vm.author.id) { // AUTEUR
                 vm.status = "author";
-             } else if (vm.request.accepted_user !== -1) { // Bénévole choisi
+            } else if (vm.request.accepted_user !== null) { // Bénévole choisi
                 if (vm.user.id === vm.volunteer.id) {
                     vm.status = "chosen_volunteer";
                 }
-             } else {
+            } else {
                 vm.status = "normal";
             }
-            console.log("Je suis un utilisateur => ",vm.status);
-            console.log("Je suis un utilisateur => ",vm.status);
-            console.log("Je suis un utilisateur => ",vm.status);
-            console.log("Je suis un utilisateur => ",vm.status);
-            console.log("Je suis un utilisateur => ",vm.status);
             console.log("Je suis un utilisateur => ",vm.status);
         }
 
@@ -85,58 +79,47 @@
                     vm.authorPicture = picture;
                 });
                 setUserStatut();
-                loadVolunteersData();
-
-                /*if (vm.request.accepted_user !== null) {
-                    loadChosenVolunteerData();
-                }
-                else {
-                    setUserStatut();
-                }*/
-
+                mergeVolunteersData();
+                loadVolunteersPicture();
+            }).catch(function(error) {
+                //$location.path('/requestsList');
             });
         }
 
-        function loadVolunteersData () {
+        function mergeVolunteersData () {
             angular.forEach(vm.request.pre_selected, function(pre_selected, key) {
                 vm.request.candidates.push(pre_selected);
             });
         }
 
-        // Récupère les informations des bénévoles s'étant proposés pour aider
-        /*function loadVolunteersData () {
-            vm.candidatesList = [];
+        // Récupère les images des bénévoles s'étant proposés pour aider
+        function loadVolunteersPicture () {
             angular.forEach(vm.request.candidates, function(candidate, key) {
                 var _loadVolunteersData = {
-                    id: candidate
+                    id: candidate.id
                 };
-                RequestService.loadUserData(_loadVolunteersData).then(function (volunteer) {
-                    vm.candidatesList.push(volunteer);
-                });
                 RequestService.loadUserPicture(_loadVolunteersData).then(function (dataPicture) {
                     var _candidatePicture = {
-                        id: candidate,
+                        id: candidate.id,
                         picture: dataPicture.picture
                     };
+                    console.log(_candidatePicture);
                     vm.candidatesListPicture.push(_candidatePicture);
                 });
             });
-            angular.forEach(vm.request.pre_selected, function(pre_selectedCandidate, key) {
-                var _loadVolunteersData = {
-                    id: pre_selectedCandidate
+
+            var _loadAcceptedUserData = {
+                id: vm.request.accepted_user.id
+            };
+            RequestService.loadUserPicture(_loadAcceptedUserData).then(function (dataPicture) {
+                var _acceptedUserPicture = {
+                    id: vm.request.accepted_user.id,
+                    picture: dataPicture.picture
                 };
-                RequestService.loadUserData(_loadVolunteersData).then(function (volunteer) {
-                    vm.candidatesList.push(volunteer);
-                });
-                RequestService.loadUserPicture(_loadVolunteersData).then(function (dataPicture) {
-                    var _candidatePicture = {
-                        id: pre_selectedCandidate,
-                        picture: dataPicture.picture
-                    };
-                    vm.candidatesListPicture.push(_candidatePicture);
-                });
+                vm.candidatesListPicture.push(_acceptedUserPicture);
             });
-        } */
+
+        }
 
         // Récupère les informations du bénévole choisi
         function loadChosenVolunteerData () {
@@ -183,12 +166,12 @@
 
         // Renvoi "true" si l'utilisateur est l'utilisateur sélectionné / accepté / choisi
         function isChosen () {
-            return (vm.user.id === vm.request.accepted_user);
+            return (vm.user.id === vm.request.accepted_user.id);
         }
 
         // Renvoi "true" si l'utilisateur actuel est l'auteur et qu'il a choisi un bénévole pour l'aider
         function authorChose () {
-            return (vm.user.id === vm.authorId && vm.request.accepted_user !== -1);
+            return (vm.user.id === vm.author.id && vm.request.accepted_user !== null);
         }
 
         // L'auteur présélectionne un bénévole et peut le contacter
@@ -196,7 +179,7 @@
             RequestService.preSelectUser(vm.requestId, userId)
                 .then(function (data) {
                     loadRequest ();
-                 })
+                })
                 .catch(function (returnError) {
                     vm.error = returnError.data.error;
                 });
@@ -204,10 +187,7 @@
 
         // L'auteur dé-sélectionne un bénévole
         function unSelectUser (userId) {
-            var _unSelectUserData = {
-                user_id: userId
-            };
-            RequestService.unSelectUser(vm.requestId, _unSelectUserData).then(function (data) {
+            RequestService.unSelectUser(vm.requestId, userId).then(function (data) {
                 loadRequest ();
             });
         }
@@ -230,7 +210,7 @@
         function SelectUser (userId) {
             RequestService.selectUser(vm.requestId, userId)
                 .then(function (data) {
-                loadRequest();
+                    loadRequest();
                 })
                 .catch(function (returnError) {
                     vm.error = returnError.data.error;
@@ -255,12 +235,9 @@
 
         // Supprime la demande d'aide
         function deleteRequest () {
-            var _deleteRequestData = {
-                request_id: vm.requestId
-            };
-            RequestService.deleteRequest(_deleteRequestData)
+            RequestService.deleteRequest(vm.requestId)
                 .then(function (data) {
-                $location.path('/requestsList');
+                    $location.path('/requestsList');
                 })
                 .catch(function (returnError) {
                     vm.error = returnError.data.error;
@@ -273,25 +250,23 @@
             if (vm.requestDescription !== undefined) {
                 formatedString = vm.requestDescription.replace(/\n/g,"<br/>");
             }
-            
+
             var _editRequestData = {};
             if (vm.requestLocation === undefined) {
                 _editRequestData = {
-                    request_id: vm.requestId,
                     name: vm.requestName,
                     skills: vm.skills,
                     description: formatedString
                 };
             } else {
                 _editRequestData = {
-                    request_id: vm.requestId,
                     name: vm.requestName,
                     description: formatedString,
                     skills: vm.skills,
                     location: vm.requestLocation.formatted_address
                 };
             }
-            RequestService.editRequest(_editRequestData)
+            RequestService.editRequest(vm.requestId,_editRequestData)
                 .then(function (data) {
                     loadRequest();
                 })
