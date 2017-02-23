@@ -70,7 +70,9 @@
 
             RequestsListService.loadCompletedRequest().then(function (completedRequests) {
                 console.log(completedRequests);
-                vm.completed_helps = completedRequests;
+                angular.forEach(completedRequests, function(completed_help) {
+                    vm.completed_helps.push(completed_help.request);
+                });
             });
         }
 
@@ -81,8 +83,7 @@
 
         // Charge les images des demandeurs d'aide
         function loadPicture (requestsList) {
-            angular.forEach(requestsList, function(request)
-                            {
+            angular.forEach(requestsList, function(request) {
                 RequestsListService.loadPicture(request.user_id).then(function (picture) {
                     var userPicture = {
                         user_id : request.user_id,
