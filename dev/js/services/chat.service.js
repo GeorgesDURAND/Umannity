@@ -39,8 +39,8 @@
             var deferred = $q.defer();
 
             RestService.get("/chats/user")
-                .then(function (request) {
-                    deferred.resolve(request.data.conversations);
+                .then(function (contacts) {
+                    deferred.resolve(contacts.data.conversations);
                 })
                 .catch(function (error) {
                     deferred.reject(error);
