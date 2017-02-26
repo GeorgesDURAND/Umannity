@@ -62,14 +62,16 @@
                 vm.helpsList = allRequests;
             });
 
-            /*RequestsListService.loadCandidateRequestsList().then(function (candidateRequests) {
-                angular.forEach(candidateRequests.requests, function(request, key) {
-                    vm.current_helps.push(request);
+            RequestsListService.loadPreSelectedRequestsList().then(function (userPreSelectioned) {
+                console.log(userPreSelectioned)
+                vm.current_helps = userPreSelectioned;
+                RequestsListService.loadCandidatesRequestsList().then(function (userCandidate) {
+                    vm.current_helps += userCandidate;
                 });
-            });*/
+
+            });
 
             RequestsListService.loadCompletedRequest().then(function (completedRequests) {
-                console.log(completedRequests);
                 angular.forEach(completedRequests, function(completed_help) {
                     vm.completed_helps.push(completed_help.request);
                 });

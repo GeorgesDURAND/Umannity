@@ -1,7 +1,7 @@
 <u-main-view>
 <div class="u-login">
         <div class="u-box-center">
-            <form name="loginForm" class="css-form" novalidate>
+            <form ng-submit="vm.login()" name="loginForm" class="css-form" novalidate>
                 {{ 'EMAIL' | translate }}
                 <br/>
                 <input type="text" ng-model="vm.email" name="email"/>
@@ -10,9 +10,9 @@
                 <br/>
                 <input type="password" ng-model="vm.password" name="password"/>
                 <br/>
-                <label class="btn btn-primary" ng-click="vm.login()" btn-checkbox>
+                <button type="submit" class="btn btn-primary">
                     {{ 'CONNECT' | translate }}
-                </label>
+                </button>
             </form>
         </div>
     </div>

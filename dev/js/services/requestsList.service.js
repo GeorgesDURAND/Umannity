@@ -12,7 +12,8 @@
         var service = {
             loadRequestsList: loadRequestsList,
             loadCompletedRequest: loadCompletedRequest,
-            loadCandidateRequestsList: loadCandidateRequestsList,
+            loadPreSelectedRequestsList: loadPreSelectedRequestsList,
+            loadCandidatesRequestsList: loadCandidatesRequestsList,
             loadPicture : loadPicture
         };
 
@@ -52,7 +53,22 @@
             return deferred.promise;
         }
 
-        function loadCandidateRequestsList (data)
+        // Récupère les données où l'utilisateur est pré-sélectionnés
+        function loadPreSelectedRequestsList (data)
+        {
+            var deferred = $q.defer();
+            RestService.get("/users/requests/preselected")
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        // Récupère les données où l'utilisateur est candidat
+        function loadCandidatesRequestsList (data)
         {
             var deferred = $q.defer();
             RestService.get("/users/requests/candidate")
