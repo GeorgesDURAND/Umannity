@@ -15,7 +15,7 @@
 
             var params = {id : $scope.userId};
 
-            RestService.get("/user/picture", params)
+            RestService.get("/users/picture", params)
                 .then(function (request) {
                     vmPic.picture = request.data.picture;
                 })
