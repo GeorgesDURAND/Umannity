@@ -20,7 +20,6 @@
                     vmPic.picture = request.data.picture;
                 })
                 .catch(function (error) {
-
                 });
     }
 })();
