@@ -49,8 +49,7 @@
 
             MyRequestsListService.loadRequestsList(_requestParams).then(function (myRequests) {
                 vm.myRequests = myRequests;
-                angular.forEach(myRequests.requests, function(request, key)
-                                {
+                angular.forEach(myRequests, function(request, key) {
                     if (request.requester_completed === true && request.volunteer_completed === true) {
                         vm.completed_helps.push(request);
                     } else {
@@ -62,10 +61,10 @@
         }
 
         function getRequiredSkills () {
-            for (var i = vm.myRequests.requests.length - 1; i >= 0; i--) {
-                for (var k = vm.myRequests.requests[i].skills.length - 1; k >= 0; k--) {
-                    if (vm.my_skills.indexOf(vm.myRequests.requests[i].skills[k]) === -1 && vm.myRequests.requests[i].skills[k]) {
-                        vm.my_skills.push(vm.myRequests.requests[i].skills[k]);
+            for (var i = vm.myRequests.length - 1; i >= 0; i--) {
+                for (var k = vm.myRequests[i].skills.length - 1; k >= 0; k--) {
+                    if (vm.my_skills.indexOf(vm.myRequests[i].skills[k]) === -1 && vm.myRequests[i].skills[k]) {
+                        vm.my_skills.push(vm.myRequests[i].skills[k]);
                     }
                 }
             }

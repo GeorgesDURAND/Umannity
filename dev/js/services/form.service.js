@@ -21,7 +21,7 @@
         function sendForm (data)
         {
             var deferred = $q.defer();
-            RestService.put("/form", data)
+            RestService.put("/forms", data)
                 .then(function (form) {
                     deferred.resolve(form.data);
                 })

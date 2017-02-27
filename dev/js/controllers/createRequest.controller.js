@@ -25,7 +25,6 @@
         function createRequest() {
             var formatedString = vm.requestDescription.replace(/\n/g,"<br/>");
             var _newRequestData = {
-                //"coordinates": vm.requestLocation.geometry.location.lat +','+ vm.requestLocation.geometry.location.lng,
                 "description": formatedString,
                 "location": vm.requestLocation.formatted_address,
                 "name": vm.requestName,

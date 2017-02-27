@@ -53,34 +53,28 @@
             vm.helpsList = [];
             vm.completed_helps = [];
             vm.current_helps = [];
-            var _requestParams1 = {
+            var _requestParams = {
                 coordinates: _coordonnees,
                 radius: vm.radius
             };
-            /*var _requestParams2 = {
-             skills: vm.user.skills,
-             coordinates: _coordonnees,
-             radius: vm.radius
-             };*/
 
-            RequestsListService.loadRequestsList(_requestParams1).then(function (allRequests) {
-                angular.forEach(allRequests.requests, function(request, key) {
-                    if (vm.user.id === request.accepted_user &&
-                        request.requester_completed === true &&
-                        request.volunteer_completed === true) {
-                        vm.completed_helps.push(request);
-                    } else if (request.accepted_user === -1) {
-                        vm.helpsList.push(request);
-                    }
-                });
-                //vm.loadPicture(vm.helpsList);
+            RequestsListService.loadRequestsList(_requestParams).then(function (allRequests) {
+                vm.helpsList = allRequests;
             });
-            RequestsListService.loadAcceptedRequestsList(_requestParams1).then(function (myRequests) {
-                angular.forEach(myRequests.requests, function(request, key) {
-                    if (request.requester_completed === false || request.volunteer_completed === false)
-                        vm.current_helps.push(request);
+
+            RequestsListService.loadPreSelectedRequestsList().then(function (userPreSelectioned) {
+                console.log(userPreSelectioned)
+                vm.current_helps = userPreSelectioned;
+                RequestsListService.loadCandidatesRequestsList().then(function (userCandidate) {
+                    vm.current_helps += userCandidate;
                 });
-                //vm.loadPicture(vm.current_helps);
+
+            });
+
+            RequestsListService.loadCompletedRequest().then(function (completedRequests) {
+                angular.forEach(completedRequests, function(completed_help) {
+                    vm.completed_helps.push(completed_help.request);
+                });
             });
         }
 
@@ -91,8 +85,7 @@
 
         // Charge les images des demandeurs d'aide
         function loadPicture (requestsList) {
-            angular.forEach(requestsList, function(request)
-                            {
+            angular.forEach(requestsList, function(request) {
                 RequestsListService.loadPicture(request.user_id).then(function (picture) {
                     var userPicture = {
                         user_id : request.user_id,
@@ -112,7 +105,7 @@
         }
 
         function search (item) {
-            if (vm.searchText === undefined) {   
+            if (vm.searchText === undefined) {
                 return true;
             } else {
                 if (item.name.toLowerCase().indexOf(vm.searchText.toLowerCase()) !== -1) {

@@ -11,7 +11,9 @@
 
         var service = {
             loadRequestsList: loadRequestsList,
-            loadAcceptedRequestsList: loadAcceptedRequestsList,
+            loadCompletedRequest: loadCompletedRequest,
+            loadPreSelectedRequestsList: loadPreSelectedRequestsList,
+            loadCandidatesRequestsList: loadCandidatesRequestsList,
             loadPicture : loadPicture
         };
 
@@ -23,7 +25,7 @@
         function loadRequestsList (data)
         {
             var deferred = $q.defer();
-            RestService.get("/request", data)
+            RestService.get("/requests", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -40,7 +42,7 @@
                 id : id
             };
             var deferred = $q.defer();
-            RestService.get("/user/picture", params)
+            RestService.get("/users/picture", params)
                 .then(function (userPicture) {
                     var picture = userPicture.data.picture;
                     deferred.resolve(picture);
@@ -51,10 +53,38 @@
             return deferred.promise;
         }
 
-        function loadAcceptedRequestsList (data)
+        // Récupère les données où l'utilisateur est pré-sélectionnés
+        function loadPreSelectedRequestsList (data)
         {
             var deferred = $q.defer();
-            RestService.get("/user/requests", data)
+            RestService.get("/users/requests/preselected")
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        // Récupère les données où l'utilisateur est candidat
+        function loadCandidatesRequestsList (data)
+        {
+            var deferred = $q.defer();
+            RestService.get("/users/requests/candidate")
+                .then(function (request) {
+                    deferred.resolve(request.data);
+                })
+                .catch(function (error) {
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        }
+
+        function loadCompletedRequest (data)
+        {
+            var deferred = $q.defer();
+            RestService.get("/users/forms")
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })

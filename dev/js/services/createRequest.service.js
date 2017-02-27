@@ -21,7 +21,7 @@
         function createRequest (data)
         {
             var deferred = $q.defer();
-            RestService.put("/request", data)
+            RestService.put("/requests", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })

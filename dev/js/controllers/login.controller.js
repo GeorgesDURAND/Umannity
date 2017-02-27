@@ -58,10 +58,10 @@
             UserService.login(vm.email, vm.password)
                 .then(function (user) {
                 console.log($location.path() + " && " + user);
-                if ($location.path() === "/loginPartner" && user === "partner") {
+                if ($location.path() === "/loginPartner" && user.type === "partner") {
                     console.log(vm.name + ":: Partner connected");
                     $location.path("/partner");
-                }else if ($location.path() === "/login" && user === "user")  {
+                }else if ($location.path() === "/login" && user.type === "user")  {
                     console.log(vm.name + ":: User connected");
                     $location.path("/");
                 }else {

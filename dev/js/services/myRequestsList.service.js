@@ -23,7 +23,7 @@
         function loadRequestsList (data)
         {
             var deferred = $q.defer();
-            RestService.get("/request", data)
+            RestService.get("/users/requests")
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
@@ -40,7 +40,7 @@
                 id : id
             };
             var deferred = $q.defer();
-            RestService.get("/user/picture", params)
+            RestService.get("/users/picture", params)
                 .then(function (userPicture) {
                     var picture = userPicture.data.picture;
                     deferred.resolve(picture);
@@ -54,7 +54,7 @@
         function loadAcceptedRequestsList (data)
         {
             var deferred = $q.defer();
-            RestService.get("/user/requests", data)
+            RestService.get("/users/requests", data)
                 .then(function (request) {
                     deferred.resolve(request.data);
                 })
