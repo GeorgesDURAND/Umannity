@@ -30,13 +30,13 @@
             if (undefined !== vm.partner) {
                 OfferService.getOfferList(true, vm.partner.id)
                     .then(function (allOffers) {
-                    vm.offersList = allOffers.offers;
-                });
+                        vm.offersList = allOffers;
+                    });
             }
             else {
                 OfferService.getOfferList(false)
                     .then(function (allOffers) {
-                    vm.offersList = allOffers.offers;
+                    vm.offersList = allOffers;
                 });
             }
         }
