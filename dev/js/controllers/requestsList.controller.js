@@ -135,10 +135,7 @@
         }
 
         function changeView(viewName, parameter) {
-            if (parameter !== undefined)
-                $location.path(viewName + parameter);
-            else
-                $location.path(viewName);
+            $location.path(viewName + parameter);
         }
 
     }
