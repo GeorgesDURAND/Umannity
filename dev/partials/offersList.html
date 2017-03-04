@@ -23,8 +23,25 @@
         </div>
         <!-- FIN Barre de recherche -->
 
+
         <div class="offers-bloc col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <span ng-repeat="offer in vm.offersList | filter:vm.search" class="offer-line">
+                <div class="thumbnail col-lg-3 col-md-3 col-sm-6 col-xs-6" ng-click="vm.changeView('/offer/', offer.id)">
+                    <img class="group" src="https://www.indiana.edu/~ksbframe/images/placeholders/placeholder-450x450.png" alt="" />
+                    <div class="caption text-center">
+                        <h4 class="partener-name group inner">
+                            {{offer.partner.name}}
+                        </h4>
+                        <p class="group inner">
+                            {{offer.name}}
+                        </p>
+                        <hr/>
+                        <strong class="pointsOffersList text-success">
+                            {{offer.points}} {{"POINTS" | translate}}
+                        </strong>
+                    </div>
+                </div>
+                <!--
                 <div class="offer-line col-lg-12 col-md-12 col-sm-12 col-xs-12"
                      ng-click="vm.changeView('/offer/', offer.id)">
                     <div class="cel col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -45,8 +62,10 @@
                         <div class="offer_point">{{offer.max_participants - offer.participants.length}} / {{offer.max_participants}}</div>
                     </div>
                 </div>
+                -->
             </span>
         </div>
 
     </div>
+
 </u-main-view>
