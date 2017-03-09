@@ -188,6 +188,8 @@
     "NO_HELP": "Pas de demande d'aide.",
     "NO_HELP_IN_PROGRESS": "Pas de demande d'aide en cours.",
     "NO_FINISHED_HELP": "Pas de demande d'aide terminée.",
+    "AT": "à",
+    "FROM_YOU": "de vous",
 
     "OFFERS_LIST": "Offres",
     "OFFERSLIST_TITLE": "Offres commerciales",

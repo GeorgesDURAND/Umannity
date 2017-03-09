@@ -5,9 +5,9 @@
         .module('umannityApp.controllers')
         .controller('requestController', requestController);
 
-    requestController.$inject = ['$scope', 'UserService', '$routeParams', 'RequestService', '$window', '$location'];
+    requestController.$inject = ['$scope', 'UserService', '$routeParams', 'RequestService', '$window', '$location', '$mdDialog'];
 
-    function requestController($scope, UserService, $routeParams, RequestService, $window, $location) {
+    function requestController($scope, UserService, $routeParams, RequestService, $window, $location, $mdDialog) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -224,24 +224,48 @@
                 message: "A user reported this post",
                 type: "request"
             };
-            RequestService.reportRequest(_reportRequestData)
-                .then(function (data) {
 
-                })
-                .catch(function (returnError) {
-                    vm.error = returnError.data.error;
-                });
+            var confirm = $mdDialog.confirm()
+                .title('Signalement')
+                .textContent('Êtes vous sûr de vouloir signaler cette demande ?')
+                .ariaLabel('Lucky day')
+                .ok('Je confirme')
+                .cancel('Non');
+
+            $mdDialog.show(confirm).then(function() {
+                RequestService.reportRequest(_reportRequestData)
+                    .then(function (data) {
+
+                    })
+                    .catch(function (returnError) {
+                        vm.error = returnError.data.error;
+                    });
+            }, function() {
+
+            });
         }
 
         // Supprime la demande d'aide
         function deleteRequest () {
-            RequestService.deleteRequest(vm.requestId)
-                .then(function (data) {
-                    $location.path('/requestsList');
-                })
-                .catch(function (returnError) {
-                    vm.error = returnError.data.error;
-                });
+            var confirm = $mdDialog.confirm()
+                .title('Suppression')
+                .textContent('Êtes vous sûr de vouloir supprimer votre demande ?')
+                .ariaLabel('Lucky day')
+                .ok('Je confirme')
+                .cancel('Non');
+
+            $mdDialog.show(confirm).then(function() {
+                RequestService.deleteRequest(vm.requestId)
+                    .then(function (data) {
+                        $location.path('/requestsList');
+                    })
+                    .catch(function (returnError) {
+                        vm.error = returnError.data.error;
+                    });
+            }, function() {
+
+            });
+
         }
 
         // Modifie les données de la demande d'aide

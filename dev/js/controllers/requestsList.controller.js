@@ -28,8 +28,6 @@
         vm.searchBySkill = searchBySkill;
         vm.loadRequestsList = loadRequestsList;
         vm.changeView = changeView;
-        vm.loadPicture = loadPicture;
-        vm.getPicture = getPicture;
 
         $scope.$on('$viewContentLoaded', onViewContentLoaded);
         ////
@@ -81,27 +79,6 @@
         function setSkill (index, skill) {
             vm.selectedIndex = index;
             vm.chosenSkill = skill;
-        }
-
-        // Charge les images des demandeurs d'aide
-        function loadPicture (requestsList) {
-            angular.forEach(requestsList, function(request) {
-                RequestsListService.loadPicture(request.user_id).then(function (picture) {
-                    var userPicture = {
-                        user_id : request.user_id,
-                        picture : picture
-                    };
-                    vm._listauthorData.push(userPicture);
-                });
-            });
-        }
-
-        function getPicture (id) {
-            angular.forEach(vm._listauthorData, function(authorData) {
-                if(id === authorData.user_id) {
-                    return (authorData.picture);
-                }
-            });
         }
 
         function search (item) {

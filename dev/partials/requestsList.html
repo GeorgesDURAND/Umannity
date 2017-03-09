@@ -27,6 +27,11 @@
                        ng-change="vm.loadRequestsList()">
             {{vm.radius}}
         </div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <div ng-click="vm.changeView('/createRequest')" class="create-request-button">
+                {{ 'CREATE_HELP' | translate }}
+            </div>
+        </div>
 
         <!-- FIN Barre de recherche -->
 
@@ -35,7 +40,7 @@
             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
 
             </div>
-            <div class="col-md-9 col-lg-10 col-sm-8 col-xs-8">
+            <div class="col-md-9 col-lg-10 col-sm-12 col-xs-12">
                 <ul class="u-help-status">
                     <li ng-click="tab = 1" ng-class="tab == 1 ? 'u-selectedTab' : ''">
                         {{ 'ALL' | translate}}
@@ -53,7 +58,7 @@
 
         <div class="u-skills col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- Menu de compétences -->
-            <ul class="nav col-md-3 col-lg-2 col-sm-4 col-xs-4">
+            <ul class="nav col-md-3 col-lg-2 col-sm-12 col-xs-12">
                 <li class="u-my-skills">
                     <a ng-click="vm.setSkill($index)" ng-class="($index == vm.selectedIndex) ? 'u-selected-filter' : ''">
                         {{ 'MY_SKILLS_MENU' | translate}}
@@ -69,7 +74,7 @@
 
             <!-- Listing des demande d'aides -->
 
-            <div class="u-tab-requests col-md-9 col-lg-10 col-sm-8 col-xs-8">
+            <div class="u-tab-requests col-md-9 col-lg-10 col-sm-12 col-xs-12">
 
                     <span ng-if="tab === 1 && vm.helpsList.length === 0">{{ 'NO_HELP' | translate}}</span>
                     <span ng-if="tab === 2 && vm.current_helps.length === 0">{{ 'NO_HELP_IN_PROGRESS' | translate}}</span>
