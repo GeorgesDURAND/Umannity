@@ -1,16 +1,16 @@
 <div class="block-request" ng-click="vm.changeView('/request/', request.id)">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
             <u-request-picture
                     user-id="{{request.author.id}}"
                     class="u-img-author">
             </u-request-picture>
         </div>
-        <div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
+        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
             <h4 class="name-request">{{request.name}}</h4>
             <div class="fix-space" ng-if="request.distance">
-                <span class="glyphicon glyphicon-map-marke"></span> {{request.location}} a
-                <span class="distance">{{request.distance | number:2}} km</span> de vous
+                <span class="glyphicon glyphicon-map-marke"></span> {{request.location}} {{ 'AT' | translate }}
+                <span class="distance">{{request.distance | number:2}} km</span> {{ 'FROM_YOU' | translate }}
             </div>
             <div class="fix-space">
                 <span ng-repeat="helpSkill in request.skills | orderBy:helpSkill track by $index"
