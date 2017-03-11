@@ -7,6 +7,12 @@ u-side-menu {
     z-index: 100;
 }
 
+.u-deco {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
 .u-sidemenu {
     transition: 0.2s ease-in-out;
     width: $sidemenu-width;
