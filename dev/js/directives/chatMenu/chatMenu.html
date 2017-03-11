@@ -53,14 +53,6 @@
 
                     </li>
                     <li ng-if="vm.user.id != dialogue.author_id" class="conversation__msg cf">
-                        <div class="col-lg-2 col-md-2 no-padding">
-                            <div class="u-left">
-                                <img class="chat__avatar " ng-src="{{chat.recipient_picture}}">
-                                <div class="u-time">
-                                    {{ dialogue.date | date:'HH:mm' }}
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-10 col-md-10">
                             <span class="message">
                                 {{ dialogue.message }}
